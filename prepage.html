@@ -1,0 +1,313 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Globe Hub - Animated Prepage</title>  
+  <style>  
+    * {margin: 0; padding: 0; box-sizing: border-box;}  
+    body {  
+      font-family: 'Segoe UI', Tahoma, sans-serif;  
+      background: linear-gradient(135deg, #0a0a1a, #000, #0d1b2a, #001f3f);  
+      color: white;  
+      scroll-behavior: smooth;  
+      overflow-x: hidden;  
+    }  /* LOADER */  
+#loader {  
+  position: fixed;  
+  top: 0; left: 0; right: 0; bottom: 0;  
+  background: #000;  
+  display: flex; align-items: center; justify-content: center;  
+  z-index: 2000;  
+  transition: opacity 1s ease, visibility 1s ease;  
+}  
+#loader .logo {  
+  font-size: 2rem;  
+  font-weight: bold;  
+  color: cyan;  
+  border: 3px solid cyan;  
+  border-radius: 50%;  
+  width: 80px; height: 80px;  
+  display: flex; align-items: center; justify-content: center;  
+  animation: pulse 1.5s infinite alternate;  
+  box-shadow: 0 0 20px cyan;  
+}  
+@keyframes pulse {  
+  from { transform: scale(1); box-shadow: 0 0 20px cyan; }  
+  to { transform: scale(1.3); box-shadow: 0 0 40px cyan, 0 0 60px blue; }  
+}  
+
+/* HEADER */  
+header {  
+  position: fixed;  
+  top: 1rem;  
+  left: 50%;  
+  transform: translateX(-50%) scale(0.9);  
+  width: 70px;  
+  height: 60px;  
+  background: rgba(255,255,255,0.05);  
+  border-radius: 999px;  
+  backdrop-filter: blur(12px);  
+  box-shadow: 0 4px 25px rgba(0,0,0,0.6);  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  overflow: hidden;  
+  transition: all 1.8s cubic-bezier(0.77, 0, 0.175, 1);  
+  z-index: 1000;  
+  opacity: 0;  
+}  
+header.show { opacity: 1; }  
+header.expanded {  
+  width: 90%;  
+  max-width: 1200px;  
+  justify-content: space-between;  
+  padding: 0 1rem;  
+  transform: translateX(-50%) scale(1);  
+}  
+
+header .logo {  
+  font-size: 1.2rem;  
+  font-weight: bold;  
+  color: cyan;  
+  background: rgba(255,255,255,0.1);  
+  border-radius: 50%;  
+  width: 50px; height: 50px;  
+  display: flex; align-items: center; justify-content: center;  
+  box-shadow: 0 0 15px cyan;  
+  transition: transform 1s ease;  
+}  
+header.expanded .logo:hover { transform: rotate(360deg) scale(1.1); }  
+
+nav {  
+  display: flex;  
+  gap: 1rem;  
+  opacity: 0;  
+  transition: opacity 1.2s ease-in-out;  
+}  
+header.expanded nav { opacity: 1; }  
+
+nav button {  
+  padding: 0.5rem 1rem;  
+  border: none; border-radius: 8px;  
+  background: linear-gradient(145deg, #1e3a8a, #0f172a);  
+  color: white; font-weight: bold; cursor: pointer;  
+  box-shadow: 3px 3px 8px #000, -3px -3px 8px #1e3a8a;  
+  transition: all 0.3s ease;  
+}  
+nav button:hover {  
+  transform: translateY(-3px) scale(1.05);  
+  box-shadow: 5px 5px 12px #000, -5px -5px 12px #1e3a8a;  
+}  
+
+/* HERO SECTION */  
+.hero {  
+  height: 100vh;  
+  display: flex; flex-direction: column;  
+  align-items: center; justify-content: center;  
+  text-align: center; padding: 2rem;  
+  background: radial-gradient(circle at center, #001f3f 0%, #000 80%);  
+  position: relative; overflow: hidden;  
+}  
+.hero::before {  
+  content: "";  
+  position: absolute; width: 150%; height: 150%;  
+  background: conic-gradient(from 180deg, cyan, blue, purple, cyan);  
+  animation: rotateBg 20s linear infinite;  
+  top: -25%; left: -25%;  
+  z-index: 0; opacity: 0.15;  
+}  
+@keyframes rotateBg { 100% { transform: rotate(360deg); } }  
+.hero h1 {  
+  font-size: 3rem; color: cyan;  
+  animation: glow 2s infinite alternate;  
+  z-index: 1;  
+}  
+@keyframes glow {  
+  from { text-shadow: 0 0 10px cyan; }  
+  to { text-shadow: 0 0 30px cyan, 0 0 50px blue; }  
+}  
+.hero p { margin-top: 1rem; font-size: 1.2rem; opacity: 0.9; z-index: 1;}  
+
+/* CARDS */  
+.card-container {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
+  gap: 2rem;  
+  width: 90%;  
+  max-width: 1200px;  
+  margin: 3rem auto;  
+}  
+.card {  
+  border-radius: 20px; overflow: hidden;  
+  background: #0f172a;  
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);  
+  transition: transform 0.4s ease, box-shadow 0.4s ease;  
+}  
+.card:hover {  
+  transform: translateY(-10px) scale(1.03);  
+  box-shadow: 0 0 20px cyan, 0 0 30px blue, 0 0 50px purple;  
+}  
+.card img { width: 100%; height: 220px; object-fit: cover; }  
+.card-content {  
+  padding: 1.2rem;  
+  background: linear-gradient(135deg, #0f172a, #000);  
+  border-top-left-radius: 5px;  
+  border-top-right-radius: 40px;  
+}  
+.card-content h3 { margin-bottom: 0.5rem; color: cyan; }  
+.card-footer {  
+  margin-top: 1rem;  
+  display: flex; justify-content: space-between; align-items: center;  
+}  
+.card-footer a {  
+  text-decoration: none; color: cyan;  
+  border: 1px solid cyan;  
+  padding: 0.4rem 0.8rem; border-radius: 6px;  
+  transition: all 0.3s ease;  
+}  
+.card-footer a:hover { background: cyan; color: #0f172a; }  
+
+/* FEATURES */  
+.features {  
+  padding: 4rem 2rem; text-align: center;  
+}  
+.features h2 { color: cyan; margin-bottom: 2rem; }  
+.feature-grid {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
+  gap: 2rem; max-width: 1000px; margin: auto;  
+}  
+.feature {  
+  background: rgba(255,255,255,0.05);  
+  padding: 2rem; border-radius: 15px;  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}  
+.feature:hover {  
+  transform: translateY(-10px);  
+  box-shadow: 0 0 15px cyan;  
+}  
+
+/* NEWSLETTER */  
+.newsletter {  
+  padding: 4rem 2rem; text-align: center;  
+  background: rgba(255,255,255,0.05);  
+  margin-top: 4rem;  
+}  
+.newsletter h2 { color: cyan; margin-bottom: 1rem; }  
+.newsletter input {  
+  padding: 0.6rem 1rem; width: 250px;  
+  border: none; border-radius: 6px;  
+  margin-right: 0.5rem;  
+}  
+.newsletter button {  
+  padding: 0.6rem 1.2rem;  
+  border: none; border-radius: 6px;  
+  background: cyan; color: #0f172a;  
+  font-weight: bold; cursor: pointer;  
+  transition: all 0.3s ease;  
+}  
+.newsletter button:hover { transform: scale(1.05); background: blue; color: white; }  
+
+/* FOOTER */  
+footer {  
+  text-align: center; padding: 2rem;  
+  margin-top: 2rem;  
+  background: rgba(255,255,255,0.05);  
+  border-top: 1px solid rgba(255,255,255,0.2);  
+}  
+
+/* Scroll reveal */  
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease; }  
+.reveal.active { opacity: 1; transform: translateY(0); }  
+
+@media (max-width: 768px) {  
+  nav button { font-size: 0.85rem; padding: 0.4rem 0.6rem; }  
+  .hero h1 { font-size: 2rem; }  
+  .newsletter input { width: 180px; margin-bottom: 0.5rem; }  
+}
+
+  </style>  
+</head>  
+<body>  
+  <!-- LOADER -->  
+  <div id="loader"><div class="logo">GH</div></div>    <!-- HEADER -->    <header id="mainHeader">  
+    <div class="logo">GH</div>  
+    <nav>  
+<a href="homepage.html"><button>Home</button></a>  
+<a href="games.html"><button>Games</button></a>  
+<a href="shop.html"><button>Shop</button></a>  
+<a href="blog.html"><button>Blog</button></a>  
+    </nav>  
+  </header>    <!-- HERO -->    <section class="hero">  
+    <h1>Welcome to Globe Hub</h1>  
+    <p>Play • Shop • Explore • Connect</p>  
+  </section>    <!-- CARDS -->    <section class="card-container">  
+    <div class="card reveal">  
+      <img src="https://picsum.photos/id/1011/400/200" alt="Games">  
+      <div class="card-content">  
+        <h3>Games</h3>  
+        <p>Thrilling HTML5 and 3D games built for fun and challenge.</p>  
+        <div class="card-footer"><span>Updated 2025</span><a href="#">Explore</a></div>  
+      </div>  
+    </div>  
+    <div class="card reveal">  
+      <img src="https://picsum.photos/id/1015/400/200" alt="Shop">  
+      <div class="card-content">  
+        <h3>Shop</h3>  
+        <p>Exclusive gaming merchandise and digital goodies at Globe Hub.</p>  
+        <div class="card-footer"><span>New Deals</span><a href="#">Visit</a></div>  
+      </div>  
+    </div>  
+    <div class="card reveal">  
+      <img src="https://picsum.photos/id/1020/400/200" alt="Blog">  
+      <div class="card-content">  
+        <h3>Blog</h3>  
+        <p>Stay updated with the latest news, tips, and stories from gamers worldwide.</p>  
+        <div class="card-footer"><span>Hot Reads</span><a href="#">Read</a></div>  
+      </div>  
+    </div>  
+  </section>    <!-- FEATURES -->    <section class="features">  
+    <h2>Why Choose Globe Hub?</h2>  
+    <div class="feature-grid">  
+      <div class="feature reveal"><h3>⚡ Fast Games</h3><p>Optimized for smooth performance on all devices.</p></div>  
+      <div class="feature reveal"><h3>🎮 Huge Library</h3><p>Play a wide variety of genres from puzzles to racing.</p></div>  
+      <div class="feature reveal"><h3>🛒 Shop</h3><p>Grab amazing game accessories and premium content.</p></div>  
+    </div>  
+  </section>    <!-- NEWSLETTER -->    <section class="newsletter reveal">  
+    <h2>Join Our Newsletter</h2>  
+    <p>Get updates on new games, deals, and blogs.</p>  
+    <form onsubmit="event.preventDefault(); alert('Subscribed!');">  
+      <input type="email" placeholder="Enter your email" required>  
+      <button type="submit">Subscribe</button>  
+    </form>  
+  </section>    <!-- FOOTER -->    <footer>  
+    <p>&copy; 2025 Globe Hub | Built with ❤️ and Dark Blue Magic</p>  
+  </footer>    <script>  
+    // Loader + Header expand  
+    window.addEventListener("load", () => {  
+      const loader = document.getElementById("loader");  
+      const header = document.getElementById("mainHeader");  
+  
+      setTimeout(() => {  
+        loader.style.opacity = "0";  
+        loader.style.visibility = "hidden";  
+        header.classList.add("show");  
+      }, 2000);  
+  
+      setTimeout(() => {  
+        header.classList.add("expanded");  
+      }, 3000);  
+    });  
+  
+    // Scroll Reveal  
+    const reveals = document.querySelectorAll(".reveal");  
+    window.addEventListener("scroll", () => {  
+      for (let r of reveals) {  
+        const rect = r.getBoundingClientRect();  
+        if (rect.top < window.innerHeight - 100) r.classList.add("active");  
+      }  
+    });  
+  </script> 
+  </body>  
+</html>  
+

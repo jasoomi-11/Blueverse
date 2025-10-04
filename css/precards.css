@@ -1,0 +1,95 @@
+/* Card Container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Card */
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  perspective: 1000px; /* Tilt ka depth */
+  transition: transform 0.3s ease;
+}
+
+.card img.bg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient Overlay Box */
+.card-content {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a, #000000);
+  padding: 1.2rem;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 50px;
+  margin-top: -40px;
+  z-index: 2;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+/* Hover Tilt Effect */
+.card:hover .card-content {
+  transform: rotateX(8deg) rotateY(8deg);
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
+}
+
+/* Date & Button Row */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer span {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.card-footer a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+/* Hover Effect */
+.card-footer a:hover {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border-color: #00c6ff;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card-content {
+    padding: 1rem;
+  }
+  .card-footer a {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
