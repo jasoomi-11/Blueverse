@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueverse Product - Gaming Headset</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #020617, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 20, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: cyan;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo span {
+      color: #00eaff;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: cyan;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(135deg, #000814, #001f3f);
+      box-shadow: 3px 0 15px rgba(0, 255, 255, 0.15);
+      transition: left 0.4s ease;
+      z-index: 1050;
+      padding: 80px 25px;
+    }
+
+    .sidebar.active { left: 0; }
+
+    .sidebar a {
+      display: block;
+      color: #0ff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin: 20px 0;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      color: #ff004c;
+      transform: translateX(5px);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+      display: none;
+      z-index: 1000;
+    }
+    .overlay.active { display: block; }
+
+    /* ==== SCROLLABLE THUMBNAILS ==== */
+    .thumb-gallery {
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .thumb-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 15px;
+      width: 90%;
+      padding: 10px;
+    }
+
+    .thumb-container::-webkit-scrollbar { display: none; }
+
+    .thumb {
+      flex: 0 0 auto;
+      width: 200px; height: 200px;
+      background: linear-gradient(135deg, #0f172a, #000);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .thumb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,0,0,0.5);
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,255,255,0.15);
+      color: cyan;
+      font-size: 1.5rem;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .arrow:hover { background: rgba(255,0,0,0.4); color: #fff; }
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+
+    /* ===== PRODUCT INFO ===== */
+    .product-details {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+    }
+
+    .price {
+      font-size: 1.8rem;
+      color: #ff004c;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .installment {
+      font-size: 1rem;
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+
+    .product-details h2 {
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .info-item {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    .rating {
+      color: gold;
+    }
+
+    /* ===== MORE PRODUCT DETAILS ===== */
+    .more-details {
+      max-width: 900px;
+      margin: 40px auto 100px auto;
+      background: rgba(0, 0, 10, 0.7);
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .more-details h3 {
+      color: cyan;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      border-left: 4px solid #0ff;
+      padding-left: 10px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      color: #ddd;
+    }
+
+    .feature i {
+      color: #00eaff;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* ===== BOTTOM NAV ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 20, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      border-top: 1px solid rgba(0, 255, 255, 0.2);
+      z-index: 900;
+    }
+
+    .bottom-nav .btn {
+      background: linear-gradient(135deg, #0ff, #007bff);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .bottom-nav .btn:hover {
+      background: linear-gradient(135deg, #ff004c, #000);
+      transform: scale(1.05);
+    }
+
+    .bottom-nav .price-tag {
+      font-size: 1.2rem;
+      color: #0ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+<div class="logo">
+  <img src="assets/thumb/logo.png" alt="Blueverse Logo" style="width:45px; height:45px; border-radius:50%; box-shadow:0 0 15px cyan;">
+  <span style="font-size:1.4rem; font-weight:bold; color:#0ff;">Blueverse</span>
+</div>
+    
+    
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <a href="#">🏠 Home</a>
+    <a href="#">🎮 Games</a>
+    <a href="#">🛒 Shop</a>
+    <a href="#">📰 Blog</a>
+    <a href="#">📞 Contact</a>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- THUMBNAIL SCROLL -->
+  <section class="thumb-gallery">
+    <button class="arrow left" id="leftArrow"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="thumb-container" id="thumbContainer">
+      <div class="thumb"><img src="https://via.placeholder.com/200x200?text=1" alt=""></div>
+      <div class="thumb"><img src="https://via.placeholder.com/200x200?text=2" alt=""></div>
+      <div class="thumb"><img src="https://via.placeholder.com/200x200?text=3" alt=""></div>
+      <div class="thumb"><img src="https://via.placeholder.com/200x200?text=4" alt=""></div>
+      <div class="thumb"><img src="https://via.placeholder.com/200x200?text=5" alt=""></div>
+    </div>
+    <button class="arrow right" id="rightArrow"><i class="fa-solid fa-chevron-right"></i></button>
+  </section>
+
+  <!-- PRODUCT INFO -->
+  <section class="product-details">
+    <div class="price">$59.99</div>
+    <div class="installment">Installment Available: <strong>Yes</strong></div>
+    <h2>Blueverse X-Pro Headset</h2>
+    <p class="desc">A premium surround-sound gaming headset designed for clarity, comfort, and immersive experiences. Perfect for PC, console, and mobile gamers.</p>
+    <div class="info-row">
+      <div class="info-item">Quantity: <strong>32 Available</strong></div>
+      <div class="info-item rating">Rating: ★★★★★ (4.9)</div>
+    </div>
+    <div class="info-row">
+      <div class="info-item">Delivery: <strong>3-5 Business Days</strong></div>
+      <div class="info-item">Return: <strong>30 Days Policy</strong></div>
+    </div>
+  </section>
+
+  <!-- MORE DETAILS SECTION -->
+  <section class="more-details">
+    <h3><i class="fa-solid fa-circle-info"></i> Product Highlights</h3>
+    <div class="feature"><i class="fa-solid fa-volume-high"></i> Immersive 7.1 Surround Sound</div>
+    <div class="feature"><i class="fa-solid fa-headset"></i> Noise-Cancelling Mic with LED Indicator</div>
+    <div class="feature"><i class="fa-solid fa-plug"></i> Universal Compatibility (PC / Console / Mobile)</div>
+    <div class="feature"><i class="fa-solid fa-battery-full"></i> Long-lasting Battery Life</div>
+    <div class="feature"><i class="fa-solid fa-star"></i> Trusted by 10,000+ Gamers Worldwide</div>
+    
+      <!-- SPECIFICATIONS -->
+<h3 style="color:#0ff; margin-top:25px;">Specifications</h3>
+<ul style="list-style:none; margin-top:10px; color:#ccc; line-height:1.8;">
+  <li>🎧 Driver Size: <strong>50mm Neodymium</strong></li>
+  <li>🎤 Microphone: <strong>Noise-Cancelling Detachable</strong></li>
+  <li>🔊 Sound: <strong>7.1 Surround</strong></li>
+  <li>💡 RGB Lighting: <strong>Customizable with Blueverse App</strong></li>
+  <li>🔌 Connectivity: <strong>USB + 3.5mm Audio Jack</strong></li>
+  <li>⚙️ Compatibility: <strong>PC, PS5, Xbox, Mobile</strong></li>
+  <li>🔋 Power: <strong>USB-Powered</strong></li>
+  <li>🧊 Material: <strong>Memory Foam Cushions + Steel Frame</strong></li>
+</ul>
+    
+  </section>
+  <!-- PRODUCT VIDEOS SECTION -->
+<section class="product-videos" style="max-width:900px; margin:40px auto; background:rgba(0,0,0,0.6); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.1);">
+  <h3 style="color:#0ff; margin-bottom:15px;">🎥 Product Videos</h3>
+
+  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+    
+    <!-- YouTube Review Video -->
+    <div style="flex:1 1 400px; background:rgba(0,10,20,0.7); border-radius:12px; overflow:hidden; box-shadow:0 0 20px rgba(0,255,255,0.1);">
+      <iframe width="100%" height="230" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="Product Review Video" frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+      <div style="padding:10px 15px; color:#0ff; font-weight:500;">Official Product Review</div>
+    </div>
+
+    <!-- Unboxing Video -->
+    <div style="flex:1 1 400px; background:rgba(0,10,20,0.7); border-radius:12px; overflow:hidden; box-shadow:0 0 20px rgba(255,0,0,0.1);">
+      <iframe width="100%" height="230" src="https://www.youtube.com/embed/9bZkp7q19f0"
+              title="Unboxing Video" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+      <div style="padding:10px 15px; color:#ff004c; font-weight:500;">Unboxing & First Look</div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <button class="btn">Add to Cart</button>
+    <div class="price-tag">$59.99</div>
+    <button class="btn">Buy Now</button>
+  </div>
+
+  <script>
+    const thumbContainer = document.getElementById("thumbContainer");
+    document.getElementById("leftArrow").onclick = () => thumbContainer.scrollBy({ left: -250, behavior: "smooth" });
+    document.getElementById("rightArrow").onclick = () => thumbContainer.scrollBy({ left: 250, behavior: "smooth" });
+
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      sidebar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  </script>
+  
+  
+  
+  <footer>
+  <div class="footer-container">
+    <div class="footer-links">
+      <a href="policies.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <p>© 2025 Blueverse. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: linear-gradient(180deg, #00122a, #000814);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(0,255,255,0.1);
+    backdrop-filter: blur(10px);
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .footer-links a {
+    color: cyan;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+  .footer-links a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 8px cyan;
+  }
+  footer p {
+    color: #aeefff;
+    font-size: 0.9rem;
+  }
+</style>
+  
+</body>
+</html>

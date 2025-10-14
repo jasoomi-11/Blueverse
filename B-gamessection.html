@@ -68,16 +68,40 @@
       transform: translate(150px, 0) scale(1);
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: cyan;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      box-shadow: 0 0 15px cyan;
-      background: rgba(255,255,255,0.05);
-    }
+/* LOGO CENTER */
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: cyan;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  box-shadow: 0 0 15px cyan;
+  transition: transform 1s ease;
+  margin: 0 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.logo:hover { 
+  transform: rotate(360deg) scale(1.1); 
+}
+
+/* 🔵 Added image styling for your 3D logo */
+.logo img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px cyan);
+  transition: transform 0.6s ease;
+}
+.logo img:hover {
+  transform: scale(1.1);
+}
     .title {
       font-size: 1.8rem;
       font-weight: bold;
@@ -247,47 +271,71 @@
 </head>
 <body>
   <!-- LOADER -->
-  <div id="loader"><div class="logo">BV</div></div>
+  <div id="loader"><div class="logo">Bv</div></div>
 
   <!-- HEADER -->
   <header id="mainHeader">
-    <div class="logo">BV</div>
+    <div class="logo">
+      <img src="assets/thumb/logo.png" alt="logo">
+    </div>
     <div class="title">Blueverse</div>
     <i id="hamburger" class="fas fa-bars"></i>
   </header>
 
   <!-- SIDEBAR MENU (LEFT) -->
   <div class="menu" id="menu">
-    <a href="#">Home</a>
-    <a href="#">Tech</a>
-    <a href="#">Gaming</a>
-    <a href="#">Reviews</a>
-    <a href="#">Contact</a>
+    <a href="homepage.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="shop.html">Shop</a>
+    <a href="movie.html">Movies</a>
+    <a href="contact.html">Contact</a>
   </div>
 
   <!-- OVERLAY -->
   <div class="overlay" id="overlay"></div>
 
   <!-- HERO -->
-  <section class="hero">
-    <h1>Welcome to Blueverse Blog</h1>
-    <p>Explore the world of tech, games, and futuristic innovation</p>
-  </section>
+<section class="hero">
+  <h1>Level Up Your Gaming Knowledge</h1>
+  <p>Discover the latest game reviews, tips, tricks, and trends in the world of gaming</p>
+</section>
 
-  <!-- FEATURED POSTS -->
-  <section class="featured reveal">
-    <div class="post"><img src="https://picsum.photos/id/1059/600/300"><div class="post-content"><h3>AI in Gaming</h3><p>How artificial intelligence is changing the gaming industry.</p></div></div>
-    <div class="post"><img src="https://picsum.photos/id/1060/600/300"><div class="post-content"><h3>Future of VR</h3><p>Virtual Reality experiences getting closer to reality.</p></div></div>
-    <div class="post"><img src="https://picsum.photos/id/1061/600/300"><div class="post-content"><h3>Next-Gen Consoles</h3><p>What’s next in the console war?</p></div></div>
-  </section>
+<!-- FEATURED POSTS -->
+<section class="featured reveal">
+  <div class="post">
+    <img src="https://picsum.photos/id/1059/600/300">
+    <div class="post-content">
+      <h3>Gaming Updates</h3>
+      <p>Stay on top of the latest game releases, patches, and updates from the gaming world.</p>
+    </div>
+  </div>
 
-  <!-- BLOG + SIDEBAR -->
+  <div class="post">
+    <img src="https://picsum.photos/id/1060/600/300">
+    <div class="post-content">
+      <h3>Guides & Tips</h3>
+      <p>Master your favorite games with expert guides, tips, and hidden tricks.</p>
+    </div>
+  </div>
+
+  <div class="post">
+    <img src="https://picsum.photos/id/1061/600/300">
+    <div class="post-content">
+      <h3>Gaming News</h3>
+      <p>Get the latest buzz, industry news, and insider updates from the gaming world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG + SIDEBAR -->
   <section class="blog-layout reveal">
     <div class="main-articles">
-      <div class="article"><img src="https://picsum.photos/id/1074/800/400"><h2>Top 10 Indie Games of 2025</h2><p>Discover the best indie titles redefining creativity this year.</p></div>
-      <div class="article"><img src="https://picsum.photos/id/1084/800/400"><h2>Building Your First Game</h2><p>A complete guide to start your game development journey.</p></div>
-      <div class="article"><img src="https://picsum.photos/id/1044/800/400"><h2>The Rise of eSports</h2><p>How competitive gaming became a billion-dollar industry.</p></div>
+      <div class="article" onclick="location.href='Top5onlinegames/topgames.html'"><img src="assets/A.png"><h2>Top 5 Online Games</h2><p>Discover the best Online titles redefining creativity this year.</p></div>
+      <div class="article" onclick="location.href='building-your-first-game.html'"><img src="https://picsum.photos/id/1084/800/400"><h2>Building Your First Game</h2><p>A complete guide to start your game development journey.</p></div>
+      <div class="article" onclick="location.href='rise-of-esports.html'"><img src="https://picsum.photos/id/1044/800/400"><h2>The Rise of eSports</h2><p>How competitive gaming became a billion-dollar industry.</p></div>
     </div>
+    
+    
     <aside class="sidebar">
       <h3>Latest Posts</h3>
       <ul>
@@ -297,9 +345,12 @@
       </ul>
       <h3 style="margin-top:1.5rem;">Categories</h3>
       <ul>
-        <li><a href="#">Gaming</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Gaming news</a></li>
+        <li><a href="#">Games updates</a></li>
+        <li><a href="#"> games Reviews</a></li>
+    <li><a href="#"> Gaming Tips and Guides</a></li>
+ <li><a href="#"> Top games list</a></li>
+  <li><a href="#">gaming gears</a></li>
       </ul>
     </aside>
   </section>

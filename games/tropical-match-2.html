@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+  
+<!-- 🌐 SEO META TAGS FOR TROPICAL MATCH 2 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tropical Match 2 - Play Free Online Puzzle Game | Blueverse</title>
+<meta name="description" content="Play Tropical Match 2 – a colorful and fun match-3 puzzle game with tropical vibes. Swap tiles, match fruits, and complete challenging levels. Free to play online on Blueverse!">
+<meta name="keywords" content="Tropical Match 2, match 3 puzzle game, free online games, fruit matching game, HTML5 puzzle game, Blueverse games, play online games, casual games, tropical theme">
+<meta name="author" content="Jasoomi">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#1abc9c">
+<meta name="language" content="en">
+<meta name="distribution" content="global">
+<meta name="application-name" content="Tropical Match 2 - Blueverse">
+<meta name="subject" content="Online Match 3 Puzzle Game">
+<meta name="revisit-after" content="7 days">
+
+<!-- ✅ Open Graph (Facebook, Discord, LinkedIn, etc.) -->
+<meta property="og:title" content="Tropical Match 2 - Free Online Puzzle Game | Blueverse">
+<meta property="og:description" content="Match colorful tropical fruits and solve exciting levels in Tropical Match 2. Play free online on Blueverse and enjoy casual puzzle fun!">
+<meta property="og:image" content="/assets/thumb/tropical-match-2.png">
+<meta property="og:url" content="https://blueverse.site/games/tropical-match-2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blueverse">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:alt" content="Tropical Match 2 Gameplay Screenshot">
+
+<!-- 🐦 Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tropical Match 2 - Play Free Online Puzzle Game">
+<meta name="twitter:description" content="Match tropical fruits and complete challenging puzzle levels in Tropical Match 2 — free to play on Blueverse.">
+<meta name="twitter:image" content="/assets/thumb/tropical-match-2.png">
+<meta name="twitter:image:alt" content="Tropical Match 2 Cover Image">
+<meta name="twitter:site" content="@Blueverse">
+<meta name="twitter:creator" content="@Jasoomi">
+
+<!-- 📱 Canonical & Favicons -->
+<link rel="canonical" href="https://blueverse.site/games/tropical-match-2">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicons/favicon-192x192.png">
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
+
+<!-- 🧭 Schema.org JSON-LD for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Tropical Match 2",
+  "alternateName": "Tropical Match 2 Puzzle Game",
+  "url": "https://blueverse.site/games/tropical-match-2",
+  "image": "/assets/thumb/tropical-match-2.png",
+  "description": "Tropical Match 2 is a vibrant HTML5 match-3 puzzle game. Swap colorful fruits, solve levels, and enjoy tropical-themed fun for free online on Blueverse.",
+  "genre": ["Puzzle", "Casual", "Match 3"],
+  "keywords": ["Tropical Match 2", "Match 3", "Puzzle Game", "Online Game", "HTML5 Game", "Blueverse"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Web Browser",
+  "playMode": ["SinglePlayer"],
+  "gamePlatform": ["Web"],
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Jasoomi",
+    "url": "https://blueverse.site"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blueverse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/assets/thumb/logo.png"
+    }
+  }
+}
+</script>
+  
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000014, #001a2e, #000);
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1.5rem;
+      z-index: 1000;
+      transition: all 0.6s ease;
+    }
+
+    header .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: cyan;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 15px cyan;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 35px; height: 22px;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 4px;
+      background: cyan;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100%;
+      background: rgba(0,0,20,0.95);
+      backdrop-filter: blur(15px);
+      box-shadow: 5px 0 20px rgba(0,255,255,0.2);
+      transition: 0.4s;
+      z-index: 1001;
+      padding: 2rem 1rem;
+    }
+
+    .sidebar.active { left: 0; }
+
+    .sidebar ul { list-style: none; margin-top: 2rem; }
+    .sidebar ul li {
+      margin: 1.2rem 0;
+    }
+
+    .sidebar ul li a {
+      color: cyan;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      display: none;
+      z-index: 1000;
+    }
+
+    .overlay.active { display: block; }
+
+    /* HERO THUMBNAIL */
+    .hero {
+      margin-top: 8rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero img {
+      width: 95%;
+      max-width: 1100px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+      transition: transform 0.6s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.02);
+    }
+
+    /* GAME DETAILS */
+    .details {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,255,255,0.15);
+    }
+
+    .details h2 {
+      color: cyan;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta div {
+      background: rgba(255,255,255,0.07);
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      margin: 0.4rem;
+      box-shadow: inset 0 0 8px rgba(0,255,255,0.3);
+    }
+
+    .play-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .play-buttons button {
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, #0077ff, #00eaff);
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      transition: all 0.3s;
+    }
+
+    .play-buttons button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 35px cyan;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    }
+
+    section h3 {
+      color: cyan;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(0,255,255,0.2);
+      padding-bottom: 0.4rem;
+      text-shadow: 0 0 12px cyan;
+      letter-spacing: 1px;
+    }
+
+    section p, li {
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    ul { margin-left: 1rem; }
+
+    /* REVIEW */
+    .review-box {
+      background: rgba(255,255,255,0.04);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .review-box input, .review-box textarea {
+      width: 90%;
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .review-box button {
+      background: cyan;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 0 15px cyan;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 2rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">BV</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#">🎮 Games</a></li>
+      <li><a href="#">📰 Blog</a></li>
+      <li><a href="#">📩 Contact</a></li>
+      <li><a href="#">⚙️ Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/tropical-match-2.png" alt="Tropical Match 2 Thumbnail">
+</section>
+
+<!-- GAME DETAILS -->
+<div class="details">
+  <h2>Tropical Match 2</h2>
+  <div class="meta">
+    <div>⭐ Rating: 4.7</div>
+    <div>🎮 Category: Puzzle</div>
+    <div>👥 Players: 300K+</div>
+  </div>
+
+  <div class="play-buttons">
+    <button onclick="window.location.href='https://html5.gamedistribution.com/59719ccbc7764864bae2c4c7aea820b6/?gd_sdk_referrer_url=https://blueverse.site/games/tropical-match-2'">▶️ Play Now</button>
+    <button onclick="window.open('https://html5.gamedistribution.com/59719ccbc7764864bae2c4c7aea820b6/?gd_sdk_referrer_url=https://blueverse.site/games/tropical-match-2', '_blank')">🌐 Play in New Tab</button>
+  </div>
+
+  <!-- EMBEDDED GAME -->
+  <div style="margin-top: 2rem; text-align:center;">
+    <iframe 
+      src="https://html5.gamedistribution.com/59719ccbc7764864bae2c4c7aea820b6/?gd_sdk_referrer_url=https://blueverse.site/games/tropical-match-2"  
+      width="100%" 
+      height="600" 
+      frameborder="0" 
+      scrolling="no" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <h3>About This Game</h3>
+  <p><strong>Tropical Match 2</strong> is a fun and colorful match-3 puzzle game set in a tropical paradise. Swap fruits, match tiles, and complete challenging levels while enjoying vibrant visuals and relaxing tropical music. Perfect for casual players of all ages looking for quick fun or long puzzle sessions.</p>
+</section>
+
+<!-- TIPS -->
+<section>
+  <h3>Tips & How to Play</h3>
+  <ul>
+    <li>Swap adjacent fruits to match 3 or more in a row.</li>
+    <li>Plan moves ahead to create combos and clear levels faster.</li>
+    <li>Use special power-ups to remove difficult tiles.</li>
+    <li>Complete level objectives to progress and earn rewards.</li>
+  </ul>
+</section>
+
+<!-- WHY TO PLAY -->
+<section>
+  <h3>Why Play This Game?</h3>
+  <ul>
+    <li>🌴 Colorful tropical visuals and soothing background music.</li>
+    <li>🧠 Fun and engaging puzzle gameplay that challenges your brain.</li>
+    <li>👪 Suitable for all ages — easy to pick up, hard to master.</li>
+    <li>📱 Fully responsive and playable on mobile and desktop.</li>
+  </ul>
+</section>
+
+<!-- ✅ KEY FEATURES -->
+<section>
+  <h3>Key Features</h3>
+  <ul>
+    <li>🍍 Classic match-3 puzzle mechanics with vibrant tropical theme.</li>
+    <li>🌺 Multiple levels with increasing difficulty and objectives.</li>
+    <li>💡 Special power-ups and boosters to help you clear tricky levels.</li>
+    <li>🏆 Track scores and aim for high scores on each level.</li>
+    <li>⚡ Lightweight, fast-loading, and fully browser-based — no downloads needed.</li>
+  </ul>
+</section>
+
+<!-- FAQ -->
+<section>
+  <h3>FAQ</h3>
+  <p><strong>Q:</strong> Is Tropical Match 2 free to play?<br>
+     <strong>A:</strong> Yes! It’s completely free and playable in any modern browser.</p>
+  <p><strong>Q:</strong> Can I play without creating an account?<br>
+     <strong>A:</strong> Absolutely! No sign-up or login required — just open and play.</p>
+  <p><strong>Q:</strong> Does it work on mobile devices?<br>
+     <strong>A:</strong> Yes, Tropical Match 2 is fully optimized for smartphones, tablets, and desktop computers.</p>
+  <p><strong>Q:</strong> Are there power-ups in the game?<br>
+     <strong>A:</strong> Yes! You can use special boosters to clear challenging tiles and achieve higher scores.</p>
+</section>
+
+  <!-- REVIEW -->
+  <section class="review-box">
+    <h3>Leave a Review</h3>
+    <input type="text" placeholder="Your Name" required><br>
+    <textarea rows="4" placeholder="Write your review..."></textarea><br>
+    <button onclick="alert('Thanks for your feedback!')">Submit Review</button>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Blueverse. All Rights Reserved.</p>
+      
+      <div class="footer-links">
+        <a href="policies.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <!-- SOCIAL ICONS -->
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    hamburger.onclick = () => {
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    };
+
+    overlay.onclick = () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    };
+
+    function playNow() {
+      window.location.href = "https://play.gamenation.com/carparking";
+    }
+  </script>
+
+</body>
+</html>

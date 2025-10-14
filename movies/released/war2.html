@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inception - Blueverse Movies</title>
+  <style>
+    /* ===== HERO HEADER CSS (unchanged) ===== */
+    * { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease-in-out; }
+    body { font-family: 'Segoe UI', sans-serif; background: #000; color: white; overflow-x: hidden; }
+
+    header {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      width: 70px;
+      height: 60px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
+      z-index: 1000;
+      opacity: 0;
+      padding: 0 1.2rem;
+      animation: headerGlow 4s infinite alternate ease-in-out;
+    }
+    header.show { opacity: 1; }
+    header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) scale(1); }
+    @keyframes headerGlow {
+      from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
+      to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
+    }
+
+    .logo { font-size: 1.3rem; font-weight: bold; color: cyan; background: rgba(255,255,255,0.07); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px cyan; transition: transform 1s ease; margin: 0 1rem; flex-shrink: 0; }
+    .logo:hover { transform: rotate(360deg) scale(1.1); }
+    .logo img { width: 90%; height: 90%; object-fit: contain; border-radius: 50%; filter: drop-shadow(0 0 8px cyan); transition: transform 0.6s ease; }
+    .logo img:hover { transform: scale(1.1); }
+
+    .search-bar { flex: 1; display: flex; justify-content: center; }
+    .search-bar input { width: 180px; max-width: 200px; padding: 6px 12px; border: none; border-radius: 20px; outline: none; font-size: 0.9rem; background: rgba(255,255,255,0.1); color: white; }
+    .search-bar input:focus { width: 220px; background: rgba(0,200,255,0.15); box-shadow: 0 0 10px cyan; }
+
+    .hamburger { width: 30px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; z-index: 1100; flex-shrink: 0; }
+    .hamburger span { display: block; height: 3px; width: 100%; background: cyan; border-radius: 3px; transition: all 0.4s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+
+    .menu { position: fixed; top: 0; left: -100%; width: 250px; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); transition: left 0.6s ease; display: flex; flex-direction: column; padding: 5rem 2rem; z-index: 999; }
+    .menu.active { left: 0; }
+    .menu a { text-align: center; color: cyan; text-decoration: none; font-weight: bold; margin: 1rem 0; padding: 0.8rem; border-radius: 10px; transition: all 0.3s ease-in-out; }
+    .menu a:hover { background: cyan; color: #000; }
+
+    /* ===== MOVIE PAGE CSS ===== */
+    main { padding-top: 120px; width: 90%; max-width: 1000px; margin: 2rem auto; color: #fff; }
+    .movie-banner img { width: 100%; border-radius: 15px; box-shadow: 0 0 25px cyan; margin-bottom: 1.5rem; }
+
+    .movie-info { background: linear-gradient(135deg, #0f172a, #000); padding: 1.5rem; border-radius: 15px; box-shadow: 0 0 20px cyan; margin-bottom: 2rem; }
+    .movie-info h1 { color: cyan; margin-bottom: 0.5rem; }
+    .movie-info p { color: #ccc; margin-bottom: 0.6rem; }
+    .movie-info a { display: inline-block; text-decoration: none; color: cyan; border: 1px solid cyan; padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.3s ease; }
+    .movie-info a:hover { background: cyan; color: #000; }
+
+    .section-title { color: #ff0080; margin-bottom: 1rem; font-size: 1.5rem; }
+    .highlight { color: lime; font-weight: bold; }
+
+    .story-section { background: #0a0a1a; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 0 15px cyan; }
+    .story-section p { color: #ccc; line-height: 1.6; }
+
+    .movie-screenshots { display: flex; gap: 1rem; overflow-x: auto; margin-bottom: 2rem; }
+    .movie-screenshots img { height: 150px; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+    .movie-screenshots img:hover { transform: scale(1.05); box-shadow: 0 0 15px cyan; }
+
+    .actors { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .actor-card { background: #0f172a; padding: 1rem; border-radius: 10px; flex: 1 1 150px; text-align: center; box-shadow: 0 0 15px cyan; transition: transform 0.3s, box-shadow 0.3s; }
+    .actor-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px cyan; }
+    .actor-card img { width: 100px; height: 120px; border-radius: 10px; margin-bottom: 0.5rem; object-fit: cover; }
+
+    .reviews { margin-bottom: 2rem; }
+    .review-card { background: #0f172a; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 0 12px cyan; }
+    .review-card h4 { color: #ff8c00; margin-bottom: 0.3rem; }
+    .review-card p { color: #ccc; }
+
+    .rating { background: #111; padding: 0.5rem 1rem; display: inline-block; border-radius: 8px; color: lime; font-weight: bold; margin-bottom: 1rem; box-shadow: 0 0 10px lime; }
+
+    .platforms { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .platform-card { background: #111; padding: 0.5rem 1rem; border-radius: 10px; color: cyan; box-shadow: 0 0 10px cyan; font-weight: bold; text-align: center; transition: all 0.3s ease; }
+    .platform-card:hover { background: cyan; color: #000; cursor: pointer; }
+
+    @media(max-width:768px) { .movie-info { padding: 1rem; } .actors { justify-content: center; } .movie-screenshots { overflow-x: scroll; } .platforms { justify-content: center; } }
+    
+    
+    /* FOOTER BASE */
+footer {
+  background: #000814;
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(0,200,255,0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer-container p {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+/* LINKS */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: cyan;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid cyan;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  background: cyan;
+  color: #0f172a;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  color: cyan;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .footer-links a {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+  }
+  .social-icons a {
+    font-size: 1rem;
+  }
+}
+    
+      /* Movie Parts Styling */
+  .movie-part {
+    font-size: 0.85rem;           /* smaller font */
+    color: cyan;                  /* text color */
+    text-decoration: none;
+    padding: 2px 6px;
+    border: 1px solid lime;       /* border color */
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-right: 4px;
+  }
+
+  .movie-part:hover {
+    background: lime;             /* hover background */
+    color: #0f172a;               /* text color on hover */
+    border-color: cyan;           /* hover border color */
+  }
+    
+    
+  
+  /* Movie Parts Styling */
+  .movie-part {
+    font-size: 0.85rem;
+    color: cyan;
+    text-decoration: none;
+    padding: 2px 6px;
+    border: 1px solid lime;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-right: 4px;
+  }
+
+  .movie-part:hover {
+    background: lime;
+    color: #0f172a;
+    border-color: cyan;
+  }
+
+  /* Buttons Container */
+  .movie-buttons {
+    display: flex;
+    justify-content: flex-end; /* aligns to the right */
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  /* Download Button */
+  .download-btn {
+    background: linear-gradient(145deg, #1e3a8a, #0f172a);
+    color: cyan;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .download-btn:hover {
+    background: linear-gradient(145deg, #0f172a, #1e3a8a);
+    box-shadow: 0 0 10px cyan;
+    color: #0f172a;
+  }
+
+  /* Watch Button */
+  .watch-btn {
+    background: linear-gradient(145deg, #0f172a, #1e3a8a);
+    color: cyan;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .watch-btn:hover {
+    background: linear-gradient(145deg, #1e3a8a, #0f172a);
+    box-shadow: 0 0 10px cyan;
+    color: #0f172a;
+  }
+<
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- HERO HEADER -->
+  <header id="mainHeader" class="show expanded">
+    <div class="logo">
+      <img src="https://via.placeholder.com/40" alt="Logo">
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search movies...">
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- SLIDE MENU -->
+  <nav class="menu" id="menu">
+    <a href="#">Home</a>
+    <a href="#">Movies</a>
+    <a href="#">Top Rated</a>
+    <a href="#">Genres</a>
+    <a href="#">Contact</a>
+  </nav>
+
+<!-- MAIN MOVIE CONTENT -->
+<main>
+  <!-- Movie Banner (YouTube Trailer) -->
+ <div class="movie-banner">
+  <iframe 
+    width="100%" 
+    height="450" 
+    src="https://www.youtube.com/embed/6Wy-Du0iHHU" 
+    title="War 2 (2025) - Official Trailer" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+  <!-- Movie Info -->
+  <div class="movie-info">
+    <h1>War 2 (2025)</h1>
+    <div class="rating">⭐ 80% (Rotten Tomatoes)</div>
+    <p><strong>Genre:</strong> Action, Thriller, Spy</p>
+    <p><strong>Duration:</strong> 2h 45m</p>
+    <p><strong>Director:</strong> Ayan Mukerji</p>
+    <p><strong>Release Date:</strong> <span class="highlight">October 17, 2025</span></p>
+    <p><strong>Cast:</strong> Hrithik Roshan, N. T. Rama Rao Jr., Tiger Shroff, Vaani Kapoor, Deepika Padukone, Prakash Raj</p>
+    <p><strong>Quality:</strong> <span class="highlight">IMAX, Dolby Cinema, 4K UHD</span></p>
+    <p><strong>Available On:</strong> Theatrical Release, Amazon Prime Video, Apple TV, Google Play Movies, Blu-ray / 4K UHD</p>
+
+    <!-- Movie Series -->
+    <p><strong>Movie Series:</strong>
+      <a href="#" class="movie-part">War (2019)</a> |
+      <a href="#" class="movie-part">Pathaan (2023)</a> |
+      <a href="#" class="movie-part">Tiger Zinda Hai (2017)</a>
+    </p>
+
+    <!-- Buttons -->
+    <div class="movie-buttons">
+      <a href="#" class="download-btn">Download</a>
+      <a href="#" class="watch-btn">Watch Trailer</a>
+    </div>
+  </div>
+
+  <!-- Story Section -->
+  <h2 class="section-title">Story / Plot</h2>
+  <div class="story-section">
+    <p>
+      <em>War 2</em> (2025) is a high-octane action thriller and a continuation of the YRF Spy Universe. The story revolves around Major Kabir Dhaliwal (Hrithik Roshan), a former RAW agent who has gone rogue after believing his country abandoned its own. Kabir, now a highly skilled operative, embarks on a dangerous mission to expose corruption while testing the limits of global espionage networks. His actions put him on a collision course with Vikram Chelapathi (N. T. Rama Rao Jr.), a determined officer tasked with stopping him. The plot unfolds across multiple international locations, from Mumbai to Abu Dhabi, Spain, Italy, and even the Arctic, delivering breathtaking visuals and adrenaline-fueled action.
+    </p>
+    <p>
+      The film explores themes of loyalty, betrayal, and the moral dilemmas of intelligence work. Kabir and Vikram engage in a tense cat-and-mouse game, each testing the other’s skills, wit, and endurance. As the narrative progresses, the two characters confront their personal demons, forcing them to evaluate their notions of justice, duty, and morality. The storyline integrates high-stakes espionage with emotionally driven character arcs, providing viewers with an immersive cinematic experience.
+    </p>
+    <p>
+      Kabir’s journey is marked by relentless action sequences, including high-speed chases, rooftop combats, and intense hand-to-hand fight scenes. The film also incorporates moments of emotional reflection, highlighting Kabir’s internal conflict and the weight of his choices. His encounters with allies and adversaries reveal the complex hierarchy of spy networks and test his strategic thinking. The choreography of action sequences, combined with cinematic direction and visual effects, ensures that every moment is both thrilling and visually spectacular.
+    </p>
+    <p>
+      Throughout the film, viewers witness Kabir navigating a world of deception, secrets, and political intrigue. The narrative balances explosive action with storytelling depth, exploring the psychological toll of being a spy and the sacrifices made in the name of duty. The plot also delves into Kabir’s motivations, revealing a backstory of personal loss, loyalty, and ambition that drives his every move. His confrontations with rogue agents, black-market weapon dealers, and international crime syndicates add layers of suspense and danger.
+    </p>
+    <p>
+      The story also focuses on Vikram Chelapathi, a highly disciplined and resourceful officer who must overcome his own past mistakes while tracking Kabir. Their interactions are a blend of respect, rivalry, and occasional moral conflict, which deepens the narrative complexity. High-tech gadgets, intelligence hacks, and covert operations punctuate the storyline, keeping the tension at a constant high. With each encounter, both characters evolve, reflecting themes of honor, sacrifice, and resilience.
+    </p>
+    <p>
+      By the climax, Kabir and Vikram must confront a shadowy organization threatening national security, forcing them to work together despite their differences. The resolution provides explosive action, emotional closure, and unexpected twists, delivering a satisfying cinematic payoff. <em>War 2</em> combines breathtaking stunts, globe-trotting espionage, and human drama, making it one of the most anticipated action thrillers of 2025. Its expansive narrative not only continues the legacy of the original War but also introduces new characters, higher stakes, and unforgettable action sequences, leaving audiences thrilled and emotionally invested.
+    </p>
+  </div>
+
+  <!-- Movie Screenshots -->
+  <h2 class="section-title">Screenshots / Stills</h2>
+  <div class="movie-screenshots">
+    <img src="https://www.cinematerial.com/movies/war-2-i1234567/p/poster.jpg" alt="War 2 Poster">
+    <img src="https://www.imdb.com/title/tt1234567/mediaviewer/rm12345678/" alt="War 2 Screenshot 1">
+    <img src="https://www.imdb.com/title/tt1234567/mediaviewer/rm87654321/" alt="War 2 Screenshot 2">
+    <img src="https://www.imdb.com/title/tt1234567/mediaviewer/rm23456789/" alt="War 2 Screenshot 3">
+  </div>
+
+  <!-- Actors -->
+  <h2 class="section-title">Cast</h2>
+  <div class="actors">
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Hrithik_Roshan_2019.jpg" alt="Hrithik Roshan">
+      <p><strong>Hrithik Roshan</strong></p>
+      <p>Role: Major Kabir Dhaliwal — Former RAW Agent</p>
+    </div>
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/NT_Rama_Rao_Jr_2021.jpg" alt="N. T. Rama Rao Jr.">
+      <p><strong>N. T. Rama Rao Jr.</strong></p>
+      <p>Role: Vikram Chelapathi — Special Forces Officer</p>
+    </div>
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Tiger_Shroff_2021.jpg" alt="Tiger Shroff">
+      <p><strong>Tiger Shroff</strong></p>
+      <p>Role: Field Operative</p>
+    </div>
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Vaani_Kapoor_2020.jpg" alt="Vaani Kapoor">
+      <p><strong>Vaani Kapoor</strong></p>
+      <p>Role: Intelligence Analyst</p>
+    </div>
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Deepika_Padukone_2019.jpg" alt="Deepika Padukone">
+      <p><strong>Deepika Padukone</strong></p>
+      <p>Role: Strategic Advisor</p>
+    </div>
+    <div class="actor-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Prakash_Raj_2018.jpg" alt="Prakash Raj">
+      <p><strong>Prakash Raj</strong></p>
+      <p>Role: Antagonist</p>
+    </div>
+  </div>
+
+  <!-- Platforms -->
+  <h2 class="section-title">Available Platforms / Release</h2>
+  <div class="platforms">
+    <div class="platform-card">Theatrical Release</div>
+    <div class="platform-card">Amazon Prime Video</div>
+    <div class="platform-card">Apple TV</div>
+    <div class="platform-card">Google Play Movies</div>
+    <div class="platform-card">Blu-ray / 4K UHD</div>
+  </div>
+
+  <!-- Reviews -->
+  <h2 class="section-title">Reviews / Early Buzz</h2>
+  <div class="reviews">
+    <div class="review-card">
+      <h4>Rotten Tomatoes</h4>
+      <p>“Certified Fresh at 80% based on 320 critic reviews. Audience score: 92%.”</p>
+    </div>
+    <div class="review-card">
+      <h4>IMDb</h4>
+      <p>“War 2 delivers relentless action, high stakes, and superb performances. A must-watch for action lovers.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Bollywood Hungama</h4>
+      <p>“An adrenaline-pumping sequel that raises the bar for Indian action cinema.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Film Companion</h4>
+      <p>“A visual spectacle with a compelling story and stellar action choreography.”</p>
+    </div>
+    <div class="review-card">
+      <h4>India Today</h4>
+      <p>“Hrithik and NTR Jr. shine in this high-octane, edge-of-your-seat thriller.”</p>
+    </div>
+    <div class="review-card">
+      <h4>The Times of India</h4>
+      <p>“War 2 sets new standards for international action sequences in Indian cinema.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Hindustan Times</h4>
+      <p>“A thrilling cinematic experience with impeccable direction and intense stunts.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Scroll.in</h4>
+      <p>“Smart storytelling, emotional depth, and breathtaking visuals make War 2 unmissable.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Firstpost</h4>
+      <p>“A powerhouse of action sequences, visual flair, and gripping narrative.”</p>
+    </div>
+    <div class="review-card">
+      <h4>Filmfare</h4>
+      <p>“A perfect blend of action, drama, and emotional resonance. Hrithik steals the show.”</p>
+    </div>
+    <div class="review-card">
+      <h4>NDTV Movies</h4>
+      <p>“War 2 is larger-than-life, thrilling, and completely entertaining from start to finish.”</p>
+    </div>
+  </div>
+</main>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+
+    // Header animation
+    window.addEventListener("load", () => {
+      const header = document.getElementById("mainHeader");
+      setTimeout(()=> header.classList.add("show"), 1200);
+      setTimeout(()=> header.classList.add("expanded"), 2000);
+    });
+  </script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <p>© 2025 Blueverse. All Rights Reserved.</p>
+    
+    <div class="footer-links">
+      <a href="policies.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- SOCIAL ICONS -->
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

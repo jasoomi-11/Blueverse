@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Blog - Shadow Legends</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000014, #001a2e, #000);
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1.5rem;
+      z-index: 1000;
+      transition: all 0.6s ease;
+    }
+
+    header .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: cyan;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 15px cyan;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 35px; height: 22px;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      height: 4px;
+      background: cyan;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100%;
+      background: rgba(0,0,20,0.95);
+      backdrop-filter: blur(15px);
+      box-shadow: 5px 0 20px rgba(0,255,255,0.2);
+      transition: 0.4s;
+      z-index: 1001;
+      padding: 2rem 1rem;
+    }
+    .sidebar.active { left: 0; }
+    .sidebar ul { list-style: none; margin-top: 2rem; }
+    .sidebar ul li { margin: 1.2rem 0; }
+    .sidebar ul li a {
+      color: cyan;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    .sidebar ul li a:hover { color: #fff; text-shadow: 0 0 10px cyan; }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      display: none;
+      z-index: 1000;
+    }
+    .overlay.active { display: block; }
+
+    /* HERO */
+    .hero {
+      margin-top: 8rem;
+      text-align: center;
+    }
+    .hero img {
+      width: 95%;
+      max-width: 1100px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+      transition: transform 0.6s ease;
+    }
+    .hero img:hover { transform: scale(1.02); }
+
+    .hero h1 { color: cyan; font-size: 2.5rem; margin: 1rem 0 0.5rem; text-shadow: 0 0 12px cyan; }
+    .hero p { color: #ddd; font-size: 1.2rem; margin-bottom: 2rem; }
+
+    /* DETAILS SECTIONS */
+    .details, section {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(255,255,255,0.03);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,255,255,0.1);
+    }
+
+    .details h2, section h3 { color: cyan; margin-bottom: 1rem; text-align: center; text-shadow: 0 0 10px cyan; }
+    section p, li { color: #ddd; line-height: 1.6; margin-bottom: 0.5rem; }
+    ul { margin-left: 1rem; }
+
+    /* RELATED ARTICLES */
+    .related-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .related-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .related-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px cyan;
+    }
+    .related-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .related-card h4 {
+      color: cyan;
+      margin: 0.8rem 1rem;
+    }
+    .related-card p {
+      margin: 0 1rem 1rem 1rem;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+
+    /* REVIEW */
+    .review-box {
+      background: rgba(255,255,255,0.04);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+    }
+    .review-box input, .review-box textarea {
+      width: 90%;
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+    .review-box button {
+      background: cyan;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 0 15px cyan;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 2rem;
+    }
+    
+    /* Highlight all <strong> texts in cyan */
+strong {
+  color: cyan;
+  font-weight: bold;
+  text-shadow: 0 0 8px cyan;
+}
+
+
+
+/* Gameplay Videos Section */
+.gameplay-videos {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.1);
+}
+
+.gameplay-videos h3 {
+  color: cyan;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Video Cards Layout */
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px cyan;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+  border-radius: 15px 15px 0 0;
+}
+
+.video-card h4 {
+  color: cyan;
+  margin: 0.8rem 1rem 1rem 1rem;
+  font-size: 1rem;
+  text-shadow: 0 0 8px cyan;
+}
+
+/* Game Updates Section */
+.game-updates {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.1);
+}
+
+.game-updates h3 {
+  color: cyan;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Update Cards Layout */
+.update-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.update-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.update-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px cyan;
+}
+
+.update-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.update-card h4 {
+  color: cyan;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px cyan;
+}
+
+.update-card p {
+  color: #ddd;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+
+.mini-games {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.1);
+  text-align: center;
+}
+
+.mini-games h3 {
+  color: cyan;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px cyan;
+}
+
+.mini-game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.mini-game-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mini-game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px cyan;
+}
+
+.mini-game-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.mini-game-card h4 {
+  color: cyan;
+  margin: 0.8rem 1rem;
+}
+
+.mini-game-card p {
+  margin: 0 1rem 1rem 1rem;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.mini-game-card a {
+  display: inline-block;
+  margin: 0.5rem 0 1rem;
+  padding: 0.6rem 1.2rem;
+  background: cyan;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 15px cyan;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mini-game-card a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 25px cyan;
+}
+
+
+.screenshots {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.1);
+}
+
+.screenshots h3 {
+  color: cyan;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 0 10px cyan;
+}
+
+.screenshot-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.screenshot-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screenshot-scroll::-webkit-scrollbar-thumb {
+  background: cyan;
+  border-radius: 4px;
+}
+
+.screenshot-card {
+  min-width: 250px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.screenshot-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px cyan;
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: 140px; /* not too tall */
+  object-fit: cover;
+  display: block;
+}
+
+
+
+/* Games specifications */
+
+.game-specs {
+  margin: 60px auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.spec-card {
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid cyan;
+  border-radius: 15px;
+  padding: 25px;
+  color: #eee;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spec-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.spec-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.spec-icon {
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 0 8px cyan);
+}
+
+.spec-card h3 {
+  color: cyan;
+  font-size: 1.3rem;
+}
+
+.spec-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.spec-card li {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">GB</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#">🎮 Games</a></li>
+      <li><a href="#">📰 Blog</a></li>
+      <li><a href="#">📩 Contact</a></li>
+      <li><a href="#">⚙️ Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://cdn.pixabay.com/photo/2019/03/07/14/54/fortnite-4040306_1280.jpg" alt="Fortnite">
+  <h1>Fortnite</h1>
+  <p>The ultimate battle royale experience with building, strategy, and competitive gameplay. Explore creative modes, seasonal events, and epic collaborations.</p>
+</section>
+
+
+<!-- SCREENSHOTS GALLERY -->
+<section class="screenshots">
+  <h3>Game Screenshots</h3>
+  <div class="screenshot-scroll">
+    <div class="screenshot-card"><img src="https://picsum.photos/id/1050/400/200" alt="Screenshot 1"></div>
+    <div class="screenshot-card"><img src="https://picsum.photos/id/1051/400/200" alt="Screenshot 2"></div>
+    <div class="screenshot-card"><img src="https://picsum.photos/id/1052/400/200" alt="Screenshot 3"></div>
+    <div class="screenshot-card"><img src="https://picsum.photos/id/1053/400/200" alt="Screenshot 4"></div>
+    <div class="screenshot-card"><img src="https://picsum.photos/id/1054/400/200" alt="Screenshot 5"></div>
+  </div>
+</section>
+
+<!-- GAME DETAILS -->
+<div class="details">
+  <h2>Fortnite - Complete Guide, Tips, and Updates</h2>
+
+  <!-- ABOUT -->
+  <section>
+    <h3>About Fortnite</h3>
+    <p>Fortnite, developed by Epic Games, is a cultural phenomenon that has redefined the battle royale genre. Every match drops 100 players onto a vibrant, constantly shrinking map where survival depends on combat skills, strategy, and building prowess. Fortnite stands out with its combination of shooting, fast-paced building mechanics, and continuously evolving seasonal content.</p>
+    <p>In addition to Battle Royale, Fortnite features Creative mode where players can build worlds, design mini-games, and challenge friends. The game also hosts massive live events, collaborations with movies, artists, and brands, and seasonal storylines that add lore and excitement.</p>
+  </section>
+  
+  
+  <!-- GAME UPDATES -->
+<section class="game-updates">
+  <h3>Latest Fortnite Updates</h3>
+  <div class="update-list">
+    <div class="update-card">
+      <span class="update-date">2025-09-28</span>
+      <h4>Season 6 Launch</h4>
+      <p>The new season introduces map changes, new skins, updated weapons, and special events for all players.</p>
+    </div>
+    <div class="update-card">
+      <span class="update-date">2025-10-05</span>
+      <h4>Patch 23.10</h4>
+      <p>Weapon balancing adjustments, bug fixes, and quality-of-life improvements to enhance gameplay.</p>
+    </div>
+    <div class="update-card">
+      <span class="update-date">2025-10-12</span>
+      <h4>Halloween Event</h4>
+      <p>Limited-time Halloween challenges, themed skins, and spooky decorations added to the map.</p>
+    </div>
+  </div>
+</section>
+  
+  
+
+
+<!-- GAMEPLAY VIDEOS -->
+<section class="gameplay-videos">
+  <h3>Gameplay Videos</h3>
+  <div class="video-list">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="Gameplay Video 1" allowfullscreen></iframe>
+      <h4>Fortnite Battle Royale Highlights</h4>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" 
+              title="Gameplay Video 2" allowfullscreen></iframe>
+      <h4>Creative Mode Showcase</h4>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/V-_O7nl0Ii0" 
+              title="Gameplay Video 3" allowfullscreen></iframe>
+      <h4>Epic Live Event Highlights</h4>
+    </div>
+  </div>
+</section>
+
+<!-- GAME SPECIFICATIONS -->
+<section class="game-specs">
+  <h2 style="text-align:center; color:cyan; text-shadow:0 0 12px cyan;">Fortnite – System Requirements</h2>
+  <p style="text-align:center; color:#ccc;">Official and recommended system specifications for Fortnite across PC, console, and mobile platforms.</p>
+
+  <div class="specs-grid">
+
+    <!-- PC / DESKTOP -->
+    <div class="spec-card">
+      <div class="spec-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="Windows" class="spec-icon">
+        <h3>Desktop / PC</h3>
+      </div>
+      <ul>
+        <li><strong>OS:</strong> Windows 10/11 64-bit or macOS 10.15 Catalina+</li>
+        <li><strong>Processor (Minimum):</strong> Intel Core i3-3225 @ 3.3GHz</li>
+        <li><strong>Processor (Recommended):</strong> Intel Core i5-7300U / AMD Ryzen 3 3300U or higher</li>
+        <li><strong>RAM:</strong> 8 GB (Minimum) / 16 GB (Recommended)</li>
+        <li><strong>GPU (Minimum):</strong> Intel HD 4000 / AMD Radeon Vega 8</li>
+        <li><strong>GPU (Recommended):</strong> Nvidia GTX 960 / AMD R9 280 or better</li>
+        <li><strong>Storage:</strong> 30 GB free space (SSD recommended)</li>
+        <li><strong>DirectX:</strong> Version 11 or 12 compatible</li>
+        <li><strong>Internet:</strong> Stable broadband connection required</li>
+        <li><strong>Extras:</strong> Epic Games Launcher required to install</li>
+      </ul>
+    </div>
+
+    <!-- CONSOLES -->
+    <div class="spec-card">
+      <div class="spec-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/871/871386.png" alt="Console" class="spec-icon">
+        <h3>Consoles (PS4, PS5, Xbox, Switch)</h3>
+      </div>
+      <ul>
+        <li><strong>Platforms:</strong> PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S, Nintendo Switch</li>
+        <li><strong>Resolution:</strong> Up to 4K on next-gen consoles (PS5, Xbox Series X)</li>
+        <li><strong>Performance:</strong> 60–120 FPS depending on console mode</li>
+        <li><strong>Storage:</strong> Approx. 30–40 GB free space required</li>
+        <li><strong>Cross-Play:</strong> Supported between all major platforms</li>
+        <li><strong>Online:</strong> Epic Games Account required for progress sync</li>
+        <li><strong>Controller Support:</strong> Full</li>
+      </ul>
+    </div>
+
+    <!-- ANDROID -->
+    <div class="spec-card">
+      <div class="spec-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android" class="spec-icon">
+        <h3>Android</h3>
+      </div>
+      <ul>
+        <li><strong>Status:</strong> <span style="color:#ff4444;">Not available on Google Play Store</span></li>
+        <li><strong>Download:</strong> <a href="https://www.epicgames.com/fortnite/en/mobile/android" target="_blank" style="color:cyan;">Available via Epic Games App</a></li>
+        <li><strong>OS:</strong> Android 8.0 Oreo or higher (64-bit)</li>
+        <li><strong>Processor:</strong> Snapdragon 845 / Exynos 8895 / Kirin 970 or better</li>
+        <li><strong>RAM:</strong> Minimum 4 GB</li>
+        <li><strong>Storage:</strong> 10 GB free space required</li>
+        <li><strong>Graphics:</strong> Adreno 530+ / Mali-G71 MP20 / Mali-G72 MP12</li>
+        <li><strong>Internet:</strong> Stable Wi-Fi or 4G/5G connection</li>
+        <li><strong>FPS:</strong> Up to 60 FPS on flagship devices</li>
+      </ul>
+    </div>
+
+    <!-- iOS / APPLE -->
+    <div class="spec-card">
+      <div class="spec-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Apple iOS" class="spec-icon">
+        <h3>iOS (Apple)</h3>
+      </div>
+      <ul>
+        <li><strong>Status:</strong> <span style="color:#ff4444;">Removed from App Store (Epic vs Apple case)</span></li>
+        <li><strong>Play Option:</strong> <span style="color:cyan;">Available via <strong>GeForce NOW</strong> streaming</span> (Safari supported)</li>
+        <li><strong>Supported Devices:</strong> iPhone SE (2nd gen), iPhone X+, iPad Air 3+, iPad Pro</li>
+        <li><strong>OS:</strong> iOS 14 or later</li>
+        <li><strong>RAM:</strong> 4 GB or more</li>
+        <li><strong>Internet:</strong> Stable Wi-Fi required for cloud streaming</li>
+        <li><strong>Performance:</strong> Up to 60 FPS via cloud with minimal input lag</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <!-- MODES -->
+  <section>
+    <h3>Game Modes</h3>
+    <ul>
+      <li><strong>Battle Royale:</strong> Standard 100-player survival matches where the last one standing wins.</li>
+      <li><strong>Creative Mode:</strong> Build custom worlds, mini-games, and practice builds or aim training.</li>
+      <li><strong>Save the World:</strong> PvE co-op mode where players fight AI enemies and complete missions (PC/Console only).</li>
+      <li><strong>Limited Time Modes (LTM):</strong> Special events like 50v50, Team Rumble, or themed challenges that rotate regularly.</li>
+    </ul>
+  </section>
+
+  <!-- TIPS & STRATEGIES -->
+  <section>
+    <h3>Advanced Tips & Strategies</h3>
+    <ul>
+      <li><strong>Landing Strategy:</strong> Choose landing spots wisely. Popular hot zones give good loot but higher risk.</li>
+      <li><strong>Resource Management:</strong> Always gather materials (wood, brick, metal) early to build quickly in combat.</li>
+      <li><strong>High Ground Advantage:</strong> Building ramps and towers gives you a strategic edge during fights.</li>
+      <li><strong>Weapon Mastery:</strong> Learn the best combinations of shotgun, AR, sniper, and explosives for different combat scenarios.</li>
+      <li><strong>Rotate Smartly:</strong> Use storm circle predictions to avoid getting trapped and to ambush opponents.</li>
+      <li><strong>Team Communication:</strong> Use voice chat or ping system in squads to coordinate attacks and share resources.</li>
+      <li><strong>Stay Updated:</strong> Watch patch notes for weapon adjustments, map changes, and meta shifts.</li>
+      <li><strong>Event Participation:</strong> Join seasonal challenges and live events to earn exclusive skins and rewards.</li>
+    </ul>
+  </section>
+
+  <!-- WHY PLAY -->
+  <section>
+    <h3>Why Play Fortnite?</h3>
+    <ul>
+      <li>Fortnite combines fast-paced action, strategy, and building mechanics into one competitive experience.</li>
+      <li>Constantly updated with new seasons, events, challenges, and cosmetics to keep gameplay fresh.</li>
+      <li>Accessible on PC, console, and mobile with cross-platform play.</li>
+      <li>Offers both competitive gameplay for skilled players and casual fun in Creative mode.</li>
+      <li>Regular collaborations with celebrities, movies, and pop culture icons create unique in-game events.</li>
+      <li>Community-driven content allows players to showcase creativity and play custom maps.</li>
+    </ul>
+  </section>
+
+  <!-- KEY FEATURES -->
+  <section>
+    <h3>Key Features</h3>
+    <ul>
+      <li>💥 Epic Battle Royale with 100-player matches and dynamic map zones.</li>
+      <li>🏗️ Build structures quickly to defend, gain high ground, or outplay opponents.</li>
+      <li>🎨 Creative mode for building, mini-games, and world-sharing.</li>
+      <li>🎉 Frequent seasonal updates with new skins, weapons, and mechanics.</li>
+      <li>🌍 Cross-platform multiplayer on PC, consoles, and mobile.</li>
+      <li>🎬 Live events and collaborations, bringing unique experiences and lore.</li>
+      <li>🏆 Competitive tournaments with cash prizes for professional players.</li>
+      <li>🛠️ Variety of weapons, vehicles, and gadgets to customize playstyle.</li>
+    </ul>
+  </section>
+
+  <!-- SEASONAL UPDATES & NEWS -->
+  <section>
+    <h3>Fortnite Updates & Seasonal Highlights</h3>
+    <ul>
+      <li><strong>Seasonal Storylines:</strong> Each season introduces new map changes, story events, and challenges.</li>
+      <li><strong>Limited-Time Events:</strong> Collaborations like Marvel, Star Wars, and concerts keep the community engaged.</li>
+      <li><strong>Weekly Challenges:</strong> Completing weekly challenges grants XP, Battle Pass progression, and exclusive rewards.</li>
+      <li><strong>Patch Notes:</strong> Weapon balancing, bug fixes, and new items ensure competitive fairness.</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h3>FAQ</h3>
+    <p><strong>Q:</strong> Is Fortnite free to play?<br>
+       <strong>A:</strong> Yes, Fortnite is completely free to download and play. Some cosmetic items can be purchased in-game.</p>
+    <p><strong>Q:</strong> Do I need an Epic Games account?<br>
+       <strong>A:</strong> Yes, a free Epic Games account is required to track progress, Battle Pass rewards, and access cross-platform play.</p>
+    <p><strong>Q:</strong> Can I play on mobile devices?<br>
+       <strong>A:</strong> Yes, Fortnite is available on iOS (Epic App) and Android devices, fully optimized for touch controls.</p>
+    <p><strong>Q:</strong> How often do updates occur?<br>
+       <strong>A:</strong> Fortnite receives updates every 1–2 weeks with new items, bug fixes, or limited-time events.</p>
+  </section>
+
+  <!-- RELATED ARTICLES -->
+  <section>
+    <h3>Related Articles</h3>
+    <div class="related-list">
+      <div class="related-card">
+        <img src="https://cdn.pixabay.com/photo/2019/03/12/21/28/fortnite-4057677_1280.jpg" alt="Fortnite Season 6">
+        <h4>Fortnite Season 6 Overview</h4>
+        <p>Discover all new skins, weapons, map changes, and events in the latest season.</p>
+      </div>
+      <div class="related-card">
+        <img src="https://cdn.pixabay.com/photo/2018/10/30/19/30/fortnite-3785988_1280.jpg" alt="Fortnite Tips">
+        <h4>Top Building & Combat Tips</h4>
+        <p>Learn advanced building techniques and combat strategies to dominate matches.</p>
+      </div>
+      <div class="related-card">
+        <img src="https://cdn.pixabay.com/photo/2019/03/12/21/29/fortnite-4057680_1280.jpg" alt="Fortnite Events">
+        <h4>Fortnite Live Events Guide</h4>
+        <p>Stay updated with the latest live events, challenges, and collaborations.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- MINI BROWSER GAMES -->
+<section class="mini-games">
+  <h3>Play Mini Browser Games</h3>
+  <div class="mini-game-list">
+    <div class="mini-game-card">
+      <img src="https://picsum.photos/id/1011/400/200" alt="Car Racing">
+      <h4>Car Racing 3D</h4>
+      <p>Speed through tracks, avoid obstacles, and beat your best times.</p>
+      <a href="https://html5.gamedistribution.com/car-racing" target="_blank">▶️ Play Now</a>
+    </div>
+    <div class="mini-game-card">
+      <img src="https://picsum.photos/id/1012/400/200" alt="Angry Birds Clone">
+      <h4>Bird Smash</h4>
+      <p>Launch birds to knock down structures and solve challenging puzzles.</p>
+      <a href="https://html5.gamedistribution.com/bird-smash" target="_blank">▶️ Play Now</a>
+    </div>
+    <div class="mini-game-card">
+      <img src="https://picsum.photos/id/1013/400/200" alt="Zombie Shooter">
+      <h4>Zombie Shooter</h4>
+      <p>Survive waves of zombies using weapons, traps, and strategy.</p>
+      <a href="https://html5.gamedistribution.com/zombie-shooter" target="_blank">▶️ Play Now</a>
+    </div>
+    <div class="mini-game-card">
+      <img src="https://picsum.photos/id/1014/400/200" alt="Puzzle Adventure">
+      <h4>Puzzle Adventure</h4>
+      <p>Solve tricky puzzles and explore mysterious worlds.</p>
+      <a href="https://html5.gamedistribution.com/puzzle-adventure" target="_blank">▶️ Play Now</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+ 
+
+    <!-- REVIEW -->
+    <section class="review-box">
+      <h3>Leave a Review</h3>
+      <input type="text" placeholder="Your Name" required><br>
+      <textarea rows="4" placeholder="Write your review..."></textarea><br>
+      <button onclick="alert('Thanks for your feedback!')">Submit Review</button>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Games Blog. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    hamburger.onclick = () => {
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    };
+    overlay.onclick = () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    };
+  </script>
+</body>
+</html>
