@@ -3,7 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Blog - Shadow Legends</title>
+<!-- ✅ BASIC SEO META TAGS -->
+<title>Fortnite  | Blueverse</title>
+<meta name="description" content="Play Fortnite – the world’s most popular free-to-play battle royale. Build, fight, and survive in fast-paced, creative matches with friends. Explore Fortnite online on Blueverse.">
+<meta name="keywords" content="Fortnite, Battle Royale, Online Games, Free Games, Shooter, Multiplayer, Epic Games, Blueverse">
+<meta name="author" content="Blueverse">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://blueverse.site/top5onlinegames/Fortnite.html">
+<meta name="theme-color" content="#1e90ff">
+
+<!-- ✅ OPEN GRAPH (OG) TAGS -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fortnite – Play Battle Royale Free Online | Blueverse">
+<meta property="og:description" content="Join Fortnite’s fast-paced world — build, battle, and survive. Play free online at Blueverse.">
+<meta property="og:url" content="https://blueverse.site/top5onlinegames/Fortnite.html">
+<meta property="og:site_name" content="Blueverse">
+<meta property="og:image" content="https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg">
+
+<!-- ✅ TWITTER CARD TAGS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fortnite – Play Battle Royale Free Online | Blueverse">
+<meta name="twitter:description" content="Drop into the action and play Fortnite free on Blueverse. Build, battle, and conquer in the ultimate online royale.">
+<meta name="twitter:image" content="https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg">
+<meta name="twitter:site" content="@Blueverse">
+<meta name="twitter:creator" content="@Blueverse">
+
+<!-- ✅ JSON-LD STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Fortnite",
+  "url": "https://blueverse.site/top5onlinegames/Fortnite.html",
+  "image": "https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg",
+  "description": "Fortnite is a free-to-play battle royale game where players build, fight, and survive in fast-paced matches. Available online via Blueverse.",
+  "operatingSystem": "Web browser",
+  "applicationCategory": "Game",
+  "genre": ["Action", "Shooter", "Battle Royale"],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blueverse",
+    "url": "https://blueverse.site"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Blueverse"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "ratingCount": "152000"
+  },
+  "trailer": {
+    "@type": "VideoObject",
+    "name": "Fortnite Official Trailer",
+    "description": "Watch the official Fortnite trailer showcasing the latest updates and gameplay.",
+    "thumbnailUrl": "https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg",
+    "uploadDate": "2024-05-10",
+    "embedUrl": "https://www.youtube.com/embed/WJW-bzXZM8M"
+  }
+}
+</script>
+
+<!-- ✅ FAVICON & ICONS -->
+<link rel="icon" href="https://blueverse.site/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://blueverse.site/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<!-- ✅ ADDITIONAL SEO ENHANCERS -->
+<meta name="language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="en" href="https://blueverse.site/top5onlinegames/Fortnite.html">
+<link rel="preload" as="image" href="https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -35,16 +107,24 @@
     }
 
     header .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: cyan;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 15px cyan;
-      cursor: pointer;
-    }
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
     .hamburger {
       width: 35px; height: 22px;
@@ -503,7 +583,21 @@ strong {
   color: #ddd;
 }
 
+.game-trailer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  overflow: hidden;
+  border-radius: 15px;
+}
 
+.game-trailer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 
 
@@ -513,7 +607,9 @@ strong {
 
   <!-- HEADER -->
   <header>
-    <div class="logo">GB</div>
+    <div class="logo">
+      <img src="/assets/thumb/logo.png" alt="logo"
+    </div>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -522,11 +618,11 @@ strong {
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#">🏠 Home</a></li>
-      <li><a href="#">🎮 Games</a></li>
-      <li><a href="#">📰 Blog</a></li>
-      <li><a href="#">📩 Contact</a></li>
-      <li><a href="#">⚙️ Settings</a></li>
+      <li><a href="/homepage.html">🏠 Home</a></li>
+      <li><a href="/games.html">🎮 Games</a></li>
+      <li><a href="/blog.html">📰 Blog</a></li>
+      <li><a href="/movie.html">Movies</a></li>
+      <li><a href="/shop.html">Shops</a></li>
     </ul>
   </div>
 
@@ -534,7 +630,16 @@ strong {
 
 <!-- HERO -->
 <section class="hero">
-  <img src="https://cdn.pixabay.com/photo/2019/03/07/14/54/fortnite-4040306_1280.jpg" alt="Fortnite">
+<!-- 🎮 FORTNITE HERO TRAILER -->
+<div class="game-trailer">
+  <iframe 
+    src="https://www.youtube.com/embed/WJW-bzXZM8M?autoplay=1&mute=1&loop=1&playlist=WJW-bzXZM8M&controls=0&modestbranding=1&showinfo=0"
+    title="Fortnite Official Trailer"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
   <h1>Fortnite</h1>
   <p>The ultimate battle royale experience with building, strategy, and competitive gameplay. Explore creative modes, seasonal events, and epic collaborations.</p>
 </section>
@@ -544,11 +649,11 @@ strong {
 <section class="screenshots">
   <h3>Game Screenshots</h3>
   <div class="screenshot-scroll">
-    <div class="screenshot-card"><img src="https://picsum.photos/id/1050/400/200" alt="Screenshot 1"></div>
-    <div class="screenshot-card"><img src="https://picsum.photos/id/1051/400/200" alt="Screenshot 2"></div>
-    <div class="screenshot-card"><img src="https://picsum.photos/id/1052/400/200" alt="Screenshot 3"></div>
-    <div class="screenshot-card"><img src="https://picsum.photos/id/1053/400/200" alt="Screenshot 4"></div>
-    <div class="screenshot-card"><img src="https://picsum.photos/id/1054/400/200" alt="Screenshot 5"></div>
+    <div class="screenshot-card"><img src="https://media.rawg.io/media/resize/420/-/screenshots/8cd/8cddb8ce89eb9c36fbe81fe6b3503c64.jpg" alt="Screenshot 1"></div>
+    <div class="screenshot-card"><img src="https://media.rawg.io/media/resize/420/-/screenshots/f0c/f0c652aaeccb5d76b019a39faf04985f.jpg" alt="Screenshot 2"></div>
+    <div class="screenshot-card"><img src="https://media.rawg.io/media/resize/420/-/screenshots/e83/e83e8ec670d070b742cf1fd3455f6266.jpg" alt="Screenshot 3"></div>
+    <div class="screenshot-card"><img src="https://media.rawg.io/media/resize/420/-/screenshots/647/647ca3b9259c44828c1c339b0f308e02.jpg" alt="Screenshot 4"></div>
+    <div class="screenshot-card"><img src="https://media.rawg.io/media/resize/420/-/screenshots/920/920e7fd1aaf5b3500227c7133d125b3f.jpg" alt="Screenshot 5"></div>
   </div>
 </section>
 
@@ -589,25 +694,41 @@ strong {
   
 
 
-<!-- GAMEPLAY VIDEOS -->
+<!-- 🎮 GAMEPLAY VIDEOS — FORTNITE -->
 <section class="gameplay-videos">
   <h3>Gameplay Videos</h3>
   <div class="video-list">
+
+    <!-- Gameplay Video 1 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Gameplay Video 1" allowfullscreen></iframe>
-      <h4>Fortnite Battle Royale Highlights</h4>
+      <iframe 
+        src="https://www.youtube.com/embed/AlABOZhCCqU"
+        title="Fortnite – High Kill Solo Gameplay"
+        allowfullscreen loading="lazy">
+      </iframe>
+      <h4>Fortnitemare new update trailer</h4>
     </div>
+
+    <!-- Gameplay Video 2 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" 
-              title="Gameplay Video 2" allowfullscreen></iframe>
-      <h4>Creative Mode Showcase</h4>
+      <iframe 
+        src="https://www.youtube.com/embed/M2pyqnypx50"
+        title="Fortnite – Creative Mode Showcase"
+        allowfullscreen loading="lazy">
+      </iframe>
+      <h4>55 kills solo VS squads</h4>
     </div>
+
+    <!-- Gameplay Video 3 -->
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/V-_O7nl0Ii0" 
-              title="Gameplay Video 3" allowfullscreen></iframe>
-      <h4>Epic Live Event Highlights</h4>
+      <iframe 
+        src="https://www.youtube.com/embed/MgL4Ls95nu8"
+        title="Fortnite – Epic Event Highlights"
+        allowfullscreen loading="lazy">
+      </iframe>
+      <h4>how to fight like a pro</h4>
     </div>
+
   </div>
 </section>
 
@@ -797,36 +918,107 @@ strong {
     </div>
   </section>
 
-<!-- MINI BROWSER GAMES -->
+<!-- 🎮 RANDOM GAMES SECTION -->
 <section class="mini-games">
-  <h3>Play Mini Browser Games</h3>
-  <div class="mini-game-list">
-    <div class="mini-game-card">
-      <img src="https://picsum.photos/id/1011/400/200" alt="Car Racing">
-      <h4>Car Racing 3D</h4>
-      <p>Speed through tracks, avoid obstacles, and beat your best times.</p>
-      <a href="https://html5.gamedistribution.com/car-racing" target="_blank">▶️ Play Now</a>
-    </div>
-    <div class="mini-game-card">
-      <img src="https://picsum.photos/id/1012/400/200" alt="Angry Birds Clone">
-      <h4>Bird Smash</h4>
-      <p>Launch birds to knock down structures and solve challenging puzzles.</p>
-      <a href="https://html5.gamedistribution.com/bird-smash" target="_blank">▶️ Play Now</a>
-    </div>
-    <div class="mini-game-card">
-      <img src="https://picsum.photos/id/1013/400/200" alt="Zombie Shooter">
-      <h4>Zombie Shooter</h4>
-      <p>Survive waves of zombies using weapons, traps, and strategy.</p>
-      <a href="https://html5.gamedistribution.com/zombie-shooter" target="_blank">▶️ Play Now</a>
-    </div>
-    <div class="mini-game-card">
-      <img src="https://picsum.photos/id/1014/400/200" alt="Puzzle Adventure">
-      <h4>Puzzle Adventure</h4>
-      <p>Solve tricky puzzles and explore mysterious worlds.</p>
-      <a href="https://html5.gamedistribution.com/puzzle-adventure" target="_blank">▶️ Play Now</a>
-    </div>
-  </div>
+  <h3>Play Random Games</h3>
+  <div class="mini-game-list" id="randomGames"></div>
 </section>
+
+<script>
+async function loadRandomGames() {
+  try {
+    // 1. Fetch your main games.html file
+    const res = await fetch('/games.html');
+    const html = await res.text();
+
+    // 2. Parse the HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // 3. Select all games (thumbnails)
+    const games = Array.from(doc.querySelectorAll('.thumb-item'));
+
+    // 4. Pick 4 random games
+    const selected = [];
+    while (selected.length < 4 && games.length) {
+      const rand = Math.floor(Math.random() * games.length);
+      selected.push(games.splice(rand, 1)[0]);
+    }
+
+    // 5. Create HTML cards
+    const container = document.getElementById('randomGames');
+    selected.forEach(game => {
+      const img = game.querySelector('img')?.src || '';
+      const title = game.querySelector('h3')?.innerText || 'Untitled';
+      const link = game.getAttribute('href') || '#';
+
+      const card = `
+        <div class="mini-game-card">
+          <img src="${img}" alt="${title}">
+          <h4>${title}</h4>
+          <a href="${link}" target="_blank">▶️ Play Now</a>
+        </div>
+      `;
+      container.innerHTML += card;
+    });
+  } catch (err) {
+    console.error('Error loading games:', err);
+  }
+}
+
+loadRandomGames();
+</script>
+
+<style>
+.mini-games {
+  margin: 2rem auto;
+  max-width: 900px;
+  text-align: center;
+}
+.mini-games h3 {
+  font-size: 1.5rem;
+  color: cyan;
+  margin-bottom: 1rem;
+}
+.mini-game-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.mini-game-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,200,255,0.3);
+  padding: 1rem;
+  width: 200px;
+  transition: transform 0.3s ease;
+}
+.mini-game-card:hover {
+  transform: scale(1.05);
+}
+.mini-game-card img {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+.mini-game-card h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+.mini-game-card a {
+  text-decoration: none;
+  background: cyan;
+  color: black;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+}
+</style>
 
 
 

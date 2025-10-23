@@ -1,0 +1,672 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Blueverse - Top Games</title>  <style>  
+  * {margin:0; padding:0; box-sizing:border-box;}  
+  body {  
+    font-family: 'Poppins', sans-serif;  
+    background: linear-gradient(180deg, #000428, #004e92);  
+    color: white;  
+    overflow-x: hidden;  
+    scroll-behavior: smooth;  
+    min-height: 100vh;  
+  }  
+  
+  /* HEADER */  
+  header {  
+    position: fixed;  
+    top: 1rem;  
+    left: 50%;  
+    transform: translateX(-50%) scale(0.9);  
+    width: 70px;  
+    height: 60px;  
+    background: rgba(255,255,255,0.05);  
+    border-radius: 999px;  
+    backdrop-filter: blur(12px);  
+    box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);  
+    display: flex;  
+    align-items: center;  
+    justify-content: space-between;  
+    transition: all 1.6s cubic-bezier(0.77,0,0.175,1);  
+    z-index: 1000;  
+    opacity: 0;  
+    overflow: hidden;  
+    padding: 0 1.2rem;  
+    filter: blur(15px);  
+  }  
+  header.show { opacity: 1; filter: blur(0); }  
+  header.expanded {  
+    width: 90%;  
+    max-width: 1100px;  
+    transform: translateX(-50%) scale(1);  
+  }  
+  
+  .logo {  
+    background: rgba(255,255,255,0.07);  
+    border-radius: 50%;  
+    width: 50px;  
+    height: 50px;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    box-shadow: 0 0 15px cyan;  
+    flex-shrink: 0;  
+    overflow: hidden;  
+    transition: transform 1s ease;  
+  }  
+  .logo:hover { transform: rotate(360deg) scale(1.1); }  
+  .logo img {  
+    width: 90%;  
+    height: 90%;  
+    border-radius: 50%;  
+    filter: drop-shadow(0 0 8px cyan);  
+  }  
+  
+  .search-bar {  
+    flex: 1;  
+    display: flex;  
+    justify-content: center;  
+  }  
+  .search-bar input {  
+    width: 180px;  
+    padding: 6px 12px;  
+    border: none;  
+    border-radius: 20px;  
+    background: rgba(255,255,255,0.1);  
+    color: white;  
+    outline: none;  
+  }  
+  
+  /* HAMBURGER */  
+  .hamburger {  
+    width: 30px;  
+    height: 22px;  
+    display: flex;  
+    flex-direction: column;  
+    justify-content: space-between;  
+    cursor: pointer;  
+    flex-shrink: 0;  
+    transition: transform 0.4s ease;  
+    z-index: 1100;  
+  }  
+  .hamburger span {  
+    display: block;  
+    height: 3px;  
+    width: 100%;  
+    background: cyan;  
+    border-radius: 3px;  
+    transition: all 0.4s ease;  
+  }  
+  .hamburger.active span:nth-child(1) {  
+    transform: translateY(9px) rotate(45deg);  
+  }  
+  .hamburger.active span:nth-child(2) {  
+    opacity: 0;  
+  }  
+  .hamburger.active span:nth-child(3) {  
+    transform: translateY(-9px) rotate(-45deg);  
+  }  
+  
+  /* MENU */  
+  .menu {  
+    position: fixed;  
+    top: 0;  
+    left: -100%;  
+    width: 260px;  
+    height: 100%;  
+    background: rgba(0, 0, 0, 0.95);  
+    backdrop-filter: blur(15px);  
+    box-shadow: 5px 0 20px rgba(0,255,255,0.2);  
+    transition: left 0.5s cubic-bezier(0.77,0,0.175,1);  
+    display: flex;  
+    flex-direction: column;  
+    justify-content: center;  
+    align-items: center;  
+    gap: 1.5rem;  
+    z-index: 1000;  
+  }  
+  .menu.active {  
+    left: 0;  
+  }  
+  .menu a {  
+    color: cyan;  
+    text-decoration: none;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
+    letter-spacing: 1px;  
+    padding: 0.6rem 1.2rem;  
+    border-radius: 12px;  
+    transition: all 0.3s ease-in-out;  
+  }  
+  .menu a:hover {  
+    background: rgba(0,255,255,0.15);  
+    transform: translateY(-3px) scale(1.05);  
+  }  
+  
+  /* HERO SECTION */  
+  .hero {  
+    margin-top: 8rem;  
+    text-align: center;  
+    padding: 3rem 1rem;  
+    opacity: 0;  
+    filter: blur(20px);  
+    transition: all 1.5s ease;  
+  }  
+  .hero.show {  
+    opacity: 1;  
+    filter: blur(0);  
+  }  
+  .hero h1 {  
+    font-size: 2.2rem;  
+    color: cyan;  
+  }  
+  .hero p {  
+    color: #ccc;  
+    font-size: 1rem;  
+    margin-top: 0.5rem;  
+  }  
+  
+  /* GAME CARDS GRID */
+.game-grid {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));  
+  gap: 1.5rem;  
+  padding: 2rem 1.5rem 4rem;  
+  opacity: 0;  
+  filter: blur(15px);  
+  transition: all 1s ease;  
+}  
+.game-grid.show {  
+  opacity: 1;  
+  filter: blur(0);  
+}  
+
+.game-card {  
+  background: rgba(255,255,255,0.08);  
+  border-radius: 15px;  
+  overflow: hidden;  
+  box-shadow: 0 0 15px rgba(0,200,255,0.2);  
+  transition: all 0.4s ease;  
+  backdrop-filter: blur(10px);  
+  aspect-ratio: 1/1;  
+  display: flex;  
+  flex-direction: column;  
+  justify-content: space-between;  
+  cursor: pointer;  
+  position: relative;  
+}  
+.game-card:hover {  
+  transform: translateY(-8px) scale(1.05);  
+  box-shadow: 0 0 25px rgba(0,255,255,0.4);  
+}  
+.game-card img {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+}  
+.game-card h3 {  
+  position: absolute;  
+  bottom: 10px;  
+  left: 0;  
+  right: 0;  
+  text-align: center;  
+  font-size: 1rem;  
+  color: cyan;  
+  background: rgba(0,0,0,0.5);  
+  padding: 5px 0;  
+}
+
+/* 🔹 ICONS — now moved to top-right */
+.game-card .icons {  
+  position: absolute;  
+  top: 10px;  
+  right: 10px;  
+  display: flex;  
+  gap: 5px;  
+}  
+
+.game-card .icons img {  
+  width: 22px;  
+  height: 22px;  
+  filter: drop-shadow(0 0 5px cyan);  
+  background: rgba(0,255,255,0.1);  
+  border-radius: 50%;  
+  padding: 2px;  
+  border: 1px solid cyan;  
+}  
+
+.badge {  
+  position: absolute;  
+  top: 10px;  
+  left: 10px;  
+  background: rgba(0,255,255,0.2);  
+  border: 1px solid cyan;  
+  color: cyan;  
+  font-size: 0.8rem;  
+  font-weight: bold;  
+  padding: 4px 8px;  
+  border-radius: 8px;  
+}
+
+@media (max-width: 600px) {  
+  .hero h1 { font-size: 1.6rem; }  
+  .game-grid { gap: 1rem; }  
+}
+  
+
+  
+  
+  .game-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1rem;
+  color: cyan;
+  text-shadow: 0 0 6px #00ffff;
+}
+
+.game-card h3 .icons img {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 4px cyan);
+  vertical-align: middle;
+}
+  
+/* 🌐 Top Online Games Section */
+.online-games-section {
+  background: linear-gradient(135deg, #00ffff22, #0055ff33);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: #0ff;
+  font-weight: 700;
+}
+
+.section-header .see-more {
+  color: #0ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.section-header .see-more:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 Horizontal Scroll */
+.online-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+.online-scroll::-webkit-scrollbar {
+  height: 8px;
+  background: #001a2e;
+  border-radius: 10px;
+}
+.online-scroll::-webkit-scrollbar-thumb {
+  background: #0ff;
+  border-radius: 10px;
+}
+
+/* 🎮 YouTube-style Card */
+.online-scroll .game-card {
+  position: relative;
+  flex: 0 0 320px; /* Wider, like YouTube thumbnail */
+  height: 180px;
+  background: #001a2e;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,255,255,0.15);
+}
+.online-scroll .game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0,255,255,0.4);
+}
+
+.online-scroll .game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(75%);
+  transition: 0.3s ease;
+}
+.online-scroll .game-card:hover img {
+  filter: brightness(90%);
+}
+
+/* 🧊 Text Overlay on Image */
+.online-scroll .game-card h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  text-shadow: 0 0 8px #00ffff;
+}
+
+/* 🏷️ Badge + Icons */
+.online-scroll .badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #0ff;
+  color: #001a2e;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  box-shadow: 0 0 8px #00ffff;
+}
+
+.online-scroll .icons {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+}
+.online-scroll .icons img {
+  width: 22px;
+  height: 22px;
+  background: rgba(0,255,255,0.1);
+  border-radius: 50%;
+  border: 1px solid cyan;
+  padding: 2px;
+  filter: drop-shadow(0 0 5px cyan);
+}
+  
+  
+</style> 
+</head> 
+<body>  
+<main>  
+  <!-- HEADER -->  
+  <header id="mainHeader">    
+    <div class="search-bar">    
+      <input type="text" placeholder="Search...">    
+    </div>    
+    <div class="logo">  
+      <img src="assets/thumb/logo.png" alt="logo">  
+    </div>    
+    <div class="hamburger" id="hamburger">    
+      <span></span><span></span><span></span>    
+    </div>    
+  </header>    
+
+  <!-- MENU -->    
+  <div class="menu" id="menu">  
+    <a href="movie.html">Movies</a>    
+    <a href="blog.html">Blog</a>    
+    <a href="games.html">Games</a>    
+    <a href="shop.html">Shop</a>    
+  </div>    
+
+  <!-- HERO -->    
+  <section class="hero" id="hero">  
+    <h1>Top Games List</h1>  
+    <p>Discover the most popular and trending games right now!</p>  
+  </section>    
+
+<!-- GAME CARDS -->    
+<section class="game-grid" id="gameGrid">  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/clashofclans.html'">  
+    <span class="badge">Top</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg" alt="Clash Of clans">  
+    <h3>Clash Of Clans</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/callofdutymobile.html'">  
+    <span class="badge">Top Online</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+    </div>
+    <img src="https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg" alt="Twilight">  
+    <h3>Call Of Duty:Mobile</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/freefiremax.html'">  
+    <span class="badge">Top online</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Console">
+    </div>
+    <img src="https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg" alt="Free fire max">  
+    <h3>Free Fire Max</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/genshineimpact.html'">  
+    <span class="badge">#4</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg" alt="Genshine Impact">  
+    <h3>Genshine Impact</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/mobilelegend.html'">  
+    <span class="badge">#5</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/fbf/fbfb67ef5b9a871f8d2364a2f3084796.jpeg" alt="mobile legends">  
+    <h3>Mobile Legends:Bang Bang</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='/topgameslist/topmobilegames/pubgmobile.html'">  
+    <span class="badge">#6</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
+    <h3>PUBG:Mobile</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='genshinimpact.html'">  
+    <span class="badge">#7</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Console">
+    </div>
+    <img src="" alt="Genshin Impact">  
+    <h3>Genshin Impact</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='pubgmobile.html'">  
+    <span class="badge">#8</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+    </div>
+    <img src="" alt="PUBG Mobile">  
+    <h3>PUBG Mobile</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='asphalt9.html'">  
+    <span class="badge">#9</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/009/009c9d404a5b832b8e421b4cdd4c3e08.jpg" alt="Asphalt 9">  
+    <h3>Asphalt 9: Legends</h3>  
+  </div>  
+
+  <div class="game-card" onclick="location.href='fortnite.html'">  
+    <span class="badge">#10</span>  
+    <div class="icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Console">
+    </div>
+    <img src="https://media.rawg.io/media/resize/420/-/screenshots/5d5/5d501fe604bc6932c7f1efc8b534ca93.jpg" alt="Fortnite">  
+    <h3>Fortnite</h3>  
+  </div>  
+
+</section>
+
+<!-- 🌐 TOP ONLINE GAMES SECTION -->
+<section class="online-games-section">
+  <div class="section-header">
+    <h2>Top Online Games</h2>
+    <a href="/topgameslist/onlinegames.html" class="see-more">See More</a>
+  </div>
+
+  <div class="online-scroll">
+    
+    <div class="game-card" onclick="location.href='/topgameslist/onlinegames/fortnite.html'">
+      <span class="badge">#1</span>
+      <div class="icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+        <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Console">
+      </div>
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/5d5/5d501fe604bc6932c7f1efc8b534ca93.jpg" alt="Fortnite">
+      <h3>Fortnite</h3>
+    </div>
+
+    <div class="game-card" onclick="location.href='/topgameslist/onlinegames/apexlegends.html'">
+      <span class="badge">#2</span>
+      <div class="icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+        <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Console">
+      </div>
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/a12/a12f04eec418b40ce2f0d51c33b6f2b8.jpg" alt="Apex Legends">
+      <h3>Apex Legends</h3>
+    </div>
+
+    <div class="game-card" onclick="location.href='/topgameslist/onlinegames/valorant.html'">
+      <span class="badge">#3</span>
+      <div class="icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+      </div>
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/3f1/3f10b1a67b1c80112b69a0de593a6dc1.jpg" alt="Valorant">
+      <h3>Valorant</h3>
+    </div>
+
+    <div class="game-card" onclick="location.href='/topgameslist/onlinegames/warzone.html'">
+      <span class="badge">#4</span>
+      <div class="icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+      </div>
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/f71/f71c1e94a8d3445dfcf7c631bd2382a0.jpg" alt="Warzone">
+      <h3>Call of Duty: Warzone</h3>
+    </div>
+
+    <div class="game-card" onclick="location.href='/topgameslist/onlinegames/roblox.html'">
+      <span class="badge">#5</span>
+      <div class="icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="PC">
+      </div>
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/ab8/ab8b2a8f978a1840e1a32aebc8e0b8ff.jpg" alt="Roblox">
+      <h3>Roblox</h3>
+    </div>
+
+  </div>
+</section>
+  
+  
+  
+</main>
+
+<script>  
+  // HEADER ANIMATION  
+  window.addEventListener("load", () => {    
+    const header = document.getElementById("mainHeader");  
+    const hero = document.getElementById("hero");  
+    const grid = document.getElementById("gameGrid");  
+  
+    setTimeout(()=> header.classList.add("show"), 500);    
+    setTimeout(()=> header.classList.add("expanded"), 1500);  
+    setTimeout(()=> hero.classList.add("show"), 2000);  
+    setTimeout(()=> grid.classList.add("show"), 2700);  
+  });  
+  
+  // WORKING HAMBURGER MENU  
+  const hamburger = document.getElementById("hamburger");  
+  const menu = document.getElementById("menu");  
+  
+  hamburger.addEventListener("click", () => {  
+    hamburger.classList.toggle("active");  
+    menu.classList.toggle("active");  
+  });  
+  
+  document.querySelectorAll(".menu a").forEach(link => {  
+    link.addEventListener("click", () => {  
+      hamburger.classList.remove("active");  
+      menu.classList.remove("active");  
+    });  
+  });  
+  
+  // SCROLL ANIMATION  
+  const observer = new IntersectionObserver(entries => {  
+    entries.forEach(entry => {  
+      if (entry.isIntersecting) entry.target.classList.add('show');  
+    });  
+  }, { threshold: 0.2 });  
+  
+  document.querySelectorAll('.game-grid').forEach(el => observer.observe(el));  
+</script> 
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const allGrids = document.querySelectorAll(".game-grid, .horizontal-scroll");
+
+  allGrids.forEach(grid => {
+    const cards = Array.from(grid.children);
+    
+    // Shuffle cards
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+
+    // Fade out
+    grid.style.transition = "opacity 0.6s ease";
+    grid.style.opacity = "0";
+
+    // Re-append shuffled cards after fade-out
+    setTimeout(() => {
+      grid.innerHTML = "";
+      cards.forEach(card => {
+        card.style.opacity = "0";
+        card.style.transition = "opacity 0.6s ease";
+        grid.appendChild(card);
+      });
+
+      // Fade back in
+      grid.style.opacity = "1";
+      setTimeout(() => {
+        cards.forEach(card => (card.style.opacity = "1"));
+      }, 100);
+    }, 400);
+  });
+});
+</script>
+
+
+
+</body>  
+</html>

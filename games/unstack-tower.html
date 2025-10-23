@@ -118,16 +118,24 @@
     }
 
     header .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: cyan;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 15px cyan;
-      cursor: pointer;
-    }
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
     .hamburger {
       width: 35px; height: 22px;
@@ -338,7 +346,9 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo">BV</div>
+    <div class="logo">
+      <img src="/assets/thumb/logo.png" alt="BV logo"
+    </div>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -347,11 +357,11 @@
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#">🏠 Home</a></li>
-      <li><a href="#">🎮 Games</a></li>
-      <li><a href="#">📰 Blog</a></li>
-      <li><a href="#">📩 Contact</a></li>
-      <li><a href="#">⚙️ Settings</a></li>
+      <li><a href="/homepage.html">🏠 Home</a></li>
+      <li><a href="/games.html">🎮 Games</a></li>
+      <li><a href="/blog.html">📰 Blog</a></li>
+      <li><a href="/movie.html">Movies</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul>
   </div>
 
@@ -366,20 +376,20 @@
 <div class="details">
   <h2>Unstack Tower</h2>
   <div class="meta">
-    <div>⭐ Rating: 4.6</div>
+    <div>Browser</div>
     <div>🎮 Category: Physics / Puzzle</div>
-    <div>👥 Plays: 295K+</div>
+    <div>Free</div>
   </div>
 
   <div class="play-buttons">
-    <button onclick="window.location.href='https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://www.example.com/games/unstack-tower'">▶️ Play Now</button>
-    <button onclick="window.open('https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://www.example.com/games/unstack-tower', '_blank')">🌐 Play in New Tab</button>
+    <button onclick="window.location.href='https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.site/games/unstack-tower'">▶️ Play Now</button>
+    <button onclick="window.open('https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.site/games/unstack-tower', '_blank')">🌐 Play in New Tab</button>
   </div>
 
   <!-- EMBEDDED GAME -->
   <div style="margin-top: 2rem; text-align:center;">
     <iframe 
-      src="https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://www.example.com/games/unstack-tower"
+      src="https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.site/games/unstack-tower"
       width="100%" 
       height="600" 
       frameborder="0" 

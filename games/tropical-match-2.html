@@ -111,16 +111,24 @@
     }
 
     header .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: cyan;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 15px cyan;
-      cursor: pointer;
-    }
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
     .hamburger {
       width: 35px; height: 22px;
@@ -331,7 +339,9 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo">BV</div>
+    <div class="logo">
+      <img src="/assets/thumb/logo.png" alt="BV logo"
+    </div>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -340,11 +350,11 @@
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#">🏠 Home</a></li>
-      <li><a href="#">🎮 Games</a></li>
-      <li><a href="#">📰 Blog</a></li>
-      <li><a href="#">📩 Contact</a></li>
-      <li><a href="#">⚙️ Settings</a></li>
+      <li><a href="/homepage.html">🏠 Home</a></li>
+      <li><a href="/games.html">🎮 Games</a></li>
+      <li><a href="/blog.html">📰 Blog</a></li>
+      <li><a href="/contact.html">📩 Contact</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul>
   </div>
 
@@ -359,9 +369,9 @@
 <div class="details">
   <h2>Tropical Match 2</h2>
   <div class="meta">
-    <div>⭐ Rating: 4.7</div>
+    <div>Browser</div>
     <div>🎮 Category: Puzzle</div>
-    <div>👥 Players: 300K+</div>
+    <div>HTML5</div>
   </div>
 
   <div class="play-buttons">

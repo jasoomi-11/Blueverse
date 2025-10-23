@@ -95,271 +95,288 @@
   
   
   
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #000014, #001a2e, #000);
-      color: #fff;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000014, #001a2e, #000);
+    color: #fff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
 
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 1200px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 999px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.6rem 1.5rem;
-      z-index: 1000;
-      transition: all 0.6s ease;
-    }
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 999px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    z-index: 1000;
+    transition: all 0.6s ease;
+  }
 
-    header .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: cyan;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 15px cyan;
-      cursor: pointer;
-    }
+  /* ✅ UPDATED LOGO */
+  header .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 15px cyan;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
 
-    .hamburger {
-      width: 35px; height: 22px;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 1100;
-    }
+  header .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid cyan;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    .hamburger span {
-      display: block;
-      height: 4px;
-      background: cyan;
-      border-radius: 4px;
-      transition: all 0.3s;
-    }
+  header .logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px cyan;
+  }
 
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -280px;
-      width: 260px;
-      height: 100%;
-      background: rgba(0,0,20,0.95);
-      backdrop-filter: blur(15px);
-      box-shadow: 5px 0 20px rgba(0,255,255,0.2);
-      transition: 0.4s;
-      z-index: 1001;
-      padding: 2rem 1rem;
-    }
+  .hamburger {
+    width: 35px; height: 22px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1100;
+  }
 
-    .sidebar.active { left: 0; }
+  .hamburger span {
+    display: block;
+    height: 4px;
+    background: cyan;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
 
-    .sidebar ul { list-style: none; margin-top: 2rem; }
-    .sidebar ul li {
-      margin: 1.2rem 0;
-    }
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100%;
+    background: rgba(0,0,20,0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 5px 0 20px rgba(0,255,255,0.2);
+    transition: 0.4s;
+    z-index: 1001;
+    padding: 2rem 1rem;
+  }
 
-    .sidebar ul li a {
-      color: cyan;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: 0.3s;
-    }
+  .sidebar.active { left: 0; }
 
-    .sidebar ul li a:hover {
-      color: #fff;
-      text-shadow: 0 0 10px cyan;
-    }
+  .sidebar ul { list-style: none; margin-top: 2rem; }
+  .sidebar ul li {
+    margin: 1.2rem 0;
+  }
 
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(3px);
-      display: none;
-      z-index: 1000;
-    }
+  .sidebar ul li a {
+    color: cyan;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: 0.3s;
+  }
 
-    .overlay.active { display: block; }
+  .sidebar ul li a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px cyan;
+  }
 
-    /* HERO THUMBNAIL */
-    .hero {
-      margin-top: 8rem;
-      display: flex;
-      justify-content: center;
-    }
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 1000;
+  }
 
-    .hero img {
-      width: 95%;
-      max-width: 1100px;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 25px;
-      box-shadow: 0 0 40px rgba(0,255,255,0.3);
-      transition: transform 0.6s ease;
-    }
+  .overlay.active { display: block; }
 
-    .hero img:hover {
-      transform: scale(1.02);
-    }
+  /* HERO THUMBNAIL */
+  .hero {
+    margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+  }
 
-    /* GAME DETAILS */
-    .details {
-      max-width: 900px;
-      margin: 3rem auto;
-      background: rgba(255,255,255,0.05);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0,255,255,0.15);
-    }
+  .hero img {
+    width: 95%;
+    max-width: 1100px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(0,255,255,0.3);
+    transition: transform 0.6s ease;
+  }
 
-    .details h2 {
-      color: cyan;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
+  .hero img:hover {
+    transform: scale(1.02);
+  }
 
-    .meta {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
+  /* GAME DETAILS */
+  .details {
+    max-width: 900px;
+    margin: 3rem auto;
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.15);
+  }
 
-    .meta div {
-      background: rgba(255,255,255,0.07);
-      padding: 0.7rem 1.2rem;
-      border-radius: 12px;
-      margin: 0.4rem;
-      box-shadow: inset 0 0 8px rgba(0,255,255,0.3);
-    }
+  .details h2 {
+    color: cyan;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 
-    .play-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
+  .meta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
 
-    .play-buttons button {
-      padding: 0.9rem 1.8rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(135deg, #0077ff, #00eaff);
-      box-shadow: 0 0 20px rgba(0,255,255,0.4);
-      transition: all 0.3s;
-    }
+  .meta div {
+    background: rgba(255,255,255,0.07);
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    margin: 0.4rem;
+    box-shadow: inset 0 0 8px rgba(0,255,255,0.3);
+  }
 
-    .play-buttons button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 0 35px cyan;
-    }
+  .play-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
 
-    /* SECTIONS */
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.03);
-      box-shadow: 0 0 20px rgba(0,255,255,0.1);
-    }
+  .play-buttons button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #0077ff, #00eaff);
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    transition: all 0.3s;
+  }
 
-    section h3 {
-      color: cyan;
-      margin-bottom: 0.8rem;
-      border-bottom: 1px solid rgba(0,255,255,0.2);
-      padding-bottom: 0.4rem;
-      text-shadow: 0 0 12px cyan;
-      letter-spacing: 1px;
-    }
+  .play-buttons button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 35px cyan;
+  }
 
-    section p, li {
-      color: #ddd;
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  }
 
-    ul { margin-left: 1rem; }
+  section h3 {
+    color: cyan;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0,255,255,0.2);
+    padding-bottom: 0.4rem;
+    text-shadow: 0 0 12px cyan;
+    letter-spacing: 1px;
+  }
 
-    /* REVIEW */
-    .review-box {
-      background: rgba(255,255,255,0.04);
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-    }
+  section p, li {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
 
-    .review-box input, .review-box textarea {
-      width: 90%;
-      margin: 0.5rem 0;
-      padding: 0.7rem;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-    }
+  ul { margin-left: 1rem; }
 
-    .review-box button {
-      background: cyan;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 1rem;
-      box-shadow: 0 0 15px cyan;
-    }
+  /* REVIEW */
+  .review-box {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+  }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.05);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 2rem;
-    }
+  .review-box input, .review-box textarea {
+    width: 90%;
+    margin: 0.5rem 0;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+  }
 
-  </style>
+  .review-box button {
+    background: cyan;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    box-shadow: 0 0 15px cyan;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+  }
+</style>
 </head>
 <body>
 
   <!-- HEADER -->
-  <header>
-    <div class="logo">BV</div>
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <a href="../homepage.html">
+      <img src="../assets/thumb/logo.png" alt="BV Logo" />
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
 
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#">🏠 Home</a></li>
+      <li><a href="">🏠 Home</a></li>
       <li><a href="#">🎮 Games</a></li>
       <li><a href="#">📰 Blog</a></li>
-      <li><a href="#">📩 Contact</a></li>
-      <li><a href="#">⚙️ Settings</a></li>
+      <li><a href="#">Movies </a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </div>
 
@@ -367,16 +384,16 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/zero-millionaire-thumb.png" alt="Zero to Millionaire Thumbnail">
+  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/Zero.png" alt="Word Seasons Game Thumbnail">
 </section>
 
 <!-- GAME DETAILS -->
 <div class="details">
   <h2>Zero to Millionaire</h2>
   <div class="meta">
-    <div>⭐ Rating: 4.8</div>
+    <div>Free</div>
     <div>🎮 Category: Business / Strategy</div>
-    <div>👥 Plays: 500K+</div>
+    <div>Platform: Web Browser</div>
   </div>
 
   <div class="play-buttons">

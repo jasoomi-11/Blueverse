@@ -347,11 +347,11 @@
   </header>
 
   <div class="menu" id="menu">
-    <a href="#">🏠 Home</a>
-    <a href="#">🎮 Games</a>
-    <a href="#">🛍️ Shop</a>
-    <a href="#">📰 Blog</a>
-    <a href="#">📞 Contact</a>
+    <a href="/homepage.html">🏠 Home</a>
+    <a href="/games.html">🎮 Games</a>
+    <a href="/shop.html">🛍️ Shop</a>
+    <a href="/blog.html">📰 Blog</a>
+    <a href="/contact.html">📞 Contact</a>
   </div>
   <!-- === END header block === -->
 
@@ -368,59 +368,69 @@
       </div>
 
       <!-- Upcoming Movies -->
-      <div>
-        <div class="section-title">Upcoming Movies</div>
-        <div class="movie-slider" data-section="upcoming">
-          <div class="arrow left pressable" role="button" aria-label="scroll-left" onclick="scrollSlider(this)"><i class="fa fa-chevron-left"></i></div>
-          <div class="movie-container" id="upcoming-container">
-            <!-- sample movie cards (data-cat attribute used for filtering) -->
-            <div class="movie-card reveal" data-cat="Action Adventure">
-              <img class="movie-poster" src="https://via.placeholder.com/300x420/001122/00ffff?text=Future+War" alt="Future War">
-              <div class="movie-info">
-                <div>
-                  <h3>Future War</h3>
-                  <div class="rating">★★★★★</div>
-                  <div class="meta">Release: 2025</div>
-                </div>
-              </div>
-            </div>
+<div>
+  <div class="section-header">
+    <div class="section-title">Upcoming Movies</div>
+    <button class="see-more" onclick="seeMore('upcoming')">See More</button>
+  </div>
 
-            <div class="movie-card reveal" data-cat="Horror">
-              <img class="movie-poster" src="https://via.placeholder.com/300x420/220000/ff6666?text=Haunted" alt="Haunted">
-              <div class="movie-info">
-                <div>
-                  <h3>Haunted Echoes</h3>
-                  <div class="rating">★★★★☆</div>
-                  <div class="meta">Release: 2025</div>
-                </div>
-              </div>
-            </div>
+  <div class="movie-slider" data-section="upcoming">
+    <div class="arrow left pressable" role="button" aria-label="scroll-left" onclick="scrollSlider(this)">
+      <i class="fa fa-chevron-left"></i>
+    </div>
 
-            <div class="movie-card reveal" data-cat="Fantasy">
-              <img class="movie-poster" src="https://via.placeholder.com/300x420/003322/66ffcc?text=Magic+Quest" alt="Magic Quest">
-              <div class="movie-info">
-                <div>
-                  <h3>Magic Quest</h3>
-                  <div class="rating">★★★★★</div>
-                  <div class="meta">Release: 2025</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="movie-card reveal" data-cat="Action">
-              <img class="movie-poster" src="https://via.placeholder.com/300x420/0b0b22/00aaff?text=Neon+Runner" alt="Neon Runner">
-              <div class="movie-info">
-                <div>
-                  <h3>Neon Runner</h3>
-                  <div class="rating">★★★☆☆</div>
-                  <div class="meta">Release: 2025</div>
-                </div>
-              </div>
-            </div>
+    <div class="movie-container" id="upcoming-container">
+      <!-- sample movie cards (data-cat attribute used for filtering) -->
+      <div class="movie-card reveal" data-cat="Action Adventure">
+        <img class="movie-poster" src="https://via.placeholder.com/300x420/001122/00ffff?text=Future+War" alt="Future War">
+        <div class="movie-info">
+          <div>
+            <h3>Future War</h3>
+            <div class="rating">★★★★★</div>
+            <div class="meta">Release: 2025</div>
           </div>
-          <div class="arrow right pressable" role="button" aria-label="scroll-right" onclick="scrollSlider(this)"><i class="fa fa-chevron-right"></i></div>
         </div>
       </div>
+
+      <div class="movie-card reveal" data-cat="Horror">
+        <img class="movie-poster" src="https://via.placeholder.com/300x420/220000/ff6666?text=Haunted" alt="Haunted">
+        <div class="movie-info">
+          <div>
+            <h3>Haunted Echoes</h3>
+            <div class="rating">★★★★☆</div>
+            <div class="meta">Release: 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="movie-card reveal" data-cat="Fantasy">
+        <img class="movie-poster" src="https://via.placeholder.com/300x420/003322/66ffcc?text=Magic+Quest" alt="Magic Quest">
+        <div class="movie-info">
+          <div>
+            <h3>Magic Quest</h3>
+            <div class="rating">★★★★★</div>
+            <div class="meta">Release: 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="movie-card reveal" data-cat="Action">
+        <img class="movie-poster" src="https://via.placeholder.com/300x420/0b0b22/00aaff?text=Neon+Runner" alt="Neon Runner">
+        <div class="movie-info">
+          <div>
+            <h3>Neon Runner</h3>
+            <div class="rating">★★★☆☆</div>
+            <div class="meta">Release: 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow right pressable" role="button" aria-label="scroll-right" onclick="scrollSlider(this)">
+      <i class="fa fa-chevron-right"></i>
+    </div>
+  </div>
+</div>
 
       <!-- New Releases -->
       <div>
