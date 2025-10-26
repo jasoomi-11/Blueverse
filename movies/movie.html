@@ -1,846 +1,758 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Blueverse - Top Games</title>  <style>  
-  * {margin:0; padding:0; box-sizing:border-box;}  
-  body {  
-    font-family: 'Poppins', sans-serif;  
-    background: linear-gradient(180deg, #000428, #004e92);  
-    color: white;  
-    overflow-x: hidden;  
-    scroll-behavior: smooth;  
-    min-height: 100vh;  
-  }  
-  
-  /* HEADER */  
-  header {  
-    position: fixed;  
-    top: 1rem;  
-    left: 50%;  
-    transform: translateX(-50%) scale(0.9);  
-    width: 70px;  
-    height: 60px;  
-    background: rgba(255,255,255,0.05);  
-    border-radius: 999px;  
-    backdrop-filter: blur(12px);  
-    box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);  
-    display: flex;  
-    align-items: center;  
-    justify-content: space-between;  
-    transition: all 1.6s cubic-bezier(0.77,0,0.175,1);  
-    z-index: 1000;  
-    opacity: 0;  
-    overflow: hidden;  
-    padding: 0 1.2rem;  
-    filter: blur(15px);  
-  }  
-  header.show { opacity: 1; filter: blur(0); }  
-  header.expanded {  
-    width: 90%;  
-    max-width: 1100px;  
-    transform: translateX(-50%) scale(1);  
-  }  
-  
-  .logo {  
-    background: rgba(255,255,255,0.07);  
-    border-radius: 50%;  
-    width: 50px;  
-    height: 50px;  
-    display: flex;  
-    align-items: center;  
-    justify-content: center;  
-    box-shadow: 0 0 15px cyan;  
-    flex-shrink: 0;  
-    overflow: hidden;  
-    transition: transform 1s ease;  
-  }  
-  .logo:hover { transform: rotate(360deg) scale(1.1); }  
-  .logo img {  
-    width: 90%;  
-    height: 90%;  
-    border-radius: 50%;  
-    filter: drop-shadow(0 0 8px cyan);  
-  }  
-  
-  .search-bar {  
-    flex: 1;  
-    display: flex;  
-    justify-content: center;  
-  }  
-  .search-bar input {  
-    width: 180px;  
-    padding: 6px 12px;  
-    border: none;  
-    border-radius: 20px;  
-    background: rgba(255,255,255,0.1);  
-    color: white;  
-    outline: none;  
-  }  
-  
-  /* HAMBURGER */  
-  .hamburger {  
-    width: 30px;  
-    height: 22px;  
-    display: flex;  
-    flex-direction: column;  
-    justify-content: space-between;  
-    cursor: pointer;  
-    flex-shrink: 0;  
-    transition: transform 0.4s ease;  
-    z-index: 1100;  
-  }  
-  .hamburger span {  
-    display: block;  
-    height: 3px;  
-    width: 100%;  
-    background: cyan;  
-    border-radius: 3px;  
-    transition: all 0.4s ease;  
-  }  
-  .hamburger.active span:nth-child(1) {  
-    transform: translateY(9px) rotate(45deg);  
-  }  
-  .hamburger.active span:nth-child(2) {  
-    opacity: 0;  
-  }  
-  .hamburger.active span:nth-child(3) {  
-    transform: translateY(-9px) rotate(-45deg);  
-  }  
-  
-  /* MENU */  
-  .menu {  
-    position: fixed;  
-    top: 0;  
-    left: -100%;  
-    width: 260px;  
-    height: 100%;  
-    background: rgba(0, 0, 0, 0.95);  
-    backdrop-filter: blur(15px);  
-    box-shadow: 5px 0 20px rgba(0,255,255,0.2);  
-    transition: left 0.5s cubic-bezier(0.77,0,0.175,1);  
-    display: flex;  
-    flex-direction: column;  
-    justify-content: center;  
-    align-items: center;  
-    gap: 1.5rem;  
-    z-index: 1000;  
-  }  
-  .menu.active {  
-    left: 0;  
-  }  
-  .menu a {  
-    color: cyan;  
-    text-decoration: none;  
-    font-size: 1.2rem;  
-    font-weight: 600;  
-    letter-spacing: 1px;  
-    padding: 0.6rem 1.2rem;  
-    border-radius: 12px;  
-    transition: all 0.3s ease-in-out;  
-  }  
-  .menu a:hover {  
-    background: rgba(0,255,255,0.15);  
-    transform: translateY(-3px) scale(1.05);  
-  }  
-  
-  /* HERO SECTION */  
-  .hero {  
-    margin-top: 8rem;  
-    text-align: center;  
-    padding: 3rem 1rem;  
-    opacity: 0;  
-    filter: blur(20px);  
-    transition: all 1.5s ease;  
-  }  
-  .hero.show {  
-    opacity: 1;  
-    filter: blur(0);  
-  }  
-  .hero h1 {  
-    font-size: 2.2rem;  
-    color: cyan;  
-  }  
-  .hero p {  
-    color: #ccc;  
-    font-size: 1rem;  
-    margin-top: 0.5rem;  
-  }  
-  
-  /* GAME CARDS GRID */
-.game-grid {  
-  display: grid;  
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));  
-  gap: 1.5rem;  
-  padding: 2rem 1.5rem 4rem;  
-  opacity: 0;  
-  filter: blur(15px);  
-  transition: all 1s ease;  
-}  
-.game-grid.show {  
-  opacity: 1;  
-  filter: blur(0);  
-}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movies Page</title>
 
-.game-card {  
-  background: rgba(255,255,255,0.08);  
-  border-radius: 15px;  
-  overflow: hidden;  
-  box-shadow: 0 0 15px rgba(0,200,255,0.2);  
-  transition: all 0.4s ease;  
-  backdrop-filter: blur(10px);  
-  aspect-ratio: 1/1;  
-  display: flex;  
-  flex-direction: column;  
-  justify-content: space-between;  
-  cursor: pointer;  
-  position: relative;  
-}  
-.game-card:hover {  
-  transform: translateY(-8px) scale(1.05);  
-  box-shadow: 0 0 25px rgba(0,255,255,0.4);  
-}  
-.game-card img {  
-  width: 100%;  
-  height: 100%;  
-  object-fit: cover;  
-}  
-.game-card h3 {  
-  position: absolute;  
-  bottom: 10px;  
-  left: 0;  
-  right: 0;  
-  text-align: center;  
-  font-size: 1rem;  
-  color: cyan;  
-  background: rgba(0,0,0,0.5);  
-  padding: 5px 0;  
+<style>
+/* ===== GLOBAL THEME ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* 🔹 ICONS — now moved to top-right */
-.game-card .icons {  
-  position: absolute;  
-  top: 10px;  
-  right: 10px;  
-  display: flex;  
-  gap: 5px;  
-}  
+/* ===== HERO HEADER ===== */
+header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  width: 70px;
+  height: 60px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
+  z-index: 1000;
+  opacity: 0;
+  padding: 0 1.2rem;
+  animation: headerGlow 4s infinite alternate ease-in-out;
+}
+header.show { opacity: 1; }
+header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) scale(1); }
 
-.game-card .icons img {  
-  width: 22px;  
-  height: 22px;  
-  filter: drop-shadow(0 0 5px cyan);  
-  background: rgba(0,255,255,0.1);  
-  border-radius: 50%;  
-  padding: 2px;  
-  border: 1px solid cyan;  
-}  
-
-.badge {  
-  position: absolute;  
-  top: 10px;  
-  left: 10px;  
-  background: rgba(0,255,255,0.2);  
-  border: 1px solid cyan;  
-  color: cyan;  
-  font-size: 0.8rem;  
-  font-weight: bold;  
-  padding: 4px 8px;  
-  border-radius: 8px;  
+@keyframes headerGlow {
+  from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
+  to { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
 }
 
-@media (max-width: 600px) {  
-  .hero h1 { font-size: 1.6rem; }  
-  .game-grid { gap: 1rem; }  
-}
-  
-
-  
-  
-  .game-card h3 {
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: cyan;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  box-shadow: 0 0 15px cyan;
+  transition: transform 1s ease;
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+.logo:hover { transform: rotate(360deg) scale(1.1); }
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.search-bar input {
+  width: 180px;
+  max-width: 200px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+.search-bar input:focus {
+  width: 220px;
+  background: rgba(0,200,255,0.15);
+  box-shadow: 0 0 10px cyan;
+}
+
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1100;
+  flex-shrink: 0;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: cyan;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 250px;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(15px);
+  transition: left 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem;
+  z-index: 999;
+}
+.menu.active { left: 0; }
+.menu a {
+  text-align: center;
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.menu a:hover { background: cyan; color: #000; }
+
+/* ===== HERO SECTION ===== */
+.hero {
+  margin-top: 100px;
+  background: linear-gradient(135deg, #001f3f, #000);
+  text-align: center;
+  padding: 3rem 1rem;
+  color: cyan;
+  box-shadow: 0 0 25px cyan;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 {
+  font-size: 2.3rem;
+  color: cyan;
+  text-shadow: 0 0 20px cyan;
+}
+.hero p { color: #ccc; margin-top: 0.8rem; }
+
+/* ===== MOVIE GRID ===== */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+.movie-card {
+  background: #0a0a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px cyan;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.6s ease;
+  filter: blur(8px);
+  opacity: 0;
+  transform: translateY(30px);
+}
+.movie-card.visible {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px cyan;
+}
+.movie-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+}
+.movie-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: lime;
+  color: #000;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 0 0 6px lime;
+}
+.movie-info {
+  padding: 0.7rem 0.9rem 1rem;
+}
+.movie-info h3 {
   font-size: 1rem;
   color: cyan;
-  text-shadow: 0 0 6px #00ffff;
+  margin-bottom: 4px;
+}
+.movie-info p {
+  color: #999;
+  font-size: 0.85rem;
 }
 
-.game-card h3 .icons img {
-  width: 20px;
-  height: 20px;
-  filter: drop-shadow(0 0 4px cyan);
-  vertical-align: middle;
-}
-  
-/* 🌐 Top Online Games Section */
-.online-games-section {
-  background: linear-gradient(135deg, #00ffff22, #0055ff33);
-  border-radius: 20px;
-  padding: 1.5rem;
-  margin: 2rem 1rem;
-  overflow: hidden;
-}
-
-.section-header {
+/* ===== PAGINATION PLACEHOLDER ===== */
+.pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 3rem 0;
+  gap: 1rem;
+}
+.pagination button {
+  background: cyan;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px cyan;
+}
+.pagination span {
+  font-weight: bold;
+  color: cyan;
 }
 
-.section-header h2 {
-  font-size: 1.5rem;
-  color: #0ff;
-  font-weight: 700;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .movie-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 1.8rem; }
+}
+@media (max-width: 480px) {
+  .movie-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.section-header .see-more {
-  color: #0ff;
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-link, .page-next, .page-prev {
   text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.section-header .see-more:hover {
-  text-decoration: underline;
+  background: rgba(0,255,255,0.1);
+  color: cyan;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px cyan;
+  transition: all 0.3s ease;
 }
 
-/* 🔹 Horizontal Scroll */
-.online-scroll {
+.page-link:hover, .page-next:hover, .page-prev:hover {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 15px cyan;
+}
+
+/* Active page */
+.page-link.active {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 20px cyan, 0 0 40px cyan;
+  pointer-events: none;
+}
+
+
+
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 1100px;
+  padding: 1rem 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+  animation: blurFade 2s ease-in-out;
+}
+
+@keyframes blurFade {
+  from { filter: blur(10px); opacity: 0; }
+  to { filter: blur(0); opacity: 1; }
+}
+
+.filter-btn {
+  text-decoration: none;
+  background: rgba(0,255,255,0.1);
+  color: cyan;
+  border: 1px solid cyan;
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px cyan;
+}
+
+.filter-btn:hover {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 15px cyan;
+}
+
+.filter-btn.active {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 25px cyan, 0 0 45px cyan;
+}
+
+
+
+
+
+/* ===== FOOTER SECTION ===== */
+.footer {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  color: cyan;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  animation: footerGlow 4s infinite alternate ease-in-out;
+  margin-top: 4rem;
+}
+
+@keyframes footerGlow {
+  from { box-shadow: 0 0 15px rgba(0,255,255,0.3), 0 0 30px rgba(0,100,255,0.2); }
+  to { box-shadow: 0 0 25px rgba(0,255,255,0.6), 0 0 50px rgba(0,150,255,0.4); }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: cyan;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px cyan;
+  transition: transform 1s ease;
+}
+
+.footer-logo:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: cyan;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #000;
+  background: cyan;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px cyan;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+.footer-socials a {
+  color: cyan;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #000;
+  background: cyan;
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 0 15px cyan;
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+
+.footer-attribution {
+  margin-top: 1.2rem;
+  color: #888;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-attribution a {
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-attribution a:hover {
+  color: #000;
+  background: cyan;
+  padding: 0 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px cyan;
+}
+
+/* ===== TFooter Ends===== */
+
+
+
+
+/* ===== TRENDING SECTION ===== */
+.trending-section {
+  width: 100%;
+  background: linear-gradient(135deg, #001a33, #000814);
+  padding: 2rem 1rem 3rem;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.trending-title {
+  font-size: 1.9rem;
+  color: cyan;
+  text-shadow: 0 0 20px cyan;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.trending-container {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 1rem;
+  padding: 0 1rem 1rem;
 }
-.online-scroll::-webkit-scrollbar {
+
+.trending-container::-webkit-scrollbar {
   height: 8px;
-  background: #001a2e;
-  border-radius: 10px;
-}
-.online-scroll::-webkit-scrollbar-thumb {
-  background: #0ff;
-  border-radius: 10px;
 }
 
-/* 🎮 YouTube-style Card */
-.online-scroll .game-card {
-  position: relative;
-  flex: 0 0 320px; /* Wider, like YouTube thumbnail */
-  height: 180px;
-  background: #001a2e;
-  border-radius: 14px;
+.trending-container::-webkit-scrollbar-thumb {
+  background: cyan;
+  border-radius: 10px;
+  box-shadow: 0 0 10px cyan;
+}
+
+.trending-card {
+  min-width: 180px;
+  max-width: 200px;
+  border-radius: 15px;
   overflow: hidden;
+  position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 12px rgba(0,255,255,0.15);
-}
-.online-scroll .game-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0,255,255,0.4);
+  flex-shrink: 0;
+  background: rgba(0, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
 }
 
-.online-scroll .game-card img {
+.trending-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 30px cyan;
+}
+
+.trending-card img {
   width: 100%;
-  height: 100%;
+  height: 270px;
   object-fit: cover;
-  filter: brightness(75%);
-  transition: 0.3s ease;
-}
-.online-scroll .game-card:hover img {
-  filter: brightness(90%);
+  display: block;
 }
 
-/* 🧊 Text Overlay on Image */
-.online-scroll .game-card h3 {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.trending-card .movie-info {
+  background: rgba(0, 0, 0, 0.7);
   text-align: center;
-  padding: 0.8rem;
-  font-size: 1rem;
-  color: white;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  text-shadow: 0 0 8px #00ffff;
+  padding: 0.6rem;
+  color: cyan;
 }
 
-/* 🏷️ Badge + Icons */
-.online-scroll .badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #0ff;
-  color: #001a2e;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 8px;
+.trending-card .movie-info h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.trending-card .movie-info p {
+  color: #aaa;
   font-size: 0.8rem;
-  box-shadow: 0 0 8px #00ffff;
 }
 
-.online-scroll .icons {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  gap: 6px;
-}
-.online-scroll .icons img {
-  width: 22px;
-  height: 22px;
-  background: rgba(0,255,255,0.1);
-  border-radius: 50%;
-  border: 1px solid cyan;
-  padding: 2px;
-  filter: drop-shadow(0 0 5px cyan);
-}
-  
-  .pagination {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin:30px 0;
-  flex-wrap:wrap;
-}
 
-.page-btn {
-  background:#222;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-}
 
-.page-btn:hover {
-  background:#0b6ef6;
-}
 
-.page-btn.active {
-  background:#0b6ef6;
-  color:#fff;
-  box-shadow:0 0 8px cyan;
-}
-  
-</style> 
-</head> 
-<body>  
-<main>  
-  <!-- HEADER -->  
-  <header id="mainHeader">    
-    <div class="search-bar">    
-      <input type="text" placeholder="Search...">    
-    </div>    
-    <div class="logo">  
-      <img src="assets/thumb/logo.png" alt="logo">  
-    </div>    
-    <div class="hamburger" id="hamburger">    
-      <span></span><span></span><span></span>    
-    </div>    
-  </header>    
+</style>
+</head>
+<body>
 
-  <!-- MENU -->    
-  <div class="menu" id="menu">  
-    <a href="movie.html">Movies</a>    
-    <a href="blog.html">Blog</a>    
-    <a href="games.html">Games</a>    
-    <a href="shop.html">Shop</a>    
-  </div>    
+<header class="show expanded">
+  <div class="logo">M</div>
+  <div class="search-bar"><input type="text" placeholder="Search..."></div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
 
-  <!-- HERO -->    
-  <section class="hero" id="hero">  
-    <h1 style="color:cyan; text-shadow:0 0 8px cyan;">All Movies Collection</h1>  
-<p style="font-size:16px; color:#ccc;">Explore our complete library of movies from every genre — Action, Romance, Adventure, Horror, and more!  
-Find your next favorite film right here on <strong>Blueverse</strong>.</p>  
-  </section>    
-<!-- 🎬 Movie Genre Filter Section -->
-<section class="movie-filter" style="text-align:center; margin:40px 0;">
-  <h3 style="color:cyan; text-shadow:0 0 8px cyan;">You May Search by Genre</h3>
+<nav class="menu">
+  <a href="#">Home</a>
+  <a href="#">Movies</a>
+  <a href="#">Series</a>
+  <a href="#">Top Rated</a>
+  <a href="#">About</a>
+</nav>
 
-  <div class="filter-buttons" style="margin-top:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px;">
-
-    <!-- Action -->
-    <button style="display:flex; align-items:center; gap:6px; background:#ff4444; color:#fff; border:none; padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:bold; font-size:14px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/893/893292.png" alt="Action" style="width:16px; height:16px;">
-      Action
-    </button>
-
-    <!-- Romance -->
-    <button style="display:flex; align-items:center; gap:6px; background:#ff66b2; color:#fff; border:none; padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:bold; font-size:14px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" alt="Romance" style="width:16px; height:16px;">
-      Romance
-    </button>
-
-    <!-- Adventure -->
-    <button style="display:flex; align-items:center; gap:6px; background:#00bcd4; color:#fff; border:none; padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:bold; font-size:14px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Adventure" style="width:16px; height:16px;">
-      Adventure
-    </button>
-
-    <!-- Horror -->
-    <button style="display:flex; align-items:center; gap:6px; background:#3e0d0d; color:#fff; border:none; padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:bold; font-size:14px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/2480/2480843.png" alt="Horror" style="width:16px; height:16px;">
-      Horror
-    </button>
-
-  </div>
-</section>
-  
-
-<!-- GAME CARDS -->    
-<section class="game-grid" id="gameGrid">  
-
-  <a href="topgameslist/topmobilegames/clashofclans.html" class="game-card">  
-  <span class="badge">Top</span>  
-  <div class="icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-  </div>
-  <img src="https://media.rawg.io/media/resize/420/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg" alt="Clash Of Clans">  
-  <h3>Clash Of Clans</h3>  
-</a> 
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/callofdutymobile.html'">  
-    <span class="badge">Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg" alt="Twilight">  
-    <h3>Call Of Duty:Mobile</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/freefiremax.html'">  
-    <span class="badge">Top online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg" alt="Free fire max">  
-    <h3>Free Fire Max</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/genshineimpact.html'">  
-    <span class="badge">#4</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg" alt="Genshine Impact">  
-    <h3>Genshine Impact</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/mobilelegend.html'">  
-    <span class="badge">#5</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/fbf/fbfb67ef5b9a871f8d2364a2f3084796.jpeg" alt="mobile legends">  
-    <h3>Mobile Legends:Bang Bang</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/pubgmobile.html'">  
-    <span class="badge">#6</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-      
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>PUBG:Mobile</h3>  
-  </div>  
-  
-<div class="game-card" onclick="location.href='topgameslist/topmobilegames/clashroyal.html'">  
-    <span class="badge"> Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>Clash Royal</h3>  
-  </div>  
-   <a href="topgameslist/topmobilegames/clashofclans.html" class="game-card">  
-  <span class="badge">Top</span>  
-  <div class="icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-  </div>
-  <img src="https://media.rawg.io/media/resize/420/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg" alt="Clash Of Clans">  
-  <h3>Clash Of Clans</h3>  
-</a> 
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/callofdutymobile.html'">  
-    <span class="badge">Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg" alt="Twilight">  
-    <h3>Call Of Duty:Mobile</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/freefiremax.html'">  
-    <span class="badge">Top online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg" alt="Free fire max">  
-    <h3>Free Fire Max</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/genshineimpact.html'">  
-    <span class="badge">#4</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg" alt="Genshine Impact">  
-    <h3>Genshine Impact</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/mobilelegend.html'">  
-    <span class="badge">#5</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/fbf/fbfb67ef5b9a871f8d2364a2f3084796.jpeg" alt="mobile legends">  
-    <h3>Mobile Legends:Bang Bang</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/pubgmobile.html'">  
-    <span class="badge">#6</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-      
-    </div>
- <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>PUBG:Mobile</h3>  
-  </div>  
-  
-<div class="game-card" onclick="location.href='topgameslist/topmobilegames/clashroyal.html'">  
-    <span class="badge"> Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>Clash Royal</h3>  
-  </div>  
+<section class="hero">
+  <h1>Featured Movies</h1>
+  <p>Watch the latest blockbusters and trending titles</p>
 </section>
 
 
-  
-  
-  <!-- GAME CARDS -->    
-<section class="game-grid" id="gameGrid">  
 
-  <a href="topgameslist/topmobilegames/clashofclans.html" class="game-card">  
-  <span class="badge">Top</span>  
-  <div class="icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-  </div>
-  <img src="https://media.rawg.io/media/resize/420/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg" alt="Clash Of Clans">  
-  <h3>Clash Of Clans</h3>  
-</a> 
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/callofdutymobile.html'">  
-    <span class="badge">Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg" alt="Twilight">  
-    <h3>Call Of Duty:Mobile</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/freefiremax.html'">  
-    <span class="badge">Top online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg" alt="Free fire max">  
-    <h3>Free Fire Max</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/genshineimpact.html'">  
-    <span class="badge">#4</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg" alt="Genshine Impact">  
-    <h3>Genshine Impact</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/mobilelegend.html'">  
-    <span class="badge">#5</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/fbf/fbfb67ef5b9a871f8d2364a2f3084796.jpeg" alt="mobile legends">  
-    <h3>Mobile Legends:Bang Bang</h3>  
-  </div>  
-
-  <div class="game-card" onclick="location.href='topgameslist/topmobilegames/pubgmobile.html'">  
-    <span class="badge">#6</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-      
-    </div>
- <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>PUBG:Mobile</h3>  
-  </div>  
-  
-<div class="game-card" onclick="location.href='topgameslist/topmobilegames/clashroyal.html'">  
-    <span class="badge"> Top Online</span>  
-    <div class="icons">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Android">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="IOS">
-    </div>
-    <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">  
-    <h3>Clash Royal</h3>  
-  </div>  
-  
+<!-- ===== FILTER SECTION ===== -->
+<section class="filter-section">
+  <a href="all.html" class="filter-btn active">All</a>
+  <a href="action.html" class="filter-btn">Action</a>
+  <a href="adventure.html" class="filter-btn">Adventure</a>
+  <a href="romance.html" class="filter-btn">Romance</a>
+  <a href="horror.html" class="filter-btn">Horror</a>
 </section>
-<!-- Pagination -->
-<div class="pagination">
-  <button class="page-btn active" data-page="1">1</button>
-  <button class="page-btn" data-page="2">2</button>
-  <button class="page-btn" data-page="3">3</button>
-  <button class="page-btn" data-page="4">4</button>
-  <button class="page-btn" data-page="next">Next</button>
+
+
+<!-- ===== TRENDING SECTION ===== -->
+<section class="trending-section">
+  <h2 class="trending-title">🔥 Trending Now</h2>
+
+  <div class="trending-container">
+    <div class="trending-card" onclick="location.href='kgf.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=11" alt="KGF 2">
+      <div class="movie-info"><h3>KGF: Chapter 2</h3><p>2022</p></div>
+    </div>
+
+    <div class="trending-card" onclick="location.href='pushpa.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=12" alt="Pushpa">
+      <div class="movie-info"><h3>Pushpa: The Rise</h3><p>2021</p></div>
+    </div>
+
+    <div class="trending-card" onclick="location.href='pathaan.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=13" alt="Pathaan">
+      <div class="movie-info"><h3>Pathaan</h3><p>2023</p></div>
+    </div>
+
+    <div class="trending-card" onclick="location.href='rrr.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=14" alt="RRR">
+      <div class="movie-info"><h3>RRR</h3><p>2022</p></div>
+    </div>
+
+    <div class="trending-card" onclick="location.href='jawaan.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=15" alt="Jawan">
+      <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
+    </div>
+
+    <div class="trending-card" onclick="location.href='leo.html'">
+      <span class="movie-badge">HOT</span>
+      <img src="https://picsum.photos/300/450?random=16" alt="Leo">
+      <div class="movie-info"><h3>Leo</h3><p>2023</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STATIC MOVIES ===== -->
+<div class="movie-grid">
+  <div class="movie-card" onclick="location.href='animal.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=1" alt="Animal">
+    <div class="movie-info"><h3>Animal</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='12thfail.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=2" alt="12th Fail">
+    <div class="movie-info"><h3>12th Fail</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='tiger3.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=3" alt="Tiger 3">
+    <div class="movie-info"><h3>Tiger 3</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='salaar.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=4" alt="Salaar">
+    <div class="movie-info"><h3>Salaar: Part 1</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='dunki.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=5" alt="Dunki">
+    <div class="movie-info"><h3>Dunki</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='leo.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=6" alt="Leo">
+    <div class="movie-info"><h3>Leo</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='sambahadur.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=7" alt="Sam Bahadur">
+    <div class="movie-info"><h3>Sam Bahadur</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='hinanna.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=8" alt="Hi Nanna">
+    <div class="movie-info"><h3>Hi Nanna</h3><p>2023</p></div>
+  </div>
+
+  <div class="movie-card" onclick="location.href='jawan.html'">
+    <span class="movie-badge">FEATURED</span>
+    <img src="https://picsum.photos/300/450?random=9" alt="Jawan">
+    <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
+  </div>
 </div>
-  
-  
-</main>
 
-<script>  
-  // HEADER ANIMATION  
-  window.addEventListener("load", () => {    
-    const header = document.getElementById("mainHeader");  
-    const hero = document.getElementById("hero");  
-    const grid = document.getElementById("gameGrid");  
-  
-    setTimeout(()=> header.classList.add("show"), 500);    
-    setTimeout(()=> header.classList.add("expanded"), 1500);  
-    setTimeout(()=> hero.classList.add("show"), 2000);  
-    setTimeout(()=> grid.classList.add("show"), 2700);  
-  });  
-  
-  // WORKING HAMBURGER MENU  
-  const hamburger = document.getElementById("hamburger");  
-  const menu = document.getElementById("menu");  
-  
-  hamburger.addEventListener("click", () => {  
-    hamburger.classList.toggle("active");  
-    menu.classList.toggle("active");  
-  });  
-  
-  document.querySelectorAll(".menu a").forEach(link => {  
-    link.addEventListener("click", () => {  
-      hamburger.classList.remove("active");  
-      menu.classList.remove("active");  
-    });  
-  });  
-  
-  // SCROLL ANIMATION  
-  const observer = new IntersectionObserver(entries => {  
-    entries.forEach(entry => {  
-      if (entry.isIntersecting) entry.target.classList.add('show');  
-    });  
-  }, { threshold: 0.2 });  
-  
-  document.querySelectorAll('.game-grid').forEach(el => observer.observe(el));  
-</script> 
+<!-- ===== PAGINATION PLACEHOLDER ===== -->
+<div class="pagination">
+  <a href="movies1.html" class="page-link active">1</a>
+  <a href="movies2.html" class="page-link">2</a>
+  <a href="movies3.html" class="page-link">3</a>
+  <a href="movies2.html" class="page-next">Next »</a>
+</div>
+
+
+<!-- ===== FOOTER SECTION ===== -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">M</div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="series.html">Series</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-socials">
+      <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-attribution">
+    <p>
+      Movie data, posters, and cast details provided by 
+      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDb</a>.
+      Icons by 
+      <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">Flaticon</a>.
+    </p>
+    <p>
+      This site is not endorsed or certified by TMDb or Flaticon.  
+      All trademarks and copyrights belong to their respective owners.
+    </p>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 MovieZone. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a2e0e6c61f.js" crossorigin="anonymous"></script>
 
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const allGrids = document.querySelectorAll(".game-grid, .horizontal-scroll");
-
-  allGrids.forEach(grid => {
-    const cards = Array.from(grid.children);
-    
-    // Shuffle cards
-    for (let i = cards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cards[i], cards[j]] = [cards[j], cards[i]];
-    }
-
-    // Fade out
-    grid.style.transition = "opacity 0.6s ease";
-    grid.style.opacity = "0";
-
-    // Re-append shuffled cards after fade-out
-    setTimeout(() => {
-      grid.innerHTML = "";
-      cards.forEach(card => {
-        card.style.opacity = "0";
-        card.style.transition = "opacity 0.6s ease";
-        grid.appendChild(card);
-      });
-
-      // Fade back in
-      grid.style.opacity = "1";
-      setTimeout(() => {
-        cards.forEach(card => (card.style.opacity = "1"));
-      }, 100);
-    }, 400);
-  });
+/* MENU TOGGLE */
+const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  menu.classList.toggle('active');
 });
 
-
-
-
-const pageButtons = document.querySelectorAll('.page-btn');
-const posts = document.querySelectorAll('.post-grid .post'); // All your posts
-const postsPerPage = 4; // Adjust how many posts per page
-let currentPage = 1;
-
-function showPage(page) {
-  const start = (page - 1) * postsPerPage;
-  const end = start + postsPerPage;
-
-  posts.forEach((post, index) => {
-    if(index >= start && index < end) {
-      post.style.display = 'block';
-    } else {
-      post.style.display = 'none';
-    }
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll('.movie-card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-
-  pageButtons.forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.page-btn[data-page="${page}"]`)?.classList.add('active');
-}
-
-// Initial load
-showPage(currentPage);
-
-// Pagination click event
-pageButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    let page = btn.dataset.page;
-    if(page === 'next') {
-      currentPage++;
-      if(currentPage > Math.ceil(posts.length / postsPerPage)) currentPage = 1;
-    } else {
-      currentPage = parseInt(page);
-    }
-    showPage(currentPage);
-  });
-});
-
-
-
-
+}, { threshold: 0.2 });
+cards.forEach(card => observer.observe(card));
 </script>
 
-
-<!-- Flaticon Attribution for all icons - Styled for Blueverse.site -->
-<footer style="text-align:center; padding:20px; font-size:14px; color:#fff; background-color:#111; border-top:1px solid #333;">
-    Icons by 
-    <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer" title="Flaticon" style="color:#00bcd4; text-decoration:none;">Flaticon</a> | 
-    Creators: 
-    <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer" title="Freepik" style="color:#00bcd4; text-decoration:none;">Freepik</a> | 
-    Used under 
-    <a href="https://www.flaticon.com/license/free" target="_blank" rel="noopener noreferrer" title="Flaticon Free License" style="color:#00bcd4; text-decoration:none;">Free License</a>
-</footer>
-</body>  
-</html> 
+</body>
+</html>
