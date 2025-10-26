@@ -309,32 +309,72 @@
     <p>Explore the world of tech, games, and futuristic innovation</p>
   </section>
 
-<!-- FEATURED POSTS -->
-<section class="featured reveal">
-  <div class="post" onclick="location.href='B-gamessection.html'">
-    <img src="https://picsum.photos/id/1059/600/300" alt="Games Section">
-    <div class="post-content">
-      <h3>Games Section</h3>
-      <p>Click and be aware of about your favorite game.</p>
-    </div>
-  </div>
-
-  <div class="post" onclick="location.href='future-of-vr.html'">
-    <img src="https://picsum.photos/id/1060/600/300" alt="Future of VR">
-    <div class="post-content">
-      <h3>Future of VR</h3>
-      <p>Virtual Reality experiences getting closer to reality.</p>
-    </div>
-  </div>
-
-  <div class="post" onclick="location.href='topgameslist/topmobilegames/mobilelegend.html'">
-    <img src="https://picsum.photos/id/1061/600/300" alt="Next Gen Consoles">
-    <div class="post-content">
-      <h3>Next-Gen Consoles</h3>
-      <p>What’s next in the console war?</p>
-    </div>
+<!-- 🎮 FILTER SECTION -->
+<section class="main-filter">
+  <h2 class="filter-title">Explore Categories</h2>
+  <div class="filter-buttons">
+    <button class="filter-item" onclick="location.href='android-ios.html'">Android / iOS Games</button>
+    <button class="filter-item" onclick="location.href='pc-console.html'">PC / Console Games</button>
+    <button class="filter-item" onclick="location.href='shop.html'">Shops</button>
+    <button class="filter-item" onclick="location.href='movies.html'">Movies</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Play Online Games</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Blog</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Games Tips and Tricks</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Games Updates </button>
   </div>
 </section>
+
+<style>
+  .main-filter {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: radial-gradient(circle at top, #06142f, #050b1a);
+  }
+
+  .filter-title {
+    font-size: 1.8rem;
+    color: #3dbfff;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .filter-item {
+    background: transparent;
+    color: #3dbfff;
+    border: 2px solid #3dbfff;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-item:hover {
+    background: #3dbfff;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px #3dbfff;
+  }
+
+  @media (max-width: 768px) {
+    .filter-buttons {
+      gap: 0.6rem;
+    }
+    .filter-item {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+</style>
 
 
 
