@@ -84,8 +84,8 @@ a {
 
 /* ===== LOGO (Centered & Glowing — Enlarged) ===== */
 .logo {
-  width: 500px;  /* Increased from 120px → 200px */
-  height: 500px;
+  width: 50px;  /* Increased from 120px → 200px */
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -178,7 +178,7 @@ a {
   top: 0;
   left: -100%;
   width: 250px;
-  height: 100%;
+  height: 300%;
   background: rgba(0,0,0,0.92);
   backdrop-filter: blur(20px);
   box-shadow: 5px 0 20px rgba(0,200,255,0.4);
@@ -848,116 +848,39 @@ footer {
 }
 
 
-  </style>
-</head>
-<body>
+/* ===== BREADCRUMB ===== */
+#breadcrumb {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 10, 20, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
 
-  <!-- HEADER -->
-  <header id="mainHeader">
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-    </div>
-    <div class="logo">
-      <img src="assets/thumb/logo.png" alt="logo">
-    </div>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
+.breadcrumb-container {
+  color: cyan;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  <!-- SLIDE MENU -->
-  <div class="menu" id="menu">
-    <a href="#">Login</a>
-    <a href="blog.html">Blog</a>
-    <a href="games.html">Games</a>
-    <a href="shop.html">Shop</a>
-  </div>
+.breadcrumb-container a {
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
-  <!-- MAIN -->
-  <main>
-    
+.breadcrumb-container a:hover {
+  color: white;
+  text-shadow: 0 0 8px cyan;
+}
 
+.breadcrumb-container span {
+  color: rgba(255,255,255,0.7);
+}
 
-
-
-<!-- 🌌 HERO SECTION -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Blueverse</h1>
-    <p>Your all-in-one hub for <strong>Games</strong>, <strong>Movies</strong>, and <strong>Shops</strong> — 
-       dive into the futuristic world of entertainment!</p>
-  </div>
-</section>
-
-
-<!-- 🎮 FILTER SECTION -->
-<section class="main-filter">
-  <h2 class="filter-title">Explore Categories</h2>
-  <div class="filter-buttons">
-    <button class="filter-item" onclick="location.href='android-ios.html'">Android / iOS Games</button>
-    <button class="filter-item" onclick="location.href='pc-console.html'">PC / Console Games</button>
-    <button class="filter-item" onclick="location.href='shop.html'">Shops</button>
-    <button class="filter-item" onclick="location.href='movies.html'">Movies</button>
-    <button class="filter-item" onclick="location.href='play-online.html'">Play Online Games</button>
-    <button class="filter-item" onclick="location.href='play-online.html'">Blog</button>
-    <button class="filter-item" onclick="location.href='play-online.html'">Games Tips and Tricks</button>
-    <button class="filter-item" onclick="location.href='play-online.html'">Games Updates </button>
-  </div>
-</section>
-
-<style>
-  .main-filter {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: radial-gradient(circle at top, #06142f, #050b1a);
-  }
-
-  .filter-title {
-    font-size: 1.8rem;
-    color: #3dbfff;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  .filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-  }
-
-  .filter-item {
-    background: transparent;
-    color: #3dbfff;
-    border: 2px solid #3dbfff;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .filter-item:hover {
-    background: #3dbfff;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 0 10px #3dbfff;
-  }
-
-  @media (max-width: 768px) {
-    .filter-buttons {
-      gap: 0.6rem;
-    }
-    .filter-item {
-      font-size: 0.85rem;
-      padding: 0.4rem 0.8rem;
-    }
-  }
-  
 
 /* ===== TRENDING SECTION ===== */
 .trending-section {
@@ -1092,7 +1015,124 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 0 20px cyan;
   background: linear-gradient(135deg, #00ffff, #00e0ff);
-}  
+} 
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="logo">
+      <img src="assets/thumb/logo.png" alt="logo">
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- SLIDE MENU -->
+  <div class="menu" id="menu">
+    <a href="#">Login</a>
+    <a href="blog.html">Blog</a>
+    <a href="games.html">Games</a>
+    <a href="shop.html">Shop</a>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    
+
+
+
+
+<!-- 🌌 HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Blueverse</h1>
+    <p>Your all-in-one hub for <strong>Games</strong>, <strong>Movies</strong>, and <strong>Shops</strong> — 
+       dive into the futuristic world of entertainment!</p>
+  </div>
+</section>
+
+
+
+
+<!-- 🎮 FILTER SECTION -->
+<section class="main-filter">
+  <h2 class="filter-title">Explore Categories</h2>
+  <div class="filter-buttons">
+    <button class="filter-item" onclick="location.href='android-ios.html'">Android / iOS Games</button>
+    <button class="filter-item" onclick="location.href='pc-console.html'">PC / Console Games</button>
+    <button class="filter-item" onclick="location.href='shop.html'">Shops</button>
+    <button class="filter-item" onclick="location.href='movies.html'">Movies</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Play Online Games</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Blog</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Games Tips and Tricks</button>
+    <button class="filter-item" onclick="location.href='play-online.html'">Games Updates </button>
+  </div>
+</section>
+
+<style>
+  .main-filter {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: radial-gradient(circle at top, #06142f, #050b1a);
+  }
+
+  .filter-title {
+    font-size: 1.8rem;
+    color: #3dbfff;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .filter-item {
+    background: transparent;
+    color: #3dbfff;
+    border: 2px solid #3dbfff;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-item:hover {
+    background: #3dbfff;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px #3dbfff;
+  }
+
+  @media (max-width: 768px) {
+    .filter-buttons {
+      gap: 0.6rem;
+    }
+    .filter-item {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  
+
+
   
 </style>
 
@@ -1229,34 +1269,34 @@ footer {
   
 
   <div class="trending-container">
-    <div class="trending-card" onclick="location.href='kgf.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=11" alt="KGF 2">
-      <div class="movie-info"><h3>KGF: Chapter 2</h3><p>2022</p></div>
+    <div class="trending-card" onclick="location.href='movies/action/baghi-4.html'">
+      <span class="movie-badge">NEW</span>
+      <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt="Baghi 4">
+      <div class="movie-info"><h3>Baghi 4</h3><p>2025</p></div>
     </div>
 
     <div class="trending-card" onclick="location.href='pushpa.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=12" alt="Pushpa">
-      <div class="movie-info"><h3>Pushpa: The Rise</h3><p>2021</p></div>
+      <span class="movie-badge">New</span>
+      <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg" alt="A working Man">
+      <div class="movie-info"><h3>A Working Man</h3><p>2025</p></div>
     </div>
 
-    <div class="trending-card" onclick="location.href='pathaan.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=13" alt="Pathaan">
-      <div class="movie-info"><h3>Pathaan</h3><p>2023</p></div>
+    <div class="trending-card" onclick="location.href='movies/action/nobody-2.html'">
+      <span class="movie-badge">NEW</span>
+      <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg" alt="Pathaan">
+      <div class="movie-info"><h3>Nobody 2</h3><p>2025</p></div>
     </div>
 
-    <div class="trending-card" onclick="location.href='rrr.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=14" alt="RRR">
-      <div class="movie-info"><h3>RRR</h3><p>2022</p></div>
+    <div class="trending-card" onclick="location.href='movies/action/predator-killerofkiller.html'">
+      <span class="movie-badge">NEW</span>
+      <img src="https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg" alt="RRR">
+      <div class="movie-info"><h3>Predator: killer of killer</h3><p>2025</p></div>
     </div>
 
     <div class="trending-card" onclick="location.href='jawaan.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=15" alt="Jawan">
-      <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
+      <span class="movie-badge">New, Action</span>
+      <img src="https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg" alt="Jawan">
+      <div class="movie-info"><h3>Trons Ares</h3><p>2025</p></div>
     </div>
 
     <div class="trending-card" onclick="location.href='leo.html'">
@@ -1341,9 +1381,9 @@ sections.forEach(sec=>{
   observer.observe(sec);
 });
     
+ 
   </script>
-  
-  </div> <!-- yaha scroll-container close hota hai -->
+
 
   <!-- ABOUT SECTION -->
   <section class="about-section">

@@ -50,23 +50,42 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
   to { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
 }
 
+/* ===== LOGO (Circular, Glowing, Responsive) ===== */
 .logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: cyan;
-  background: rgba(255,255,255,0.07);
+  width: clamp(50px, 8vw, 50px);   /* auto scales with screen size */
+  height: clamp(50px, 8vw, 50px);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px cyan;
-  transition: transform 1s ease;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.25), rgba(0,255,255,0.05));
+  box-shadow: 0 0 25px rgba(0,255,255,0.6), 0 0 40px rgba(0,255,255,0.2);
+  transition: transform 0.8s ease, box-shadow 0.5s ease;
   margin: 0 1rem;
-  flex-shrink: 0;
+  cursor: pointer;
 }
-.logo:hover { transform: rotate(360deg) scale(1.1); }
+
+/* Hover effect */
+.logo:hover {
+  transform: scale(1.1) rotate(360deg);
+  box-shadow: 0 0 50px cyan, 0 0 80px rgba(0,255,255,0.5);
+}
+
+/* Logo image */
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px cyan);
+  transition: transform 0.5s ease;
+}
+
+/* Slight zoom on hover */
+.logo:hover img {
+  transform: scale(1.08);
+}
 
 .search-bar {
   flex: 1;
@@ -544,24 +563,78 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 }
 
 
+/* ===== BREADCRUMB ===== */
+#breadcrumb {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1.5rem;
+  color: cyan;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  margin: 1.2rem auto;
+  box-sizing: border-box;
+}
 
+/* Links */
+#breadcrumb a {
+  color: cyan;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#breadcrumb a:hover {
+  color: white;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Current Page */
+#breadcrumb span {
+  color: #aaa;
+  font-weight: 600;
+}
+
+/* Arrow Separator */
+.breadcrumb-arrow {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  font-size: 1rem;
+  margin: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #breadcrumb {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+}
 
 </style>
 </head>
 <body>
 
 <header class="show expanded">
-  <div class="logo">M</div>
+  
+  <div class="logo">
+  <img src="/assets/thumb/logo.png" alt="My Logo">
+</div>
   <div class="search-bar"><input type="text" placeholder="Search..."></div>
   <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
 
 <nav class="menu">
-  <a href="#">Home</a>
-  <a href="#">Movies</a>
-  <a href="#">Series</a>
-  <a href="#">Top Rated</a>
-  <a href="#">About</a>
+  <a href="/index.html">Home</a>
+  <a href="movie.html">Movies</a>
+  <a href="/games.html"> Online Games</a>
+  <a href="/blog.html">Blog(tips and Guids)</a>
+  <a href="/contact.html">Contact</a>
 </nav>
 
 <section class="hero">
@@ -569,12 +642,12 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
   <p>Watch the latest blockbusters and trending titles</p>
 </section>
 
-
+<nav id="breadcrumb"></nav>
+<script src="/breadcrumb.js"></script>
 
 <!-- ===== FILTER SECTION ===== -->
 <section class="filter-section">
-  <a href="all.html" class="filter-btn active">All</a>
-  <a href="action.html" class="filter-btn">Action</a>
+  <a href="action.html" class="filter-btn active">Action</a>
   <a href="adventure.html" class="filter-btn">Adventure</a>
   <a href="romance.html" class="filter-btn">Romance</a>
   <a href="horror.html" class="filter-btn">Horror</a>
@@ -627,59 +700,38 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 
 <!-- ===== STATIC MOVIES ===== -->
 <div class="movie-grid">
-  <div class="movie-card" onclick="location.href='animal.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=1" alt="Animal">
-    <div class="movie-info"><h3>Animal</h3><p>2023</p></div>
+  <div class="movie-card" onclick="location.href='action/A-working-man.html'">
+    <span class="movie-badge">NEW</span>
+    <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg" alt="Working Man">
+    <div class="movie-info"><h3>A Working Man</h3><p>2025</p></div>
   </div>
 
-  <div class="movie-card" onclick="location.href='12thfail.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=2" alt="12th Fail">
-    <div class="movie-info"><h3>12th Fail</h3><p>2023</p></div>
+  <div class="movie-card" onclick="location.href='action/baghi-4.html'">
+    <span class="movie-badge">NEW</span>
+    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt="Baghi 4">
+    <div class="movie-info"><h3>Baghi 4</h3><p>2025</p></div>
   </div>
 
-  <div class="movie-card" onclick="location.href='tiger3.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=3" alt="Tiger 3">
-    <div class="movie-info"><h3>Tiger 3</h3><p>2023</p></div>
+  <div class="movie-card" onclick="location.href='action/nobody-2.html'">
+    <span class="movie-badge">NEW</span>
+    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg" alt="Nobody 2">
+    <div class="movie-info"><h3>Nobody 2</h3><p>2025</p></div>
+    
   </div>
 
-  <div class="movie-card" onclick="location.href='salaar.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=4" alt="Salaar">
-    <div class="movie-info"><h3>Salaar: Part 1</h3><p>2023</p></div>
+  <div class="movie-card" onclick="location.href='action/predator-killerofkiller.html'">
+    <span class="movie-badge">NEW</span>
+    <img src="https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg" alt="Salaar">
+    <div class="movie-info"><h3>Predator: killer of killer</h3><p>2025</p></div>
   </div>
 
-  <div class="movie-card" onclick="location.href='dunki.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=5" alt="Dunki">
-    <div class="movie-info"><h3>Dunki</h3><p>2023</p></div>
+  <div class="movie-card" onclick="location.href='action/trons-ares.html'">
+    <span class="movie-badge">NEW</span>
+    <img src="https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg" alt="Dunki">
+    <div class="movie-info"><h3>Trons Ares</h3><p>2025</p></div>
   </div>
 
-  <div class="movie-card" onclick="location.href='leo.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=6" alt="Leo">
-    <div class="movie-info"><h3>Leo</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='sambahadur.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=7" alt="Sam Bahadur">
-    <div class="movie-info"><h3>Sam Bahadur</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='hinanna.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=8" alt="Hi Nanna">
-    <div class="movie-info"><h3>Hi Nanna</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='jawan.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=9" alt="Jawan">
-    <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
-  </div>
+  
 </div>
 
 <!-- ===== PAGINATION PLACEHOLDER ===== -->

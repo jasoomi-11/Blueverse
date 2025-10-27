@@ -352,6 +352,64 @@
     border-top: 1px solid rgba(255,255,255,0.1);
     margin-top: 2rem;
   }
+  
+  
+  /* ===== BREADCRUMB ===== */
+#breadcrumb {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1.5rem;
+  color: cyan;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  margin: 1.2rem auto;
+  box-sizing: border-box;
+}
+
+/* Links */
+#breadcrumb a {
+  color: cyan;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#breadcrumb a:hover {
+  color: white;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Current Page */
+#breadcrumb span {
+  color: #aaa;
+  font-weight: 600;
+}
+
+/* Arrow Separator */
+.breadcrumb-arrow {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  font-size: 1rem;
+  margin: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #breadcrumb {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+}
+  
+  
+  
+  
 </style>
 </head>
 <body>
@@ -367,25 +425,40 @@
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
+  
+  <link rel="stylesheet" href="/assets/sidebar.css">
+  
 </header>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar" id="sidebar">
-    <ul>
-      <li><a href="">🏠 Home</a></li>
-      <li><a href="#">🎮 Games</a></li>
-      <li><a href="#">📰 Blog</a></li>
-      <li><a href="#">Movies </a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <ul class="main-menu">
+    <li><a href="/homepage.html">🏠 Home</a></li>
+    <li><a href="/games.html">🎮 Games</a></li>
+    <li><a href="/blog.html">📰 Blog</a></li>
+    <li><a href="/contact.html">📩 Contact</a></li>
+    <li><a href="/movie.html">🎬 Movies</a></li>
+  </ul>
 
-  <div class="overlay" id="overlay"></div>
+  <div class="sidebar-divider"></div>
+
+  <ul class="info-menu">
+    <li><a href="/about.html">ℹ️ About</a></li>
+    <li><a href="/privacy.html">🔒 Privacy Policy</a></li>
+    <li><a href="/terms.html">📜 Terms of Service</a></li>
+  </ul>
+</div>
+
+<div class="overlay" id="overlay"></div>
 
 <!-- HERO -->
 <section class="hero">
   <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/Zero.png" alt="Word Seasons Game Thumbnail">
 </section>
+
+<nav id="breadcrumb"></nav>
+<script src="/breadcrumb.js"></script>
+
 
 <!-- GAME DETAILS -->
 <div class="details">

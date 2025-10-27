@@ -1,25 +1,23 @@
-<!DOCTYPE html>  
-<html lang="en">  
+<!DOCTYPE html>  <html lang="en">  
 <head>  
-
-
-
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blueverse - Games</title>
-  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>YourBrand | Mini Games</title>  
   <style>  
-    * {margin:0; padding:0; box-sizing:border-box;}  
-    body {  
-      font-family: 'Segoe UI', sans-serif;  
-      background: linear-gradient(180deg, #000428, #004e92);  
-      color: white;  
-      overflow-x: hidden;  
-      scroll-behavior: smooth;  
-      min-height: 100vh;  
+    /* ===== RESET ===== */  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
     }  
-
-/* HEADER */  
+    body {  
+      font-family: 'Poppins', sans-serif;  
+      background: radial-gradient(circle at top, #020024, #090979, #00d4ff);  
+      color: white;  
+      min-height: 100vh;  
+      overflow-x: hidden;  
+      padding-top: 100px;  
+    }  /* ===== HERO HEADER ===== */  
 header {  
   position: fixed;  
   top: 1rem;  
@@ -37,78 +35,84 @@ header {
   transition: all 1.6s cubic-bezier(0.77,0,0.175,1);  
   z-index: 1000;  
   opacity: 0;  
-  overflow: hidden;  
   padding: 0 1.2rem;  
-  filter: blur(15px);  
+  animation: headerGlow 4s infinite alternate ease-in-out;  
 }  
-header.show { opacity: 1; filter: blur(0); }  
+
+header.show { opacity: 1; }  
 header.expanded {  
   width: 90%;  
   max-width: 1100px;  
   transform: translateX(-50%) scale(1);  
 }  
 
-/* LOGO CENTER */
-.logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: cyan;
-  background: rgba(255,255,255,0.07);
-  border-radius: 50%;
-  width: 50px; 
-  height: 50px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  box-shadow: 0 0 15px cyan;
-  transition: transform 1s ease;
-  margin: 0 1rem;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-.logo:hover { 
-  transform: rotate(360deg) scale(1.1); 
-}
+@keyframes headerGlow {  
+  from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }  
+  to { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }  
+}  
 
-/* 🔵 Added image styling for your 3D logo */
-.logo img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 8px cyan);
-  transition: transform 0.6s ease;
-}
-.logo img:hover {
-  transform: scale(1.1);
-}
+.logo {  
+  width: 50px;  
+  height: 50px;  
+  border-radius: 50%;  
+  overflow: hidden;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  background: radial-gradient(circle, rgba(0,255,255,0.25), rgba(0,255,255,0.05));  
+  box-shadow: 0 0 25px rgba(0,255,255,0.6);  
+  cursor: pointer;  
+  transition: transform 0.8s ease, box-shadow 0.5s ease;  
+}  
+.logo:hover { transform: scale(1.1) rotate(360deg); box-shadow: 0 0 50px cyan; }  
+.logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }  
 
-.search-bar { flex: 1; display: flex; justify-content: center; }  
+.search-bar {  
+  flex: 1;  
+  display: flex;  
+  justify-content: center;  
+}  
 .search-bar input {  
   width: 180px;  
-  max-width: 200px;  
   padding: 6px 12px;  
   border: none;  
   border-radius: 20px;  
-  outline: none;  
-  font-size: 0.9rem;  
   background: rgba(255,255,255,0.1);  
   color: white;  
+  outline: none;  
+  font-size: 0.9rem;  
+}  
+.search-bar input:focus {  
+  width: 220px;  
+  background: rgba(0,200,255,0.15);  
+  box-shadow: 0 0 10px cyan;  
 }  
 
-.hamburger { width: 30px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; z-index: 1100; flex-shrink: 0; }  
+.hamburger {  
+  width: 30px;  
+  height: 22px;  
+  display: flex;  
+  flex-direction: column;  
+  justify-content: space-between;  
+  cursor: pointer;  
+}  
 .hamburger span {  
-  display: block;  
-  height: 3px; width: 100%;  
+  height: 3px;  
+  width: 100%;  
   background: cyan;  
   border-radius: 3px;  
   transition: all 0.4s ease;  
 }  
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }  
+.hamburger.active span:nth-child(2) { opacity: 0; }  
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }  
 
 .menu {  
   position: fixed;  
-  top: 0; left: -100%;  
-  width: 250px; height: 100%;  
+  top: 0;  
+  left: -100%;  
+  width: 250px;  
+  height: 100%;  
   background: rgba(0,0,0,0.9);  
   backdrop-filter: blur(15px);  
   transition: left 0.6s ease;  
@@ -119,346 +123,412 @@ header.expanded {
 }  
 .menu.active { left: 0; }  
 .menu a {  
-  display: block;  
-  text-align: center;  
   color: cyan;  
   text-decoration: none;  
-  font-size: 1.1rem;  
   font-weight: bold;  
   margin: 1rem 0;  
   padding: 0.8rem;  
   border-radius: 10px;  
   transition: all 0.3s ease-in-out;  
-}  
-.menu a:hover {  
-  transform: translateY(-4px) scale(1.05);  
-  background: rgba(0,200,255,0.2);  
-}  
-
-/* HERO SECTION */  
-.hero {  
-  margin-top: 7rem;  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
   text-align: center;  
-  padding: 3rem 1rem;  
+}  
+.menu a:hover { background: cyan; color: #000; }  
+
+/* ===== GAMES GRID ===== */  
+.games-container {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));  
+  gap: 20px;  
+  padding: 2rem;  
+  max-width: 1200px;  
+  margin: 0 auto;  
+}  
+
+.game-card {  
+  position: relative;  
+  border-radius: 15px;  
+  overflow: hidden;  
+  aspect-ratio: 1/1;  
   background: rgba(255,255,255,0.05);  
-  border-radius: 20px;  
-  box-shadow: 0 0 25px rgba(0,200,255,0.3);  
-  opacity: 0;  
-  filter: blur(15px);  
-  transition: all 1.2s ease;  
-}  
-.hero.show { opacity: 1; filter: blur(0); }  
-
-.hero-content { max-width: 600px; }  
-
-.hero-icon {  
-  width: 120px;  
-  height: auto;  
-  margin-bottom: 1rem;  
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));  
-  transition: transform 0.4s ease;  
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);  
+  transition: all 0.3s ease-in-out;  
 }  
 
-.hero-icon:hover {  
-  transform: rotateY(15deg) scale(1.05);  
+.game-card:hover {  
+  transform: scale(1.05);  
+  box-shadow: 0 0 25px cyan;  
 }  
 
-.hero h1 {  
-  font-size: 2rem;  
-  margin-bottom: 0.5rem;  
-  color: cyan;  
+.game-card img {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  display: block;  
 }  
 
-.hero p {  
-  font-size: 1rem;  
-  color: #ddd;  
+.badge {  
+  position: absolute;  
+  top: 8px;  
+  left: 8px;  
+  background: cyan;  
+  color: black;  
+  padding: 4px 8px;  
+  font-size: 0.8rem;  
+  font-weight: bold;  
+  border-radius: 6px;  
+  box-shadow: 0 0 10px cyan;  
 }  
 
-@media (max-width: 768px) {  
-  .hero h1 { font-size: 1.5rem; }  
-  .hero p { font-size: 0.9rem; }  
+/* ===== PAGINATION ===== */  
+.pagination {  
+  display: flex;  
+  justify-content: center;  
+  margin: 2rem 0;  
+  gap: 10px;  
+}  
+.pagination button {  
+  background: rgba(0,255,255,0.2);  
+  border: 1px solid cyan;  
+  color: white;  
+  padding: 8px 14px;  
+  border-radius: 8px;  
+  cursor: pointer;  
+  transition: 0.3s;  
+}  
+.pagination button:hover,  
+.pagination button.active {  
+  background: cyan;  
+  color: black;  
 }  
 
-/* PLAYSTORE STYLE THUMBNAILS */
-.thumbnails {
-  margin: 3rem auto;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0 1rem;
-  opacity: 0;
-  filter: blur(15px);
-  transition: all 1s ease;
+@media (max-width: 600px) {  
+  .games-container { gap: 10px; padding: 1rem; }  
+  .pagination button { padding: 6px 10px; font-size: 0.8rem; }  
 }
-.thumbnails.show { opacity: 1; filter: blur(0); }
-.thumb-item {
+
+/* ===== FOOTER ===== */
+footer {
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+border-top: 1px solid rgba(0, 255, 255, 0.2);
+padding: 3rem 1rem;
+color: white;
+box-shadow: 0 -2px 20px rgba(0, 255, 255, 0.2);
+margin-top: 3rem;
+}
+
+.footer-container {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+color: cyan;
+margin-bottom: 1rem;
+}
+
+.footer-section p,
+.footer-section li {
+font-size: 0.9rem;
+line-height: 1.6;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: flex-start;
+}
+
+.footer-section ul li {
+margin-bottom: 0.7rem;
+}
+
+/* Glowing bordered footer links */
+.footer-section a {
+display: inline-block;
+color: white;
+text-decoration: none;
+border: 1px solid rgba(0, 255, 255, 0.3);
+padding: 6px 12px;
+border-radius: 8px;
+transition: all 0.3s ease;
+backdrop-filter: blur(5px);
+background: rgba(255, 255, 255, 0.05);
+font-size: 0.9rem;
+}
+
+.footer-section a:hover {
+color: cyan;
+border-color: cyan;
+box-shadow: 0 0 10px cyan, 0 0 20px rgba(0, 255, 255, 0.4);
+transform: translateY(-2px);
+}
+
+/* Social icons */
+.social-icons {
+display: flex;
+gap: 10px;
+margin-top: 0.5rem;
+}
+
+.social-icons img {
+width: 22px;
+height: 22px;
+filter: drop-shadow(0 0 5px cyan);
+transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons img:hover {
+transform: scale(1.2);
+filter: drop-shadow(0 0 10px cyan);
+}
+
+/* Footer bottom */
+.footer-bottom {
+border-top: 1px solid rgba(0, 255, 255, 0.2);
+margin-top: 2rem;
+padding-top: 1rem;
+text-align: center;
+font-size: 0.85rem;
+}
+
+.footer-bottom a {
+color: cyan;
+text-decoration: none;
+}
+
+.footer-bottom a:hover {
+text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+footer {
+text-align: center;
+}
+
+.footer-container {
+grid-template-columns: 1fr;
+}
+
+.footer-section ul {
+justify-content: center;
+}
+
+.social-icons {
+justify-content: center;
+}
+}
+
+
+/* ===== GAMES PAGE HERO ===== */
+.hero-games {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.05), rgba(0,0,50,0.8));
+  border-bottom: 2px solid rgba(0,255,255,0.3);
+  overflow: hidden;
+}
+
+.hero-games::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, rgba(0,255,255,0.05), transparent, rgba(0,255,255,0.05));
+  animation: rotateBg 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  to { transform: rotate(360deg); }
+}
+
+.hero-games .hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 1rem 5rem;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-games h1 {
+  font-size: 3rem;
+  color: cyan;
+  text-shadow: 0 0 25px rgba(0,255,255,0.9);
+  letter-spacing: 1px;
+}
+
+.hero-games p {
+  font-size: 1.1rem;
+  color: #ccf8ff;
+  margin: 1.2rem 0 2rem;
+}
+
+.hero-buttons {
   display: flex;
-  align-items: center;
+  justify-content: center;
   gap: 1rem;
-  background: rgba(255,255,255,0.05);
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,200,255,0.15);
-  transition: background 0.3s ease;
-  text-decoration: none;
-  color: inherit;
+  flex-wrap: wrap;
 }
-.thumb-item:hover {
-  background: rgba(0,200,255,0.1);
-}
-.thumb-item img {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 12px;
-  flex-shrink: 0;
-}
-.thumb-details {
-  display: flex;
-  flex-direction: column;
-}
-.thumb-details h3 {
-  font-size: 1rem;
-  font-weight: 600;
+
+.hero-btn.secondary {
+  background: rgba(0,255,255,0.05);
+  border: 1px solid rgba(0,255,255,0.4);
   color: cyan;
 }
-.thumb-details p {
-  font-size: 0.85rem;
-  color: #ccc;
-  margin-top: 0.3rem;
+
+.hero-btn.secondary:hover {
+  background: cyan;
+  color: black;
+  transform: translateY(-2px);
 }
 
-/* SECTION HEADING */
-.section-title {
-  margin: 1.5rem 1rem 0.5rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: cyan;
+@media (max-width: 600px) {
+  .hero-games h1 { font-size: 2.1rem; }
+  .hero-games p { font-size: 1rem; }
 }
 
-/* HORIZONTAL SCROLL */
-.scroll-container {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding: 1rem;
-  scroll-snap-type: x mandatory;
-  opacity: 0;
-  filter: blur(15px);
-  transition: all 1s ease;
-}
-.scroll-container.show { opacity: 1; filter: blur(0); }
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
 
-/* ITEM */
-.thumb-item {
-  flex: 0 0 calc(33.33% - 1rem);
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  min-width: 220px;
-  box-shadow: 0 0 12px rgba(0,200,255,0.3);
-  transition: transform 0.3s ease;
-  scroll-snap-align: start;
-}
-.thumb-item:hover {
-  transform: scale(1.05);
-}
-.thumb-item img {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
-  object-fit: cover;
-  flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(0,200,255,0.4);
-}
-.thumb-item h3 {
-  font-size: 1rem;
-  color: #fff;
-  margin: 0;
-}
+
   </style>  
-</head>  
+</head> 
 <body>  
-  <!-- HEADER -->  
+  <!-- ===== HEADER ===== -->  
   <header id="mainHeader">  
-    <div class="search-bar">  
-      <input type="text" placeholder="Search...">  
-    </div>  
-    <div class="logo">
-      <img src="assets/thumb/logo.png" alt="logo">
-    </div>  
+    <div class="logo"><img src="logo.png" alt="Logo"></div>  
+    <div class="search-bar"><input type="text" placeholder="Search games..."></div>  
     <div class="hamburger" id="hamburger">  
       <span></span><span></span><span></span>  
     </div>  
-  </header>  
-
-  <!-- SLIDE MENU -->  
-  <div class="menu" id="menu">  
-    <a href="movie.html">Movies</a>  
-    <a href="blog.html">Blog</a>  
-    <a href="games.html">Games</a>  
-    <a href="shop.html">Shop</a>  
+  </header>    <!-- ===== SIDE MENU ===== -->    <div class="menu" id="sideMenu">  
+    <a href="/">Home</a>  
+    <a href="/movies">Movies</a>  
+    <a href="/games">Games</a>  
+    <a href="/blog">Blog</a>  
+    <a href="/contact">Contact</a>  
+  </div> 
+  
+  
+  <!-- ===== NEW HERO SECTION FOR GAMES PAGE ===== -->
+<section class="hero hero-games">
+  <div class="hero-content">
+    <h1>🔥 Play Awesome Mini Games</h1>
+    <p>Dive into our fast, fun, and free mini-games collection — right in your browser. No downloads, no limits!</p>
+    
+  </div>
+</section>
+  
+  
+  <!-- ===== GAMES GRID ===== -->    <section class="games-container" id="gamesContainer">  
+    <!-- Example Cards -->  
+    <a href="games/3-dash.html" class="game-card"><span class="badge">New</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/3-dash.png" alt="Game 1"></a>  
+    
+    <a href="games/see-lord.html" class="game-card"><span class="badge">Hot</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/see-lord.png" alt="Game 2"></a> 
+    
+    <a href="games/monster-dash.html" class="game-card"><span class="badge">Top</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/monster-dash.png" alt="Game 3"></a> 
+    
+    <a href="games/unstack-tower.html" class="game-card"><span class="badge">New</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/unstack-tower.png" alt="Game 4"></a>  
+    
+    <a href="games/word-seasons.html" class="game-card"><span class="badge">Hot</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/word-seasons-thumb.png" alt="Game 5"></a>  
+    
+    <a href="games/tropical-match-2.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/tropical-match-2.png" alt="Game 6"></a> 
+    <a href="games/twilight-solitaire.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/twilight.png" alt="Game 6"></a>
+    
+    <a href="games/two-stunt-racers.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/two-stunt-racers.png" alt="Game 6"></a>
+    
+    
+    <a href="games/zero-to-millionaire.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/Zero.png" alt="Game 6"></a>
+    
+    <a href="games/brawl-stars-brave-adventure.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/brawlstars.png" alt="Game 6"></a>
+    
+    <a href="games/bubble-shooter-temple-jewels.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/bubble-shooter-temple-jewels.png" alt="Game 6"></a>
+    
+    <a href="games/italian-brainrot-baby-clicker.html" class="game-card"><span class="badge">Fun</span><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/italian-brainrot-baby-clicker.png" alt="game"></a>
+    
+    
+    
+    <!-- Add as many as you want -->  
+  </section>    <!-- ===== PAGINATION ===== -->    <div class="pagination" id="pagination">  
+    <button class="active">1</button>  
+    <button>2</button>  
+    <button>3</button>  
+    <button>Next</button>  
+  </div>    <script>  
+    // ===== HEADER ANIMATION =====  
+    const header = document.getElementById('mainHeader');  
+    window.addEventListener('load', () => {  
+      header.classList.add('show');  
+      setTimeout(() => header.classList.add('expanded'), 400);  
+    });  
+  
+    // ===== HAMBURGER TOGGLE =====  
+    const hamburger = document.getElementById('hamburger');  
+    const sideMenu = document.getElementById('sideMenu');  
+    hamburger.addEventListener('click', () => {  
+      hamburger.classList.toggle('active');  
+      sideMenu.classList.toggle('active');  
+    });  
+  
+    // ===== PAGINATION (Static Example) =====  
+    const paginationButtons = document.querySelectorAll('.pagination button');  
+    paginationButtons.forEach(btn => {  
+      btn.addEventListener('click', () => {  
+        paginationButtons.forEach(b => b.classList.remove('active'));  
+        btn.classList.add('active');  
+      });  
+    });  
+  </script>    <!-- ===== FOOTER ===== -->    <footer>  
+    <div class="footer-container">  
+      <div class="footer-section">  
+        <h3>YourBrand</h3>  
+        <p>Watch free movies, play fun mini games, and explore helpful blog guides — all in one place.</p>  
+      </div>  <div class="footer-section">  
+    <h4>Quick Links</h4>  
+    <ul>  
+      <li><a href="/">Home</a></li>  
+      <li><a href="/movies">Movies</a></li>  
+      <li><a href="/games">Games</a></li>  
+      <li><a href="/blog">Blog</a></li>  
+      <li><a href="/contact">Contact</a></li>  
+    </ul>  
   </div>  
 
-  <!-- HERO -->  
-  <section class="hero" id="hero">  
-    <div class="hero-content">  
-      <img src="assets/thumb/controller.png" alt="Game Controller" class="hero-icon">  
-      <h1>Welcome to Blueverse Games</h1>  
-      <p>Explore the best action, adventure, and puzzle games here!</p>  
+  <div class="footer-section">  
+    <h4>Legal</h4>  
+    <ul>  
+      <li><a href="/privacy-policy">Privacy Policy</a></li>  
+      <li><a href="/terms-of-service">Terms of Service</a></li>  
+      <li><a href="/copyright">Copyright Policy</a></li>  
+    </ul>  
+  </div>  
+
+  <div class="footer-section">  
+    <h4>Contact</h4>  
+    <p>Email: <a href="mailto:support@yourbrand.com">support@yourbrand.com</a></p>  
+    <p>Follow us:</p>  
+    <div class="social-icons">  
+      <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>  
+      <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>  
+      <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>  
+      <a href="#"><img src="icons/youtube.svg" alt="YouTube"></a>  
     </div>  
-  </section>  
+  </div>  
+</div>  
 
-  <!-- THUMBNAIL LIST (PLAYSTORE STYLE) -->  
-  <section class="thumbnails" id="thumbs1">  
-    <a href="games/twilight.html" class="thumb-item">  
-      <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/twilight.png" alt="Twilight">  
-      <div class="thumb-details">  
-        <h3>Twilight solitair</h3>  
-        <p>Arcade•  • HTML5</p>  
-      </div>  
-    </a>  
-    <a href="games/3-dash.html" class="thumb-item">  
-      <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/3-dash.png" alt="3 Dash">  
-      <div class="thumb-details">  
-        <h3>3 Dash</h3>  
-        <p>Puzzle • HTML5</p>  
-      </div>  
-    </a>  
-    <a href="games/brawl-stars-brave-adventure.html" class="thumb-item">  
-      <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/brawlstars.png" alt="Brawl Stars: Brave Adventure Thumbnail"> 
-      <div class="thumb-details">  
-        <h3>Brawl Stars: Brave Adventure</h3>  
-        <p>Action • HTML5</p>  
-      </div>  
-    </a>  
-    <a href="games/bubble-shooter-temple-jewels.html" class="thumb-item">  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/bubble-shooter-temple-jewels.png" alt="Bubble Shooter Temple Jewels Thumbnail">
-      <div class="thumb-details">  
-        <h3>Booble Shooter Temple Jewels</h3>  
-        <p>🧩 Puzzle • Browser • HTML5 </p>  
-      </div>  
-    </a>  
-    <a href="games/italian-brainrot-baby-clicker.html" class="thumb-item">  
-        <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/italian-brainrot-baby-clicker.png" alt="Italian Brainrot Baby Clicker Thumbnail">  
-      <div class="thumb-details">  
-        <h3>Italian Brainrot Baby Clicker </h3>  
-        <p>Clicker •Browser• HTML5</p>  
-      </div>  
-    </a>  
-  </section>  
-
-  <!-- GAME LIST -->
-<h2 class="section-title">Popular Games</h2>
-<div class="scroll-container" id="scrollGames">
-  <a href="games/monster-dash.html" class="thumb-item">
-      <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/monster-dash.png" alt="Monster Dash Thumbnail">
-    <h3>Monster Dash</h3>
-  </a>
-  <a href="games/see-lord.html" class="thumb-item">
-   <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/see-lord.png" alt="See Lord Game Thumbnail">
-    <h3>See Lord</h3>
-  </a>
-  <a href="games/tropical-match-2.html" class="thumb-item">
-    <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/tropical-match-2.png" alt="Tropical Match 2 Thumbnail">
-    <h3>Tropical Match 2</h3>
-  </a>
-  <a href="games/two-stunt-racers.html" class="thumb-item">
-  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/two-stunt-racers.png" alt="Two Stunt Racers Thumbnail">
-    <h3> Two Stunt Racer</h3>
-  </a>
-  <a href="games/unstack-tower.html" class="thumb-item">
-    <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/unstack-tower.png" alt="Unstack Tower Thumbnail">
-    <h3>Unstack Tower </h3>
-  </a>
-  <a href="games/word-seasons.html" class="thumb-item">
-  <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/word-seasons-thumb.png" alt="Word Seasons Game Thumbnail">
-    <h3> Word Seasons </h3>
-  </a>
+<div class="footer-bottom">  
+  <p>© 2025 YourBrand. All rights reserved.</p>  
+  <p>Icons by <a href="https://www.flaticon.com/" target="_blank">Flaticon</a> | Images and Data from <a href="https://www.themoviedb.org/" target="_blank">TMDB</a></p>  
 </div>
 
-  <!-- THUMBNAIL LIST (PLAYSTORE STYLE) -->  
-  <section class="thumbnails" id="thumbs2">  
-    <a href="games/zero-to-millionaire.html" class="thumb-item">  
-     <img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/Zero.png" alt="Zero to Millionaire Thumbnail"> 
-      <div class="thumb-details">  
-        <h3>Zero to Millionaire</h3>  
-        <p>Action • 4.6 ★ • 50MB</p>  
-      </div>  
-    </a>  
-    <a href="#" class="thumb-item">  
-      <img src="assets/thumb/game2.png" alt="Game 2">  
-      <div class="thumb-details">  
-        <h3>Game Title 2</h3>  
-        <p>Puzzle • 4.4 ★ • 30MB</p>  
-      </div>  
-    </a>  
-    <a href="#" class="thumb-item">  
-      <img src="assets/thumb/game3.png" alt="Game 3">  
-      <div class="thumb-details">  
-        <h3>Game Title 3</h3>  
-        <p>Adventure • 4.7 ★ • 70MB</p>  
-      </div>  
-    </a>  
-    <a href="#" class="thumb-item">  
-      <img src="assets/thumb/game4.png" alt="Game 4">  
-      <div class="thumb-details">  
-        <h3>Game Title 4</h3>  
-        <p>Racing • 4.5 ★ • 90MB</p>  
-      </div>  
-    </a>  
-    <a href="#" class="thumb-item" 
-      <img src="assets/thumb/game5.png" alt="Game 5">  
-      <div class="thumb-details">  
-        <h3>Game Title 5</h3>  
-        <p>Strategy • 4.8 ★ • 120MB</p>  
-      </div>  
-    </a>  
-  </section> 
-
-  <script>  
-    // Header expand animation  
-    window.addEventListener("load", () => {  
-      const header = document.getElementById("mainHeader");  
-      const hero = document.getElementById("hero");  
-      const thumbs1 = document.getElementById("thumbs1");  
-      const thumbs2 = document.getElementById("thumbs2");  
-      const scrollGames = document.getElementById("scrollGames");  
-
-      setTimeout(()=> header.classList.add("show"), 800);  
-      setTimeout(()=> header.classList.add("expanded"), 1800);  
-      setTimeout(()=> hero.classList.add("show"), 2000);  
-      setTimeout(()=> thumbs1.classList.add("show"), 2500);  
-      setTimeout(()=> scrollGames.classList.add("show"), 3000);  
-      setTimeout(()=> thumbs2.classList.add("show"), 3500);  
-
-      // Shuffle function
-      function shuffle(container) {
-        for (let i = container.children.length; i >= 0; i--) {
-          container.appendChild(container.children[Math.random() * i | 0]);
-        }
-      }
-      shuffle(thumbs1);
-      shuffle(scrollGames);
-      shuffle(thumbs2);
-    });  
-
-    // Hamburger toggle  
-    const hamburger = document.getElementById("hamburger");  
-    const menu = document.getElementById("menu");  
-    hamburger.addEventListener("click", () => {  
-      hamburger.classList.toggle("active");  
-      menu.classList.toggle("active");  
-    });  
-  </script>  
-</body>  
-</html>
+  </footer>  </body>  
+</html>  Only add smooth scroll

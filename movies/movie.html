@@ -546,6 +546,7 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 
 
 
+
 </style>
 </head>
 <body>
@@ -578,7 +579,13 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
   <a href="adventure.html" class="filter-btn">Adventure</a>
   <a href="romance.html" class="filter-btn">Romance</a>
   <a href="horror.html" class="filter-btn">Horror</a>
+  
+  <nav class="breadcrumb" id="breadcrumb"></nav>
+  
 </section>
+
+
+
 
 
 <!-- ===== TRENDING SECTION ===== -->
@@ -753,6 +760,12 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 cards.forEach(card => observer.observe(card));
 </script>
+
+
+
+
+
+
 
 </body>
 </html>

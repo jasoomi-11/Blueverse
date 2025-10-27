@@ -108,41 +108,133 @@
     transform: translateY(-9px) rotate(-45deg);  
   }  
   
-  /* MENU */  
-  .menu {  
-    position: fixed;  
-    top: 0;  
-    left: -100%;  
-    width: 260px;  
-    height: 100%;  
-    background: rgba(0, 0, 0, 0.95);  
-    backdrop-filter: blur(15px);  
-    box-shadow: 5px 0 20px rgba(0,255,255,0.2);  
-    transition: left 0.5s cubic-bezier(0.77,0,0.175,1);  
-    display: flex;  
-    flex-direction: column;  
-    justify-content: center;  
-    align-items: center;  
-    gap: 1.5rem;  
-    z-index: 1000;  
-  }  
-  .menu.active {  
-    left: 0;  
-  }  
-  .menu a {  
-    color: cyan;  
-    text-decoration: none;  
-    font-size: 1.2rem;  
-    font-weight: 600;  
-    letter-spacing: 1px;  
-    padding: 0.6rem 1.2rem;  
-    border-radius: 12px;  
-    transition: all 0.3s ease-in-out;  
-  }  
-  .menu a:hover {  
-    background: rgba(0,255,255,0.15);  
-    transform: translateY(-3px) scale(1.05);  
-  }  
+/* ===== MENU SIDEBAR ===== */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100%;
+  background: rgba(0, 0, 20, 0.95);
+  backdrop-filter: blur(15px);
+  border-right: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 5px 0 20px rgba(0, 255, 255, 0.25);
+  transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 2rem 1rem;
+  z-index: 1000;
+}
+
+.menu.active {
+  left: 0;
+}
+
+/* === Main Links === */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  margin-bottom: 0.8rem;
+}
+
+.menu ul li a {
+  display: block;
+  color: cyan;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+}
+
+.menu ul li a:hover {
+  background: rgba(0, 255, 255, 0.15);
+  color: #fff;
+  text-shadow: 0 0 10px cyan;
+  transform: translateX(4px);
+}
+
+/* === Divider Line Between Sections === */
+.menu-divider {
+  height: 1px;
+  background: rgba(0, 255, 255, 0.3);
+  margin: 1.3rem 0;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+/* === Info Section (Policies, About, etc.) === */
+.menu .info-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu .info-links li {
+  margin-bottom: 0.8rem;
+}
+
+.menu .info-links li a {
+  display: block;
+  color: cyan;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu .info-links li a:hover {
+  background: rgba(0, 255, 255, 0.1);
+  color: #fff;
+  text-shadow: 0 0 8px cyan;
+}
+
+/* === Overlay Background When Sidebar Opens === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .menu {
+    width: 80%;
+    left: -100%;
+  }
+
+  .menu.active {
+    left: 0;
+  }
+
+  .menu ul li a {
+    font-size: 1rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
   
   /* HERO SECTION */  
   .hero {  
@@ -440,17 +532,35 @@
     <div class="hamburger" id="hamburger">    
       <span></span><span></span><span></span>    
     </div>    
+    
+   
+    
   </header>    
 
-  <!-- MENU -->    
-  <div class="menu" id="menu">  
-    <a href="movie.html">Movies</a>    
-    <a href="blog.html">Blog</a>    
-    <a href="games.html">Games</a>    
-    <a href="shop.html">Shop</a>    
-  </div>    
+<div class="menu" id="menu">
+  <ul>
+    <li><a href="/homepage.html">🏠 Home</a></li>
+    <li><a href="/games.html">🎮 Games</a></li>
+    <li><a href="/blog.html">📰 Blog</a></li>
+    <li><a href="/movie.html">🎬 Movies</a></li>
+    <li><a href="/contact.html">📩 Contact</a></li>
+  </ul>
+
+  <div class="menu-divider"></div>
+
+  <ul class="info-links">
+    <li><a href="/about.html">ℹ️ About</a></li>
+    <li><a href="/privacy.html">🔒 Privacy Policy</a></li>
+    <li><a href="/terms.html">📜 Terms</a></li>
+  </ul>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+
 
   <!-- HERO -->    
+  
   <section class="hero" id="hero">  
     <h1>Top Games List</h1>  
     <p>Discover the most popular and trending games right now!</p>  

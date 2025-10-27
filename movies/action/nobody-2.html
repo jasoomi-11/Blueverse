@@ -474,7 +474,60 @@ footer {
 .reviews::-webkit-scrollbar-thumb:hover {
   background: #00bcd4;
 }
-    
+
+/* ===== BREADCRUMB ===== */
+#breadcrumb {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1.5rem;
+  color: cyan;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  margin: 1.2rem auto;
+  box-sizing: border-box;
+}
+
+/* Links */
+#breadcrumb a {
+  color: cyan;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#breadcrumb a:hover {
+  color: white;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Current Page */
+#breadcrumb span {
+  color: #aaa;
+  font-weight: 600;
+}
+
+/* Arrow Separator */
+.breadcrumb-arrow {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  font-size: 1rem;
+  margin: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #breadcrumb {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -505,6 +558,12 @@ footer {
 
 <!-- MAIN MOVIE CONTENT -->
 <main>
+  
+ <nav id="breadcrumb"></nav>
+<script src="/breadcrumb.js"></script>
+  
+  
+  
   <!-- Movie Banner (YouTube Trailer) -->
  <div class="movie-banner">
 <iframe 
