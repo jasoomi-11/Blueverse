@@ -148,55 +148,219 @@
 
   <style>
     /* ===== HERO HEADER CSS (unchanged) ===== */
-    * { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease-in-out; }
-    body { font-family: 'Segoe UI', sans-serif; background: #000; color: white; overflow-x: hidden; }
+  /* ===== HEADER NAVBAR (LOGO LEFT + HAMBURGER RIGHT) ===== */
+* { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease-in-out; }
+body { font-family: 'Segoe UI', sans-serif; background: #000; color: white; overflow-x: hidden; }
 
-    header {
-      position: fixed;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 70px;
-      height: 60px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 999px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
-      z-index: 1000;
-      opacity: 0;
-      padding: 0 1.2rem;
-      animation: headerGlow 4s infinite alternate ease-in-out;
-    }
-    header.show { opacity: 1; }
-    header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) scale(1); }
-    @keyframes headerGlow {
-      from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
-      to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
-    }
+/* Header Base */
+header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  width: 70px;
+  height: 60px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, menu right */
+  transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
+  z-index: 1000;
+  opacity: 0;
+  padding: 0 1.2rem;
+  animation: headerGlow 4s infinite alternate ease-in-out;
+}
+header.show { opacity: 1; }
+header.expanded {
+  width: 90%;
+  max-width: 1100px;
+  transform: translateX(-50%) scale(1);
+}
 
-    .logo { font-size: 1.3rem; font-weight: bold; color: cyan; background: rgba(255,255,255,0.07); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px cyan; transition: transform 1s ease; margin: 0 1rem; flex-shrink: 0; }
-    .logo:hover { transform: rotate(360deg) scale(1.1); }
-    .logo img { width: 90%; height: 90%; object-fit: contain; border-radius: 50%; filter: drop-shadow(0 0 8px cyan); transition: transform 0.6s ease; }
-    .logo img:hover { transform: scale(1.1); }
+/* Header Glow Effect */
+@keyframes headerGlow {
+  from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
+  to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
+}
 
-    .search-bar { flex: 1; display: flex; justify-content: center; }
-    .search-bar input { width: 180px; max-width: 200px; padding: 6px 12px; border: none; border-radius: 20px; outline: none; font-size: 0.9rem; background: rgba(255,255,255,0.1); color: white; }
-    .search-bar input:focus { width: 220px; background: rgba(0,200,255,0.15); box-shadow: 0 0 10px cyan; }
+/* Logo */
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: cyan;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px cyan;
+  transition: transform 1s ease;
+  margin-right: auto; /* Pushes logo left */
+  flex-shrink: 0;
+}
+.logo:hover { transform: rotate(360deg) scale(1.1); }
+.logo img {
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px cyan);
+  transition: transform 0.6s ease;
+}
+.logo img:hover { transform: scale(1.1); }
 
-    .hamburger { width: 30px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; z-index: 1100; flex-shrink: 0; }
-    .hamburger span { display: block; height: 3px; width: 100%; background: cyan; border-radius: 3px; transition: all 0.4s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+/* Hamburger Menu Icon */
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1100;
+  margin-left: auto; /* Pushes to right */
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: cyan;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
-    .menu { position: fixed; top: 0; left: -100%; width: 250px; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); transition: left 0.6s ease; display: flex; flex-direction: column; padding: 5rem 2rem; z-index: 999; }
-    .menu.active { left: 0; }
-    .menu a { text-align: center; color: cyan; text-decoration: none; font-weight: bold; margin: 1rem 0; padding: 0.8rem; border-radius: 10px; transition: all 0.3s ease-in-out; }
-    .menu a:hover { background: cyan; color: #000; }
+
+
+
+/* ===== SIDEBAR MENU ===== */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 270px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  border-right: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  transition: left 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.menu.active { left: 0; }
+
+.sidebar-content {
+  text-align: center;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.sidebar-title {
+  color: cyan;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 12px cyan;
+}
+
+/* Main Nav Links */
+.menu a {
+  display: block;
+  color: cyan;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0.6rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.menu a:hover {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 15px cyan, 0 0 25px rgba(0,255,255,0.6);
+  transform: translateY(-2px);
+}
+
+/* Section Subtitles */
+.sidebar-sub {
+  color: #00e6e6;
+  font-size: 1.1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px cyan;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tag Buttons */
+.sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.sidebar-tags a {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0,255,255,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+.sidebar-tags a:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* Social Links */
+.sidebar-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.sidebar-social a {
+  width: 80%;
+}
+.sidebar-social a:hover {
+  background: cyan;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* Scrollbar (optional aesthetic) */
+.menu::-webkit-scrollbar {
+  width: 6px;
+}
+.menu::-webkit-scrollbar-thumb {
+  background: cyan;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .menu {
+    width: 80%;
+  }
+}
 
     /* ===== MOVIE PAGE CSS ===== */
     main { padding-top: 120px; width: 90%; max-width: 1000px; margin: 2rem auto; color: #fff; }
@@ -509,28 +673,46 @@ footer {
 <body>
 
   <!-- HERO HEADER -->
-  <header id="mainHeader" class="show expanded">
-    <div class="logo">
-      <img src="/assets/thumb/logo.png" alt="BV">
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search movies...">
-    </div>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
+<header>
+  <div class="logo">
+    <img src="/assets/thumb/logo.png" alt="Blueverse Logo">
+  </div>
 
-  <!-- SLIDE MENU -->
-  <nav class="menu" id="menu">
-    <a href="/homepage.html">Home</a>
-    <a href="/movie.html">Movies</a>
-    <a href="/games.html">Games</a>
-    <a href="/shop.html">Shops</a>
-    <a href="/contact.html">Contact</a>
-  </nav>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <div class="sidebar-content">
+    <h2 class="sidebar-title">Blueverse</h2>
+
+    <a href="/index.html">Home</a>
+    <a href="/movies.html">Movies</a>
+    <a href="/games.html"> Play Games</a>
+    <a href="/blog.html">Blogs</a>
+  
+
+    <div class="sidebar-sub">Categories</div>
+    <div class="sidebar-tags">
+      <a href="#">Action</a>
+      <a href="#">Sci-Fi</a>
+      <a href="#">Fantasy</a>
+      <a href="#">Drama</a>
+      <a href="#">Anime</a>
+    </div>
+
+    <div class="sidebar-sub">Follow Us</div>
+    <div class="sidebar-social">
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+      <a href="#">Discord</a>
+         <a href="#">X (Twitter)</a>
+    </div>
+  </div>
+</div>
 
 <!-- MAIN MOVIE CONTENT -->
 <main>
@@ -587,7 +769,7 @@ footer {
 <div class="story-section expandable">
   <div class="visible-content">
     <p>
-      <em>Baaghi 4</em> (2025) continues the saga of Ronnie, a fearless fighter who has dedicated his life to protecting the innocent and confronting corruption. When a covert mission goes wrong overseas, Ronnie finds himself framed for an international crime he didn’t commit, forcing him to fight against a powerful global syndicate.  
+           <em>Baaghi 4</em> (2025) continues the saga of Ronnie, a fearless fighter who has dedicated his life to protecting the innocent and confronting corruption. When a covert mission goes wrong overseas, Ronnie finds himself framed for an international crime he didn’t commit, forcing him to fight against a powerful global syndicate.  
     </p>
   </div>
 
@@ -614,11 +796,11 @@ footer {
   <!-- Movie Screenshots -->
   <h2 class="section-title">Screenshots / Stills</h2>
   <div class="movie-screenshots">
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt=" Poster">
-    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/jZw47Ga9Jftdpjkm3V1MsXICG3Q.jpg" alt=" Screenshot 1">
-    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/9SKxp9SkHp9pf6KBwZKDWbUiuwR.jpg" alt=" Screenshot 2">
-    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/y7Sft8RTYF5e8dBYZV4y0jbOHkh.jpg" alt=" Screenshot 3">
-        <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/wUayoBNQSZBVVwWWxDhaEpmVkqx.jpg" alt=" Screenshot 4">
+    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt=" Baghi 4 Poster">
+    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/jZw47Ga9Jftdpjkm3V1MsXICG3Q.jpg" alt="  Baghi 4 Screenshot 1">
+    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/9SKxp9SkHp9pf6KBwZKDWbUiuwR.jpg" alt=" Baghi 4 Screenshot 2">
+    <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/y7Sft8RTYF5e8dBYZV4y0jbOHkh.jpg" alt="baghi 4 Screenshot 3">
+        <img src="https://media.themoviedb.org/t/p/w1000_and_h563_face/wUayoBNQSZBVVwWWxDhaEpmVkqx.jpg" alt="Baghi 4 Screenshot 4">
   </div>
 
 <!-- Actors -->
@@ -626,25 +808,25 @@ footer {
 <div class="actors">
 
   <div class="actor-card">
-    <img src="https://media.themoviedb.org/t/p/w240_and_h266_face/kgvll1RBCcDTs6KJZFDb291AuZb.jpg" alt="Tiger Shroff">
+    <img src="https://media.themoviedb.org/t/p/w240_and_h266_face/kgvll1RBCcDTs6KJZFDb291AuZb.jpg" alt="Tiger Shroff Face">
     <p><strong>Tiger Shroff</strong></p>
     <p>Role: Ronnie — A fearless soldier framed for an international crime</p>
   </div>
 
   <div class="actor-card">
-  <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/oq4pnvWhl1HxKpp0KVlSfAr3Tiu.jpg" alt="Sanjay Dutt">
+  <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/oq4pnvWhl1HxKpp0KVlSfAr3Tiu.jpg" alt="Sanjay Dutt face">
   <p><strong>Sanjay Dutt</strong></p>
   <p>Role: Chacko — The ruthless antagonist in Ronnie’s mission</p>
 </div>
 
   <div class="actor-card">
-  <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/a25tark0IJAKTo8mPYswshy7hWR.jpg" alt="Megha Thakur">
+  <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/a25tark0IJAKTo8mPYswshy7hWR.jpg" alt="Megha Thakur face ">
   <p><strong>Mehash Thakur</strong></p>
   <p>Role: </p>
 </div>
 
   <div class="actor-card">
-    <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/rKORFoIrI4GlcIfzzyVwCQNL9no.jpg" alt="Nawazuddin Siddiqui">
+    <img src="https://media.themoviedb.org/t/p/w132_and_h132_face/rKORFoIrI4GlcIfzzyVwCQNL9no.jpg" alt="Nawazuddin Siddiqui face ">
     <p><strong>shryas talpad</strong></p>
     <p>Role: </p>
   </div>
@@ -734,11 +916,40 @@ footer {
 }); 
     
     
-    
+    const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  menu.classList.toggle('active');
+});
   </script>
   
   
-  
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.querySelector(".menu");
+  const header = document.querySelector("header");
+
+  // Show header after short delay (for fade-in effect)
+  setTimeout(() => header.classList.add("show", "expanded"), 300);
+
+  // Toggle menu and hamburger animation
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    menu.classList.toggle("active");
+  });
+
+  // Optional: close menu when clicking a link
+  document.querySelectorAll(".menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      menu.classList.remove("active");
+    });
+  });
+});
+</script>
 
   
 

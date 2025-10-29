@@ -21,14 +21,15 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ===== HERO HEADER ===== */
+/* ===== HEADER (Modified: Logo Left, Hamburger Right, No Search Bar) ===== */
 header {
   position: fixed;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%) scale(0.9);
-  width: 70px;
-  height: 60px;
+  width: 90%;
+  max-width: 1100px;
+  height: 70px;
   background: rgba(255,255,255,0.05);
   border-radius: 999px;
   backdrop-filter: blur(12px);
@@ -39,11 +40,11 @@ header {
   transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
   z-index: 1000;
   opacity: 0;
-  padding: 0 1.2rem;
+  padding: 0 1.5rem;
   animation: headerGlow 4s infinite alternate ease-in-out;
 }
 header.show { opacity: 1; }
-header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) scale(1); }
+header.expanded { transform: translateX(-50%) scale(1); }
 
 @keyframes headerGlow {
   from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
@@ -51,44 +52,28 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: cyan;
   background: rgba(255,255,255,0.07);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 15px cyan;
   transition: transform 1s ease;
-  margin: 0 1rem;
   flex-shrink: 0;
 }
-.logo:hover { transform: rotate(360deg) scale(1.1); }
 
-.search-bar {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+.logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover; /* ensures full coverage inside circle */
 }
-.search-bar input {
-  width: 180px;
-  max-width: 200px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-.search-bar input:focus {
-  width: 220px;
-  background: rgba(0,200,255,0.15);
-  box-shadow: 0 0 10px cyan;
-}
+.logo:hover { transform: rotate(360deg) scale(1.1); }
 
 .hamburger {
   width: 30px;
@@ -112,32 +97,131 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
+/* ===== MENU (SIDEBAR) ===== */
+/* ===== SIDEBAR MENU ===== */
 .menu {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 250px;
+  width: 270px;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(15px);
+  border-right: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
   transition: left 0.6s ease;
   display: flex;
   flex-direction: column;
-  padding: 5rem 2rem;
+  align-items: center;
+  overflow-y: auto;
   z-index: 999;
 }
-.menu.active { left: 0; }
-.menu a {
+
+.menu.active {
+  left: 0;
+}
+
+.sidebar-content {
   text-align: center;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.sidebar-title {
+  color: cyan;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 12px cyan;
+}
+
+.menu a {
+  display: block;
   color: cyan;
   text-decoration: none;
-  font-weight: bold;
-  margin: 1rem 0;
-  padding: 0.8rem;
+  font-weight: 600;
+  margin: 0.6rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
-.menu a:hover { background: cyan; color: #000; }
+
+.menu a:hover {
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 15px cyan;
+  transform: translateY(-2px);
+}
+
+/* Subtitles */
+.sidebar-sub {
+  color: #00e6e6;
+  font-size: 1.1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px cyan;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tags section */
+.sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-tags a {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0,255,255,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.sidebar-tags a:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* Social Links */
+.sidebar-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.sidebar-social a {
+  width: 80%;
+}
+
+.sidebar-social a:hover {
+  background: cyan;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* ===== BODY BASE ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+
 
 /* ===== HERO SECTION ===== */
 .hero {
@@ -552,17 +636,42 @@ header.expanded { width: 90%; max-width: 1100px; transform: translateX(-50%) sca
 <body>
 
 <header class="show expanded">
-  <div class="logo">M</div>
-  <div class="search-bar"><input type="text" placeholder="Search..."></div>
+  <div class="logo">
+    <img src="/assets/thumb/logo.png" alt="blueverse logo">
+  </div>
+  
   <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
 
+<!-- Sidebar -->
 <nav class="menu">
-  <a href="#">Home</a>
-  <a href="#">Movies</a>
-  <a href="#">Series</a>
-  <a href="#">Top Rated</a>
-  <a href="#">About</a>
+  <div class="sidebar-content">
+    <h2 class="sidebar-title">MENU</h2>
+    <a href="index.html">🏠 Home</a>
+    <a href="movies.html">🎬 Movies</a>
+    <a href="tvseries.html">📺 TV Series</a>
+    <a href="games.html">🎮 Games</a>
+    <a href="#">🔥 Trending</a>
+    <a href="#">🆕 New Releases</a>
+    <a href="#">⭐ Top Rated</a>
+
+    <h3 class="sidebar-sub">Genres</h3>
+    <div class="sidebar-tags">
+      <a href="#">Action</a>
+      <a href="#">Comedy</a>
+      <a href="#">Horror</a>
+      <a href="#">Sci-Fi</a>
+      <a href="#">Adventure</a>
+    </div>
+
+    <h3 class="sidebar-sub">Connect</h3>
+    <div class="sidebar-social">
+      <a href="#">YouTube</a>
+      <a href="#">Telegram</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
+  </div>
 </nav>
 
 <section class="hero">
