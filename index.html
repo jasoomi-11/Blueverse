@@ -46,103 +46,98 @@ a {
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
+/* ===== HEADER BASE ===== */
+header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1100px;
+  height: 60px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keeps logo left, hamburger right */
+  transition: none; /* disable transitions */
+  z-index: 1000;
+  opacity: 1; /* always visible */
+  overflow: hidden;
+  padding: 0 1.2rem;
+  animation: headerGlow 4s infinite alternate ease-in-out;
+}
 
-    /* HEADER BASE */
-    header {
-      position: fixed;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 70px;
-      height: 60px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 999px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 1.6s cubic-bezier(0.77,0,0.175,1);
-      z-index: 1000;
-      opacity: 0;
-      overflow: hidden;
-      padding: 0 1.2rem;
-      animation: headerGlow 4s infinite alternate ease-in-out;
-    }
+@keyframes headerGlow {
+  from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
+  to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
+}
 
-    header.show { opacity: 1; }
-    header.expanded {
-      width: 90%;
-      max-width: 1100px;
-      transform: translateX(-50%) scale(1);
-    }
-
-    @keyframes headerGlow {
-      from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
-      to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
-    }
-
-/* ===== LOGO (Centered & Glowing — Enlarged) ===== */
+/* ===== LOGO (Left Side — Bigger Glow & Proper Fill) ===== */
 .logo {
-  width: 50px;  /* Increased from 120px → 200px */
+  width: 50px;                /* Slightly larger */
   height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle at center, rgba(0,255,255,0.25), rgba(0,255,255,0.08));
-  box-shadow: 0 0 35px rgba(0,255,255,0.7), 0 0 70px rgba(0,255,255,0.4);
-  transition: transform 0.8s ease, box-shadow 0.5s ease;
-  margin: 0 2rem;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.35), rgba(0,255,255,0.1));
+  box-shadow: 0 0 40px rgba(0,255,255,0.8), 0 0 80px rgba(0,255,255,0.4);
+  transition: transform 0.6s ease, box-shadow 0.5s ease;
+  flex-shrink: 0;
 }
 
 .logo:hover {
-  transform: scale(1.1) rotate(360deg);
-  box-shadow: 0 0 50px cyan, 0 0 80px rgba(0,255,255,0.6);
+  transform: scale(1.08) rotate(360deg);
+  box-shadow: 0 0 60px cyan, 0 0 100px rgba(0,255,255,0.6);
 }
 
-/* ===== LOGO IMAGE ===== */
+/* Image inside the logo (fill more space) */
 .logo img {
-  width: 100%;
-  height: 100%;
+  width: 115%;               /* Slightly overfills to cover inner padding */
+  height: 115%;
   object-fit: cover;
   border-radius: 50%;
   filter: drop-shadow(0 0 12px cyan);
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .logo img:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
-/* ===== SEARCH BAR ===== */
-.search-bar {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+/* === Fix small logo on mobile === */
+@media (max-width: 768px) {
+  .logo {
+    width: 50px !important;
+    height: 50px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo img {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
-.search-bar input {
-  width: 300px;
-  max-width: 200px;
-  padding: 6px 17px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  transition: all 0.3s ease;
+@media (max-width: 480px) {
+  .logo {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .logo img {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
-.search-bar input:focus {
-  width: 230px;
-  background: rgba(0,200,255,0.15);
-  box-shadow: 0 0 10px cyan;
-}
 
-/* ===== HAMBURGER ===== */
+
+/* ===== HAMBURGER (Right Side) ===== */
 .hamburger {
   width: 30px;
   height: 22px;
@@ -172,20 +167,22 @@ a {
   transform: rotate(-45deg) translate(6px,-6px);
 }
 
-/* ===== SLIDE MENU ===== */
+/* ===== SIDEBAR MENU ===== */
 .menu {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 250px;
-  height: 300%;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(20px);
-  box-shadow: 5px 0 20px rgba(0,200,255,0.4);
+  width: 270px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  border-right: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
   transition: left 0.6s ease;
   display: flex;
   flex-direction: column;
-  padding: 5rem 2rem;
+  align-items: center;
+  overflow-y: auto;
   z-index: 999;
 }
 
@@ -193,26 +190,93 @@ a {
   left: 0;
 }
 
-/* Menu Links — Simplified clean neon look (removed 3D) */
+.sidebar-content {
+  text-align: center;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.sidebar-title {
+  color: cyan;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 12px cyan;
+}
+
 .menu a {
   display: block;
-  text-align: center;
-  background: rgba(0,255,255,0.1);
   color: cyan;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 1rem 0;
-  padding: 0.8rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  font-weight: 600;
+  margin: 0.6rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu a:hover {
-  background: rgba(0,255,255,0.2);
-  transform: scale(1.05);
-  box-shadow: 0 0 20px cyan;
+  background: cyan;
+  color: #000;
+  box-shadow: 0 0 15px cyan;
+  transform: translateY(-2px);
+}
+
+/* Subtitles */
+.sidebar-sub {
+  color: #00e6e6;
+  font-size: 1.1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px cyan;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tags section */
+.sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-tags a {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0,255,255,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.sidebar-tags a:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* Social Links */
+.sidebar-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.sidebar-social a {
+  width: 80%;
+}
+
+.sidebar-social a:hover {
+  background: cyan;
+  color: black;
+  transform: translateY(-2px);
 }
 
 main {
@@ -1018,6 +1082,115 @@ footer {
 } 
 
 
+/* ===== SEARCH BOX STYLE ===== */
+.search-box {
+  position: sticky;
+  top: 80px; /* adjust this to match your header height */
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  z-index: 999;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* ===== RESULTS CONTAINER ===== */
+#searchResults {
+  margin-top: 10px;
+  background: rgba(10, 10, 10, 0.97);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  display: none;
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+/* ===== EACH RESULT ITEM ===== */
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.result-item:hover {
+  background: rgba(0, 255, 255, 0.25);
+}
+
+.result-item img {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.result-item h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+.result-item p {
+  margin: 0;
+  font-size: 13px;
+  color: #bbb;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  #searchInput {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .result-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .result-item h4 {
+    font-size: 14px;
+  }
+
+  .result-item p {
+    font-size: 12px;
+  }
+}
+
+
+/* ===== Smooth hide/show animation ===== */
+.search-box {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.search-box.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+
+
+
+
 
   </style>
 </head>
@@ -1025,9 +1198,7 @@ footer {
 
   <!-- HEADER -->
   <header id="mainHeader">
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-    </div>
+   
     <div class="logo">
       <img src="assets/thumb/logo.png" alt="Blueverse Brand Official Logo-gamings,movies,blog">
     </div>
@@ -1037,14 +1208,42 @@ footer {
       <span></span>
     </div>
   </header>
+  
+  <div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search anything...">
+  <div id="searchResults"></div>
+</div>
 
-  <!-- SLIDE MENU -->
-  <div class="menu" id="menu">
-    <a href="#">Login</a>
-    <a href="blog.html">Blog</a>
-    <a href="games.html">Games</a>
-    <a href="shop.html">Shop</a>
+  
+  <nav class="menu">
+  <div class="sidebar-content">
+    <h2 class="sidebar-title">MENU</h2>
+    <a href="index.html">🏠 Home</a>
+    <a href="movies.html">🎬 Movies</a>
+    <a href="tvseries.html">📺 TV Series</a>
+    <a href="games.html">🎮 Games</a>
+    <a href="#">🔥 Trending</a>
+    <a href="#">🆕 New Releases</a>
+    <a href="#">⭐ Top Rated</a>
+
+    <h3 class="sidebar-sub">Genres</h3>
+    <div class="sidebar-tags">
+      <a href="#">Action</a>
+      <a href="#">Comedy</a>
+      <a href="#">Horror</a>
+      <a href="#">Sci-Fi</a>
+      <a href="#">Adventure</a>
+    </div>
+
+    <h3 class="sidebar-sub">Connect</h3>
+    <div class="sidebar-social">
+      <a href="#">YouTube</a>
+      <a href="#">Telegram</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
   </div>
+</nav>
 
   <!-- MAIN -->
   <main>
@@ -1355,13 +1554,18 @@ footer {
       setTimeout(()=> header.classList.add("expanded"), 2000);
     });
 
-    // Hamburger toggle
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.getElementById("menu");
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      menu.classList.toggle("active");
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+
+  if (!hamburger || !menu) return; // safety check
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    menu.classList.toggle("active"); // ✅ match your CSS (.menu.active)
+  });
+});
+
     
 // Scroll animation for sections (repeat on up/down scroll)
 const sections = document.querySelectorAll("section, .thumb-section, .games-section, .shop-section");
@@ -1381,6 +1585,93 @@ sections.forEach(sec=>{
   observer.observe(sec);
 });
     
+ 
+ // ======= SEARCH SYSTEM (Instant Auto Search) =======
+const searchInput = document.getElementById("searchInput");
+const resultsContainer = document.getElementById("searchResults");
+
+let allData = [];
+
+// ✅ Fetch JSON data (from CDN or local)
+fetch("https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/data/data.json") // <-- change if local: "data.json"
+  .then(res => res.json())
+  .then(data => {
+    allData = data;
+  })
+  .catch(err => console.error("Error loading JSON:", err));
+
+// 🔍 Handle live search (trigger on 1+ letter)
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
+  
+  if (query.length === 0) {
+    resultsContainer.style.display = "none";
+    resultsContainer.innerHTML = "";
+    return;
+  }
+
+  const filtered = allData.filter(item =>
+    item.title.toLowerCase().includes(query)
+  );
+
+  renderResults(filtered);
+});
+
+// 🧩 Render matched results
+function renderResults(data) {
+  resultsContainer.innerHTML = "";
+  if (data.length === 0) {
+    resultsContainer.innerHTML = `<p style="text-align:center;color:#aaa;padding:10px;">No results found.</p>`;
+    resultsContainer.style.display = "block";
+    return;
+  }
+
+  data.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "result-item";
+    div.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" onerror="this.src='/images/placeholder.jpg'">
+      <div>
+        <h4>${item.title}</h4>
+        <p>${item.description}</p>
+      </div>
+    `;
+    div.addEventListener("click", () => window.location.href = item.url);
+    resultsContainer.appendChild(div);
+  });
+
+  resultsContainer.style.display = "block";
+}
+
+// ======= HIDE SEARCH BAR ON SCROLL =======
+let lastScrollY = window.scrollY;
+const searchBox = document.querySelector(".search-box");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY && window.scrollY > 100) {
+    // User is scrolling down → hide search bar
+    searchBox.classList.add("hidden");
+  } else {
+    // User scrolling up or top of page → show search bar
+    searchBox.classList.remove("hidden");
+  }
+  lastScrollY = window.scrollY;
+});
+
+
+// ===== Prevent search bar from forcing scroll to top =====
+searchInput.addEventListener("focus", () => {
+  // store current scroll position
+  const scrollY = window.scrollY;
+
+  // restore position instantly (prevents auto scroll)
+  setTimeout(() => {
+    window.scrollTo(0, scrollY);
+  }, 0);
+});
+ 
+ 
+ 
  
   </script>
 
