@@ -11,26 +11,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ===================== 🌐 BLUEVERSE HOMEPAGE SEO META BLOCK ===================== -->
+<!-- ===================== 🌐 BLUEVERSE HOMEPAGE SEO META BLOCK (FULL & OPTIMIZED) ===================== -->
 <title>Blueverse — Games, Movies, Blogs, Tips & Online Arcade | Explore, Play & Learn</title>
 
-<meta name="description" content="Welcome to Blueverse — your digital universe for games, movies, blogs, guides, and free online arcade titles. Explore the latest trends, play HTML5 games, and read expert tips, reviews, and updates.">
-<meta name="keywords" content="Blueverse, games, movies, blogs, gaming tips, online arcade, free browser games, tech guides, Blueverse space, PC games, mobile games, reviews, updates">
-<meta name="author" content="Blueverse Team">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="#001a2e">
-<meta name="language" content="en">
-<meta name="distribution" content="global">
-<meta name="rating" content="General">
-<meta name="application-name" content="Blueverse">
-<meta name="subject" content="Gaming, Movies, Blogs, and Online Fun">
-<meta name="revisit-after" content="7 days">
+<!-- ✅ Meta Description (Main for Google) -->
+<meta name="description" content="Blueverse.space is your gaming and entertainment platform where you can play browser, PC, and mobile games, explore game updates, guides, and news. The blog section also features movies, trailers, TV series, and educational content.">
 
-<!-- ✅ Canonical -->
-<link rel="canonical" href="https://blueverse.space/">
+<!-- ✅ Keywords (Optional but Helpful) -->
+<meta name="keywords" content="Blueverse, Games, Movies, Blog, Arcade, Online Games, Game Guides, Tips, Entertainment, TV Series, Trailers, Education">
 
 <!-- ✅ Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://blueverse.space/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://blueverse.space/favicons/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://blueverse.space/favicons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://blueverse.space/favicons/web-app-manifest-192x192.png">
 <link rel="apple-touch-icon" href="https://blueverse.space/favicons/apple-touch-icon.png">
 <link rel="shortcut icon" href="https://blueverse.space/favicons/favicon.ico" type="image/x-icon">
 
@@ -63,9 +55,7 @@
       "url": "https://blueverse.space/",
       "name": "Blueverse",
       "description": "Blueverse — your digital universe for games, movies, blogs, guides, and free online arcade titles. Explore, play, and stay updated with trending content.",
-      "publisher": {
-        "@id": "https://blueverse.space/#organization"
-      },
+      "publisher": { "@id": "https://blueverse.space/#organization" },
       "inLanguage": "en",
       "potentialAction": {
         "@type": "SearchAction",
@@ -97,9 +87,7 @@
       "@id": "https://blueverse.space/#webpage",
       "url": "https://blueverse.space/",
       "name": "Blueverse — Explore Games, Movies, Blogs & Online Arcade",
-      "isPartOf": {
-        "@id": "https://blueverse.space/#website"
-      },
+      "isPartOf": { "@id": "https://blueverse.space/#website" },
       "description": "Explore Blueverse: your all-in-one hub for games, movies, blogs, guides, and free online fun. Play, discover, and stay updated with the latest trends.",
       "thumbnailUrl": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/homepage.jpg",
       "primaryImageOfPage": {
@@ -108,12 +96,10 @@
         "width": 1200,
         "height": 630
       },
-      "breadcrumb": {
-        "@id": "https://blueverse.space/#breadcrumb"
-      },
+      "breadcrumb": { "@id": "https://blueverse.space/#breadcrumb" },
       "inLanguage": "en",
       "datePublished": "2025-11-01",
-      "dateModified": "2025-11-02"
+      "dateModified": "2025-11-08"
     },
 
     {
@@ -838,7 +824,7 @@ footer {
 
 
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION (Optimized for Low LCP) ===== */
 .hero {
   margin-top: 100px;
   text-align: center;
@@ -850,57 +836,43 @@ footer {
   border-bottom: 2px solid rgba(0,255,255,0.2);
 }
 
+/* ✅ Light static overlay (no animation) */
 .hero::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(0,0,50,0.4));
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,255,255,0.08), rgba(0,0,50,0.3));
   z-index: 1;
-  animation: glowMove 6s infinite alternate ease-in-out;
 }
 
-@keyframes glowMove {
-  from {opacity: 0.4; transform: scale(1);}
-  to {opacity: 0.8; transform: scale(1.05);}
-}
-
+/* ✅ Text content stays above overlay */
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
+/* ✅ Fast-render heading (no animation) */
 .hero h1 {
   font-size: 3rem;
   color: cyan;
-  text-shadow: 0 0 25px cyan, 0 0 50px blue;
+  text-shadow: 0 0 25px cyan, 0 0 40px blue;
   margin-bottom: 1rem;
   letter-spacing: 1px;
-  animation: fadeInDown 2s ease;
 }
 
+/* ✅ Paragraph – reduced shadow & removed animation */
 .hero p {
   font-size: 1.3rem;
-  opacity: 0.85;
+  opacity: 0.9;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.7;
-  animation: fadeInUp 2s ease;
+  color: #e0f7ff;
 }
 
 .hero p strong {
   color: cyan;
-  text-shadow: 0 0 10px cyan;
-}
-
-@keyframes fadeInDown {
-  from {opacity: 0; transform: translateY(-40px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeInUp {
-  from {opacity: 0; transform: translateY(40px);}
-  to {opacity: 1; transform: translateY(0);}
+  text-shadow: 0 0 8px cyan;
 }
 
 
@@ -1369,6 +1341,39 @@ footer {
 
 
 
+:root{--bv-blue:#0078ff;--bv-bg:#07102a;--bv-panel:#0b1330;--bv-text:#dde6ff}
+.bv-cookie{position:fixed;left:18px;right:18px;bottom:18px;background:rgba(6,12,30,0.96);color:var(--bv-text);border-radius:12px;padding:14px;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,.5);font-family:Inter, Poppins, system-ui;}
+.bv-cookie-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.bv-cookie-text{flex:1;font-size:14px;line-height:1.4}
+.bv-cookie a{color:var(--bv-blue);text-decoration:underline}
+.bv-cookie-actions{display:flex;gap:8px;flex-shrink:0}
+.bv-btn{padding:8px 14px;border-radius:8px;border:0;font-weight:600;cursor:pointer}
+.bv-btn.accept{background:var(--bv-blue);color:#fff}
+.bv-btn.reject{background:#2c2f3a;color:#fff}
+.bv-btn.manage{background:transparent;color:var(--bv-blue);text-decoration:underline}
+.bv-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,4,12,.62);z-index:10000}
+.bv-modal[hidden]{display:none}
+.bv-modal-panel{background:var(--bv-panel);color:var(--bv-text);border-radius:12px;width:min(760px,95%);max-height:85vh;overflow:auto;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+.bv-modal-panel header{display:flex;justify-content:space-between;align-items:center}
+.bv-modal-panel h2{margin:0 0 8px 0;font-size:18px}
+.bv-close{background:transparent;border:0;color:var(--bv-text);font-size:22px;cursor:pointer}
+.bv-cats{margin:12px 0;display:grid;gap:10px}
+.bv-cats label{display:flex;gap:8px;align-items:center;font-size:15px}
+.bv-cookie-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.bv-cookie-table th,.bv-cookie-table td{text-align:left;padding:8px;border-bottom:1px solid rgba(255,255,255,.05)}
+/* small responsive tweaks */
+@media (max-width:520px){ .bv-cookie{left:10px;right:10px;bottom:12px;padding:12px} .bv-cookie-text{font-size:13px} }
+
+
+
+
+
+
+
+
+
+
+
 
   </style>
 </head>
@@ -1439,14 +1444,14 @@ footer {
 <section class="main-filter">
   <h2 class="filter-title">Explore Categories</h2>
   <div class="filter-buttons">
-    <button class="filter-item" onclick="location.href='gamesection/android-iosgames.html'">Android / iOS Games</button>
-    <button class="filter-item" onclick="location.href='gamesection/pcconsole.html'">PC / Console Games</button>
+    <button class="filter-item" onclick="location.href='all-games.html'">GAMES</button>
+    
     
     <button class="filter-item" onclick="location.href='movies/movie.html'">Movies</button>
     <button class="filter-item" onclick="location.href='games.html'">Play Online Games</button>
     <button class="filter-item" onclick="location.href='blog.html'">Blog</button>
-    <button class="filter-item" onclick="location.href='gamesection/gamestipguide.html'">Games Tips and Tricks</button>
-    <button class="filter-item" onclick="location.href='gamesection/gamesupdates.html'">Games Updates </button>
+    <button class="filter-item" onclick="location.href='blog/gamestipguide.html'">Games Tips and Tricks</button>
+    <button class="filter-item" onclick="location.href='blog/gamesupdates.html'">Games Updates </button>
   </div>
 </section>
 
@@ -1473,29 +1478,29 @@ footer {
     <!-- PC games -->
 <section class="thumb-section">
   <div class="thumb-header">
-    <h2>PC Games</h2>
-    <a href="gamesection/pcconsole.html">See More</a>
+    <h2>GAMES</h2>
+    <a href="Game/all-games.html">See More</a>
   </div>
 
   <div class="thumb-container">
-    <a href="gamesection/topgameslist/toppcgames/gta5.html" class="thumb-card">
+    <a href="Game/gta5.html" class="thumb-card">
       <img src="https://media.rawg.io/media/resize/640/-/screenshots/491/491c40b53352893f5b00e5a19fbfcdb1.jpg" alt="Grand Theft Auto:V Thumbnail">
       <h4>GTA:V</h4>
     </a>
 
-    <a href="gamesection/topgameslist/toppcgames/reddeadredemption2.html" class="thumb-card">
+    <a href="Game/reddeadredemption2.html" class="thumb-card">
       <img src="https://media.rawg.io/media/resize/640/-/screenshots/8b9/8b9cd97fed67e5a811c40cdfb64531e3.jpg" alt="Red Dead Redemption 2 thumbnail">
       <h4>Red Dead Redemption 2</h4>
     </a>
 
-  <a href="gamesection/topgameslist/Top5onlinegames/Fortnite.html" class="thumb-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHgYb7vvUCkg4P1gAH3t4FtEcSLMXu9WkqEoMdNz7lhw&s=10" alt="Apex Legend Thumbnail">
+  <a href="Game/apex-legend.html" class="thumb-card">
+      <img src="assets/thumb/apex-legend.jpg" alt="Apex Legend Thumbnail">
       <h4>Apex Legend</h4>
     </a>
 
-    <a href="gamesection/topgameslist/Top5onlinegames/Fortnite.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/420/-/screenshots/c28/c286227823231c426a88aa873cf1b8d6.jpg" alt="Fortnite Thumbnail">
-      <h4>Fortnite</h4>
+     <a href="Game/EA-sports-WRC-24.html" class="thumb-card">
+      <img src="assets/thumb/WRC24.jpg" alt="WRC 24 Thumbnail">
+      <h4>EA Sports WRC 24</h4>
     </a>
   </div>
 </section>
@@ -1534,6 +1539,31 @@ footer {
           <div class="card-footer"><span>Updated 2025</span><a href="movies/movie.html">Explore</a></div>
         </div>
       </div>
+      
+      
+      
+      
+       <div class="card-container">
+      <div class="card">
+        <img src="assets/thumb/top-5-trusted-platform.jpg" alt="guide on How To Install Big Games On Low Storage Phone" class="bg">
+ <div class="card-content">
+          <p>Top 5 Trusted Apk Platforms 2025.</p>
+          <div class="card-footer">
+            <span>5.Nov.2025</span>
+            <a href="blog/top-5-trusted-platform.html">Read Guide</a>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+      
+      
+      
+      
+      
+      
+      
       <div class="card">
         <img src="assets/thumb/blog.jpg" alt="Blog Thumbnail" loading="lazy">
         <div class="card-content">
@@ -1614,35 +1644,7 @@ footer {
 
 
 
-<!-- NEW THUMBNAIL SECTION -->
-<section class="thumb-section">
-  <div class="thumb-header">
-    <h2>Android/IOS Games</h2>
-    <a href="gamesection/android-iosgames.html">See More</a>
-  </div>
 
-  <div class="thumb-container">
-    <a href="gamesection/topgameslist/topmobilegames/pubgmobile.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg" alt="Pubg mobile">
-      <h4>PUBG:Mobile</h4>
-    </a>
-
-    <a href="gamesection/topgameslist/topmobilegames/callofdutymobile.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg" alt="Call of duty:Mobile">
-      <h4>Call Of Duty:Mobile</h4>
-    </a>
-
-    <a href="gamesection/topgameslist/topmobilegames/clashofclans.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/420/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg" alt="Clash of clans Thumbnail">
-      <h4>Clash Of Clans</h4>
-    </a>
-
-    <a href="gamesection/topgameslist/topmobilegames/freefiremax.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg" alt="Free fire Max thumbnail">
-      <h4>Free Fire Max</h4>
-    </a>
-  </div>
-</section>
 
 
 
@@ -1808,17 +1810,19 @@ searchInput.addEventListener("focus", () => {
       </div>
 
 <div class="footer-attribution">
-    <p>
-      Movie data, posters, and cast details provided by 
-      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDb</a>.
-      Icons by 
-      <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">Flaticon</a>.
-    </p>
-    <p>
-      This site is not endorsed or certified by TMDb or Flaticon.  
-      All trademarks and copyrights belong to their respective owners.
-    </p>
-  </div>
+  <p>
+    Movie data, posters, and cast details provided by 
+    <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDb</a>. 
+    Game data and images powered by 
+    <a href="https://rawg.io/apidocs" target="_blank" rel="noopener noreferrer">RAWG.io</a>. 
+    Icons by 
+    <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">Flaticon</a>.
+  </p>
+  <p>
+    This site is not endorsed or certified by TMDb, RAWG.io, or Flaticon.  
+    All trademarks and copyrights belong to their respective owners.
+  </p>
+</div>
 
 
 
@@ -1831,6 +1835,235 @@ searchInput.addEventListener("focus", () => {
       </div>
     </div>
   </footer>
+
+
+
+
+
+
+
+<!-- ========== BLUEVERSE COOKIE CONSENT v2 (paste before </body>) ========== -->
+<!-- Banner -->
+<div id="bv-cookie-banner" class="bv-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="bv-cookie-inner">
+    <div class="bv-cookie-text">
+      🔵 <strong>Blueverse</strong> uses cookies & similar tech to improve your experience. We load analytics, ads, and embedded media (e.g. YouTube) only with your consent.
+      Read our <a id="bv-open-policy" href="#" role="button">Cookie Policy</a>.
+    </div>
+    <div class="bv-cookie-actions">
+      <button id="bv-accept-all" class="bv-btn accept">Accept All</button>
+      <button id="bv-reject-all" class="bv-btn reject">Reject Non-Essential</button>
+      <button id="bv-manage" class="bv-btn manage">Manage</button>
+    </div>
+  </div>
+</div>
+
+<!-- Preferences Modal -->
+<div id="bv-modal" class="bv-modal" hidden>
+  <div class="bv-modal-panel" role="document">
+    <header>
+      <h2>Cookie Preferences</h2>
+      <button id="bv-close-modal" class="bv-close" aria-label="Close preferences">&times;</button>
+    </header>
+
+    <section class="bv-cats">
+      <label><input type="checkbox" disabled checked> Essential (required)</label>
+      <label><input type="checkbox" id="bv-analytics"> Analytics</label>
+      <label><input type="checkbox" id="bv-marketing"> Marketing / Ads (Do Not Sell opt-out)</label>
+      <label><input type="checkbox" id="bv-embedded"> Embedded Media (YouTube)</label>
+    </section>
+
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+      <button id="bv-save" class="bv-btn accept">Save</button>
+      <button id="bv-cancel" class="bv-btn reject">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Policy Modal (brief, editable) -->
+<div id="bv-policy" class="bv-modal" hidden>
+  <div class="bv-modal-panel">
+    <header>
+      <h2>Cookie Policy</h2>
+      <button id="bv-close-policy" class="bv-close" aria-label="Close policy">&times;</button>
+    </header>
+    <div style="line-height:1.5;color:var(--bv-text);">
+      <p>Blueverse uses Essential cookies (required), Analytics (optional), Marketing (optional) and Embedded Media (optional). You can change preferences anytime. Contact: <a href="mailto:privacy@blueverse.space">privacy@blueverse.space</a>.</p>
+      <h3>Cookie examples</h3>
+      <table class="bv-cookie-table">
+        <thead><tr><th>Name</th><th>Purpose</th><th>Category</th><th>Retention</th></tr></thead>
+        <tbody>
+          <tr><td>blueverse_consent_v2</td><td>Stores your choices</td><td>Essential</td><td>1 year (localStorage)</td></tr>
+          <tr><td>_ga, _gid</td><td>Google Analytics</td><td>Analytics</td><td>2 years / 24 hours</td></tr>
+          <tr><td>YSC</td><td>YouTube video cookie</td><td>Embedded</td><td>Session / vendor</td></tr>
+          <tr><td>ads cookies</td><td>Ad vendor personalization</td><td>Marketing</td><td>vendor default</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+      <button id="bv-policy-accept" class="bv-btn accept">Accept All</button>
+      <button id="bv-policy-close" class="bv-btn reject">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Optional footer button (place in your footer HTML if you want) -->
+<!-- <button onclick="blueverseOpenCookieSettings()" style="background:none;border:0;color:var(--bv-blue);cursor:pointer">Cookie settings</button> -->
+
+<script>
+/* ========== BLUEVERSE COOKIE MANAGER v2 ========== */
+/* 1) Replace ADSENSE_PUBLISHER_ID with your AdSense publisher id (like ca-pub-XXXXXXXXXXXX) when ready.
+   2) Replace GA_MEASUREMENT_ID with your Google Analytics ID (G-XXXX or UA-XXXXX) if you want GA.
+   3) This script ensures non-personalized ads when marketing=false by setting google_disable_ad_personalization=true
+*/
+
+const BV_KEY = "blueverse_consent_v2";
+const ADSENSE_PUBLISHER_ID = ""; // <-- PUT your AdSense ID here like "ca-pub-1234567890123456"
+const GA_MEASUREMENT_ID = "";     // <-- Put GA ID here if you use it, else keep empty
+
+// Helpers
+function readConsent(){ try{ return JSON.parse(localStorage.getItem(BV_KEY)) || null; } catch { return null; } }
+function writeConsent(o){ localStorage.setItem(BV_KEY, JSON.stringify(o)); }
+function nowISO(){ return new Date().toISOString(); }
+function show(id){ document.getElementById(id).hidden = false; }
+function hide(id){ document.getElementById(id).hidden = true; }
+
+// Script injection safe helper
+function injectScript(src, attrs = {}) {
+  if(document.querySelector('script[src="'+src+'"]')) return;
+  const s = document.createElement('script'); s.src = src; s.async = true;
+  Object.entries(attrs).forEach(([k,v]) => s.setAttribute(k,v));
+  document.head.appendChild(s);
+}
+function injectInline(code){ const s = document.createElement('script'); s.textContent = code; document.head.appendChild(s); }
+
+// Apply consent: load resources according to choices
+function applyConsent(consent){
+  // Analytics
+  if(consent.analytics && GA_MEASUREMENT_ID){
+    // GA (gtag) example
+    if(!window.dataLayer){
+      injectScript("https://www.googletagmanager.com/gtag/js?id="+GA_MEASUREMENT_ID);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID, { 'anonymize_ip': true });
+    }
+  }
+
+  // AdSense (marketing): we *always* load AdSense but configure personalization based on consent.
+  // This ensures ads are shown even when marketing=false (non-personalized).
+  if(ADSENSE_PUBLISHER_ID){
+    if(!consent.marketing){
+      // request non-personalized ads
+      window.google_disable_ad_personalization = true;
+    }
+    // load AdSense script with client param
+    const src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID);
+    injectScript(src, { crossorigin: "anonymous" });
+    // After script loads, individual ad <ins> tags on page will request ads; if non-personalized set, AdSense returns contextual ads.
+  }
+
+  // Embedded media (YouTube)
+  if(consent.embedded){
+    document.querySelectorAll("[data-bv-youtube]").forEach(div=>{
+      if(div.dataset.bvDone) return;
+      const src = div.dataset.bvYoutube;
+      const iframe = document.createElement("iframe");
+      iframe.src = src;
+      iframe.width = div.dataset.bvWidth || "100%";
+      iframe.height = div.dataset.bvHeight || "315";
+      iframe.frameBorder = "0";
+      iframe.setAttribute("loading","lazy");
+      iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+      div.replaceWith(iframe);
+      div.dataset.bvDone = "1";
+    });
+  }
+
+  // You can add additional vendor loads here (e.g., advertising providers that require script injection).
+}
+
+// UI wiring
+document.addEventListener("DOMContentLoaded", function(){
+  const saved = readConsent();
+  const get = id => document.getElementById(id);
+
+  // Show banner if no consent
+  if(!saved) show("bv-cookie-banner");
+  else applyConsent(saved);
+
+  // Buttons
+  get("bv-accept-all").addEventListener("click", function(){
+    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO(), source: "banner_accept" };
+    writeConsent(c); applyConsent(c); hide("bv-cookie-banner");
+  });
+
+  get("bv-reject-all").addEventListener("click", function(){
+    const c = { essential:true, analytics:false, marketing:false, embedded:false, date: nowISO(), source: "banner_reject" };
+    writeConsent(c); hide("bv-cookie-banner");
+    // still load ads non-personalized (handled in applyConsent when ad ID present) — BUT we purposely do NOT call applyConsent here
+    // to avoid loading analytics or embedded content. We still want ads showing non-personalized: ensure AdSense script is loaded even on reject:
+    // If publisher provided an AdSense ID, load script with non-personalized pref:
+    if(ADSENSE_PUBLISHER_ID){
+      window.google_disable_ad_personalization = true;
+      const src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID);
+      injectScript(src, { crossorigin: "anonymous" });
+    }
+  });
+
+  get("bv-manage").addEventListener("click", function(){
+    const s = saved || { analytics:false, marketing:false, embedded:false };
+    get("bv-analytics").checked = !!s.analytics;
+    get("bv-marketing").checked = !!s.marketing;
+    get("bv-embedded").checked = !!s.embedded;
+    show("bv-modal");
+  });
+
+  get("bv-save").addEventListener("click", function(){
+    const c = {
+      essential: true,
+      analytics: !!get("bv-analytics").checked,
+      marketing: !!get("bv-marketing").checked,
+      embedded: !!get("bv-embedded").checked,
+      date: nowISO(),
+      source: "manage_save"
+    };
+    writeConsent(c); applyConsent(c); hide("bv-modal"); hide("bv-cookie-banner");
+  });
+
+  get("bv-cancel").addEventListener("click", function(){ hide("bv-modal"); });
+  get("bv-close-modal").addEventListener("click", function(){ hide("bv-modal"); });
+
+  // Policy open/close
+  get("bv-open-policy")?.addEventListener("click", function(e){ e.preventDefault(); show("bv-policy"); });
+  get("bv-close-policy")?.addEventListener("click", function(){ hide("bv-policy"); });
+  get("bv-policy-close")?.addEventListener("click", function(){ hide("bv-policy"); });
+  get("bv-policy-accept")?.addEventListener("click", function(){
+    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO(), source: "policy_accept" };
+    writeConsent(c); applyConsent(c); hide("bv-policy"); hide("bv-cookie-banner");
+  });
+
+  // Escape to close modals
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape"){ hide("bv-modal"); hide("bv-policy"); } });
+
+  // Expose settings opener
+  window.blueverseOpenCookieSettings = function(){
+    const s = readConsent() || { analytics:false, marketing:false, embedded:false };
+    get("bv-analytics").checked = !!s.analytics;
+    get("bv-marketing").checked = !!s.marketing;
+    get("bv-embedded").checked = !!s.embedded;
+    show("bv-modal");
+  };
+});
+</script>
+<!-- ========== END COOKIE CONSENT v2 ========== -->
+
+
+
+
+
+
 
 </body>
 </html>

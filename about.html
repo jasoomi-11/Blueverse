@@ -1,185 +1,110 @@
+<!-- 🌐 BLUEVERSE ABOUT PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Blueverse | Explore Games, Movies & Guides</title>
-  <meta name="description" content="Blueverse — a global entertainment hub for movies, games, blogs, tips, guides, downloads, and online fun.">
-  <link rel="icon" href="logo.png">
+  <title>About | Blueverse</title>
+  <meta name="description" content="Learn more about Blueverse — your ultimate hub for games, movies, guides, trailers, and entertainment news.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://kit.fontawesome.com/a2e0e6c6d8.js" crossorigin="anonymous"></script>
   <style>
-    /* ===== GLOBAL STYLES (Same Theme) ===== */
-    *{margin:0;padding:0;box-sizing:border-box;transition:all 0.3s ease-in-out}
-    body{font-family:'Segoe UI',sans-serif;background:#000;color:white;overflow-x:hidden}
-
-    /* ===== HEADER ===== */
-    header{
-      position:fixed;top:1rem;left:50%;transform:translateX(-50%) scale(0.9);
-      width:90%;max-width:1100px;height:60px;
-      background:rgba(255,255,255,0.05);
-      border-radius:999px;backdrop-filter:blur(12px);
-      box-shadow:0 0 25px rgba(0,255,255,0.4);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 1.2rem;z-index:1000;
+    body {
+      margin: 0;
+      background: #070c1a;
+      color: #cdd9ff;
+      font-family: 'Poppins', system-ui, sans-serif;
     }
-    .logo{font-size:1.3rem;font-weight:bold;color:cyan;
-      background:rgba(255,255,255,0.07);border-radius:50%;
-      width:50px;height:50px;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 0 15px cyan;cursor:pointer;}
-    .logo img{width:90%;height:90%;object-fit:cover;border-radius:50%;filter:drop-shadow(0 0 8px cyan);}
 
-    .hamburger{width:30px;height:22px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;}
-    .hamburger span{display:block;height:3px;width:100%;background:cyan;border-radius:3px;}
-    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .hamburger.active span:nth-child(2){opacity:0}
-    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
-
-    /* ===== SIDEBAR MENU ===== */
-    .menu{
-      position:fixed;top:70px;left:-100%;
-      width:260px;height:calc(100% - 70px);
-      background:rgba(0,0,20,0.95);
-      backdrop-filter:blur(15px);
-      box-shadow:5px 0 25px rgba(0,255,255,0.2);
-      transition:left 0.5s cubic-bezier(0.77,0,0.175,1);
-      display:flex;flex-direction:column;align-items:center;
-      padding:2rem 1.2rem;z-index:999;overflow-y:auto;
+    .about-container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      line-height: 1.7;
     }
-    .menu.active{left:0}
-    .menu a{
-      display:block;width:100%;color:cyan;text-decoration:none;font-weight:600;
-      padding:0.7rem;margin:0.4rem 0;border:1px solid rgba(0,255,255,0.2);
-      border-radius:10px;text-align:center;transition:all 0.3s ease-in-out;
+
+    .about-container h1 {
+      font-size: 2.2rem;
+      color: #66a3ff;
+      margin-bottom: 20px;
     }
-    .menu a:hover{background:cyan;color:#000;box-shadow:0 0 20px cyan;}
 
-    /* ===== MAIN CONTENT ===== */
-    main{padding-top:120px;width:90%;max-width:1000px;margin:auto;color:#fff;}
-
-    .hero-about{
-      text-align:center;background:linear-gradient(135deg,rgba(0,255,255,0.06),rgba(0,0,40,0.2));
-      border-radius:16px;padding:2rem;box-shadow:0 0 25px rgba(0,255,255,0.2);margin-bottom:2rem;
+    .about-container p {
+      color: #b4c2f0;
+      font-size: 15px;
+      margin-bottom: 15px;
     }
-    .hero-about h1{color:cyan;font-size:2rem;margin-bottom:0.8rem;}
-    .hero-about p{color:#bfe;max-width:700px;margin:auto;line-height:1.6;}
 
-    .about-section{background:#0a0a1a;border-radius:12px;padding:1.5rem;margin-bottom:2rem;box-shadow:0 0 20px rgba(0,255,255,0.2);}
-    .about-section h2{color:cyan;margin-bottom:0.8rem;}
-    .about-section p{color:#ccc;line-height:1.6;margin-bottom:1rem;}
-
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
-    .feature-card{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(0,255,255,0.2);
-      border-radius:10px;
-      padding:1rem;
-      text-align:center;
-      box-shadow:0 0 10px rgba(0,255,255,0.1);
-      transition:transform 0.3s,box-shadow 0.3s;
+    .about-mission {
+      background: #0b1122;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
     }
-    .feature-card:hover{transform:translateY(-5px);box-shadow:0 0 25px cyan;}
-    .feature-card h3{color:cyan;margin-bottom:0.5rem;}
-    .feature-card p{color:#bfe;font-size:0.9rem;}
 
-    /* ===== FOOTER ===== */
-    footer{
-      background:#000814;padding:1.5rem;text-align:center;
-      border-top:1px solid rgba(0,200,255,0.3);margin-top:3rem;
+    .about-mission h2 {
+      color: #99c1ff;
     }
-    footer p{color:#888;font-size:0.9rem;margin-bottom:0.8rem;}
-    .footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
-    .footer-links a{color:cyan;text-decoration:none;font-size:0.9rem;border:1px solid cyan;padding:0.3rem 0.7rem;border-radius:6px;transition:all 0.3s ease;}
-    .footer-links a:hover{background:cyan;color:#000;box-shadow:0 0 10px cyan;}
+
+    .highlight {
+      color: #66a3ff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .about-container { padding: 15px; }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="logo">
-      <img src="assets/thumb/logo.png" alt="Blueverse Logo">
-    </div>
-    <div class="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
+  <div class="about-container">
+    <h1>About Blueverse</h1>
+    <p><strong>Blueverse</strong> is your digital universe of games, movies, TV series, and entertainment. We bring together everything from <span class="highlight">browser games</span> and <span class="highlight">guides</span> to <span class="highlight">trailers</span> and <span class="highlight">reviews</span> — all in one powerful hub.</p>
 
-  <!-- ===== SIDEBAR MENU ===== -->
-  <nav class="menu">
-    <a href="index.html">🏠 Home</a>
-    <a href="movies.html">🎬 Movies</a>
-  
-    <a href="games.html">🎮 Games</a>
-    <a href="blogs.html">📝 Blogs & Guides</a>
-    <a href="shop.html">🛍️ Shop</a>
-    <a href="about.html">ℹ️ About</a>
-    <a href="contact.html">📞 Contact</a>
-  </nav>
+    <p>Our goal is to keep gamers, creators, and fans updated with the latest in gaming, film, and digital content — without the clutter. Whether you love discovering new titles, reading reviews, or exploring entertainment news, <strong>Blueverse</strong> is built for you.</p>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main>
-    <section class="hero-about">
-      <h1>Welcome to Blueverse 🌌</h1>
-      <p>Blueverse is your all-in-one entertainment universe — where games, movies, blogs, guides, and online experiences meet. Explore, play, and connect in one digital cosmos.</p>
-    </section>
-
-    <section class="about-section">
+    <div class="about-mission">
       <h2>Our Mission</h2>
-      <p>At <span style="color:cyan;">Blueverse</span>, we aim to build a global community of movie lovers, gamers, and creators. Whether you want to read a review, download a game, or get expert tips, we’ve got you covered.</p>
-    </section>
-
-    <section class="about-section">
-      <h2>What You’ll Find</h2>
-      <div class="features">
-        <div class="feature-card">
-          <h3>🎮 Games</h3>
-          <p>Discover trending games, walkthroughs, guides, and online mini-games to play instantly.</p>
-        </div>
-        <div class="feature-card">
-          <h3>🎬 Movies & Series</h3>
-          <p>Find movie info, trailers, download links, and multilingual details for global audiences.</p>
-        </div>
-        <div class="feature-card">
-          <h3>📝 Blogs & Tips</h3>
-          <p>Level up your skills with insightful blogs, pro gaming tips, and creative entertainment guides.</p>
-        </div>
-        <div class="feature-card">
-          <h3>🛍️ Blueverse Shop</h3>
-          <p>Exclusive gaming gear, movie collectibles, and digital items — all in one store.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section">
-      <h2>Join the Universe</h2>
-      <p>Blueverse is more than a platform — it’s a growing community. Subscribe, follow, and be part of the journey as we expand into streaming, AI tools, and creator monetization.</p>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="contact.html">Contact Us</a>
+      <p>To make gaming and entertainment content accessible and engaging for everyone. We aim to support creators, guide players, and connect audiences across the digital space.</p>
     </div>
-    <p>© 2025 Blueverse. All Rights Reserved.</p>
+
+    <p>Blueverse is constantly evolving — from game updates and movie insights to exclusive content and tools that help you play, learn, and earn online. The <strong>Blueverse Blog</strong> explores trends, trailers, and entertainment news from around the world.</p>
+
+    <p>Have suggestions or collaboration ideas? We’d love to hear from you. Contact us anytime at <a href="mailto:support@blueverse.space" class="highlight">support@blueverse.space</a>.</p>
+  </div>
+
+  <!-- ✅ Universal Footer -->
+  <footer class="bv-footer">
+    <div class="footer-left">
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-center">
+      <nav class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+      </nav>
+      <p class="copyright">© <span id="year"></span> Blueverse — All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <p class="attr-title">Attributions</p>
+      <ul class="attr-list">
+        <li>Icons by <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+        <li>Game data by <a href="https://rawg.io/apidocs" target="_blank">RAWG.io</a></li>
+        <li>Movie data by <a href="https://www.themoviedb.org/" target="_blank">TMDB</a></li>
+      </ul>
+    </div>
   </footer>
 
-  <!-- ===== SCRIPT ===== -->
   <script>
-    const hamburger=document.querySelector('.hamburger');
-    const menu=document.querySelector('.menu');
-    hamburger.addEventListener('click',()=>{
-      hamburger.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.querySelectorAll('.menu a').forEach(link=>{
-      link.addEventListener('click',()=>{
-        menu.classList.remove('active');
-        hamburger.classList.remove('active');
-      });
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
 </body>

@@ -759,27 +759,7 @@ header .logo img {
     <button onclick="alert('Thanks for your feedback!')">Submit Review</button>
   </section>
 
-  <!-- FOOTER -->
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <p>© 2025 Blueverse. All Rights Reserved.</p>
-      
-      <div class="footer-links">
-        <a href="policies.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact</a>
-      </div>
 
-      <!-- SOCIAL ICONS -->
-      <div class="social-icons">
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </footer>
 
   <script>
     const hamburger = document.getElementById("hamburger");
@@ -862,6 +842,182 @@ function renderResults(data) {
     
     
   </script>
+
+
+
+<!-- 🌐 BLUEVERSE UNIVERSAL FOOTER -->
+<footer class="blueverse-footer">
+  <div class="footer-container">
+
+    <!-- 🔹 About Blueverse -->
+    <div class="footer-about">
+      <h3>About Blueverse</h3>
+      <p>Blueverse is your digital hub for <strong>games, movies, guides, and entertainment news</strong>. Explore trailers, reviews, and updates from across the entertainment universe — all in one place.</p>
+    </div>
+
+    <!-- 🔹 Footer Navigation -->
+    <div class="footer-links">
+      <h3>Explore</h3>
+      <div class="footer-btns">
+        <a href="/about.html" class="footer-btn">About</a>
+        <a href="/contact.html" class="footer-btn">Contact</a>
+        <a href="/privacy-policy.html" class="footer-btn">Privacy Policy</a>
+        <a href="/blog" class="footer-btn">Blog</a>
+      </div>
+    </div>
+
+    <!-- 🔹 Social Media -->
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-btns">
+        <a href="https://facebook.com" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com" target="_blank" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- 🔹 Attribution (Legal & Required) -->
+    <div class="footer-attrib">
+      <h3>Attributions</h3>
+      <ul>
+        <li>Icons provided by <a href="https://www.flaticon.com/" target="_blank" rel="noopener">Flaticon</a></li>
+        <li>Game data & images powered by <a href="https://rawg.io/apidocs" target="_blank" rel="noopener">RAWG.io API</a></li>
+        <li>Movie data provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB (The Movie Database)</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> <strong>Blueverse</strong>. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- 💅 FOOTER STYLING -->
+<style>
+.blueverse-footer {
+  background: #050b18;
+  color: #cdd9ff;
+  padding: 50px 20px 30px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  border-top: 2px solid #0b1733;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-about p {
+  color: #b8c6ff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-social h3,
+.footer-about h3,
+.footer-attrib h3 {
+  color: #66a3ff;
+  margin-bottom: 12px;
+}
+
+.footer-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-btn {
+  background: #0b1733;
+  color: #cdd9ff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-btn:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.social-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-btn {
+  background: #0b1733;
+  color: #66a3ff;
+  font-size: 18px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.social-btn:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.footer-attrib ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-attrib ul li {
+  font-size: 13px;
+  color: #a7b5f7;
+  margin-bottom: 6px;
+}
+
+.footer-attrib ul li a {
+  color: #66a3ff;
+  text-decoration: none;
+}
+
+.footer-attrib ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #0f1b3a;
+  margin-top: 40px;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #8ea2e1;
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-btns, .social-btns {
+    justify-content: center;
+  }
+}
+</style>
+
+<!-- 🕓 YEAR AUTO UPDATE -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- ✅ Font Awesome for Icons -->
+<script src="https://kit.fontawesome.com/a2e0e6c6d8.js" crossorigin="anonymous"></script>
+
+
+
 
 </body>
 </html>
