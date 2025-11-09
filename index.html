@@ -128,7 +128,21 @@ a {
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-/* ===== HEADER BASE ===== */
+/* ===== BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #000010, #001a33, #000);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
 header {
   position: fixed;
   top: 1rem;
@@ -137,89 +151,45 @@ header {
   width: 90%;
   max-width: 1100px;
   height: 60px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 999px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* keeps logo left, hamburger right */
-  transition: none; /* disable transitions */
-  z-index: 1000;
-  opacity: 1; /* always visible */
-  overflow: hidden;
+  justify-content: space-between;
   padding: 0 1.2rem;
-  animation: headerGlow 4s infinite alternate ease-in-out;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-@keyframes headerGlow {
-  from { box-shadow: 0 0 20px rgba(0,150,255,0.4), 0 0 40px rgba(0,50,150,0.3); }
-  to   { box-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,100,255,0.5); }
-}
-
-/* ===== LOGO (Left Side — Bigger Glow & Proper Fill) ===== */
+/* ===== LOGO ===== */
 .logo {
-  width: 50px;                /* Slightly larger */
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle at center, rgba(0,255,255,0.35), rgba(0,255,255,0.1));
-  box-shadow: 0 0 40px rgba(0,255,255,0.8), 0 0 80px rgba(0,255,255,0.4);
-  transition: transform 0.6s ease, box-shadow 0.5s ease;
-  flex-shrink: 0;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.3), rgba(0,255,255,0.05));
+  box-shadow: 0 0 25px rgba(0,255,255,0.5);
+  cursor: pointer;
 }
 
-.logo:hover {
-  transform: scale(1.08) rotate(360deg);
-  box-shadow: 0 0 60px cyan, 0 0 100px rgba(0,255,255,0.6);
-}
-
-/* Image inside the logo (fill more space) */
 .logo img {
-  width: 115%;               /* Slightly overfills to cover inner padding */
-  height: 115%;
+  width: 110%;
+  height: 110%;
   object-fit: cover;
   border-radius: 50%;
-  filter: drop-shadow(0 0 12px cyan);
   transition: transform 0.4s ease;
 }
 
-.logo img:hover {
+.logo:hover img {
   transform: scale(1.05);
 }
 
-/* === Fix small logo on mobile === */
-@media (max-width: 768px) {
-  .logo {
-    width: 50px !important;
-    height: 50px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .logo img {
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 50px !important;
-    height: 50px !important;
-  }
-
-  .logo img {
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
-
-
-/* ===== HAMBURGER (Right Side) ===== */
+/* ===== HAMBURGER ===== */
 .hamburger {
   width: 30px;
   height: 22px;
@@ -228,7 +198,6 @@ header {
   justify-content: space-between;
   cursor: pointer;
   z-index: 1100;
-  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -240,13 +209,13 @@ header {
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px,5px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px,-6px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ===== SIDEBAR MENU ===== */
@@ -254,36 +223,34 @@ header {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 270px;
+  width: 260px;
   height: 100%;
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(15px);
   border-right: 2px solid rgba(0, 255, 255, 0.3);
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-  transition: left 0.6s ease;
+  transition: left 0.5s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .menu.active {
   left: 0;
 }
 
+/* Sidebar Content */
 .sidebar-content {
   text-align: center;
-  padding: 2rem 1rem;
-  width: 100%;
+  padding: 3rem 1rem;
+  font-size: 0.9rem;
 }
 
 .sidebar-title {
   color: cyan;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-shadow: 0 0 12px cyan;
 }
 
@@ -292,11 +259,11 @@ header {
   color: cyan;
   text-decoration: none;
   font-weight: 600;
-  margin: 0.6rem 0;
-  padding: 0.7rem 1rem;
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
+  margin: 0.4rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,255,255,0.2);
+  transition: 0.3s ease;
 }
 
 .menu a:hover {
@@ -306,69 +273,145 @@ header {
   transform: translateY(-2px);
 }
 
-/* Subtitles */
+/* ===== DROPDOWN (Genres) ===== */
 .sidebar-sub {
-  color: #00e6e6;
+  color: cyan;
   font-size: 1.1rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 6px cyan;
-  border-bottom: 1px solid rgba(0,255,255,0.3);
-  display: inline-block;
-  padding-bottom: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(0,255,255,0.2); /* Added border */
+  border-radius: 8px; /* Same rounded style as buttons */
+  transition: all 0.3s ease;
+  width: 80%; /* Align width like other buttons */
+  text-align: center;
 }
 
-/* Tags section */
+.sidebar-sub:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 15px cyan;
+}
+
+.sidebar-sub::after {
+  content: "▾";
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-sub.active::after {
+  transform: rotate(180deg);
+}
+
 .sidebar-tags {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar-tags.active {
+  max-height: 500px;
+  opacity: 1;
 }
 
 .sidebar-tags a {
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid rgba(0,255,255,0.3);
-  border-radius: 6px;
+  font-size: 0.95rem;
+  display: block;
+  width: 80%;
+  text-align: center;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,255,255,0.2);
+  margin: 0.3rem 0;
   background: rgba(255,255,255,0.05);
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .sidebar-tags a:hover {
   background: cyan;
   color: black;
-  box-shadow: 0 0 10px cyan;
+  box-shadow: 0 0 15px cyan;
+  transform: translateY(-2px);
 }
 
-/* Social Links */
+/* ===== SOCIAL LINKS ===== */
 .sidebar-social {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   margin-top: 1rem;
 }
 
 .sidebar-social a {
   width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  color: cyan;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border: 1px solid rgba(0,255,255,0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .sidebar-social a:hover {
   background: cyan;
   color: black;
   transform: translateY(-2px);
+  box-shadow: 0 0 10px cyan;
 }
 
-main {
-  padding-top: 120px;
-  text-align: center;
+/* ===== OVERLAY ===== */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0px);
+  background: rgba(0, 0, 0, 0.0);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
 }
 
-main h1 {
-  color: cyan;
-  margin-bottom: 1rem;
+#overlay.active {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header {
+    height: 55px;
+    width: 95%;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .menu {
+    width: 240px;
+  }
 }
 
 
@@ -1370,28 +1413,28 @@ footer {
 </div>
 
   
-  <nav class="menu">
+<!-- Sidebar -->
+<nav class="menu">
   <div class="sidebar-content">
     <h2 class="sidebar-title">MENU</h2>
-    <a href="games.html">Play Games</a>
+    <a href="index.html">🏠 Home</a>
     <a href="movies/movie.html">🎬 Movies</a>
-    <a href="Game/all-games.html">All Games</a>
-    
-    <a href="blog.html">Blog Page</a>
-    <a href="blog/gamesupdates.html">All Games updates</a>
-    <a href="blog/gamesnews.html">All Games/Apps News</a>
+    <a href="gamesection/topgameslist.html">Top Games List</a>
+    <a href="games.html">Play Games</a>
 
-    
-
-    <h3 class="sidebar-sub">Connect</h3>
-    <div class="sidebar-social">
-      <a href="#">YouTube</a>
-      <a href="#">Telegram</a>
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
+    <h3 class="sidebar-sub">Genres</h3>
+    <div class="sidebar-tags">
+      <a href="/movies/action.html">Action</a>
+      <a href="/movies/horror.html">Horror</a>
+      <a href="/movies/adventure.html">Adventure</a>
     </div>
-  </div>
+
+
+
+  
 </nav>
+
+<div id="overlay"></div>
 
   <!-- MAIN -->
   <main>
@@ -1446,6 +1489,28 @@ footer {
       </div>
       
     </section>
+    
+      <!-- GAMES SECTION -->
+<section class="games-section">
+  <div class="games-header">
+    <h2>Online Games</h2>
+    <a href="games.html">
+      <button class="see-more-btn">Play More</button>
+    </a>
+  </div>
+  <div class="games-scroll">
+    <a href="games/3-dash.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/3-dash.png" alt="3 Dash" loading="lazy"></a>
+    <a href="games/brawl-stars-brave-adventure.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/brawlstars.png" alt="Brawl Stars Thumbnail " loading="lazy"></a>
+    <a href="games/bubble-shooter-temple-jewels.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/bubble-shooter-temple-jewels.png" alt="bubble shooter temple jewels thumbnail" loading="lazy"></a>
+    <a href="games/italian-brainrot-baby-clicker.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/italian-brainrot-baby-clicker.png" alt="italian italian brainrot baby clicker thumbnail" loading="lazy"></a>
+    <a href="games/monster-dash.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/monster-dash.png" alt="momster Dash thumbnail" loading="lazy"></a>
+    <a href="games/see-lord.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/see-lord.png" alt="see lord" loading="lazy"></a>
+  </div>
+</section>
+    
+    
+    
+    
 
     <!-- PC games -->
 <section class="thumb-section">
@@ -1478,21 +1543,7 @@ footer {
 </section>
     
 
-    <!-- EXISTING CARDS SECTION -->
-    <div class="card-container">
-      <div class="card">
-        <img src="assets/thumb/biggameslowdevice.jpg" alt="guide on How To Install Big Games On Low Storage Phone" class="bg">
- <div class="card-content">
-          <p>How To Install Big Games On Low Storage Phone.</p>
-          <div class="card-footer">
-            <span>28.Oct.2025</span>
-            <a href="blog/install-big-games-low-storage.html">Read Guide</a>
-          </div>
-        </div>
-      </div>
-
-      
-    </div>
+   
 
 
 
@@ -1515,54 +1566,15 @@ footer {
       
       
       
-       <div class="card-container">
-      <div class="card">
-        <img src="assets/thumb/top-5-trusted-platform.jpg" alt="guide on How To Install Big Games On Low Storage Phone" class="bg">
- <div class="card-content">
-          <p>Top 5 Trusted Apk Platforms 2025.</p>
-          <div class="card-footer">
-            <span>5.Nov.2025</span>
-            <a href="blog/top-5-trusted-platform.html">Read Guide</a>
-          </div>
-        </div>
-      </div>
-
-      
-    </div>
+  
       
       
       
       
-      
-      
-      
-      <div class="card">
-        <img src="assets/thumb/blog.jpg" alt="Blog Thumbnail" loading="lazy">
-        <div class="card-content">
-          <h3>Blog</h3>
-          <p>Exclusive gaming merchandise and digital goodies at Blueverse.</p>
-          <div class="card-footer"><span>New Deals</span><a href="blog.html">Visit</a></div>
-        </div>
-      </div>
+    
     </section>
     
-    <!-- GAMES SECTION -->
-<section class="games-section">
-  <div class="games-header">
-    <h2>Online Games</h2>
-    <a href="games.html">
-      <button class="see-more-btn">Play More</button>
-    </a>
-  </div>
-  <div class="games-scroll">
-    <a href="games/3-dash.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/3-dash.png" alt="3 Dash" loading="lazy"></a>
-    <a href="games/brawl-stars-brave-adventure.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/brawlstars.png" alt="Brawl Stars Thumbnail " loading="lazy"></a>
-    <a href="games/bubble-shooter-temple-jewels.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/bubble-shooter-temple-jewels.png" alt="bubble shooter temple jewels thumbnail" loading="lazy"></a>
-    <a href="games/italian-brainrot-baby-clicker.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/italian-brainrot-baby-clicker.png" alt="italian italian brainrot baby clicker thumbnail" loading="lazy"></a>
-    <a href="games/monster-dash.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/monster-dash.png" alt="momster Dash thumbnail" loading="lazy"></a>
-    <a href="games/see-lord.html"><img src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/see-lord.png" alt="see lord" loading="lazy"></a>
-  </div>
-</section>
+  
 
 
 <!-- ===== TRENDING SECTION ===== -->
@@ -1643,6 +1655,23 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("active"); // ✅ match your CSS (.menu.active)
   });
 });
+
+
+// ===== GENRES DROPDOWN FUNCTIONALITY =====
+const dropdownTitles = document.querySelectorAll(".sidebar-sub");
+
+dropdownTitles.forEach(title => {
+  title.addEventListener("click", () => {
+    title.classList.toggle("active");
+
+    const next = title.nextElementSibling;
+    if (next && next.classList.contains("sidebar-tags")) {
+      next.classList.toggle("active");
+    }
+  });
+});
+
+
 
     
 // Scroll animation for sections (repeat on up/down scroll)
@@ -1748,8 +1777,7 @@ searchInput.addEventListener("focus", () => {
   }, 0);
 });
  
- 
- 
+
  
   </script>
 
@@ -1814,13 +1842,13 @@ searchInput.addEventListener("focus", () => {
 
 
 
-<!-- ========== BLUEVERSE COOKIE CONSENT v2 (paste before </body>) ========== -->
-<!-- Banner -->
+<!-- ========== BLUEVERSE COOKIE CONSENT v3 (Optimized, Non-blocking, LCP-friendly) ========== -->
+
+<!-- Cookie Banner -->
 <div id="bv-cookie-banner" class="bv-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
   <div class="bv-cookie-inner">
     <div class="bv-cookie-text">
-      🔵 <strong>Blueverse</strong> uses cookies & similar tech to improve your experience. We load analytics, ads, and embedded media (e.g. YouTube) only with your consent.
-      Read our <a id="bv-open-policy" href="#" role="button">Cookie Policy</a>.
+      🔵 <strong>Blueverse</strong> uses cookies & similar tech to improve your experience. Read our <a id="bv-open-policy" href="#" role="button">Cookie Policy</a>.
     </div>
     <div class="bv-cookie-actions">
       <button id="bv-accept-all" class="bv-btn accept">Accept All</button>
@@ -1841,7 +1869,7 @@ searchInput.addEventListener("focus", () => {
     <section class="bv-cats">
       <label><input type="checkbox" disabled checked> Essential (required)</label>
       <label><input type="checkbox" id="bv-analytics"> Analytics</label>
-      <label><input type="checkbox" id="bv-marketing"> Marketing / Ads (Do Not Sell opt-out)</label>
+      <label><input type="checkbox" id="bv-marketing"> Marketing / Ads</label>
       <label><input type="checkbox" id="bv-embedded"> Embedded Media (YouTube)</label>
     </section>
 
@@ -1852,7 +1880,7 @@ searchInput.addEventListener("focus", () => {
   </div>
 </div>
 
-<!-- Policy Modal (brief, editable) -->
+<!-- Policy Modal -->
 <div id="bv-policy" class="bv-modal" hidden>
   <div class="bv-modal-panel">
     <header>
@@ -1860,17 +1888,7 @@ searchInput.addEventListener("focus", () => {
       <button id="bv-close-policy" class="bv-close" aria-label="Close policy">&times;</button>
     </header>
     <div style="line-height:1.5;color:var(--bv-text);">
-      <p>Blueverse uses Essential cookies (required), Analytics (optional), Marketing (optional) and Embedded Media (optional). You can change preferences anytime. Contact: <a href="mailto:privacy@blueverse.space">privacy@blueverse.space</a>.</p>
-      <h3>Cookie examples</h3>
-      <table class="bv-cookie-table">
-        <thead><tr><th>Name</th><th>Purpose</th><th>Category</th><th>Retention</th></tr></thead>
-        <tbody>
-          <tr><td>blueverse_consent_v2</td><td>Stores your choices</td><td>Essential</td><td>1 year (localStorage)</td></tr>
-          <tr><td>_ga, _gid</td><td>Google Analytics</td><td>Analytics</td><td>2 years / 24 hours</td></tr>
-          <tr><td>YSC</td><td>YouTube video cookie</td><td>Embedded</td><td>Session / vendor</td></tr>
-          <tr><td>ads cookies</td><td>Ad vendor personalization</td><td>Marketing</td><td>vendor default</td></tr>
-        </tbody>
-      </table>
+      <p>Blueverse uses Essential cookies (required), Analytics (optional), Marketing (optional), and Embedded Media (optional). You can change preferences anytime. Contact: <a href="mailto:privacy@blueverse.space">privacy@blueverse.space</a>.</p>
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
       <button id="bv-policy-accept" class="bv-btn accept">Accept All</button>
@@ -1879,41 +1897,32 @@ searchInput.addEventListener("focus", () => {
   </div>
 </div>
 
-<!-- Optional footer button (place in your footer HTML if you want) -->
+<!-- Optional footer button -->
 <!-- <button onclick="blueverseOpenCookieSettings()" style="background:none;border:0;color:var(--bv-blue);cursor:pointer">Cookie settings</button> -->
 
 <script>
-/* ========== BLUEVERSE COOKIE MANAGER v2 ========== */
-/* 1) Replace ADSENSE_PUBLISHER_ID with your AdSense publisher id (like ca-pub-XXXXXXXXXXXX) when ready.
-   2) Replace GA_MEASUREMENT_ID with your Google Analytics ID (G-XXXX or UA-XXXXX) if you want GA.
-   3) This script ensures non-personalized ads when marketing=false by setting google_disable_ad_personalization=true
-*/
+/* ========== BLUEVERSE COOKIE MANAGER v3 ========== */
+const BV_KEY = "blueverse_consent_v3";
+const ADSENSE_PUBLISHER_ID = ""; // Put your AdSense ID here
+const GA_MEASUREMENT_ID = "";     // Put your GA ID here
 
-const BV_KEY = "blueverse_consent_v2";
-const ADSENSE_PUBLISHER_ID = ""; // <-- PUT your AdSense ID here like "ca-pub-1234567890123456"
-const GA_MEASUREMENT_ID = "";     // <-- Put GA ID here if you use it, else keep empty
-
-// Helpers
 function readConsent(){ try{ return JSON.parse(localStorage.getItem(BV_KEY)) || null; } catch { return null; } }
-function writeConsent(o){ localStorage.setItem(BV_KEY, JSON.stringify(o)); }
+function writeConsent(c){ localStorage.setItem(BV_KEY, JSON.stringify(c)); }
 function nowISO(){ return new Date().toISOString(); }
+
 function show(id){ document.getElementById(id).hidden = false; }
 function hide(id){ document.getElementById(id).hidden = true; }
 
-// Script injection safe helper
-function injectScript(src, attrs = {}) {
+function injectScript(src, attrs={}) {
   if(document.querySelector('script[src="'+src+'"]')) return;
   const s = document.createElement('script'); s.src = src; s.async = true;
   Object.entries(attrs).forEach(([k,v]) => s.setAttribute(k,v));
   document.head.appendChild(s);
 }
-function injectInline(code){ const s = document.createElement('script'); s.textContent = code; document.head.appendChild(s); }
 
-// Apply consent: load resources according to choices
 function applyConsent(consent){
   // Analytics
   if(consent.analytics && GA_MEASUREMENT_ID){
-    // GA (gtag) example
     if(!window.dataLayer){
       injectScript("https://www.googletagmanager.com/gtag/js?id="+GA_MEASUREMENT_ID);
       window.dataLayer = window.dataLayer || [];
@@ -1923,20 +1932,13 @@ function applyConsent(consent){
     }
   }
 
-  // AdSense (marketing): we *always* load AdSense but configure personalization based on consent.
-  // This ensures ads are shown even when marketing=false (non-personalized).
+  // AdSense
   if(ADSENSE_PUBLISHER_ID){
-    if(!consent.marketing){
-      // request non-personalized ads
-      window.google_disable_ad_personalization = true;
-    }
-    // load AdSense script with client param
-    const src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID);
-    injectScript(src, { crossorigin: "anonymous" });
-    // After script loads, individual ad <ins> tags on page will request ads; if non-personalized set, AdSense returns contextual ads.
+    if(!consent.marketing) window.google_disable_ad_personalization = true;
+    injectScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID), {crossorigin:"anonymous"});
   }
 
-  // Embedded media (YouTube)
+  // YouTube Embeds
   if(consent.embedded){
     document.querySelectorAll("[data-bv-youtube]").forEach(div=>{
       if(div.dataset.bvDone) return;
@@ -1952,38 +1954,32 @@ function applyConsent(consent){
       div.dataset.bvDone = "1";
     });
   }
-
-  // You can add additional vendor loads here (e.g., advertising providers that require script injection).
 }
 
-// UI wiring
 document.addEventListener("DOMContentLoaded", function(){
   const saved = readConsent();
   const get = id => document.getElementById(id);
 
-  // Show banner if no consent
   if(!saved) show("bv-cookie-banner");
   else applyConsent(saved);
 
-  // Buttons
+  // Accept All
   get("bv-accept-all").addEventListener("click", function(){
-    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO(), source: "banner_accept" };
+    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO() };
     writeConsent(c); applyConsent(c); hide("bv-cookie-banner");
   });
 
+  // Reject Non-Essential
   get("bv-reject-all").addEventListener("click", function(){
-    const c = { essential:true, analytics:false, marketing:false, embedded:false, date: nowISO(), source: "banner_reject" };
+    const c = { essential:true, analytics:false, marketing:false, embedded:false, date: nowISO() };
     writeConsent(c); hide("bv-cookie-banner");
-    // still load ads non-personalized (handled in applyConsent when ad ID present) — BUT we purposely do NOT call applyConsent here
-    // to avoid loading analytics or embedded content. We still want ads showing non-personalized: ensure AdSense script is loaded even on reject:
-    // If publisher provided an AdSense ID, load script with non-personalized pref:
     if(ADSENSE_PUBLISHER_ID){
       window.google_disable_ad_personalization = true;
-      const src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID);
-      injectScript(src, { crossorigin: "anonymous" });
+      injectScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+encodeURIComponent(ADSENSE_PUBLISHER_ID), {crossorigin:"anonymous"});
     }
   });
 
+  // Manage Preferences Modal
   get("bv-manage").addEventListener("click", function(){
     const s = saved || { analytics:false, marketing:false, embedded:false };
     get("bv-analytics").checked = !!s.analytics;
@@ -1994,12 +1990,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
   get("bv-save").addEventListener("click", function(){
     const c = {
-      essential: true,
+      essential:true,
       analytics: !!get("bv-analytics").checked,
       marketing: !!get("bv-marketing").checked,
       embedded: !!get("bv-embedded").checked,
-      date: nowISO(),
-      source: "manage_save"
+      date: nowISO()
     };
     writeConsent(c); applyConsent(c); hide("bv-modal"); hide("bv-cookie-banner");
   });
@@ -2007,19 +2002,19 @@ document.addEventListener("DOMContentLoaded", function(){
   get("bv-cancel").addEventListener("click", function(){ hide("bv-modal"); });
   get("bv-close-modal").addEventListener("click", function(){ hide("bv-modal"); });
 
-  // Policy open/close
+  // Policy Modal
   get("bv-open-policy")?.addEventListener("click", function(e){ e.preventDefault(); show("bv-policy"); });
   get("bv-close-policy")?.addEventListener("click", function(){ hide("bv-policy"); });
   get("bv-policy-close")?.addEventListener("click", function(){ hide("bv-policy"); });
   get("bv-policy-accept")?.addEventListener("click", function(){
-    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO(), source: "policy_accept" };
+    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO() };
     writeConsent(c); applyConsent(c); hide("bv-policy"); hide("bv-cookie-banner");
   });
 
-  // Escape to close modals
+  // Escape closes modals
   document.addEventListener("keydown", function(e){ if(e.key === "Escape"){ hide("bv-modal"); hide("bv-policy"); } });
 
-  // Expose settings opener
+  // Expose footer settings opener
   window.blueverseOpenCookieSettings = function(){
     const s = readConsent() || { analytics:false, marketing:false, embedded:false };
     get("bv-analytics").checked = !!s.analytics;
@@ -2029,7 +2024,7 @@ document.addEventListener("DOMContentLoaded", function(){
   };
 });
 </script>
-<!-- ========== END COOKIE CONSENT v2 ========== -->
+<!-- ========== END BLUEVERSE COOKIE CONSENT v3 ========== -->
 
 
 

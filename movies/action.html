@@ -682,11 +682,12 @@ body {
 /* ===== SEARCH BOX STYLE ===== */
 .search-box {
   position: sticky;
-  top: 80px; /* adjust this to match your header height */
+  top: 80px;       /* distance from top */
   max-width: 300px;
-  margin: 0 auto;
   padding: 10px;
   z-index: 999;
+  left: 50px;      /* fixed distance from left */
+  transform: none; /* no horizontal transform needed */
 }
 
 #searchInput {
@@ -822,18 +823,18 @@ body {
     <h2 class="sidebar-title">MENU</h2>
     <a href="/index.html">🏠 Home</a>
     <a href="/movies/movies.html">🎬 Movies</a>
-    <a href="/gamesection/topgameslist.html">Top Games List</a>
+    <a href="/Game/all-games.html">Top Games List</a>
     <a href="/games.html">Play Games </a>
     <a href="/blog.html">Blog Page</a>
-    <a href="/gamesection/gamesupdates.html">Games Updates</a>
-    <a href="/gamesection/gamesnews.html">Games NEWS</a>
+   
+   
 
     <h3 class="sidebar-sub">Genres</h3>
     <div class="sidebar-tags">
       <a href="/movies/action.html">Action</a>
-      <a href="#"></a>
+    
       <a href="/movies/horror.html">Horror</a>
-      <a href="#"></a>
+      
       <a href="/movies/adventure.html">Adventure</a>
     </div>
 
