@@ -346,11 +346,11 @@
 </header>
 
 <nav class="side-menu" id="sideMenu">
-  <a href="/">🏠 Home</a>
-  <a href="/games">🎮 Games</a>
-  <a href="/movies">🎬 Movies</a>
-  <a href="/blog">📰 Blog</a>
-  <a href="/contact">📞 Contact</a>
+  <a href="/index.html">🏠 Home</a>
+  <a href="/games.html">🎮 Games</a>
+  <a href="/movies/movie.html">🎬 Movies</a>
+  <a href="/blog.html">📰 Blog</a>
+  <a href="/contact.html">📞 Contact</a>
 </nav>
 
 
@@ -777,27 +777,9 @@
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const hamburger = document.getElementById("hamburger");
-  const sideMenu = document.getElementById("sideMenu");
 
-  // Create overlay dynamically
-  const overlay = document.createElement("div");
-  overlay.classList.add("menu-overlay");
-  document.body.appendChild(overlay);
 
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    sideMenu.classList.toggle("show");
-    overlay.classList.toggle("show");
-  });
 
-  overlay.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    sideMenu.classList.remove("show");
-    overlay.classList.remove("show");
-  });
-});
 
 
 
@@ -978,6 +960,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- ✅ Font Awesome for Icons -->
 <script src="https://kit.fontawesome.com/a2e0e6c6d8.js" crossorigin="anonymous"></script>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+
+  // Create overlay dynamically
+  let overlay = document.createElement("div");
+  overlay.className = "menu-overlay";
+  document.body.appendChild(overlay);
+
+  function toggleMenu() {
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("show");
+    overlay.classList.toggle("show");
+  }
+
+  // Open / Close menu on click
+  hamburger.addEventListener("click", toggleMenu);
+
+  // Close menu when clicking outside (overlay)
+  overlay.addEventListener("click", toggleMenu);
+
+  // Optional: close on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sideMenu.classList.contains("show")) toggleMenu();
+  });
+});
+</script>
 
 
 
