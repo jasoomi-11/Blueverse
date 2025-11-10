@@ -2,6 +2,19 @@
 <html lang="en">
 <head>
 
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
   
 <!-- 🌐✨ FULL STRONG SEO META TAGS FOR MONSTER DASH -->
 <meta charset="UTF-8">
@@ -673,6 +686,7 @@
 <!-- GAME DETAILS -->
 <div class="details">
   <h2>Monster Dash</h2>
+  
   <div class="meta">
     <div>Browser</div>
     <div>🎮 Category: Endless Runner</div>
@@ -680,8 +694,15 @@
   </div>
 
   <div class="play-buttons">
-    <button onclick="window.location.href='https://html5.gamedistribution.com/04999de1c09c4ec2af0d7f390de7ab03/?gd_sdk_referrer_url=https://blueverse.space/games/monster-dash'">▶️ Play Now</button>
-    <button onclick="window.open('https://html5.gamedistribution.com/04999de1c09c4ec2af0d7f390de7ab03/?gd_sdk_referrer_url=https://blueverse.space/games/monster-dash', '_blank')">🌐 Play in New Tab</button>
+    <!-- Same tab play → safe -->
+    <button onclick="window.location.href='https://html5.gamedistribution.com/04999de1c09c4ec2af0d7f390de7ab03/?gd_sdk_referrer_url=https://blueverse.space/games/monster-dash'">
+      ▶️ Play Now
+    </button>
+
+    <!-- New tab play → added security -->
+    <button onclick="window.open('https://html5.gamedistribution.com/04999de1c09c4ec2af0d7f390de7ab03/?gd_sdk_referrer_url=https://blueverse.space/games/monster-dash', '_blank', 'noopener,noreferrer')">
+      🌐 Play in New Tab
+    </button>
   </div>
 
   <!-- EMBEDDED GAME -->
@@ -693,6 +714,7 @@
       frameborder="0" 
       scrolling="no" 
       allowfullscreen
+      referrerpolicy="no-referrer"
       title="Play Monster Dash Online">
     </iframe>
   </div>

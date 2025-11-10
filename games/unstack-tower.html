@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
 
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+
+
+
+
   
 <!-- 🌐✨ FULL STRONG SEO META TAGS FOR UNSTACK TOWER -->
 <meta charset="UTF-8">
@@ -665,6 +679,7 @@ header .logo img {
 <!-- GAME DETAILS -->
 <div class="details">
   <h2>Unstack Tower</h2>
+  
   <div class="meta">
     <div>Browser</div>
     <div>🎮 Category: Physics / Puzzle</div>
@@ -672,8 +687,15 @@ header .logo img {
   </div>
 
   <div class="play-buttons">
-    <button onclick="window.location.href='https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.space/games/unstack-tower'">▶️ Play Now</button>
-    <button onclick="window.open('https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.space/games/unstack-tower', '_blank')">🌐 Play in New Tab</button>
+    <!-- Same tab play → safe -->
+    <button onclick="window.location.href='https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.space/games/unstack-tower'">
+      ▶️ Play Now
+    </button>
+
+    <!-- New tab play → added security -->
+    <button onclick="window.open('https://html5.gamedistribution.com/58cd87d5fac94261800865d2c46e70ac/?gd_sdk_referrer_url=https://blueverse.space/games/unstack-tower', '_blank', 'noopener,noreferrer')">
+      🌐 Play in New Tab
+    </button>
   </div>
 
   <!-- EMBEDDED GAME -->
@@ -684,7 +706,9 @@ header .logo img {
       height="600" 
       frameborder="0" 
       scrolling="no" 
-      allowfullscreen>
+      allowfullscreen
+      referrerpolicy="no-referrer"
+      title="Play Unstack Tower Online">
     </iframe>
   </div>
 </div>

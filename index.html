@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
   
+  
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
   <link rel="preload" as="image" href="/assets/thumb/logo.png" type="image/png">
   
   
@@ -10,8 +25,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ===================== 🌐 BLUEVERSE HOMEPAGE SEO META BLOCK ===================== -->
-<!-- ===================== 🌐 BLUEVERSE HOMEPAGE SEO META BLOCK (FULL & OPTIMIZED) ===================== -->
+
 <!-- ===================== 🌐 BLUEVERSE — CLEAN SEO META BLOCK ===================== -->
 <title>Blueverse — Games, Movies, Blogs & Online Arcade</title>
 
@@ -414,134 +428,70 @@ header {
   }
 }
 
+/* ===== BIG CARDS ===== */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 3rem auto;
+}
+.card {
+  border-radius: 20px; 
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 20px cyan, 0 0 30px blue, 0 0 50px purple;
+}
+.card img { 
+  width: 100%; 
+  height: 220px; 
+  object-fit: cover; 
+}
+.card-content {
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #0f172a, #000);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 40px;
+}
+.card-content h3 { 
+  margin-bottom: 0.5rem; 
+  color: cyan; 
+}
+.card-footer {
+  margin-top: 1rem;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+.card-footer a {
+  text-decoration: none; 
+  color: cyan;
+  border: 1px solid cyan;
+  padding: 0.4rem 0.8rem; 
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.card-footer a:hover { 
+  background: cyan; 
+  color: #0f172a; 
+}
 
-
-    /* BIG CARDS */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      width: 90%;
-      max-width: 1100px;
-      margin: 3rem auto;
-    }
-    .card {
-      border-radius: 20px; overflow: hidden;
-      background: #0f172a;
-      box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 0 20px cyan, 0 0 30px blue, 0 0 50px purple;
-    }
-    .card img { width: 100%; height: 220px; object-fit: cover; }
-    .card-content {
-      padding: 1.2rem;
-      background: linear-gradient(135deg, #0f172a, #000);
-      border-top-left-radius: 5px;
-      border-top-right-radius: 40px;
-    }
-    .card-content h3 { margin-bottom: 0.5rem; color: cyan; }
-    .card-footer {
-      margin-top: 1rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .card-footer a {
-      text-decoration: none; color: cyan;
-      border: 1px solid cyan;
-      padding: 0.4rem 0.8rem; border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-    .card-footer a:hover { background: cyan; color: #0f172a; }
-
-    /* NEW SECTION FOR SMALL CARDS */
-    .thumb-section {
-      width: 100%;
-      background: linear-gradient(120deg,#00111f,#0a0a1a,#001f3f);
-      padding: 2rem 0;
-      margin-top: 2rem;
-    }
-    .thumb-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 95%;
-      margin: auto;
-      margin-bottom: 1rem;
-    }
-    .thumb-header h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: cyan;
-    }
-    .thumb-header a {
-      text-decoration: none;
-      color: cyan;
-      font-weight: bold;
-      border: 1px solid cyan;
-      padding: 0.3rem 0.8rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    .thumb-header a:hover {
-      background: cyan;
-      color: #0f172a;
-    }
-    .thumb-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1rem;
-      width: 95%;
-      margin: auto;
-    }
-    .thumb-card {
-      border-radius: 12px;
-      background: #0f172a;
-      overflow: hidden;
-      box-shadow: 0 0 12px rgba(0,200,255,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .thumb-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px cyan;
-    }
-    .thumb-card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-    .thumb-card h4 {
-      padding: 0.6rem;
-      color: cyan;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .search-bar input { width: 130px; max-width: 160px; font-size: 0.8rem; }
-      .logo { width: 40px; height: 40px; font-size: 1rem; }
-      .hamburger { width: 26px; height: 20px; }
-      .menu { width: 200px; }
-    }
-    @media (max-width: 480px) {
-      .search-bar input { width: 100px; max-width: 120px; font-size: 0.75rem; }
-      .logo { width: 36px; height: 36px; font-size: 0.9rem; }
-      .hamburger { width: 24px; height: 18px; }
-      .menu { width: 180px; }
-    }
-    
-    
-/* GAMES SECTION */
-.games-section {
+/* ===== THUMBNAIL SECTION ===== */
+.thumb-section {
   width: 100%;
-  padding: 2rem 0;
   background: linear-gradient(120deg,#00111f,#0a0a1a,#001f3f);
+  padding: 2rem 0;
   margin-top: 2rem;
 }
 
-.games-header {
+/* ===== HEADER ===== */
+.thumb-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -550,6 +500,111 @@ header {
   margin-bottom: 1rem;
 }
 
+.thumb-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: cyan;
+}
+
+.thumb-header a {
+  text-decoration: none;
+  color: cyan;
+  font-weight: bold;
+  border: 1px solid cyan;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.thumb-header a:hover {
+  background: cyan;
+  color: #0f172a;
+}
+
+/* ===== GRID ===== */
+.thumb-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 95%;
+  margin: auto;
+}
+
+/* ===== FIXED CARD ===== */
+.thumb-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* ✅ Keeps perfect square cards */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 0 12px rgba(0,200,255,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumb-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px cyan;
+}
+
+/* ===== IMAGE FULL COVER ===== */
+.thumb-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ Image covers card without stretching */
+  transition: transform 0.4s ease;
+}
+
+.thumb-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ===== TEXT OVERLAY ===== */
+.thumb-card h4 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.6rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: cyan;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .search-bar input { width: 130px; max-width: 160px; font-size: 0.8rem; }
+  .logo { width: 40px; height: 40px; font-size: 1rem; }
+  .hamburger { width: 26px; height: 20px; }
+  .menu { width: 200px; }
+}
+@media (max-width: 480px) {
+  .search-bar input { width: 100px; max-width: 120px; font-size: 0.75rem; }
+  .logo { width: 36px; height: 36px; font-size: 0.9rem; }
+  .hamburger { width: 24px; height: 18px; }
+  .menu { width: 180px; }
+}
+
+/* ===== GAMES SECTION ===== */
+.games-section {
+  width: 100%;
+  padding: 2rem 0;
+  background: linear-gradient(120deg,#00111f,#0a0a1a,#001f3f);
+  margin-top: 2rem;
+}
+.games-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
 .games-header h2 {
   color: cyan;
   font-size: 1.4rem;
@@ -575,6 +630,7 @@ header {
   box-shadow: 0 0 15px cyan;
 }
 
+/* ===== HORIZONTAL SCROLL FOR GAMES ===== */
 .games-scroll {
   display: flex;
   gap: 1rem;
@@ -582,7 +638,6 @@ header {
   padding: 0 1rem;
   scroll-behavior: smooth;
 }
-
 .games-scroll::-webkit-scrollbar {
   height: 8px;
 }
@@ -590,7 +645,6 @@ header {
   background: cyan;
   border-radius: 4px;
 }
-
 .games-scroll img {
   flex: 0 0 auto;
   border-radius: 12px;
@@ -602,124 +656,18 @@ header {
   box-shadow: 0 0 15px cyan;
 }
 
-/* SHOPS SECTION */
-.shop-section {
-  width: 100%;
-  padding: 2rem 0;
-  background: linear-gradient(120deg,#00111f,#0a0a1a,#001f3f);
-  margin-top: 2rem;
-}
-
-.shop-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 95%;
-  margin: auto;
-  margin-bottom: 1.5rem;
-}
-
-.shop-header h2 {
-  color: cyan;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.shop-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  width: 95%;
-  margin: auto;
-}
-
-.shop-card {
-  background: #0f172a;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,200,255,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.shop-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 0 25px cyan;
-}
-
-.shop-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.shop-info {
-  padding: 1rem;
-}
-
-.shop-info h3 {
-  color: cyan;
-  margin-bottom: 0.4rem;
-}
-
-.shop-info p {
-  font-size: 0.85rem;
-  color: #ccc;
-  margin-bottom: 0.8rem;
-}
-
-.shop-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.price {
-  font-size: 1rem;
-  font-weight: bold;
-  color: lime;
-}
-
-/* BUY BUTTON */
-.buy-btn {
-  background: linear-gradient(145deg, #1e3a8a, #0f172a);
-  color: cyan;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 3px 3px 10px #000, -3px -3px 10px #1e3a8a;
-  transition: all 0.3s ease;
-}
-.buy-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(145deg, #0f172a, #1e3a8a);
-  box-shadow: 0 0 15px cyan;
-}
-
-/* Smooth fade/slide animation for sections */
+/* ===== SECTION ANIMATIONS ===== */
 .section-animate {
   opacity: 0;
   transform: translateY(40px);
+  filter: blur(10px);
   transition: all 0.8s ease-out;
 }
 .section-animate.show {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
-.section-animate {
-  opacity: 0;
-  transform: translateY(40px);
-  filter: blur(10px);   /* blur start */
-  transition: all 0.8s ease-out;
-}
-
-.section-animate.show {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);      /* blur remove */
-}
-
 
 
 /* ABOUT SECTION */
@@ -1521,7 +1469,7 @@ footer {
 
   <div class="thumb-container">
     <a href="Game/gta5.html" class="thumb-card">
-      <img src="https://media.rawg.io/media/resize/640/-/screenshots/491/491c40b53352893f5b00e5a19fbfcdb1.jpg" alt="Grand Theft Auto:V Thumbnail">
+      <img src="https://media.rawg.io/media/resize/640/-/screenshots/e16/e16d2a493f0c55cc75e5fe6db37da2a0.jpg" alt="Grand Theft Auto:V Thumbnail">
       <h4>GTA:V</h4>
     </a>
 

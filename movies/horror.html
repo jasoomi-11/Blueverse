@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Movies Page</title>
@@ -29,7 +45,7 @@ header {
   transform: translateX(-50%) scale(0.9);
   width: 90%;
   max-width: 1100px;
-  height: 60px;
+  height: 70px;
   background: rgba(255,255,255,0.05);
   border-radius: 999px;
   backdrop-filter: blur(12px);
@@ -73,7 +89,6 @@ header.expanded { transform: translateX(-50%) scale(1); }
   border-radius: 50%;
   object-fit: cover; /* ensures full coverage inside circle */
 }
-
 
 .logo:hover { transform: rotate(360deg) scale(1.1); }
 
@@ -390,12 +405,7 @@ body {
   border-radius: 15px;
   backdrop-filter: blur(15px);
   box-shadow: 0 0 20px rgba(0,255,255,0.3);
-  animation: blurFade 2s ease-in-out;
-}
-
-@keyframes blurFade {
-  from { filter: blur(10px); opacity: 0; }
-  to { filter: blur(0); opacity: 1; }
+  /* animation removed to improve LCP */
 }
 
 .filter-btn {
@@ -422,8 +432,6 @@ body {
   color: #000;
   box-shadow: 0 0 25px cyan, 0 0 45px cyan;
 }
-
-
 
 
 
@@ -629,7 +637,6 @@ body {
   font-size: 0.8rem;
 }
 
-
 /* ===== SEARCH BOX STYLE ===== */
 .search-box {
   position: sticky;
@@ -738,8 +745,6 @@ body {
 
 
 
-
-
 </style>
 </head>
 <body>
@@ -759,7 +764,6 @@ body {
 
 
 
-
 <!-- Sidebar -->
 <nav class="menu">
   <div class="sidebar-content">
@@ -768,16 +772,16 @@ body {
     <a href="/movies/movies.html">🎬 Movies</a>
     <a href="/Game/all-games.html">Top Games List</a>
     <a href="/games.html">Play Games </a>
+    <a href="/blog.html">Blog Page</a>
    
     
-   
 
     <h3 class="sidebar-sub">Genres</h3>
     <div class="sidebar-tags">
       <a href="/movies/action.html">Action</a>
+      
       <a href="/movies/horror.html">Horror</a>
-
-      <a href="/movies/adventure.html">Adventure</a>
+      
     </div>
 
     <h3 class="sidebar-sub">Connect</h3>
@@ -809,110 +813,13 @@ body {
   
 </section>
 
-
-
-
-
-<!-- ===== TRENDING SECTION ===== -->
-<section class="trending-section">
-  <h2 class="trending-title">🔥 Trending Now</h2>
-
-  <div class="trending-container">
-    <div class="trending-card" onclick="location.href='kgf.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=11" alt="KGF 2">
-      <div class="movie-info"><h3>KGF: Chapter 2</h3><p>2022</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='pushpa.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=12" alt="Pushpa">
-      <div class="movie-info"><h3>Pushpa: The Rise</h3><p>2021</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='pathaan.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=13" alt="Pathaan">
-      <div class="movie-info"><h3>Pathaan</h3><p>2023</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='rrr.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=14" alt="RRR">
-      <div class="movie-info"><h3>RRR</h3><p>2022</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='jawaan.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=15" alt="Jawan">
-      <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='leo.html'">
-      <span class="movie-badge">HOT</span>
-      <img src="https://picsum.photos/300/450?random=16" alt="Leo">
-      <div class="movie-info"><h3>Leo</h3><p>2023</p></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===== STATIC MOVIES ===== -->
+<!-- ===== MOVIE GRID ===== -->
 <div class="movie-grid">
-  <div class="movie-card" onclick="location.href='animal.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=1" alt="Animal">
-    <div class="movie-info"><h3>Animal</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='12thfail.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=2" alt="12th Fail">
-    <div class="movie-info"><h3>12th Fail</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='tiger3.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=3" alt="Tiger 3">
-    <div class="movie-info"><h3>Tiger 3</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='salaar.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=4" alt="Salaar">
-    <div class="movie-info"><h3>Salaar: Part 1</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='dunki.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=5" alt="Dunki">
-    <div class="movie-info"><h3>Dunki</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='leo.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=6" alt="Leo">
-    <div class="movie-info"><h3>Leo</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='sambahadur.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=7" alt="Sam Bahadur">
-    <div class="movie-info"><h3>Sam Bahadur</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='hinanna.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=8" alt="Hi Nanna">
-    <div class="movie-info"><h3>Hi Nanna</h3><p>2023</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='jawan.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://picsum.photos/300/450?random=9" alt="Jawan">
-    <div class="movie-info"><h3>Jawan</h3><p>2023</p></div>
-  </div>
+  <!-- Movie cards yahan JS se add honge -->
 </div>
+
+
+
 
 <!-- ===== PAGINATION PLACEHOLDER ===== -->
 <div class="pagination">
@@ -1069,6 +976,53 @@ searchInput.addEventListener("focus", () => {
     window.scrollTo(0, scrollY);
   }, 0);
 });
+
+
+
+
+
+
+
+
+
+const movieGrid = document.querySelector(".movie-grid");
+
+// Genre for this page
+const selectedGenre = "Horror"; // Action movies only
+
+// Fetch movies from local JSON
+fetch("/assets/data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    // Filter movies by genre
+    const filteredMovies = data.filter(movie => 
+      movie.genre && movie.genre.includes(selectedGenre)
+    );
+
+    // Create cards for filtered movies
+    filteredMovies.forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "movie-card";
+
+      card.innerHTML = `
+        <span class="movie-badge">${movie.badge}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
+        <div class="movie-info">
+          <h3>${movie.title}</h3>
+          <p>${movie.year}</p>
+        </div>
+      `;
+
+      card.addEventListener("click", () => window.location.href = movie.url);
+      movieGrid.appendChild(card);
+
+      // Scroll animation
+      setTimeout(() => card.classList.add("visible"), 50);
+    });
+  })
+  .catch(err => console.error("Error loading movies:", err));
+
+
 
 
 

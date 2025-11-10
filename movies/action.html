@@ -1,57 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ✅ SEO BLOCK FOR ACTION MOVIES PAGE -->
-<title>Best Action Movies of All Time | Hollywood & Bollywood Action Hits – Blueverse</title>
-<meta name="description" content="Explore the greatest action movies of all time from Hollywood, Bollywood, and around the world. Watch trailers, read details, and discover where to stream each film – only on Blueverse.">
-<meta name="keywords" content="Action movies, best action films, Hollywood action, Bollywood action, top action movies, Blueverse action collection, all-time hits, movie trailers, action heroes, online movies, film database, HD action movies, watch action movies online, action movie list 2025, action movie guide, romance adventure horror movies">
-
-<!-- ✅ Open Graph (Facebook, WhatsApp, etc.) -->
-<meta property="og:title" content="Best Action Movies of All Time | Hollywood & Bollywood – Blueverse">
-<meta property="og:description" content="Discover the most explosive and iconic action films ever made. Explore Blueverse's ultimate collection of Hollywood & Bollywood action movies.">
-<meta property="og:image" content="https://blueverse.space/assets/thumb/action.jpg">
-<meta property="og:url" content="https://blueverse.space/movies/action.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Blueverse">
-
-<!-- ✅ Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Best Action Movies of All Time | Blueverse">
-<meta name="twitter:description" content="Your one-stop hub for legendary Hollywood & Bollywood action films – discover, watch, and relive the adrenaline!">
-<meta name="twitter:image" content="https://blueverse.space/assets/thumb/action.jpg">
-
-<!-- ✅ Canonical URL -->
-<link rel="canonical" href="https://blueverse.space/movies/action.html">
-
-<!-- ✅ Schema Markup (for Google Rich Results) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Best Action Movies of All Time",
-  "url": "https://blueverse.space/movies/action.html",
-  "image": "https://blueverse.space/assets/thumb/action.jpg",
-  "description": "Explore the most thrilling action, adventure, romance, and horror movies from Hollywood, Bollywood, and beyond. Watch trailers, read details, and find out where to stream each film on Blueverse.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Blueverse",
-    "url": "https://blueverse.space",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://blueverse.space/assets/logo.png"
-    }
-  },
-  "genre": ["Action", "Adventure", "Romance", "Horror"],
-  "inLanguage": "en"
-}
-</script>
-
-<!-- ✅ Additional SEO Enhancements -->
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="author" content="Blueverse Editorial Team">
-<meta name="theme-color" content="#000000">
+<title>Movies Page</title>
 
 <style>
 /* ===== GLOBAL THEME ===== */
@@ -437,12 +405,7 @@ body {
   border-radius: 15px;
   backdrop-filter: blur(15px);
   box-shadow: 0 0 20px rgba(0,255,255,0.3);
-  animation: blurFade 2s ease-in-out;
-}
-
-@keyframes blurFade {
-  from { filter: blur(10px); opacity: 0; }
-  to { filter: blur(0); opacity: 1; }
+  /* animation removed to improve LCP */
 }
 
 .filter-btn {
@@ -469,7 +432,6 @@ body {
   color: #000;
   box-shadow: 0 0 25px cyan, 0 0 45px cyan;
 }
-
 
 
 
@@ -676,18 +638,14 @@ body {
   font-size: 0.8rem;
 }
 
-
-
-
 /* ===== SEARCH BOX STYLE ===== */
 .search-box {
   position: sticky;
-  top: 80px;       /* distance from top */
+  top: 80px; /* adjust this to match your header height */
   max-width: 300px;
+  margin: 0 auto;
   padding: 10px;
   z-index: 999;
-  left: 50px;      /* fixed distance from left */
-  transform: none; /* no horizontal transform needed */
 }
 
 #searchInput {
@@ -786,14 +744,89 @@ body {
 
 
 
-.hero {
-  background: url('assets/thumb/action-bg.jpg') center/cover no-repeat;
+
+.upcoming-section {
+  padding: 20px;
+  background-color: #0a1a40; /* Blueverse dark-blue */
   color: #fff;
-  text-align: center;
-  padding: 100px 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
+
+.upcoming-section h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.upcoming-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.upcoming-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.upcoming-grid::-webkit-scrollbar-thumb {
+  background-color: #1e90ff;
+  border-radius: 4px;
+}
+
+.upcoming-grid::-webkit-scrollbar-track {
+  background: #0a1a40;
+}
+
+.upcoming-card {
+  min-width: 180px;
+  height: 280px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.upcoming-card:hover {
+  transform: scale(1.05);
+}
+
+.upcoming-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upcoming-card .badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #1e90ff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.upcoming-card .title-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.upcoming-card .title-overlay h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+
 
 
 </style>
@@ -807,8 +840,6 @@ body {
   
   <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
-
-
 
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="Search anything...">
@@ -827,15 +858,14 @@ body {
     <a href="/games.html">Play Games </a>
     <a href="/blog.html">Blog Page</a>
    
-   
+    
 
     <h3 class="sidebar-sub">Genres</h3>
     <div class="sidebar-tags">
       <a href="/movies/action.html">Action</a>
-    
+      
       <a href="/movies/horror.html">Horror</a>
       
-      <a href="/movies/adventure.html">Adventure</a>
     </div>
 
     <h3 class="sidebar-sub">Connect</h3>
@@ -849,172 +879,47 @@ body {
 </nav>
 
 <section class="hero">
-  <h1>Action Movies</h1>
-  <p>
-    All your favorite action-packed movies are here! 💥  
-    Watch thrilling titles like <strong>Bad Boys: Ride or Die</strong>, <strong>The Union</strong>, <strong>Deadpool & Wolverine</strong>, and more.  
-    Stream the latest action hits and experience nonstop adventure right here on <strong>Blueverse</strong>.
-  </p>
-
-  <p>
-    Welcome to <strong>Blueverse Action Zone</strong> — your ultimate destination for the <strong>greatest action movies of all time</strong>. 
-    From explosive <strong>Hollywood blockbusters</strong> to power-packed <strong>Bollywood thrillers</strong>, we bring you the most iconic, adrenaline-filled films that defined generations. 
-    Explore detailed movie pages, watch official trailers, and discover where to stream or buy your favorite <em>action classics</em> and the latest <em>2025 releases</em>. 
-    Whether you love spy adventures, war epics, superhero sagas, or martial arts legends — <strong>Blueverse</strong> is your home for everything action.
-  </p>
+  <h1>Featured Movies</h1>
+  <p>Watch the latest blockbusters and trending titles</p>
 </section>
 
 
 
 <!-- ===== FILTER SECTION ===== -->
 <section class="filter-section">
-  <a href="all.html" class="filter-btn active">All</a>
-  <a href="action.html" class="filter-btn">Action</a>
-  <a href="adventure.html" class="filter-btn">Adventure</a>
-  <a href="romance.html" class="filter-btn">Romance</a>
-  <a href="horror.html" class="filter-btn">Horror</a>
+  <a href="/movies/movie.html" class="filter-btn active">All</a>
+  <a href="/movies/action.html" class="filter-btn">Action</a>
+  <a href="/movies/adventure.html" class="filter-btn">Adventure</a>
+  <a href="/movies/romance.html" class="filter-btn">Romance</a>
+  <a href="/movies/horror.html" class="filter-btn">Horror</a>
   
   <nav class="breadcrumb" id="breadcrumb"></nav>
   
 </section>
 
+<!-- ===== UPCOMING MOVIES HORIZONTAL SCROLL ===== -->
+<section class="upcoming-section">
+  <h2>Upcoming Movies</h2>
+  <div class="upcoming-grid"></div>
+</section>
 
 
 
 
-
-
-
-<!-- ===== STATIC MOVIES ===== -->
+<!-- ===== MOVIE GRID ===== -->
 <div class="movie-grid">
-  <div class="movie-card" onclick="location.href='/movies/action/A-Working-man.html'">
-    <span class="movie-badge">Recommend</span>
-    <img src="https://media.themoviedb.org/t/p/original/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg" alt="A working Man ">
-    <div class="movie-info"><h3>A Working Man</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-4.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt="Baghi 4 poster">
-    <div class="movie-info"><h3>Baghi 4</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/nobody-2.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://media.themoviedb.org/t/p/original/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg" alt="Nobody 2">
-    <div class="movie-info"><h3>Nobody 2</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/predator-killerofkiller.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg" alt="predator: killer of killer ">
-    <div class="movie-info"><h3>Predator: killer of killer</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='dunki.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg" alt="trons ares poster">
-    <div class="movie-info"><h3>Tron Ares</h3><p>2025</p></div>
-  </div>
-
-
-
-
-
-
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-2016.html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/4IEqNeF3PzL06Y2YKsvi4uMGJ1q.jpg" alt="baghi poster">
-    <div class="movie-info"><h3>Baghi (2016)</h3><p>2016</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-2-(2018).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/cnz8P6KfjlxCHvR8Fmcp6lsszOI.jpg" alt="baghi 2 poster">
-    <div class="movie-info"><h3>baghi 2 </h3><p>2018</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-3-(2020).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/rf2dKceO47cW4ZOyADCMDbHcy0w.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Baghi 3</h3><p>2020</p></div>
-  </div>
-<div class="movie-card" onclick="location.href='/movies/action/nobody-(2021).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/oBgWY00bEFeZ9N25wWVyuQddbAo.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Nobody</h3><p>2021</p></div>
-  </div>
-  
-<div class="movie-card" onclick="location.href='/movies/action/predator-(1987).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/aN3cdjIK70KGmD84et8MMblU87Q.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Predator (1987)</h3><p>1987</p></div>
-  </div>
-  
-
-
-<div class="movie-card" onclick="location.href='/movies/action/predator-2-(1990).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://image.tmdb.org/t/p/original/mSta5O31rPUcZH98psx0cxLbPXd.jpg" alt="Predator 2 poster">
-  <div class="movie-info"><h3>Predator 2</h3><p>1990</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/predators-(2010).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/sx5EuckP7SBQrlMlxg0PLt282WS.jpg" alt="Predators 2010 poster">
-  <div class="movie-info"><h3>Predators</h3><p>2010</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/prey-(2022).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg" alt="Prey 2022 poster">
-  <div class="movie-info"><h3>Prey</h3><p>2022</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/sky-force.html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/ii1Uik577OnQp1i5IAwpfOEpeC7.jpg" alt="Sky Force poster">
-  <div class="movie-info"><h3>Sky Force</h3><p>2024</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/the-predator-(2018).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/68d05TMkGimUCw6baHtQH1dUjT2.jpg" alt="The Predator 2018 poster">
-  <div class="movie-info"><h3>The Predator</h3><p>2018</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-(1982).html'">
-  <span class="movie-badge">Sci-Fi</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/zwSFEczP7AzqugAHHIX3zHniT0t.jpg" alt="Tron 1982 poster">
-  <div class="movie-info"><h3>Tron</h3><p>1982</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-legacy-(2010).html'">
-  <span class="movie-badge">Sci-Fi</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/8Nc6R8k7bG8frSiDJo0oLucF7dN.jpg" alt="Tron Legacy 2010 poster">
-  <div class="movie-info"><h3>Tron Legacy</h3><p>2010</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-legacy-(2010).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/lVgE5oLzf7ABmzyASEVcjYyHI41.jpg" alt="Tron Legacy 2010 poster">
-  <div class="movie-info"><h3>Head Of state</h3><p>2025</p></div>
+  <!-- Movie cards yahan JS se add honge -->
 </div>
 
 
 
-<!-- 🎬 MOVIE CARDS END -->
-  
-  
-</div>
 
 <!-- ===== PAGINATION PLACEHOLDER ===== -->
 <div class="pagination">
-  <a href="/movies/action.html" class="page-link active">1</a>
-  <a href="/movies/action1.html" class="page-link">2</a>
-  <a href="movies/action2.html" class="page-link">3</a>
-  <a href="/movies/action1.html" class="page-next">Next »</a>
+  <a href="movies1.html" class="page-link active">1</a>
+  <a href="movies2.html" class="page-link">2</a>
+  <a href="movies3.html" class="page-link">3</a>
+  <a href="movies2.html" class="page-next">Next »</a>
 </div>
 
 
@@ -1081,7 +986,6 @@ const observer = new IntersectionObserver(entries => {
 cards.forEach(card => observer.observe(card));
 
 
-
 // ======= SEARCH SYSTEM (Instant Auto Search) =======
 const searchInput = document.getElementById("searchInput");
 const resultsContainer = document.getElementById("searchResults");
@@ -1138,7 +1042,6 @@ function renderResults(data) {
 
   resultsContainer.style.display = "block";
 }
-
 // ======= HIDE SEARCH BAR ON SCROLL =======
 let lastScrollY = window.scrollY;
 const searchBox = document.querySelector(".search-box");
@@ -1165,6 +1068,85 @@ searchInput.addEventListener("focus", () => {
     window.scrollTo(0, scrollY);
   }, 0);
 });
+
+
+
+
+
+
+
+
+
+const movieGrid = document.querySelector(".movie-grid");
+
+// Genre for this page
+const selectedGenre = "Action"; // Action movies only
+
+// Fetch movies from local JSON
+fetch("/assets/data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    // Filter movies by genre
+    const filteredMovies = data.filter(movie => 
+      movie.genre && movie.genre.includes(selectedGenre)
+    );
+
+    // Create cards for filtered movies
+    filteredMovies.forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "movie-card";
+
+      card.innerHTML = `
+        <span class="movie-badge">${movie.badge}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
+        <div class="movie-info">
+          <h3>${movie.title}</h3>
+          <p>${movie.year}</p>
+        </div>
+      `;
+
+      card.addEventListener("click", () => window.location.href = movie.url);
+      movieGrid.appendChild(card);
+
+      // Scroll animation
+      setTimeout(() => card.classList.add("visible"), 50);
+    });
+  })
+  .catch(err => console.error("Error loading movies:", err));
+
+
+
+
+
+
+const upcomingGrid = document.querySelector(".upcoming-grid");
+
+// Fetch upcoming movies
+fetch("/assets/data/upcoming.json")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "upcoming-card";
+
+      card.innerHTML = `
+        <span class="badge">${movie.badge}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
+        <div class="title-overlay">
+          <h3>${movie.title}</h3>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        window.location.href = movie.url;
+      });
+
+      upcomingGrid.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Error loading upcoming movies:", err));
+
+
 
 
 

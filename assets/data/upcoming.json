@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Galactic Wars",
+    "release_date": "2025-12-15",
+    "genre": ["Action", "Sci-Fi"],
+    "badge": "Release: 2025-12-15",
+    "image": "https://media.themoviedb.org/t/p/original/example1.jpg",
+    "url": "/movies/upcoming/galactic-wars.html"
+  },
+  {
+    "title": "Haunted Mansion",
+    "release_date": "2025-11-20",
+    "genre": ["Horror", "Thriller"],
+    "badge": "Release: 2025-11-20",
+    "image": "https://media.themoviedb.org/t/p/original/example2.jpg",
+    "url": "/movies/upcoming/haunted-mansion.html"
+  },
+  {
+    "title": "Dream Chasers",
+    "release_date": "2025-10-05",
+    "genre": ["Adventure", "Drama"],
+    "badge": "Release: 2025-10-05",
+    "image": "https://media.themoviedb.org/t/p/original/example3.jpg",
+    "url": "/movies/upcoming/dream-chasers.html"
+  },
+  {
+    "title": "Cyber Strike",
+    "release_date": "2025-09-18",
+    "genre": ["Action", "Thriller"],
+    "badge": "Release: 2025-09-18",
+    "image": "https://media.themoviedb.org/t/p/original/example4.jpg",
+    "url": "/movies/upcoming/cyber-strike.html"
+  },
+  {
+    "title": "Mystic Island",
+    "release_date": "2025-12-01",
+    "genre": ["Fantasy", "Adventure"],
+    "badge": "Release: 2025-12-01",
+    "image": "https://media.themoviedb.org/t/p/original/example5.jpg",
+    "url": "/movies/upcoming/mystic-island.html"
+  }
+]

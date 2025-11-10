@@ -1,0 +1,186 @@
+[
+  {
+    "title": "A Working Man",
+    "url": "/movies/action/A-Working-man.html",
+    "image": "https://media.themoviedb.org/t/p/original/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg",
+    "year": "2025",
+    "badge": "Recommend",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Baghi 4",
+    "url": "/movies/action/baghi-4.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Nobody 2",
+    "url": "/movies/action/nobody-2.html",
+    "image": "https://media.themoviedb.org/t/p/original/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Predator: killer of killer",
+    "url": "/movies/action/predator-killerofkiller.html",
+    "image": "https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Tron Ares",
+    "url": "movies/action/trons-ares.html",
+    "image": "https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action", "Sci-Fi"]
+  },
+  {
+    "title": "Ballerina 2025",
+    "url": "/movies/released/ballerina-2025.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/hHAVFOoSnnOT18bG3TdLEh5zrBC.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action", "Adventure"]
+  },
+  {
+    "title": "Deva",
+    "url": "/movies/released/deva.html",
+    "image": "https://image.tmdb.org/t/p/original/2JthNUcRU89h9M6k3yQxLkACEJQ.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Mission Impossible: The Final reckoning",
+    "url": "/movies/released/MI-final-reckoning.html",
+    "image": "https://image.tmdb.org/t/p/original/1p5aI299YBnqrEEvVGJERk2MXXb.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action", "Adventure"]
+  },
+  {
+    "title": "Mickey 17",
+    "url": "/movies/released/mickey17.html",
+    "image": "https://image.tmdb.org/t/p/original/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action", "Sci-Fi"]
+  },
+  {
+    "title": "War 2",
+    "url": "/movies/released/war2.html",
+    "image": "https://image.tmdb.org/t/p/original/i7qArgoTogtdW690F3QGYtfNM1J.jpg",
+    "year": "2025",
+    "badge": "FEATURED",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Baghi (2016)",
+    "url": "/movies/action/baghi-2016.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/4IEqNeF3PzL06Y2YKsvi4uMGJ1q.jpg",
+    "year": "2016",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Baghi 2",
+    "url": "/movies/action/baghi-2-(2018).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/cnz8P6KfjlxCHvR8Fmcp6lsszOI.jpg",
+    "year": "2018",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Baghi 3",
+    "url": "/movies/action/baghi-3-(2020).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/rf2dKceO47cW4ZOyADCMDbHcy0w.jpg",
+    "year": "2020",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Nobody",
+    "url": "/movies/action/nobody-(2021).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/oBgWY00bEFeZ9N25wWVyuQddbAo.jpg",
+    "year": "2021",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Predator (1987)",
+    "url": "/movies/action/predator-(1987).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/aN3cdjIK70KGmD84et8MMblU87Q.jpg",
+    "year": "1987",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Predator 2",
+    "url": "/movies/action/predator-2-(1990).html",
+    "image": "https://image.tmdb.org/t/p/original/mSta5O31rPUcZH98psx0cxLbPXd.jpg",
+    "year": "1990",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Predators",
+    "url": "/movies/action/predators-(2010).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/sx5EuckP7SBQrlMlxg0PLt282WS.jpg",
+    "year": "2010",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Prey",
+    "url": "/movies/action/prey-(2022).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg",
+    "year": "2022",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Sky Force",
+    "url": "/movies/action/sky-force.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/ii1Uik577OnQp1i5IAwpfOEpeC7.jpg",
+    "year": "2024",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "The Predator",
+    "url": "/movies/action/the-predator-(2018).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/68d05TMkGimUCw6baHtQH1dUjT2.jpg",
+    "year": "2018",
+    "badge": "Action",
+    "genre": ["Action"]
+  },
+  {
+    "title": "Tron",
+    "url": "/movies/action/tron-(1982).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/zwSFEczP7AzqugAHHIX3zHniT0t.jpg",
+    "year": "1982",
+    "badge": "Sci-Fi",
+    "genre": ["Action", "Sci-Fi"]
+  },
+  {
+    "title": "Tron Legacy",
+    "url": "/movies/action/tron-legacy-(2010).html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/8Nc6R8k7bG8frSiDJo0oLucF7dN.jpg",
+    "year": "2010",
+    "badge": "Sci-Fi",
+    "genre": ["Action", "Sci-Fi"]
+  },
+  {
+    "title": "Head Of state",
+    "url": "/movies/action/tron-legacy-(2010).html",
+    "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/lVgE5oLzf7ABmzyASEVcjYyHI41.jpg",
+    "year": "2025",
+    "badge": "Action",
+    "genre": ["Action"]
+  }
+]

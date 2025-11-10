@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Grand Theft Auto V",
+    "slug": "gta5",
+    "badge": "Top",
+    "platforms": ["windows", "playstation", "xbox"],
+    "tags": ["open-world", "action"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/e16/e16d2a493f0c55cc75e5fe6db37da2a0.jpg",
+    "path": "Game/gta5.html"
+  },
+  {
+    "title": "Call of Duty: Mobile",
+    "slug": "callofdutymobile",
+    "badge": "Top Online",
+    "platforms": ["android", "ios"],
+    "tags": ["shooter", "battle-royale", "online"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg",
+    "path": "Game/callofdutymobile.html"
+  },
+  {
+    "title": "Clash of Clans",
+    "slug": "clashofclans",
+    "badge": "Top",
+    "platforms": ["android", "ios"],
+    "tags": ["strategy", "multiplayer"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/c1d/c1d9951ba722483a70cc87e6ade93778.jpg",
+    "path": "Game/clashofclans.html"
+  },
+  {
+    "title": "Clash Royale",
+    "slug": "clashroyal",
+    "badge": "Top Strategy",
+    "platforms": ["android", "ios"],
+    "tags": ["strategy", "card"],
+    "thumb": "https://media.rawg.io/media/resize/420/-/screenshots/864/864d57af80359e5be8923ff2336c1b04.jpeg",
+    "path": "Game/clashroyal.html"
+  },
+  {
+    "title": "Free Fire MAX",
+    "slug": "freefiremax",
+    "badge": "Battle Royale",
+    "platforms": ["android", "ios"],
+    "tags": ["battle-royale"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg",
+    "path": "Game/freefiremax.html"
+  },
+  {
+    "title": "Genshin Impact",
+    "slug": "genshineimpact",
+    "badge": "Adventure",
+    "platforms": ["windows", "playstation", "android", "ios"],
+    "tags": ["action-rpg", "adventure"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg",
+    "path": "Game/genshineimpact.html"
+  },
+  {
+    "title": "Mobile Legends: Bang Bang",
+    "slug": "mobilelegend",
+    "badge": "MOBA",
+    "platforms": ["android", "ios"],
+    "tags": ["moba"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/fbf/fbfb67ef5b9a871f8d2364a2f3084796.jpeg",
+    "path": "Game/mobilelegend.html"
+  },
+  {
+    "title": "PUBG Mobile",
+    "slug": "pubgmobile",
+    "badge": "Battle Royale",
+    "platforms": ["android", "ios"],
+    "tags": ["battle-royale", "shooter"],
+    "thumb": "https://media.rawg.io/media/resize/420/-/screenshots/a83/a830c3a3f3f4c9b6cc74924cd42b89a0.jpg",
+    "path": "Game/pubgmobile.html"
+  },
+  {
+    "title": "EA Sports WRC 24",
+    "slug": "EA-sports-WRC-24",
+    "badge": "Racing",
+    "platforms": ["windows", "xbox", "playstation"],
+    "tags": ["racing"],
+    "thumb": "/assets/thumb/WRC24.jpg",
+    "path": "Game/EA-sports-WRC-24.html"
+  },
+  {
+    "title": "Red Dead Redemption 2",
+    "slug": "reddeadredemption2",
+    "badge": "Story",
+    "platforms": ["windows", "xbox", "playstation"],
+    "tags": ["story", "open-world"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/8b9/8b9cd97fed67e5a811c40cdfb64531e3.jpg",
+    "path": "Game/reddeadredemption2.html"
+  },
+  {
+    "title": "Stray",
+    "slug": "stray",
+    "badge": "Adventure",
+    "platforms": ["playstation", "windows"],
+    "tags": ["adventure", "puzzle"],
+    "thumb": "/assets/thumb/stray.jpg",
+    "path": "Game/stray.html"
+  },
+  {
+    "title": "Valorant",
+    "slug": "valorant",
+    "badge": "Shooter",
+    "platforms": ["windows"],
+    "tags": ["shooter", "competitive"],
+    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/491/491c40b53352893f5b00e5a19fbfcdb1.jpg",
+    "path": "Game/valorant.html"
+  },
+  {
+    "title": "Apex Legends",
+    "slug": "apex-legend",
+    "badge": "Battle Royale",
+    "platforms": ["windows", "xbox", "playstation"],
+    "tags": ["battle-royale", "shooter"],
+    "thumb": "/assets/thumb/apex-legend.jpg",
+    "path": "Game/apex-legend.html"
+  },
+  {
+    "title": "Call of Duty: Warzone",
+    "slug": "COD-warzone",
+    "badge": "Battle Royale",
+    "platforms": ["windows", "xbox", "playstation"],
+    "tags": ["battle-royale", "shooter"],
+    "thumb": "/assets/thumb/cod-warzone.jpg",
+    "path": "Game/COD-warzone.html"
+  },
+  {
+    "title": "Minecraft",
+    "slug": "Minecraft",
+    "badge": "Creative",
+    "platforms": ["windows", "xbox", "playstation", "android", "ios"],
+    "tags": ["creative", "sandbox"],
+    "thumb": "/assets/thumb/Minecraft.jpg",
+    "path": "Game/Minecraft.html"
+  }
+]

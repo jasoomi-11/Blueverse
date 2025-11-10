@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
+  
+  
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Movies Page</title>
@@ -388,12 +404,7 @@ body {
   border-radius: 15px;
   backdrop-filter: blur(15px);
   box-shadow: 0 0 20px rgba(0,255,255,0.3);
-  animation: blurFade 2s ease-in-out;
-}
-
-@keyframes blurFade {
-  from { filter: blur(10px); opacity: 0; }
-  to { filter: blur(0); opacity: 1; }
+  /* animation removed to improve LCP */
 }
 
 .filter-btn {
@@ -420,8 +431,6 @@ body {
   color: #000;
   box-shadow: 0 0 25px cyan, 0 0 45px cyan;
 }
-
-
 
 
 
@@ -546,86 +555,6 @@ body {
 
 
 
-/* ===== TRENDING SECTION ===== */
-.trending-section {
-  width: 100%;
-  background: linear-gradient(135deg, #001a33, #000814);
-  padding: 2rem 1rem 3rem;
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
-  border-top: 1px solid rgba(0, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-}
-
-.trending-title {
-  font-size: 1.9rem;
-  color: cyan;
-  text-shadow: 0 0 20px cyan;
-  margin-bottom: 1.2rem;
-  font-weight: bold;
-  text-align: left;
-  padding-left: 1rem;
-}
-
-.trending-container {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 0 1rem 1rem;
-}
-
-.trending-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.trending-container::-webkit-scrollbar-thumb {
-  background: cyan;
-  border-radius: 10px;
-  box-shadow: 0 0 10px cyan;
-}
-
-.trending-card {
-  min-width: 180px;
-  max-width: 200px;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  flex-shrink: 0;
-  background: rgba(0, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
-}
-
-.trending-card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 30px cyan;
-}
-
-.trending-card img {
-  width: 100%;
-  height: 270px;
-  object-fit: cover;
-  display: block;
-}
-
-.trending-card .movie-info {
-  background: rgba(0, 0, 0, 0.7);
-  text-align: center;
-  padding: 0.6rem;
-  color: cyan;
-}
-
-.trending-card .movie-info h3 {
-  font-size: 0.95rem;
-  margin-bottom: 0.2rem;
-}
-
-.trending-card .movie-info p {
-  color: #aaa;
-  font-size: 0.8rem;
-}
 
 
 
@@ -736,6 +665,88 @@ body {
 
 
 
+.upcoming-section {
+  padding: 20px;
+  background-color: #0a1a40; /* Blueverse dark-blue */
+  color: #fff;
+}
+
+.upcoming-section h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.upcoming-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.upcoming-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.upcoming-grid::-webkit-scrollbar-thumb {
+  background-color: #1e90ff;
+  border-radius: 4px;
+}
+
+.upcoming-grid::-webkit-scrollbar-track {
+  background: #0a1a40;
+}
+
+.upcoming-card {
+  min-width: 180px;
+  height: 280px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.upcoming-card:hover {
+  transform: scale(1.05);
+}
+
+.upcoming-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upcoming-card .badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #1e90ff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.upcoming-card .title-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.upcoming-card .title-overlay h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+
 
 
 
@@ -761,7 +772,7 @@ body {
 <!-- Sidebar -->
 <nav class="menu">
   <div class="sidebar-content">
-    <h2 class="sidebar-title">MENU</h2>
+    <h2 class="sidebar-title"><br></h2>
     <a href="/index.html">🏠 Home</a>
     <a href="/movies/movies.html">🎬 Movies</a>
     <a href="/Game/all-games.html">Top Games List</a>
@@ -813,186 +824,22 @@ body {
 
 
 
-
+<!-- ===== UPCOMING MOVIES HORIZONTAL SCROLL ===== -->
+<section class="upcoming-section">
+  <h2>Upcoming Movies</h2>
+  <div class="upcoming-grid"></div>
+</section>
 
 
 <!-- ===== STATIC MOVIES ===== -->
 <!-- ===== STATIC MOVIES ===== -->
 <div class="movie-grid">
-  <div class="movie-card" onclick="location.href='/movies/action/A-Working-man.html'">
-    <span class="movie-badge">Recommend</span>
-    <img src="https://media.themoviedb.org/t/p/original/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg" alt="A working Man ">
-    <div class="movie-info"><h3>A Working Man</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-4.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt="Baghi 4 poster">
-    <div class="movie-info"><h3>Baghi 4</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/nobody-2.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://media.themoviedb.org/t/p/original/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg" alt="Nobody 2">
-    <div class="movie-info"><h3>Nobody 2</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/predator-killerofkiller.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg" alt="predator: killer of killer ">
-    <div class="movie-info"><h3>Predator: killer of killer</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='movies/action/trons-ares.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg" alt="trons ares poster">
-    <div class="movie-info"><h3>Tron Ares</h3><p>2025</p></div>
-  </div>
-
-
-
-
-
-
-
-  <div class="movie-card" onclick="location.href='/movies/released/ballerina-2025.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/hHAVFOoSnnOT18bG3TdLEh5zrBC.jpg" alt="ballerina 2025">
-    <div class="movie-info"><h3>Ballerina 2025</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/released/deva.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/2JthNUcRU89h9M6k3yQxLkACEJQ.jpg" alt="Deva">
-    <div class="movie-info"><h3>Deva </h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/released/MI-final-reckoning.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/1p5aI299YBnqrEEvVGJERk2MXXb.jpg" alt="mission impossible final reckoning">
-    <div class="movie-info"><h3>Mission Impossible: The Final reckoning</h3><p>2025</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/released/mickey17.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg" alt="Mickey 17">
-    <div class="movie-info"><h3>Mickey 17</h3><p>2025</p></div>
-  </div>
-  <div class="movie-card" onclick="location.href='/movies/released/war2.html'">
-    <span class="movie-badge">FEATURED</span>
-    <img src="https://image.tmdb.org/t/p/original/i7qArgoTogtdW690F3QGYtfNM1J.jpg" alt="War 2">
-    <div class="movie-info"><h3>War 2</h3><p>2025</p></div>
-  </div>
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-2016.html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/4IEqNeF3PzL06Y2YKsvi4uMGJ1q.jpg" alt="baghi poster">
-    <div class="movie-info"><h3>Baghi (2016)</h3><p>2016</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-2-(2018).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/cnz8P6KfjlxCHvR8Fmcp6lsszOI.jpg" alt="baghi 2 poster">
-    <div class="movie-info"><h3>baghi 2 </h3><p>2018</p></div>
-  </div>
-
-  <div class="movie-card" onclick="location.href='/movies/action/baghi-3-(2020).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/rf2dKceO47cW4ZOyADCMDbHcy0w.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Baghi 3</h3><p>2020</p></div>
-  </div>
-<div class="movie-card" onclick="location.href='/movies/action/nobody-(2021).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/oBgWY00bEFeZ9N25wWVyuQddbAo.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Nobody</h3><p>2021</p></div>
-  </div>
-  
-<div class="movie-card" onclick="location.href='/movies/action/predator-(1987).html'">
-    <span class="movie-badge">Action</span>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/aN3cdjIK70KGmD84et8MMblU87Q.jpg" alt="baghi 3 poster">
-    <div class="movie-info"><h3>Predator (1987)</h3><p>1987</p></div>
-  </div>
-  
-
-
-<div class="movie-card" onclick="location.href='/movies/action/predator-2-(1990).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://image.tmdb.org/t/p/original/mSta5O31rPUcZH98psx0cxLbPXd.jpg" alt="Predator 2 poster">
-  <div class="movie-info"><h3>Predator 2</h3><p>1990</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/predators-(2010).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/sx5EuckP7SBQrlMlxg0PLt282WS.jpg" alt="Predators 2010 poster">
-  <div class="movie-info"><h3>Predators</h3><p>2010</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/prey-(2022).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg" alt="Prey 2022 poster">
-  <div class="movie-info"><h3>Prey</h3><p>2022</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/sky-force.html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/ii1Uik577OnQp1i5IAwpfOEpeC7.jpg" alt="Sky Force poster">
-  <div class="movie-info"><h3>Sky Force</h3><p>2024</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/the-predator-(2018).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/68d05TMkGimUCw6baHtQH1dUjT2.jpg" alt="The Predator 2018 poster" loading="lazy">
-  <div class="movie-info"><h3>The Predator</h3><p>2018</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-(1982).html'">
-  <span class="movie-badge">Sci-Fi</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/zwSFEczP7AzqugAHHIX3zHniT0t.jpg" alt="Tron 1982 poster" loading="lazy">
-  <div class="movie-info"><h3>Tron</h3><p>1982</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-legacy-(2010).html'">
-  <span class="movie-badge">Sci-Fi</span>
-  <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/8Nc6R8k7bG8frSiDJo0oLucF7dN.jpg" alt="Tron Legacy 2010 poster" loading="lazy">
-  <div class="movie-info"><h3>Tron Legacy</h3><p>2010</p></div>
-</div>
-
-<div class="movie-card" onclick="location.href='/movies/action/tron-legacy-(2010).html'">
-  <span class="movie-badge">Action</span>
-  <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/lVgE5oLzf7ABmzyASEVcjYyHI41.jpg" alt="Tron Legacy 2010 poster"loading="lazy">
-  <div class="movie-info"><h3>Head Of state</h3><p>2025</p></div>
-</div>
-  
-  
-  
+ 
   
   
   
   
 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -1160,6 +1007,78 @@ searchInput.addEventListener("focus", () => {
     window.scrollTo(0, scrollY);
   }, 0);
 });
+
+
+
+
+
+
+const movieGrid = document.querySelector(".movie-grid");
+
+// Fetch all movies from JSON
+fetch("/assets/data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(movie => {
+      // Create card
+      const card = document.createElement("div");
+      card.className = "movie-card";
+
+      // Add card content
+      card.innerHTML = `
+        <span class="movie-badge">${movie.badge || movie.genre[0]}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
+        <div class="movie-info">
+          <h3>${movie.title}</h3>
+          <p>${movie.year}</p>
+        </div>
+      `;
+
+      // Click redirects to movie page
+      card.addEventListener("click", () => {
+        window.location.href = movie.url;
+      });
+
+      movieGrid.appendChild(card);
+
+      // Optional: animation
+      setTimeout(() => card.classList.add("visible"), 50);
+    });
+  })
+  .catch(err => console.error("Error loading movies:", err));
+
+
+
+
+
+
+const upcomingGrid = document.querySelector(".upcoming-grid");
+
+// Fetch upcoming movies
+fetch("/assets/data/upcoming.json")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "upcoming-card";
+
+      card.innerHTML = `
+        <span class="badge">${movie.badge}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
+        <div class="title-overlay">
+          <h3>${movie.title}</h3>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        window.location.href = movie.url;
+      });
+
+      upcomingGrid.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Error loading upcoming movies:", err));
+
 
 
 

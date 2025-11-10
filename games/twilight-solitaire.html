@@ -3,6 +3,20 @@
 <head>
   
   
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
+  
+  
+  
+  
+  
 <!-- ✅ BASIC SEO TAGS -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -641,32 +655,41 @@ header .logo img {
 
 
 
-  <!-- GAME DETAILS -->
-  <div class="details">
-    <h2>Twilight Solitaire</h2>
-    <div class="meta">
-      <div>Browser</div>
-      <div>🎮 Category: Card</div>
-      <div>Free</div>
-    </div>
-
-    <div class="play-buttons">
-      <button onclick="window.location.href='https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire'">▶️ Play Now</button>
-      <button onclick="window.open('https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire', '_blank')">🌐 Play in New Tab</button>
-    </div>
-
-    <!-- EMBEDDED GAME -->
-    <div style="margin-top: 2rem; text-align:center;">
-      <iframe 
-        src="https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire"  
-        width="100%" 
-        height="600" 
-        frameborder="0" 
-        scrolling="no" 
-        allowfullscreen>
-      </iframe>
-    </div>
+<!-- GAME DETAILS -->
+<div class="details">
+  <h2>Twilight Solitaire</h2>
+  
+  <div class="meta">
+    <div>Browser</div>
+    <div>🎮 Category: Card</div>
+    <div>Free</div>
   </div>
+
+  <div class="play-buttons">
+    <!-- Same tab play → safe -->
+    <button onclick="window.location.href='https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire'">
+      ▶️ Play Now
+    </button>
+
+    <!-- New tab play → added security -->
+    <button onclick="window.open('https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire', '_blank', 'noopener,noreferrer')">
+      🌐 Play in New Tab
+    </button>
+  </div>
+
+  <!-- EMBEDDED GAME -->
+  <div style="margin-top: 2rem; text-align:center;">
+    <iframe 
+      src="https://html5.gamedistribution.com/91eb12a4669543ea825a9e2469143b93/?gd_sdk_referrer_url=https://blueverse.space/games/twilight-solitaire"  
+      width="100%" 
+      height="600" 
+      frameborder="0" 
+      scrolling="no" 
+      allowfullscreen
+      referrerpolicy="no-referrer">
+    </iframe>
+  </div>
+</div>
 
   <!-- ABOUT -->
   <section>

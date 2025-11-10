@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
   
-  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZZV77N219"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZZV77N219');
+</script>
   
 <!-- 🌐✨ FULL STRONG SEO META TAGS FOR SEE LORD -->
 <meta charset="UTF-8">
@@ -671,6 +679,7 @@ header .logo img {
 <!-- GAME DETAILS -->
 <div class="details">
   <h2>See Lord</h2>
+  
   <div class="meta">
     <div>Browser</div>
     <div>🎮 Category: Action • Adventure</div>
@@ -678,8 +687,15 @@ header .logo img {
   </div>
 
   <div class="play-buttons">
-    <button onclick="window.location.href='https://html5.gamedistribution.com/3a0e41cb80d041e5bd058bc1bc7bb273/?gd_sdk_referrer_url=https://blueverse.space/games/see-lord'">▶️ Play Now</button>
-    <button onclick="window.open('https://html5.gamedistribution.com/3a0e41cb80d041e5bd058bc1bc7bb273/?gd_sdk_referrer_url=https://blueverse.space/games/see-lord', '_blank')">🌐 Play in New Tab</button>
+    <!-- Same tab play → safe -->
+    <button onclick="window.location.href='https://html5.gamedistribution.com/3a0e41cb80d041e5bd058bc1bc7bb273/?gd_sdk_referrer_url=https://blueverse.space/games/see-lord'">
+      ▶️ Play Now
+    </button>
+
+    <!-- New tab play → added security -->
+    <button onclick="window.open('https://html5.gamedistribution.com/3a0e41cb80d041e5bd058bc1bc7bb273/?gd_sdk_referrer_url=https://blueverse.space/games/see-lord', '_blank', 'noopener,noreferrer')">
+      🌐 Play in New Tab
+    </button>
   </div>
 
   <!-- EMBEDDED GAME -->
@@ -690,7 +706,8 @@ header .logo img {
       height="600" 
       frameborder="0" 
       scrolling="no" 
-      allowfullscreen>
+      allowfullscreen
+      referrerpolicy="no-referrer">
     </iframe>
   </div>
 </div>
