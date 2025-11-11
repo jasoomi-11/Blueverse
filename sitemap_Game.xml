@@ -108,9 +108,16 @@
 
   <url>
     <loc>https://blueverse.space/Game/all-games.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
+  </url>
+  
+  <url>
+    <loc>https://blueverse.space/Game/Fortnite.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 
 </urlset>

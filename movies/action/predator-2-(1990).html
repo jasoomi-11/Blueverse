@@ -662,101 +662,132 @@ footer {
 
 
 
-/* ===== SEARCH BOX STYLE ===== */
-.search-box {
-  position: sticky;
-  top: 80px; /* adjust this to match your header height */
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 10px;
+/* Container for search bar */
+.search-container {
+  position: sticky;       /* sticky below header */
+  top: 90px;              /* adjust according to your header height */
+  max-width: 650px;
+  margin: 10px auto;      /* center horizontally */
   z-index: 999;
+  background: #0d1b2a;   /* Blueverse dark blue background */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-#searchInput {
+/* Search input field */
+#universal-search {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #00ffff;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  padding: 12px;
   font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-#searchInput:focus {
-  box-shadow: 0 0 10px #00ffff;
-}
-
-/* ===== RESULTS CONTAINER ===== */
-#searchResults {
-  margin-top: 10px;
-  background: rgba(10, 10, 10, 0.97);
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-  display: none;
-  max-height: 350px;
-  overflow-y: auto;
-  padding: 5px;
-}
-
-/* ===== EACH RESULT ITEM ===== */
-.result-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.result-item:hover {
-  background: rgba(0, 255, 255, 0.25);
-}
-
-.result-item img {
-  width: 45px;
-  height: 45px;
+  border: 1px solid #1b263b; /* subtle border */
   border-radius: 8px;
-  margin-right: 10px;
-  object-fit: cover;
+  outline: none;
+  box-sizing: border-box;
+  background: #1b263b;  /* input dark blue */
+  color: #e0e1dd;       /* light text */
 }
 
-.result-item h4 {
+/* Placeholder color */
+#universal-search::placeholder {
+  color: #8da0b8;
+}
+
+/* Search results dropdown */
+.search-results {
+  position: absolute;
+  top: 50px;               /* below the search input */
+  width: 100%;
+  background: #0d1b2a;     /* match container */
+  border: 1px solid #1b263b;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Individual search item card */
+.search-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #1b263b;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Hover or active item */
+.search-item:hover,
+.search-item.active {
+  background: #274156; /* highlight hover */
+}
+
+/* Thumbnail image */
+.search-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #1b263b;
+}
+
+/* Title */
+.search-item h4 {
   margin: 0;
   font-size: 16px;
-  color: #fff;
+  color: #e0e1dd;  /* light text */
 }
 
-.result-item p {
+/* Description */
+.search-item p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #8da0b8;  /* subtle text */
+}
+
+/* No results message */
+.search-results p {
+  padding: 12px;
   margin: 0;
-  font-size: 13px;
-  color: #bbb;
+  font-size: 14px;
+  color: #e0e1dd;
+  text-align: center;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  #searchInput {
-    font-size: 14px;
-    padding: 10px;
+/* Scrollbar styling */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #415a77;  /* blueverse scrollbar thumb */
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: #0d1b2a;  /* track matches container */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .search-container {
+    max-width: 70%;
+    top: 90px;
   }
 
-  .result-item img {
+  .search-item img {
     width: 40px;
     height: 40px;
   }
 
-  .result-item h4 {
+  .search-item h4 {
     font-size: 14px;
   }
 
-  .result-item p {
-    font-size: 12px;
+  .search-item p {
+    font-size: 11px;
   }
 }
-
-
-
 
 
  
@@ -777,10 +808,10 @@ footer {
     </div>
   </header>
   
-  
-  <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search anything...">
-  <div id="searchResults"></div>
+   <!-- Search Bar Container -->
+<div class="search-container">
+  <input type="text" id="universal-search" placeholder="Search movies or games..." autocomplete="off"/>
+  <div id="search-results" class="search-results"></div>
 </div>
 
 
@@ -1048,63 +1079,7 @@ footer {
 }); 
     
     
-    // ======= SEARCH SYSTEM (Instant Auto Search) =======
-const searchInput = document.getElementById("searchInput");
-const resultsContainer = document.getElementById("searchResults");
 
-let allData = [];
-
-// ✅ Fetch JSON data (from CDN or local)
-fetch("https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/data/data.json") // <-- change if local: "data.json"
-  .then(res => res.json())
-  .then(data => {
-    allData = data;
-  })
-  .catch(err => console.error("Error loading JSON:", err));
-
-// 🔍 Handle live search (trigger on 1+ letter)
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
-  
-  if (query.length === 0) {
-    resultsContainer.style.display = "none";
-    resultsContainer.innerHTML = "";
-    return;
-  }
-
-  const filtered = allData.filter(item =>
-    item.title.toLowerCase().includes(query)
-  );
-
-  renderResults(filtered);
-});
-
-// 🧩 Render matched results
-function renderResults(data) {
-  resultsContainer.innerHTML = "";
-  if (data.length === 0) {
-    resultsContainer.innerHTML = `<p style="text-align:center;color:#aaa;padding:10px;">No results found.</p>`;
-    resultsContainer.style.display = "block";
-    return;
-  }
-
-  data.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "result-item";
-    div.innerHTML = `
-      <img src="${item.image}" alt="${item.title}" onerror="this.src='/images/placeholder.jpg'">
-      <div>
-        <h4>${item.title}</h4>
-        <p>${item.description}</p>
-      </div>
-    `;
-    div.addEventListener("click", () => window.location.href = item.url);
-    resultsContainer.appendChild(div);
-  });
-
-  resultsContainer.style.display = "block";
-}
-    
     
     
     
@@ -1132,7 +1107,133 @@ function renderResults(data) {
   </div>
 </footer>
 
+<script>
+let movies = [];
+let games = [];
+let currentFocus = -1; // for keyboard navigation
 
+// Load JSON data
+async function loadData() {
+  try {
+    const moviesResp = await fetch('/assets/data/movies.json');
+    movies = await moviesResp.json();
+
+    const gamesResp = await fetch('/assets/data/games.json');
+    games = await gamesResp.json();
+  } catch (error) {
+    console.error("Error loading JSON data:", error);
+  }
+}
+
+// Search function for both formats
+function searchContent(query) {
+  query = query.toLowerCase();
+
+  // Movies: title, url, image
+  const movieResults = movies.filter(item =>
+    (item.title && item.title.toLowerCase().includes(query)) ||
+    (item.url && item.url.toLowerCase().includes(query)) ||
+    (item.image && item.image.toLowerCase().includes(query))
+  );
+
+  // Games: title, path, thumb
+  const gameResults = games.filter(item =>
+    (item.title && item.title.toLowerCase().includes(query)) ||
+    (item.path && item.path.toLowerCase().includes(query)) ||
+    (item.thumb && item.thumb.toLowerCase().includes(query))
+  );
+
+  return [...movieResults, ...gameResults];
+}
+
+// Render search results
+function renderResults(results) {
+  const resultsContainer = document.getElementById('search-results');
+  resultsContainer.innerHTML = '';
+
+  if (results.length === 0) {
+    resultsContainer.innerHTML = '<p style="padding:10px;">No results found</p>';
+    return;
+  }
+
+  results.forEach(item => {
+    const isMovie = item.url !== undefined;
+    const link = isMovie ? item.url : item.path;
+    const thumb = isMovie ? item.image : item.thumb;
+    const desc = isMovie
+      ? (item.year ? `Year: ${item.year}` : '') + (item.badge ? ` | ${item.badge}` : '')
+      : (item.platforms ? `Platforms: ${item.platforms.join(', ')}` : '') + (item.badge ? ` | ${item.badge}` : '');
+
+    const div = document.createElement('div');
+    div.classList.add('search-item');
+
+    div.innerHTML = `
+      <img src="${thumb}" alt="${item.title}" />
+      <div>
+        <h4>${item.title}</h4>
+        <p>${desc}</p>
+      </div>
+    `;
+
+    // Clickable card
+    div.addEventListener('click', () => {
+      window.location.href = link;
+    });
+
+    resultsContainer.appendChild(div);
+  });
+}
+
+// Keyboard navigation
+function addKeyboardNavigation() {
+  const items = document.querySelectorAll('.search-item');
+  document.getElementById('universal-search').addEventListener('keydown', function(e) {
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      currentFocus++;
+      if (currentFocus >= items.length) currentFocus = 0;
+      setActive(items);
+    } else if (e.key === "ArrowUp") {
+      currentFocus--;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      setActive(items);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (currentFocus > -1) items[currentFocus].click();
+    }
+  });
+}
+
+function setActive(items) {
+  items.forEach(i => i.classList.remove('active'));
+  if (currentFocus >= 0) items[currentFocus].classList.add('active');
+}
+
+// Input listener
+document.getElementById('universal-search').addEventListener('input', (e) => {
+  const query = e.target.value.trim();
+  currentFocus = -1;
+
+  if (query.length > 0) {
+    const results = searchContent(query);
+    renderResults(results);
+    addKeyboardNavigation();
+  } else {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-container')) {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+window.addEventListener('DOMContentLoaded', loadData);
+
+</script>
 
 </body>
 </html>

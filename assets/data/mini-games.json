@@ -1,0 +1,86 @@
+[
+  {
+    "title": "3 Dash",
+    "slug": "3-dash",
+    "badge": "Endless Runner",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/3-dash.png"
+  },
+  {
+    "title": "See Lord",
+    "slug": "see-lord",
+    "badge": "Action",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/see-lord.png"
+  },
+  {
+    "title": "Monster Dash",
+    "slug": "monster-dash",
+    "badge": "Endless Runner",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/monster-dash.png"
+  },
+  {
+    "title": "Unstack Tower",
+    "slug": "unstack-tower",
+    "badge": "Puzzle",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/unstack-tower.png"
+  },
+  {
+    "title": "Word Seasons",
+    "slug": "word-seasons",
+    "badge": "Word",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/word-seasons-thumb.png"
+  },
+  {
+    "title": "Tropical Match 2",
+    "slug": "tropical-match-2",
+    "badge": "Match-3",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/tropical-match-2.png"
+  },
+  {
+    "title": "Twilight Solitaire",
+    "slug": "twilight-solitaire",
+    "badge": "Card",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/twilight.png"
+  },
+  {
+    "title": "Two Stunt Racers",
+    "slug": "two-stunt-racers",
+    "badge": "Racing",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/two-stunt-racers.png"
+  },
+  {
+    "title": "Zero to Millionaire",
+    "slug": "zero-to-millionaire",
+    "badge": "Trivia",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/Zero.png"
+  },
+  {
+    "title": "Brawl Stars: Brave Adventure",
+    "slug": "brawl-stars-brave-adventure",
+    "badge": "Action",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/brawlstars.png"
+  },
+  {
+    "title": "Bubble Shooter Temple Jewels",
+    "slug": "bubble-shooter-temple-jewels",
+    "badge": "Shooter",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/bubble-shooter-temple-jewels.png"
+  },
+  {
+    "title": "Italian Brainrot Baby Clicker",
+    "slug": "italian-brainrot-baby-clicker",
+    "badge": "Clicker",
+    "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/italian-brainrot-baby-clicker.png"
+  },
+  {
+    "title": "Juicy Match",
+    "slug": "juicy-match",
+    "badge": "Puzzle",
+    "thumb": "https://img.gamedistribution.com/335518c5b7b145288276a0b003dce76f-512x512.jpg"
+  },
+  {
+    "title": "Hypermarket 3D",
+    "slug": "hypermarket-3D",
+    "badge": "Simulation",
+    "thumb": "https://img.gamedistribution.com/32ce4093ac7d48db80abc6befccfca46-512x512.jpg"
+  }
+]

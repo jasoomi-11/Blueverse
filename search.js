@@ -1,56 +1,99 @@
-// ======= SEARCH SYSTEM (Instant Auto Search) =======
-const searchInput = document.getElementById("searchInput");
-const resultsContainer = document.getElementById("searchResults");
+let movies = [];
+let games = [];
+let currentFocus = -1; // for keyboard navigation
 
-let allData = [];
+async function loadData() {
+  try {
+    const moviesResp = await fetch('/assets/data/movies.json');
+    movies = await moviesResp.json();
 
-// ✅ Fetch JSON data (from CDN or local)
-fetch("https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/data/data.json") // <-- change if local: "data.json"
-  .then(res => res.json())
-  .then(data => {
-    allData = data;
-  })
-  .catch(err => console.error("Error loading JSON:", err));
+    const gamesResp = await fetch('/assets/data/games.json');
+    games = await gamesResp.json();
+  } catch (error) {
+    console.error("Error loading JSON data:", error);
+  }
+}
 
-// 🔍 Handle live search (trigger on 1+ letter)
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
-  
-  if (query.length === 0) {
-    resultsContainer.style.display = "none";
-    resultsContainer.innerHTML = "";
+function searchContent(query) {
+  query = query.toLowerCase();
+  const movieResults = movies.filter(item => item.title.toLowerCase().includes(query));
+  const gameResults = games.filter(item => item.title.toLowerCase().includes(query));
+  return [...movieResults, ...gameResults];
+}
+
+function renderResults(results) {
+  const resultsContainer = document.getElementById('search-results');
+  resultsContainer.innerHTML = '';
+
+  if (results.length === 0) {
+    resultsContainer.innerHTML = '<p style="padding:10px;">No results found</p>';
     return;
   }
 
-  const filtered = allData.filter(item =>
-    item.title.toLowerCase().includes(query)
-  );
-
-  renderResults(filtered);
-});
-
-// 🧩 Render matched results
-function renderResults(data) {
-  resultsContainer.innerHTML = "";
-  if (data.length === 0) {
-    resultsContainer.innerHTML = `<p style="text-align:center;color:#aaa;padding:10px;">No results found.</p>`;
-    resultsContainer.style.display = "block";
-    return;
-  }
-
-  data.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "result-item";
+  results.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.classList.add('search-item');
     div.innerHTML = `
-      <img src="${item.image}" alt="${item.title}" onerror="this.src='/images/placeholder.jpg'">
+      <img src="${item.thumb}" alt="${item.title}" />
       <div>
         <h4>${item.title}</h4>
         <p>${item.description}</p>
       </div>
     `;
-    div.addEventListener("click", () => window.location.href = item.url);
+
+    // Clickable card
+    div.addEventListener('click', () => {
+      window.location.href = `/${item.slug}`;
+    });
+
     resultsContainer.appendChild(div);
   });
-
-  resultsContainer.style.display = "block";
 }
+
+// Keyboard navigation
+function addKeyboardNavigation(results) {
+  const items = document.querySelectorAll('.search-item');
+  document.getElementById('universal-search').addEventListener('keydown', function(e) {
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      currentFocus++;
+      if (currentFocus >= items.length) currentFocus = 0;
+      setActive(items);
+    } else if (e.key === "ArrowUp") {
+      currentFocus--;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      setActive(items);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (currentFocus > -1) items[currentFocus].click();
+    }
+  });
+}
+
+function setActive(items) {
+  items.forEach(i => i.classList.remove('active'));
+  if (currentFocus >= 0) items[currentFocus].classList.add('active');
+}
+
+// Event listener for search input
+document.getElementById('universal-search').addEventListener('input', (e) => {
+  const query = e.target.value.trim();
+  currentFocus = -1;
+  if (query.length > 0) {
+    const results = searchContent(query);
+    renderResults(results);
+    addKeyboardNavigation(results);
+  } else {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+// Close results if clicked outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-container')) {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+window.addEventListener('DOMContentLoaded', loadData);

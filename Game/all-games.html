@@ -279,6 +279,141 @@ main{max-width:1200px;margin:24px auto;padding:0 16px 80px}
   .search input{width:120px;}
   header{width:calc(100% - 20px);margin:8px auto;}
 }
+
+
+
+/* Container for search bar */
+.search-container {
+  position: sticky;       /* sticky below header */
+  top: 90px;              /* adjust according to your header height */
+  max-width: 650px;
+  margin: 10px auto;      /* center horizontally */
+  z-index: 999;
+  background: #0d1b2a;   /* Blueverse dark blue background */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Search input field */
+#universal-search {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #1b263b; /* subtle border */
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  background: #1b263b;  /* input dark blue */
+  color: #e0e1dd;       /* light text */
+}
+
+/* Placeholder color */
+#universal-search::placeholder {
+  color: #8da0b8;
+}
+
+/* Search results dropdown */
+.search-results {
+  position: absolute;
+  top: 50px;               /* below the search input */
+  width: 100%;
+  background: #0d1b2a;     /* match container */
+  border: 1px solid #1b263b;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Individual search item card */
+.search-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #1b263b;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Hover or active item */
+.search-item:hover,
+.search-item.active {
+  background: #274156; /* highlight hover */
+}
+
+/* Thumbnail image */
+.search-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #1b263b;
+}
+
+/* Title */
+.search-item h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #e0e1dd;  /* light text */
+}
+
+/* Description */
+.search-item p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #8da0b8;  /* subtle text */
+}
+
+/* No results message */
+.search-results p {
+  padding: 12px;
+  margin: 0;
+  font-size: 14px;
+  color: #e0e1dd;
+  text-align: center;
+}
+
+/* Scrollbar styling */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #415a77;  /* blueverse scrollbar thumb */
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: #0d1b2a;  /* track matches container */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .search-container {
+    max-width: 70%;
+    top: 90px;
+  }
+
+  .search-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-item h4 {
+    font-size: 14px;
+  }
+
+  .search-item p {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
 </style>
 
 </head>
@@ -291,6 +426,16 @@ main{max-width:1200px;margin:24px auto;padding:0 16px 80px}
   </div>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
+
+
+ <!-- Search Bar Container -->
+<div class="search-container">
+  <input type="text" id="universal-search" placeholder="Search movies or games..." autocomplete="off"/>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+
+
 
 <nav class="side-menu" id="sideMenu">
   <a href="/index.html">🏠 Home</a>
@@ -419,26 +564,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let allCards = [];
   let activeFilters = { platform: new Set(), tag: new Set() };
-  let currentPage = 1;
-  const pageSize = 12;
 
   function applyFiltersAndRender() {
-    const filtered = allCards.filter(c => {
-      if (activeFilters.platform.size) {
-        if (![...activeFilters.platform].some(p => c.platforms.includes(p))) return false;
-      }
-      if (activeFilters.tag.size) {
-        if (![...activeFilters.tag].some(t => c.tags.includes(t))) return false;
-      }
-      return true;
+    allCards.forEach(c => {
+      const matchPlatform =
+        !activeFilters.platform.size ||
+        [...activeFilters.platform].some(p => c.platforms.includes(p));
+
+      const matchTag =
+        !activeFilters.tag.size ||
+        [...activeFilters.tag].some(t => c.tags.includes(t));
+
+      // Show only matching cards
+      c.el.style.display = (matchPlatform && matchTag) ? '' : 'none';
     });
-
-    // Pagination
-    const start = (currentPage - 1) * pageSize;
-    const pageItems = filtered.slice(start, start + pageSize);
-
-    allCards.forEach(c => c.el.style.display = 'none');
-    pageItems.forEach(c => c.el.style.display = '');
   }
 
   // Fetch JSON and build cards
@@ -454,10 +593,16 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       gameGrid.innerHTML = games.map(game => `
-        <a class="game-card" href="${game.path}" data-title="${game.title.toLowerCase()}" data-platforms='${JSON.stringify(game.platforms)}' data-tags='${JSON.stringify(game.tags)}'>
+        <a class="game-card" 
+           href="${game.path}" 
+           data-title="${game.title.toLowerCase()}" 
+           data-platforms='${JSON.stringify(game.platforms)}' 
+           data-tags='${JSON.stringify(game.tags)}'>
           <span class="badge">${game.badge}</span>
           <div class="icons">
-            ${game.platforms.map(p => `<img src="${platformIcons[p]}" alt="${p}" width="26" height="26">`).join('')}
+            ${game.platforms.map(p => 
+              `<img src="${platformIcons[p] || ''}" alt="${p}" width="26" height="26">`
+            ).join('')}
           </div>
           <img class="thumb" src="${game.thumb}" alt="${game.title}" loading="lazy" decoding="async">
           <h3>${game.title}</h3>
@@ -479,6 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const type = btn.dataset.filterType;
       const value = btn.dataset.filterValue;
       const set = activeFilters[type];
+
       if (set.has(value)) {
         set.delete(value);
         btn.classList.remove('active');
@@ -486,12 +632,148 @@ document.addEventListener("DOMContentLoaded", () => {
         set.add(value);
         btn.classList.add('active');
       }
-      currentPage = 1;
+
       applyFiltersAndRender();
     });
   });
 });
 </script>
+
+
+
+<script>
+let movies = [];
+let games = [];
+let currentFocus = -1; // for keyboard navigation
+
+// Load JSON data
+async function loadData() {
+  try {
+    const moviesResp = await fetch('/assets/data/movies.json');
+    movies = await moviesResp.json();
+
+    const gamesResp = await fetch('/assets/data/games.json');
+    games = await gamesResp.json();
+  } catch (error) {
+    console.error("Error loading JSON data:", error);
+  }
+}
+
+// Search function for both formats
+function searchContent(query) {
+  query = query.toLowerCase();
+
+  // Movies: title, url, image
+  const movieResults = movies.filter(item =>
+    (item.title && item.title.toLowerCase().includes(query)) ||
+    (item.url && item.url.toLowerCase().includes(query)) ||
+    (item.image && item.image.toLowerCase().includes(query))
+  );
+
+  // Games: title, path, thumb
+  const gameResults = games.filter(item =>
+    (item.title && item.title.toLowerCase().includes(query)) ||
+    (item.path && item.path.toLowerCase().includes(query)) ||
+    (item.thumb && item.thumb.toLowerCase().includes(query))
+  );
+
+  return [...movieResults, ...gameResults];
+}
+
+// Render search results
+function renderResults(results) {
+  const resultsContainer = document.getElementById('search-results');
+  resultsContainer.innerHTML = '';
+
+  if (results.length === 0) {
+    resultsContainer.innerHTML = '<p style="padding:10px;">No results found</p>';
+    return;
+  }
+
+  results.forEach(item => {
+    const isMovie = item.url !== undefined;
+    const link = isMovie ? item.url : item.path;
+    const thumb = isMovie ? item.image : item.thumb;
+    const desc = isMovie
+      ? (item.year ? `Year: ${item.year}` : '') + (item.badge ? ` | ${item.badge}` : '')
+      : (item.platforms ? `Platforms: ${item.platforms.join(', ')}` : '') + (item.badge ? ` | ${item.badge}` : '');
+
+    const div = document.createElement('div');
+    div.classList.add('search-item');
+
+    div.innerHTML = `
+      <img src="${thumb}" alt="${item.title}" />
+      <div>
+        <h4>${item.title}</h4>
+        <p>${desc}</p>
+      </div>
+    `;
+
+    // Clickable card
+    div.addEventListener('click', () => {
+      window.location.href = link;
+    });
+
+    resultsContainer.appendChild(div);
+  });
+}
+
+// Keyboard navigation
+function addKeyboardNavigation() {
+  const items = document.querySelectorAll('.search-item');
+  document.getElementById('universal-search').addEventListener('keydown', function(e) {
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      currentFocus++;
+      if (currentFocus >= items.length) currentFocus = 0;
+      setActive(items);
+    } else if (e.key === "ArrowUp") {
+      currentFocus--;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      setActive(items);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (currentFocus > -1) items[currentFocus].click();
+    }
+  });
+}
+
+function setActive(items) {
+  items.forEach(i => i.classList.remove('active'));
+  if (currentFocus >= 0) items[currentFocus].classList.add('active');
+}
+
+// Input listener
+document.getElementById('universal-search').addEventListener('input', (e) => {
+  const query = e.target.value.trim();
+  currentFocus = -1;
+
+  if (query.length > 0) {
+    const results = searchContent(query);
+    renderResults(results);
+    addKeyboardNavigation();
+  } else {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-container')) {
+    document.getElementById('search-results').innerHTML = '';
+  }
+});
+
+window.addEventListener('DOMContentLoaded', loadData);
+
+</script>
+
+
+
+
+
+
 
 </body>
 </html>
