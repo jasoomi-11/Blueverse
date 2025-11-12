@@ -4,10 +4,19 @@
   <!-- ================= MAIN MOVIE PAGES ================= -->
   <url>
     <loc>https://blueverse.space/movies/action.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+
+<url>
+    <loc>https://blueverse.space/movies/romance.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+
 
   <url>
     <loc>https://blueverse.space/movies/horror.html</loc>
@@ -25,17 +34,14 @@
 
   <url>
     <loc>https://blueverse.space/movies/movie.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <url>
-    <loc>https://blueverse.space/movies/action1.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
-  </url>
+ 
+
+
 
   <!-- ================= RELEASED MOVIES ================= -->
   <url>
@@ -147,7 +153,7 @@
 
   <url>
     <loc>https://blueverse.space/movies/action/heads-of-state.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -232,6 +238,26 @@
   <url>
     <loc>https://blueverse.space/movies/action/tron-legacy-(2010).html</loc>
     <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <url>
+    <loc>https://blueverse.space/movies/upcoming/dhurandhar.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+   <url>
+    <loc>https://blueverse.space/movies/upcoming/kis-kisko-pyaar-karoon-2.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+   <url>
+    <loc>https://blueverse.space/movies/upcoming/alpha.html</loc>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>

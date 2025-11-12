@@ -435,7 +435,6 @@ body {
 
 
 
-
 /* ===== FOOTER SECTION ===== */
 .footer {
   background: rgba(255, 255, 255, 0.05);
@@ -638,90 +637,6 @@ body {
   font-size: 0.8rem;
 }
 
-
-
-.upcoming-section {
-  padding: 20px;
-  background-color: #0a1a40; /* Blueverse dark-blue */
-  color: #fff;
-}
-
-.upcoming-section h2 {
-  margin-bottom: 15px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.upcoming-grid {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding-bottom: 10px;
-  scroll-behavior: smooth;
-}
-
-.upcoming-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.upcoming-grid::-webkit-scrollbar-thumb {
-  background-color: #1e90ff;
-  border-radius: 4px;
-}
-
-.upcoming-grid::-webkit-scrollbar-track {
-  background: #0a1a40;
-}
-
-.upcoming-card {
-  min-width: 180px;
-  height: 280px;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.upcoming-card:hover {
-  transform: scale(1.05);
-}
-
-.upcoming-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.upcoming-card .badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #1e90ff;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 6px;
-}
-
-.upcoming-card .title-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.upcoming-card .title-overlay h3 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-}
-
-
 /* Container for search bar */
 .search-container {
   position: sticky;       /* sticky below header */
@@ -850,10 +765,6 @@ body {
 }
 
 
-
-
-
-
 </style>
 </head>
 <body>
@@ -872,7 +783,6 @@ body {
   <input type="text" id="universal-search" placeholder="Search movies or games..." autocomplete="off"/>
   <div id="search-results" class="search-results"></div>
 </div>
-
 <!-- Sidebar -->
 <nav class="menu">
   <div class="sidebar-content">
@@ -922,23 +832,27 @@ body {
   
 </section>
 
-<!-- ===== UPCOMING MOVIES HORIZONTAL SCROLL ===== -->
-<section class="upcoming-section">
-  <h2>Upcoming Movies</h2>
-  <div class="upcoming-grid"></div>
-</section>
-
-
-
-
 <!-- ===== MOVIE GRID ===== -->
 <div class="movie-grid">
   <!-- Movie cards yahan JS se add honge -->
 </div>
 
 
+<!-- ================= Coming Soon Notice ================= -->
+<div id="comingSoonNotice" style="display:none; text-align:center; padding:2rem; background:#001a4d; color:cyan; font-size:1.5rem; border-radius:12px; margin:1rem 0;">
+  🎬 Coming Soon!
+</div>
 
-
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Example: check if upcoming movies section is empty
+  const upcomingContainer = document.getElementById('upcoming-carousel');
+  
+  if (!upcomingContainer || upcomingContainer.children.length === 0) {
+    document.getElementById('comingSoonNotice').style.display = 'block';
+  }
+});
+</script>
 
 
 
@@ -955,7 +869,12 @@ body {
       <a href="contact.html">Contact</a>
     </div>
 
-    
+    <div class="footer-socials">
+      <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
   </div>
 
   <div class="footer-attribution">
@@ -1004,13 +923,10 @@ cards.forEach(card => observer.observe(card));
 
 
 
-
-
-
 const movieGrid = document.querySelector(".movie-grid");
 
 // Genre for this page
-const selectedGenre = "Action"; // Action movies only
+const selectedGenre = "Romance"; // Action movies only
 
 // Fetch movies from local JSON
 fetch("/assets/data/movies.json")
@@ -1049,38 +965,8 @@ fetch("/assets/data/movies.json")
 
 
 
-const upcomingGrid = document.querySelector(".upcoming-grid");
-
-// Fetch upcoming movies
-fetch("/assets/data/upcoming.json")
-  .then(res => res.json())
-  .then(data => {
-    data.forEach(movie => {
-      const card = document.createElement("div");
-      card.className = "upcoming-card";
-
-      card.innerHTML = `
-        <span class="badge">${movie.badge}</span>
-        <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='/images/placeholder.jpg'">
-        <div class="title-overlay">
-          <h3>${movie.title}</h3>
-        </div>
-      `;
-
-      card.addEventListener("click", () => {
-        window.location.href = movie.url;
-      });
-
-      upcomingGrid.appendChild(card);
-    });
-  })
-  .catch(err => console.error("Error loading upcoming movies:", err));
-
-
-
-
-
 </script>
+
 
 
 
@@ -1211,7 +1097,6 @@ document.addEventListener('click', (e) => {
 window.addEventListener('DOMContentLoaded', loadData);
 
 </script>
-
 
 
 </body>

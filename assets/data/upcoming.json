@@ -1,42 +1,27 @@
 [
-  {
-    "title": "Galactic Wars",
-    "release_date": "2025-12-15",
-    "genre": ["Action", "Sci-Fi"],
-    "badge": "Release: 2025-12-15",
-    "image": "https://media.themoviedb.org/t/p/original/example1.jpg",
-    "url": "/movies/upcoming/galactic-wars.html"
-  },
-  {
-    "title": "Haunted Mansion",
-    "release_date": "2025-11-20",
-    "genre": ["Horror", "Thriller"],
-    "badge": "Release: 2025-11-20",
-    "image": "https://media.themoviedb.org/t/p/original/example2.jpg",
-    "url": "/movies/upcoming/haunted-mansion.html"
-  },
-  {
-    "title": "Dream Chasers",
-    "release_date": "2025-10-05",
-    "genre": ["Adventure", "Drama"],
-    "badge": "Release: 2025-10-05",
-    "image": "https://media.themoviedb.org/t/p/original/example3.jpg",
-    "url": "/movies/upcoming/dream-chasers.html"
-  },
-  {
-    "title": "Cyber Strike",
-    "release_date": "2025-09-18",
-    "genre": ["Action", "Thriller"],
-    "badge": "Release: 2025-09-18",
-    "image": "https://media.themoviedb.org/t/p/original/example4.jpg",
-    "url": "/movies/upcoming/cyber-strike.html"
-  },
-  {
-    "title": "Mystic Island",
-    "release_date": "2025-12-01",
-    "genre": ["Fantasy", "Adventure"],
-    "badge": "Release: 2025-12-01",
-    "image": "https://media.themoviedb.org/t/p/original/example5.jpg",
-    "url": "/movies/upcoming/mystic-island.html"
-  }
+{
+  "title": "Dhurandhar",
+  "release_date": "2025-12-05",
+  "genre": ["Action", "Thriller"],
+  "badge": "Release: 2025-12-05",
+  "image": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/movies/dhurandhar.webp",
+  "url": "/movies/upcoming/dhurandhar.html"
+},
+ {
+    "title": "Kis Kisko Pyaar Karoon 2",
+    "release_date": "2025-12-12",
+    "genre": ["Romance", "Comedy"],
+    "badge": "Release: 2025-12-12",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/vEXVtbK3ciEDk1aiRY1D3cNCKv4.jpg",
+    "url": "/movies/upcoming/kis-kisko-pyaar-karoon-2.html"
+},
+ {
+  "title": "Movie Alpha",
+  "release_date": "2026-04-17",
+  "genre": ["Action", "Thriller"],
+  "badge": "Postponed: 2026-04-17",
+  "image": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/movies/alpha.webp",
+  "url": "/movies/upcoming/alpha.html"
+}
+  
 ]

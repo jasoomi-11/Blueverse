@@ -841,15 +841,22 @@ body {
 </div>
 
 
-
-
-<!-- ===== PAGINATION PLACEHOLDER ===== -->
-<div class="pagination">
-  <a href="movies1.html" class="page-link active">1</a>
-  <a href="movies2.html" class="page-link">2</a>
-  <a href="movies3.html" class="page-link">3</a>
-  <a href="movies2.html" class="page-next">Next »</a>
+<!-- ================= Coming Soon Notice ================= -->
+<div id="comingSoonNotice" style="display:none; text-align:center; padding:2rem; background:#001a4d; color:cyan; font-size:1.5rem; border-radius:12px; margin:1rem 0;">
+  🎬 Coming Soon!
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Example: check if upcoming movies section is empty
+  const upcomingContainer = document.getElementById('upcoming-carousel');
+  
+  if (!upcomingContainer || upcomingContainer.children.length === 0) {
+    document.getElementById('comingSoonNotice').style.display = 'block';
+  }
+});
+</script>
+
 
 
 <!-- ===== FOOTER SECTION ===== -->
