@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jon Sena - Celebrity Page</title>
+<style>
+/* RESET */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Arial', sans-serif;
+}
+body {
+  background: linear-gradient(135deg,#0a0a0a,#1a1a2e,#0f0f1e);
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  max-width: 1200px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.5rem;
+  z-index: 1000;
+  transition: all 0.6s ease;
+}
+
+header .logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hamburger {
+  width: 35px; height: 22px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1100;
+}
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: cyan;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1){
+  transform: rotate(45deg) translate(5px,5px);
+}
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
+.hamburger.open span:nth-child(3){
+  transform: rotate(-45deg) translate(5px,-5px);
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top:0;
+  left:-280px;
+  width:260px;
+  height:100%;
+  background: rgba(0,0,20,0.95);
+  backdrop-filter: blur(15px);
+  box-shadow:5px 0 20px rgba(0,255,255,0.2);
+  transition:0.4s;
+  z-index:1001;
+  padding:2rem 1rem;
+}
+.sidebar.active { left:0; }
+.sidebar ul { list-style:none; margin-top:2rem; }
+.sidebar ul li { margin:1.2rem 0; }
+.sidebar ul li a {
+  color: cyan;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition:0.3s;
+}
+.sidebar ul li a:hover { color:#fff; text-shadow:0 0 10px cyan; }
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  display:none;
+  z-index:1000;
+}
+.overlay.active { display:block; }
+
+/* MAIN CONTENT */
+main {
+  max-width:800px;
+  margin:150px auto 40px auto;
+  padding:0 20px;
+  text-align: center;
+}
+
+/* CAST SECTION */
+.cast-face {
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:0 auto 20px auto;
+  box-shadow: 0 0 20px cyan;
+}
+.cast-face img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* CAST DETAILS */
+.cast-details {
+  background: linear-gradient(145deg,#111,#1c1c1c);
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 4px 15px rgba(0,255,255,0.1);
+  margin-bottom:30px;
+  text-align: left;
+}
+.cast-details h2 {
+  color: cyan;
+  text-align: center;
+  margin-bottom:15px;
+}
+.cast-details p {
+  line-height:1.6;
+  color:#ccc;
+  margin:5px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><img src="https://via.placeholder.com/50" alt="Jon Sena"></div>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="#cast">Cast</a></li>
+    <li><a href="#bio">Biography</a></li>
+    <li><a href="#movies">Movies</a></li>
+  </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- MAIN CONTENT -->
+<main>
+    
+    
+  <section class="cast" id="cast">
+   
+    
+    
+    
+    
+    
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<section class="personal-details">
+  <!-- Circular Face -->
+  <div class="cast-face">
+    <img src="https://via.placeholder.com/180" alt="Jon Sena">
+  </div>
+
+  <!-- Heading -->
+  <h2>Personal Details</h2>
+
+  <!-- Details List -->
+  <ul>
+    <li><span class="label">Name:</span> Jon Sena</li>
+    <li><span class="label">Date of Birth:</span> April 23, 1977</li>
+    <li><span class="label">Known For:</span> Professional Wrestling, Acting</li>
+    <li><span class="label">Place of Birth:</span> West Newbury, Massachusetts, USA</li>
+    <li><span class="label">Net Worth:</span> $60 Million (All Time)</li>
+    <li><span class="label">Total Movies:</span> 30</li>
+    <li><span class="label">Hit Movies:</span> 12</li>
+    <li><span class="label">Flop Movies:</span> 3</li>
+    <li><span class="label">Years Old:</span> 46</li>
+  </ul>
+</section>
+
+<style>
+.personal-details {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+.personal-details h2 {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  animation: fadeSlide 1s ease forwards;
+}
+
+.cast-face {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 0 25px cyan;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeSlide 1s ease forwards;
+}
+
+.cast-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cast-face:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px cyan;
+}
+
+.personal-details ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  color: #fff;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.personal-details ul li {
+  padding: 6px 0;
+  font-size: 1.05rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlide 0.8s forwards;
+}
+
+.personal-details ul li:nth-child(1) { animation-delay: 0.2s; }
+.personal-details ul li:nth-child(2) { animation-delay: 0.4s; }
+.personal-details ul li:nth-child(3) { animation-delay: 0.6s; }
+.personal-details ul li:nth-child(4) { animation-delay: 0.8s; }
+.personal-details ul li:nth-child(5) { animation-delay: 1s; }
+.personal-details ul li:nth-child(6) { animation-delay: 1.2s; }
+.personal-details ul li:nth-child(7) { animation-delay: 1.4s; }
+.personal-details ul li:nth-child(8) { animation-delay: 1.6s; }
+.personal-details ul li:nth-child(9) { animation-delay: 1.8s; }
+
+.label {
+  color: cyan;
+  font-weight: bold;
+  min-width: 150px;
+  display: inline-block;
+}
+
+/* Animation Keyframes */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+</style>
+    
+
+    
+    
+<section class="biography" id="bio">
+  <h2 style="color: cyan; text-align:center; text-shadow:0 0 10px cyan; margin-bottom: 25px;">Biography</h2>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Profession</button>
+    <div class="accordion-content">
+      <p><span class="highlight">Profession:</span> Professional Wrestler, Actor, TV Host</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Wrestling Highlights</button>
+    <div class="accordion-content">
+      <p><span class="highlight">Wrestling Highlights:</span> 17-time WWE World Champion, Signature Moves: Attitude Adjustment, Five Knuckle Shuffle</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Movie Highlights</button>
+    <div class="accordion-content">
+      <p><span class="highlight">Movies:</span> The Marine (2006), Trainwreck (2015), F9: The Fast Saga (2021), The Suicide Squad (2021)</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Philanthropy</button>
+    <div class="accordion-content">
+      <p><span class="highlight">Philanthropy:</span> Active Make-A-Wish Foundation contributor, granted hundreds of wishes</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Known For</button>
+    <div class="accordion-content">
+      <p><span class="highlight">Known For:</span> "You Can’t See Me", "Hustle, Loyalty, Respect", Pop Culture Icon</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.biography {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.accordion-btn {
+  background: rgba(0,0,0,0.3);
+  color: cyan;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px cyan;
+}
+
+.accordion-btn:hover {
+  background: rgba(0,255,255,0.1);
+}
+
+.accordion-content {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  color: #ccc;
+}
+
+.accordion-content p {
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.highlight {
+  color: cyan;
+  font-weight: bold;
+}
+</style>
+
+<script>
+const accButtons = document.querySelectorAll('.accordion-btn');
+
+accButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+
+    // Toggle current accordion
+    if(content.style.maxHeight){
+      content.style.maxHeight = null;
+      content.style.padding = '0 20px';
+    } else {
+      // Close others
+      document.querySelectorAll('.accordion-content').forEach(c => {
+        c.style.maxHeight = null;
+        c.style.padding = '0 20px';
+      });
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.style.padding = "10px 20px";
+    }
+  });
+});
+</script>
+    
+    
+    
+   
+</main>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+hamburger.addEventListener('click', ()=>{
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('active');
+  hamburger.classList.toggle('open');
+});
+
+overlay.addEventListener('click', ()=>{
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+  hamburger.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

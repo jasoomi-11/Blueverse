@@ -8,6 +8,8 @@
     "thumb": "/assets/thumb/gta5.webp",
     "path": "/Game/gta5.html"
   },
+  
+  
   {
     "title": "Call of Duty: Mobile",
     "slug": "callofdutymobile",
@@ -17,6 +19,15 @@
     "thumb": "https://media.rawg.io/media/resize/640/-/games/08f/08f242250bb76520879f116aa7cf33cf.jpg",
     "path": "/Game/callofdutymobile.html"
   },
+  {
+    "title": "Monster Hunter Wilds",
+    "slug": "monster-hunter-wilds",
+    "badge": "Top Online",
+    "platforms": ["pc", "playstation", "xbox", "switch"],
+    "tags": ["rpg", "action", "adventure", "multiplayer"],
+    "thumb": "/assets/thumb/monster-hunter-wild.webp",
+    "path": "/Game/monster-hunter-wilds.html"
+},
   {
     "title": "Clash of Clans",
     "slug": "clashofclans",
@@ -41,7 +52,7 @@
     "badge": "Battle Royale",
     "platforms": ["android", "ios"],
     "tags": ["battle-royale"],
-    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/cc9/cc9b849d0824331ad50e822ab83f1a1b.jpg",
+    "thumb": "/assets/thumb/freefire.webp",
     "path": "/Game/freefiremax.html"
   },
   {
@@ -50,7 +61,7 @@
     "badge": "Adventure",
     "platforms": ["windows", "playstation", "android", "ios"],
     "tags": ["action-rpg", "adventure"],
-    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/328/3281a100abdcad4b628066f5e803e309.jpg",
+    "thumb": "/assets/thumb/genshine.jpg",
     "path": "/Game/genshineimpact.html"
   },
   {
@@ -99,7 +110,7 @@
     "badge": "Story",
     "platforms": ["windows", "xbox", "playstation"],
     "tags": ["story", "open-world"],
-    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/8b9/8b9cd97fed67e5a811c40cdfb64531e3.jpg",
+    "thumb": "/assets/thumb/redemption.webp",
     "path": "/Game/reddeadredemption2.html"
   },
   {
@@ -117,7 +128,7 @@
     "badge": "Shooter",
     "platforms": ["windows"],
     "tags": ["shooter", "competitive"],
-    "thumb": "https://media.rawg.io/media/resize/640/-/screenshots/491/491c40b53352893f5b00e5a19fbfcdb1.jpg",
+    "thumb": "/assets/thumb/valorant.webp",
     "path": "/Game/valorant.html"
   },
   {
@@ -144,7 +155,7 @@
     "badge": "Creative",
     "platforms": ["windows", "xbox", "playstation", "android", "ios"],
     "tags": ["creative", "sandbox"],
-    "thumb": "/assets/thumb/Minecraft.jpg",
+    "thumb": "/assets/thumb/Minecraft.webp",
     "path": "/Game/Minecraft.html"
   }
   
