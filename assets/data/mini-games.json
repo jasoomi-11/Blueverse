@@ -96,5 +96,12 @@
     "badge": "Simulation",
     "thumb": "https://img.gamedistribution.com/32ce4093ac7d48db80abc6befccfca46-512x512.jpg",
     "url": "/games/hypermarket-3D.html"
-  }
+  },
+  {
+  "title": "Four Colors Multiplayer",
+  "slug": "four-colors-multiplayer",
+  "badge": "Card Game",
+  "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/four-color.jpg",
+  "url": "/games/four-colors-multiplayer.html"
+}
 ]

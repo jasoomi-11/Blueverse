@@ -182,5 +182,24 @@
     "year": "2025",
     "badge": "Action",
     "genre": ["Action"]
-  }
+  },
+  
+  
+  
+  {
+  "title": "The Plague",
+  "url": "/movies/horror/the-plague.html",
+  "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/iIsNagxehLpBu2vDjuRVz6jKOQN.jpg",
+  "year": "2025",
+  "badge": "Horror",
+  "genre": ["Horror", "Thriller"]
+},
+{
+  "title": "The Wolf Man",
+  "url": "/movies/horror/wolf-man.html",
+  "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/kbEneEWGBwnvvvdCJUqETA1Ui4D.jpg",
+  "year": "2025",
+  "badge": "Horror",
+  "genre": ["Horror", "Thriller"]
+}
 ]

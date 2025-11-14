@@ -921,12 +921,10 @@ cards.forEach(card => observer.observe(card));
 
 
 
-
-
 const movieGrid = document.querySelector(".movie-grid");
 
 // Genre for this page
-const selectedGenre = "Romance"; // Action movies only
+const selectedGenre = "Romance"; // Romance movies only
 
 // Fetch movies from local JSON
 fetch("/assets/data/movies.json")
@@ -1095,6 +1093,15 @@ document.addEventListener('click', (e) => {
 });
 
 window.addEventListener('DOMContentLoaded', loadData);
+
+
+
+
+
+
+
+
+
 
 </script>
 

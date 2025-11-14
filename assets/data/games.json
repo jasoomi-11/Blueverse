@@ -157,9 +157,36 @@
     "tags": ["creative", "sandbox"],
     "thumb": "/assets/thumb/Minecraft.webp",
     "path": "/Game/Minecraft.html"
-  }
+  },
+    {
+  "title": "God of War: Ascension",
+  "slug": "God-of-War-Ascension",
+  "badge": "Action",
+  "platforms": ["windows", "playstation"],
+  "tags": ["action", "mythology", "combat"],
+  "thumb": "/assets/thumb/GOW-ascension.webp",
+  "path": "/Game/God-of-war-ascension.html"
+},
+  {
+  "title": "God of War (2018)",
+  "slug": "God-of-War-2018",
+  "badge": "Action Adventure",
+  "platforms": ["windows", "playstation"],
+  "tags": ["action", "norse mythology", "story-driven", "combat", "adventure"],
+  "thumb": "/assets/thumb/GOW.webp",
+  "path": "/Game/GOW-2018.html"
+},
+
   
-  
+  {
+  "title": "God of War II",
+  "slug": "God-of-War-2",
+  "badge": "Action Adventure",
+  "platforms": ["playstation"],
+  "tags": ["action", "greek mythology", "hack and slash", "adventure", "combat"],
+  "thumb": "/assets/thumb/GOW-2.webp",
+  "path": "/Game/GOW-2.html"
+}
   
 
 
