@@ -575,15 +575,27 @@ document.addEventListener("DOMContentLoaded", () => {
         !activeFilters.tag.size ||
         [...activeFilters.tag].some(t => c.tags.includes(t));
 
-      // Show only matching cards
       c.el.style.display = (matchPlatform && matchTag) ? '' : 'none';
     });
+  }
+
+  // Fisher–Yates shuffle
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
   }
 
   // Fetch JSON and build cards
   fetch("/assets/data/games.json")
     .then(res => res.json())
     .then(games => {
+
+      // 🔥 SHUFFLE GAMES BEFORE DISPLAYING (ONLY CHANGE ADDED)
+      games = shuffle(games);
+
       const platformIcons = {
         windows: "https://cdn-icons-png.flaticon.com/512/732/732225.png",
         xbox: "https://cdn-icons-png.flaticon.com/128/1/1321.png",
@@ -773,7 +785,50 @@ window.addEventListener('DOMContentLoaded', loadData);
 
 
 
+<script>
+// ----- SIMPLE SHUFFLE (Fisher–Yates) -----
+function shuffleArray(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
 
+// ----- LOAD + SHUFFLE + RENDER -----
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("moreGamesContainer");
+    if (!container) return;
+
+    fetch("/assets/data/Games.json")
+        .then(res => res.json())
+        .then(data => {
+            const shuffled = shuffleArray(data);
+
+            container.innerHTML = ""; // clear old content
+
+            shuffled.forEach(game => {
+                const card = document.createElement("a");
+                card.classList.add("game-card");
+                card.href = game.path;
+
+                card.innerHTML = `
+                    <div class="thumb">
+                        <img src="${game.thumb}" alt="${game.title}">
+                    </div>
+                    <div class="overlay">
+                        <h4>${game.title}</h4>
+                        <span class="badge">${game.badge}</span>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        })
+        .catch(err => console.error("ERROR loading games:", err));
+});
+</script>
 
 </body>
 </html>

@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>God of War — Complete Collection | Blueverse</title>
+
+<!-- Inline styles so you can edit easily later -->
+<style>
+  /* Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap');
+
+  :root{
+    --bg-1:#07080a;
+    --bg-2:#0f1620;
+    --accent: #ff3b3b;        /* Kratos red */
+    --accent-2:#00d4ff;      /* Atreus theme cyan */
+    --panel: rgba(255,255,255,0.03);
+    --muted:#b8c6d9;
+    --glass: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.06);
+    --radius:12px;
+  }
+
+  html,body{height:100%;margin:0;background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255,0,0,0.03), transparent 6%),
+    linear-gradient(180deg,#04060a 0%, #07101b 60%, #000 100%);
+    color:#e8eef8;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Header */
+  .bv-header{
+    display:flex;align-items:center;gap:18px;padding:18px 22px;
+    max-width:1280px;margin:18px auto;border-radius:999px;
+    background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    box-shadow:0 6px 30px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.02);
+  }
+  .bv-logo {
+    display:flex;align-items:center;gap:12px;
+    cursor:pointer;
+  }
+  /* SVG logo container */
+  .gow-badge { width:88px; height:88px; display:flex; align-items:center; justify-content:center; }
+  .site-title { font-family:'Playfair Display', serif; font-size:22px; color:var(--accent); letter-spacing:1px; text-shadow:0 0 12px rgba(255,59,59,0.12); }
+  .site-sub { font-size:12px; color:var(--muted); margin-top:3px; }
+
+  /* Top controls (theme toggle + search) */
+  .top-controls { margin-left:auto; display:flex; gap:12px; align-items:center; }
+  .btn { padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600;background:var(--glass); color:#fff;border:1px solid rgba(255,255,255,0.03); }
+  .btn:active{transform:translateY(1px);}
+  .toggle { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+
+  /* Page container */
+  .container { max-width:1280px; margin:20px auto; padding:0 18px 80px; }
+
+  /* Tabs */
+  .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0; }
+  .tab-btn {
+    padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);
+    color:var(--muted); cursor:pointer; font-weight:600; transition:all .18s;
+  }
+  .tab-btn.active { background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); color:var(--accent); border-color: rgba(255,59,59,0.25); box-shadow:0 6px 22px rgba(255,59,59,0.05); }
+
+  /* Controls row */
+  .controls-row { display:flex; gap:12px; align-items:center; margin:12px 0 22px; flex-wrap:wrap; }
+
+  .search { flex:1; min-width:200px; }
+  .search input {
+    width:100%; padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+    background:rgba(0,0,0,0.45); color:#fff; outline:none;
+  }
+
+  .filters { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+  .filter-pill {
+    padding:8px 10px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.03); color:var(--muted);
+    cursor:pointer;font-weight:600;font-size:13px;
+  }
+  .filter-pill.active { background:linear-gradient(90deg, rgba(0,0,0,0.5), rgba(255,255,255,0.02)); color:var(--accent); border-color: rgba(255,59,59,0.18); }
+
+  /* Grid: exact squares using aspect-ratio */
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:14px;
+  }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45));
+    border-radius:12px; overflow:hidden; position:relative; border:1px solid var(--card-border);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.6);
+    transition: transform .18s, box-shadow .18s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.75); }
+  .card .thumb {
+    width:100%; aspect-ratio:1/1; object-fit:cover; display:block; background:#0b0b0b;
+  }
+
+  .card .meta {
+    padding:10px 12px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  }
+  .card h4 { margin:0; font-size:15px; color:#fff; font-weight:700; letter-spacing:0.2px; }
+  .card .badge { font-size:12px;color:var(--muted); }
+
+  .overlay-icons { position:absolute; inset:8px; display:flex; justify-content:flex-end; gap:8px; pointer-events:none; }
+  .overlay-icons .ico { pointer-events:auto; background: rgba(0,0,0,0.45); border-radius:8px; padding:6px; border:1px solid rgba(255,255,255,0.04); color:#fff; cursor:pointer; }
+
+  /* Modal */
+  .modal {
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999; padding:28px;
+    background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+  }
+  .modal.open { display:flex; }
+  .modal-card {
+    width:100%; max-width:980px; border-radius:12px; overflow:hidden; background:linear-gradient(180deg,#09101a,#071018); border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 30px 80px rgba(0,0,0,0.7); animation:pop .16s ease;
+  }
+  @keyframes pop { from { transform:translateY(8px) scale(.99); opacity:0 } to { transform:none; opacity:1 } }
+
+  .modal-body { display:grid; grid-template-columns: 1fr 360px; gap:0; }
+  .modal-body .left { padding:0; }
+  .modal-body iframe { width:100%; height:420px; border:0; display:block; }
+  .modal-body .right { padding:18px; background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(0,0,0,0.15)); }
+  .modal-body h2 { margin:0 0 6px; color:var(--accent); font-family:'Playfair Display', serif; }
+  .modal-body p { color:var(--muted); font-size:14px; margin:10px 0; line-height:1.45; }
+
+  .specs { margin-top:12px; display:grid; gap:8px; }
+  .specs .sp { font-size:13px;color:#cfecff; display:flex; justify-content:space-between; border-radius:8px; padding:8px; background:rgba(255,255,255,0.02); }
+
+  .close-btn { position:absolute; top:18px; right:22px; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.02); color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,0.04); }
+
+  /* Timeline */
+  .timeline { display:flex; gap:12px; align-items:center; overflow:auto; padding:10px 0 20px; }
+  .year-pill { padding:8px 12px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--muted); cursor:pointer; white-space:nowrap; }
+  .year-pill.active { background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(0,0,0,0.1)); color:var(--accent); border-color: rgba(255,59,59,0.14); box-shadow:0 10px 34px rgba(255,59,59,0.03); }
+
+  /* Atreus theme toggled */
+  .atreus body, .atreus :root { --accent:var(--accent-2); }
+  .atreus .tab-btn.active { color:var(--accent-2); border-color: rgba(0,212,255,0.25); box-shadow:0 6px 22px rgba(0,212,255,0.05) }
+  .atreus .site-title { color:var(--accent-2); text-shadow:0 0 12px rgba(0,212,255,0.09); }
+
+  /* Responsive tweaks */
+  @media (max-width:880px){
+    .modal-body { grid-template-columns:1fr; }
+    .modal-body iframe { height:260px; }
+    .modal-body .right { padding:14px; }
+  }
+
+  @media (max-width:480px){
+    .bv-header{ padding:12px; gap:10px; border-radius:10px; margin:10px;}
+    .site-title{font-size:18px}
+    .tabs{gap:6px}
+    .card h4{font-size:13px}
+  }
+
+  /* small helper */
+  .muted{ color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="bv-header" role="banner">
+    <div class="bv-logo" onclick="scrollToTop()">
+      <!-- Animated GOW-ish SVG badge -->
+      <div class="gow-badge" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="64" height="64" role="img" aria-label="God of War">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff9b9b"/>
+              <stop offset="1" stop-color="#ff1a1a"/>
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <circle cx="60" cy="60" r="54" fill="url(#g)" opacity="0.08" />
+          <g transform="translate(22,18)" filter="url(#glow)">
+            <path d="M28 2 L36 2 L38 18 L46 20 L30 32 L26 26 L12 30 L16 22 L4 18 L26 2 Z" fill="#fff" opacity="0.06"/>
+            <text x="4" y="78" font-family="Playfair Display, serif" font-size="46" fill="#fff" opacity="0.07">G</text>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="site-title">BLUEVERSE • GOD OF WAR</div>
+        <div class="site-sub">Series Collection • Remasters • Spin-offs</div>
+      </div>
+    </div>
+
+    <div class="top-controls">
+      <div class="toggle">
+        <label style="display:flex;align-items:center;gap:8px">
+          <input id="atreusToggle" type="checkbox" style="accent-color:var(--accent-2)"/> Atreus Theme
+        </label>
+      </div>
+
+      <button class="btn" id="muteBtn" title="Toggle hover sound">🔊 On</button>
+      <button class="btn" onclick="downloadJSON()">Export JSON</button>
+    </div>
+  </div>
+
+  <!-- Main container -->
+  <main class="container">
+
+    <!-- Tabs -->
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab-btn active" data-tab="all">All</button>
+      <button class="tab-btn" data-tab="main">Main Series</button>
+      <button class="tab-btn" data-tab="spin">Spin-offs</button>
+      <button class="tab-btn" data-tab="remaster">Remasters</button>
+    </nav>
+
+    <!-- Controls row -->
+    <div class="controls-row">
+      <div class="search">
+        <input id="q" placeholder="Search title, tag, platform..." aria-label="Search collection">
+      </div>
+
+      <div class="filters" role="toolbar" aria-label="Filters">
+        <button class="filter-pill" data-filter="platform:playstation">PlayStation</button>
+        <button class="filter-pill" data-filter="platform:pc">PC</button>
+        <button class="filter-pill" data-filter="tag:remastered">Remastered</button>
+        <button class="filter-pill" data-filter="tag:mythology">Mythology</button>
+      </div>
+    </div>
+
+    <!-- Timeline filter -->
+    <div class="timeline" id="timeline" aria-hidden="false" style="margin-bottom:6px">
+      <!-- years injected dynamically -->
+    </div>
+
+    <!-- Grid of cards -->
+    <section class="grid" id="grid" aria-live="polite">
+      <!-- JS will produce cards here from JSON -->
+    </section>
+
+    <!-- LOAD MORE / SHUFFLE controls -->
+    <div style="display:flex;gap:10px;align-items:center;justify-content:center;margin:22px 0 6px;">
+      <button class="btn" id="shuffleBtn">🔀 Shuffle</button>
+      <button class="btn" id="moreBtn">Load 8 More</button>
+    </div>
+
+    <p style="text-align:center; color:var(--muted); margin-top:6px;">Cards load randomly on shuffle; clicking a card opens details with embedded trailer.</p>
+  </main>
+
+  <!-- Modal for details -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <button class="close-btn" id="closeModal">✕</button>
+      <div class="modal-body">
+        <div class="left" id="modalLeft">
+          <!-- iframe inserted -->
+        </div>
+        <div class="right" id="modalRight">
+          <h2 id="modalTitle">Title</h2>
+          <div class="muted" id="modalSub">Year • Platform</div>
+          <p id="modalDesc">Description text</p>
+
+          <div class="specs" id="modalSpecs">
+            <!-- specs -->
+          </div>
+
+          <div style="margin-top:12px;">
+            <a id="openPage" class="btn" style="text-decoration:none">Open Page</a>
+            <button class="btn" id="playTrailer">Play Trailer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden audio for hover -->
+  <audio id="whoosh" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/audio/swoosh.mp3" preload="auto"></audio>
+
+<script>
+/* ---------------------------
+  Embedded JSON data (games)
+  Replace or extend this array as needed.
+  Fields must follow your requested format:
+  { title, slug, badge, platforms[], tags[], thumb, path, year, desc, trailer }
+---------------------------- */
+const GAMES_DATA = [
+  {
+    "title":"God of War (2005)",
+    "slug":"God-of-War-2005",
+    "badge":"Action",
+    "platforms":["playstation"],
+    "tags":["greek mythology","hack and slash","classic"],
+    "thumb":"https://i.imgur.com/fpAjt0K.jpeg",
+    "path":"/Game/God-of-War-2005.html",
+    "year":"2005",
+    "desc":"Kratos begins his bloody revenge against the gods of Olympus in this landmark action-adventure.",
+    "trailer":"https://www.youtube.com/embed/9wW1KX1kWnI"
+  },
+  {
+    "title":"God of War II",
+    "slug":"God-of-War-2",
+    "badge":"Action",
+    "platforms":["playstation"],
+    "tags":["greek mythology","hack and slash"],
+    "thumb":"https://i.imgur.com/1zZm2wz.jpeg",
+    "path":"/Game/God-of-War-2.html",
+    "year":"2007",
+    "desc":"Kratos returns to strike back at the gods who betrayed him — bigger, faster, and louder.",
+    "trailer":"https://www.youtube.com/embed/7Rk1p0vVt9k"
+  },
+  {
+    "title":"God of War III",
+    "slug":"God-of-War-3",
+    "badge":"Action",
+    "platforms":["playstation"],
+    "tags":["greek mythology","epic finale"],
+    "thumb":"https://i.imgur.com/CCYxm5V.jpeg",
+    "path":"/Game/God-of-War-3.html",
+    "year":"2010",
+    "desc":"The climactic finale on Olympus. Kratos seeks final retribution against Zeus and the gods.",
+    "trailer":"https://www.youtube.com/embed/q4gOX19kZhU"
+  },
+  {
+    "title":"God of War: Ascension",
+    "slug":"God-of-War-Ascension",
+    "badge":"Action",
+    "platforms":["playstation"],
+    "tags":["prequel","mythology"],
+    "thumb":"https://i.imgur.com/EpgzVpl.jpeg",
+    "path":"/Game/God-of-War-Ascension.html",
+    "year":"2013",
+    "desc":"A prequel that explores Kratos' past and the events that shaped his rage.",
+    "trailer":"https://www.youtube.com/embed/WiVk9EKdjq4"
+  },
+  {
+    "title":"God of War (2018)",
+    "slug":"God-of-War-2018",
+    "badge":"Action Adventure",
+    "platforms":["playstation","pc"],
+    "tags":["norse mythology","story-driven"],
+    "thumb":"https://i.imgur.com/BQG3T9C.jpeg",
+    "path":"/Game/GOW-2018.html",
+    "year":"2018",
+    "desc":"Kratos returns in a deep, emotional father–son tale. The Leviathan Axe redefines combat.",
+    "trailer":"https://www.youtube.com/embed/K0u_kAWLJOA"
+  },
+  {
+    "title":"God of War III Remastered",
+    "slug":"God-of-War-3-Remastered",
+    "badge":"Action Remaster",
+    "platforms":["playstation"],
+    "tags":["remastered","greek mythology"],
+    "thumb":"https://i.imgur.com/6BxJjSa.jpeg",
+    "path":"/Game/GOW-3-remastered.html",
+    "year":"2012",
+    "desc":"Remastered edition of God of War III with improved visuals for newer consoles.",
+    "trailer":"https://www.youtube.com/embed/vKyiTkS6bQc"
+  },
+  {
+    "title":"God of War: Ragnarök",
+    "slug":"God-of-War-Ragnarok",
+    "badge":"Action Adventure",
+    "platforms":["playstation"],
+    "tags":["norse mythology","remastered","2022"],
+    "thumb":"https://i.imgur.com/epm3y0q.jpeg",
+    "path":"/Game/GOW-Ragnarok.html",
+    "year":"2022",
+    "desc":"The grand continuation of the Norse saga — destiny and Ragnarok loom as Kratos and Atreus confront gods and fate.",
+    "trailer":"https://www.youtube.com/embed/hfJ4Km46A-0"
+  },
+  {
+    "title":"God of War: Chains of Olympus",
+    "slug":"God-of-War-Chains",
+    "badge":"Spin-off",
+    "platforms":["playstation"],
+    "tags":["spin-off","psp"],
+    "thumb":"https://i.imgur.com/6BxJjSa.jpeg",
+    "path":"/Game/GOW-Chains.html",
+    "year":"2008",
+    "desc":"A portable prequel with cinematic boss encounters.",
+    "trailer":"https://www.youtube.com/embed/qtO2GQxbq7c"
+  },
+  /* add more entries as needed */
+];
+
+/* ---------- Utilities ---------- */
+const grid = document.getElementById('grid');
+const qInput = document.getElementById('q');
+const modal = document.getElementById('modal');
+const whoosh = document.getElementById('whoosh');
+let mute = false;
+let loadedCount = 0;
+let displayed = []; // track displayed slugs to avoid duplicates in "load more"
+
+/* Play hover sound helper */
+function playWhoosh(){
+  if(mute) return;
+  try { whoosh.currentTime = 0; whoosh.play(); } catch(e){}
+}
+
+/* Mute toggle */
+document.getElementById('muteBtn').addEventListener('click', () => {
+  mute = !mute;
+  document.getElementById('muteBtn').textContent = mute? '🔇 Off' : '🔊 On';
+});
+
+/* Atreus theme toggle */
+document.getElementById('atreusToggle').addEventListener('change', (e)=>{
+  if(e.target.checked) document.documentElement.classList.add('atreus'); else document.documentElement.classList.remove('atreus');
+});
+
+/* Render a card */
+function makeCard(game){
+  const a = document.createElement('a');
+  a.href = game.path || '#';
+  a.className = 'card';
+  a.setAttribute('data-slug', game.slug);
+  a.setAttribute('data-title', (game.title||'').toLowerCase());
+  a.setAttribute('data-tags', JSON.stringify(game.tags||[]));
+  a.setAttribute('data-platforms', JSON.stringify(game.platforms||[]));
+  a.setAttribute('data-year', game.year || '');
+  a.innerHTML = `
+    <div class="overlay-icons" aria-hidden="true">
+      <button class="ico" title="Preview">▶</button>
+    </div>
+    <img class="thumb" src="${game.thumb}" alt="${escapeHtml(game.title)} thumbnail" loading="lazy">
+    <div class="meta">
+      <h4>${escapeHtml(game.title)}</h4>
+      <div style="text-align:right">
+        <div class="badge">${escapeHtml(game.year || '')}</div>
+      </div>
+    </div>
+  `;
+
+  // Interactivity: clicking opens modal (prevent following link)
+  a.addEventListener('click', (ev)=>{
+    ev.preventDefault();
+    openModal(game);
+  });
+
+  // hover sound
+  a.addEventListener('mouseenter', ()=> playWhoosh());
+  a.addEventListener('touchstart', ()=> playWhoosh());
+
+  return a;
+}
+
+/* Escape html for safety */
+function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+/* Populate initial grid with random order (no duplicates) */
+function initGrid(seedRandom=true){
+  grid.innerHTML = '';
+  loadedCount = 0;
+  displayed = [];
+  const data = [...GAMES_DATA];
+  if(seedRandom) shuffleArray(data);
+  // show first 8 by default (or less)
+  const toShow = data.slice(0,8);
+  toShow.forEach(g => {
+    grid.appendChild(makeCard(g));
+    displayed.push(g.slug);
+  });
+  loadedCount = toShow.length;
+  buildTimeline();
+}
+
+/* Load 8 more non-duplicate games */
+document.getElementById('moreBtn').addEventListener('click', ()=>{
+  const remaining = GAMES_DATA.filter(g => !displayed.includes(g.slug));
+  if(remaining.length === 0){
+    alert('No more games to load.');
+    return;
+  }
+  shuffleArray(remaining);
+  const take = remaining.slice(0,8);
+  take.forEach(g => { grid.appendChild(makeCard(g)); displayed.push(g.slug); });
+  loadedCount += take.length;
+});
+
+/* Shuffle existing cards on page */
+document.getElementById('shuffleBtn').addEventListener('click', ()=>{
+  const cards = Array.from(grid.children);
+  shuffleArray(cards);
+  grid.innerHTML = '';
+  cards.forEach(c=>grid.appendChild(c));
+});
+
+/* Simple Fisher-Yates shuffle */
+function shuffleArray(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* Search / filter */
+qInput.addEventListener('input', ()=>{
+  applyFilters();
+});
+document.querySelectorAll('.filter-pill').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    btn.classList.toggle('active'); applyFilters();
+  });
+});
+/* Tab switching */
+document.querySelectorAll('.tab-btn').forEach(t=>{
+  t.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    applyFilters();
+  });
+});
+
+/* Timeline build -> shows unique years from data and binds clicks */
+function buildTimeline(){
+  const years = Array.from(new Set(GAMES_DATA.map(g=>g.year).filter(Boolean))).sort();
+  const timeline = document.getElementById('timeline'); timeline.innerHTML = '';
+  const allP = document.createElement('button'); allP.className='year-pill active'; allP.textContent='All'; allP.addEventListener('click',()=>{ document.querySelectorAll('.year-pill').forEach(p=>p.classList.remove('active')); allP.classList.add('active'); applyFilters(); }); timeline.appendChild(allP);
+  years.forEach(y=>{
+    const pill = document.createElement('button'); pill.className='year-pill'; pill.textContent = y;
+    pill.addEventListener('click', ()=>{
+      document.querySelectorAll('.year-pill').forEach(p=>p.classList.remove('active')); pill.classList.add('active');
+      applyFilters({year:y});
+    });
+    timeline.appendChild(pill);
+  });
+}
+
+/* Apply combined filters: text, pills, tabs, year, filter-pills */
+function applyFilters(extra={}){
+  const q = (qInput.value||'').trim().toLowerCase();
+  // active tab
+  const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
+  // active filter pills
+  const activeFilters = Array.from(document.querySelectorAll('.filter-pill.active')).map(b=>b.dataset.filter);
+  // timeline year
+  const activeYearPill = Array.from(document.querySelectorAll('.year-pill')).find(p=>p.classList.contains('active'));
+  const yearFilter = extra.year || (activeYearPill && activeYearPill.textContent !== 'All' ? activeYearPill.textContent : null);
+
+  // For efficiency: if grid empty, render all cards first
+  if(grid.children.length === 0){
+    GAMES_DATA.forEach(g => grid.appendChild(makeCard(g)));
+  }
+
+  Array.from(grid.children).forEach(card=>{
+    const title = card.getAttribute('data-title') || '';
+    const tags = JSON.parse(card.getAttribute('data-tags')||'[]');
+    const plats = JSON.parse(card.getAttribute('data-platforms')||'[]');
+    const year = card.getAttribute('data-year') || '';
+    const slug = card.getAttribute('data-slug');
+
+    // tab match
+    let tabOk = true;
+    if(activeTab === 'main') tabOk = (tags.indexOf('spin-off') === -1 && tags.indexOf('spin off') === -1 && (card.querySelector('.badge')?true:true));
+    if(activeTab === 'spin') tabOk = tags.includes('spin-off') || tags.includes('spin off') || card.querySelector('.badge') && card.querySelector('.badge').textContent.toLowerCase().includes('spin');
+    if(activeTab === 'remaster') tabOk = tags.includes('remastered') || tags.includes('remaster');
+
+    // pill filters
+    let pillOk = true;
+    for(const fl of activeFilters){
+      if(!fl) continue;
+      const [k,v] = fl.split(':');
+      if(k==='platform' && !plats.includes(v)) pillOk=false;
+      if(k==='tag' && !tags.includes(v)) pillOk=false;
+    }
+
+    // year filter
+    let yearOk = true;
+    if(yearFilter && String(yearFilter) !== String(year)) yearOk=false;
+
+    // search query
+    let qOk = true;
+    if(q){
+      qOk = title.includes(q) || (tags.join(' ').includes(q)) || (plats.join(' ').includes(q));
+    }
+
+    const show = tabOk && pillOk && yearOk && qOk;
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+/* Modal open */
+function openModal(game){
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  const left = document.getElementById('modalLeft');
+  const right = document.getElementById('modalRight');
+  left.innerHTML = `<iframe src="${game.trailer}?autoplay=1&mute=0" allow="autoplay; encrypted-media" title="${escapeHtml(game.title)} trailer" frameborder="0" allowfullscreen></iframe>`;
+  document.getElementById('modalTitle').textContent = game.title;
+  document.getElementById('modalSub').textContent = `${game.year} • ${game.platforms.join(', ')}`;
+  document.getElementById('modalDesc').textContent = game.desc || '';
+  // specs area
+  const specs = document.getElementById('modalSpecs'); specs.innerHTML = '';
+  specs.appendChild(makeSpec('Badge', game.badge));
+  specs.appendChild(makeSpec('Platforms', game.platforms.join(', ')));
+  specs.appendChild(makeSpec('Tags', (game.tags||[]).join(', ')));
+  document.getElementById('openPage').href = game.path || '#';
+  document.getElementById('openPage').textContent = 'Open Game Page';
+}
+
+/* Make spec row */
+function makeSpec(k,v){
+  const d = document.createElement('div'); d.className='sp'; d.innerHTML = `<strong style="color:var(--muted)">${k}</strong><span style="color:#cfefff">${v||'—'}</span>`; return d;
+}
+
+/* Close modal */
+document.getElementById('closeModal').addEventListener('click', closeModal);
+modal.addEventListener('click', (ev)=>{ if(ev.target === modal) closeModal(); });
+function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.getElementById('modalLeft').innerHTML = ''; }
+
+/* initial load */
+initGrid(true);
+
+/* Helper: Export JSON */
+function downloadJSON(){
+  const blob = new Blob([JSON.stringify(GAMES_DATA, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'games_export.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* Scroll to top */
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+/* Accessibility: keyboard close modal */
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+/* Preload whoosh (fallback if file missing, won't break) */
+whoosh.addEventListener('error', ()=>{ /* silent */ });
+
+</script>
+</body>
+</html>

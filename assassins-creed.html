@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Assassin's Creed — Complete Collection | Blueverse</title>
+<meta name="description" content="Assassin's Creed mainline collection — remasters and main series. Mirage sand & gold themed collection page for Blueverse.">
+<link rel="icon" href="/assets/thumb/logo.png" />
+
+<!-- Inline CSS so it's easy to edit later -->
+<style>
+  /* ===== THEME: Mirage (Sand & Gold) ===== */
+  :root{
+    --bg-dark:#070605;
+    --sand-1:#efe6d8;
+    --sand-2:#efe2c7;
+    --panel: rgba(10,8,6,0.55);
+    --gold:#c89a3b;
+    --accent:#b86f2f;
+    --muted:#d6cbb8;
+    --card-border: rgba(255,255,255,0.04);
+    --radius:14px;
+    --header-width:75%;
+    --header-max:1200px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:
+    radial-gradient(800px 320px at 12% 8%, rgba(200,160,80,0.02), transparent 5%),
+    linear-gradient(180deg,#050403 0%, #0b0a08 55%, #000 100%);
+    color:var(--sand-1); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Background watermark - fixed Animus / desert motif (subtle & non-moving) */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.98)),
+      url('https://i.imgur.com/3wKQ3vG.jpg'); /* desert/art placeholder */
+    background-repeat:no-repeat;
+    background-position: center 40%;
+    background-size: 60% auto;
+    opacity:0.03;
+    mix-blend-mode: overlay;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: url('https://i.imgur.com/0QYp6Yz.png'); /* subtle AC logo faint (placeholder) */
+    background-repeat:no-repeat; background-position: center center; background-size: 38% auto;
+    opacity:0.035;
+    mix-blend-mode: screen;
+  }
+
+  /* ===== HEADER (same shape + behavior you required) ===== */
+  header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--header-width);
+    max-width: var(--header-max);
+    background: rgba(255,255,255,0.03);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
+    z-index: 1000;
+    transition: all 0.45s ease;
+  }
+
+  header .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    box-shadow: 0 0 12px rgba(200,160,80,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink:0;
+  }
+  header .logo img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  .header-left { display:flex; align-items:center; gap:12px; }
+  .title-wrap { cursor:pointer; }
+  .site-title { font-family: "Cinzel", 'Playfair Display', serif; font-size:18px; color:var(--gold); text-shadow:0 0 8px rgba(200,150,60,0.06); font-weight:700; }
+  .site-sub { font-size:12px; color:var(--muted); margin-top:3px; }
+
+  .hamburger {
+    width: 36px; height: 24px;
+    display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; z-index: 1100;
+  }
+  .hamburger span {
+    display: block; height: 4px; background: linear-gradient(90deg,var(--gold),var(--accent)); border-radius: 4px; transition: all 0.25s;
+  }
+
+  /* top controls area (kept minimal) */
+  .top-controls { display:flex; gap:10px; align-items:center; }
+  .btn {
+    padding:8px 10px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.35); color:var(--sand-1); cursor:pointer; font-weight:600; font-size:13px;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(5,4,3,0.98), rgba(12,10,8,0.99));
+    backdrop-filter: blur(12px);
+    box-shadow: 5px 0 30px rgba(200,160,80,0.04);
+    transition: left 0.35s ease;
+    z-index: 1100;
+    padding: 2rem 1rem;
+    overflow:auto;
+  }
+  .sidebar.active { left: 0; }
+  .sidebar h4 { color:var(--gold); margin-bottom:8px; font-size:15px; }
+  .sidebar ul { list-style:none; padding:0; margin:12px 0; }
+  .sidebar ul li { margin:12px 0; }
+  .sidebar a { color: var(--muted); text-decoration:none; display:flex; gap:8px; align-items:center; font-weight:600; }
+  .sidebar a img { width:20px; height:20px; opacity:0.95; }
+
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 1050;
+  }
+  .overlay.active { display:block; }
+
+  /* ===== PAGE WRAP / TITLE ===== */
+  .wrap { max-width: 1200px; margin: 100px auto 80px; padding: 20px; position:relative; z-index:5; }
+  .page-title { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+  .page-title h1 { font-family: 'Cinzel', serif; font-size:28px; color:var(--gold); margin:0; letter-spacing:0.6px; }
+  .page-sub { color:var(--muted); margin:4px 0 0; font-size:13px; }
+
+  /* ===== CONTROLS (search + filters) ===== */
+  .controls { display:flex; gap:12px; align-items:center; margin:18px 0; flex-wrap:wrap; }
+  .search { flex:1; min-width:220px; }
+  .search input {
+    width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.45); color:var(--sand-1); outline:none; font-size:14px;
+  }
+  .filters { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .chip { padding:8px 10px; border-radius:999px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted); cursor:pointer; font-weight:700; font-size:13px; }
+  .chip.active { background: linear-gradient(90deg, rgba(200,150,60,0.06), rgba(184,111,47,0.04)); color: #fff; border-color: rgba(255,255,255,0.06); box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
+
+  /* ===== GRID: EXACT SQUARE CARDS ===== */
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:14px;
+    align-items:start;
+  }
+  @media (max-width:1100px){ .grid{ grid-template-columns: repeat(3,1fr);} }
+  @media (max-width:720px){ .grid{ grid-template-columns: repeat(2,1fr);} }
+  @media (max-width:420px){ .grid{ grid-template-columns: repeat(1,1fr);} }
+
+  .card {
+    position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--card-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.35));
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    transition: transform .18s, box-shadow .18s;
+  }
+  .card:hover{ transform: translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,0.75); }
+
+  /* exact square with aspect-ratio */
+  .card .thumb { width:100%; aspect-ratio: 1/1; object-fit:cover; display:block; background:#0b0b0b; }
+  .card .thumb-fallback { display:none; width:100%; padding-top:100%; background-size:cover; background-position:center; }
+  @supports not (aspect-ratio:1/1) {
+    .card .thumb { display:none; }
+    .card .thumb-fallback { display:block; }
+  }
+
+  .card .meta { display:flex; justify-content:space-between; align-items:center; padding:10px 12px; gap:10px; background:linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.06)); }
+  .card h3 { margin:0; font-size:15px; color:var(--sand-1); font-weight:700; }
+  .card .year { font-size:13px; color:var(--muted); }
+
+  .card .plat { position:absolute; top:10px; left:10px; display:flex; gap:6px; z-index:3; }
+  .card .plat img { width:28px; height:28px; border-radius:6px; background:rgba(0,0,0,0.35); padding:4px; border:1px solid rgba(255,255,255,0.03); }
+
+  .card .play {
+    position:absolute; right:10px; bottom:60px; z-index:3;
+    background: linear-gradient(90deg,var(--gold),var(--accent));
+    color:#071008; padding:8px 10px; border-radius:10px; font-weight:800; font-size:13px; display:inline-block; box-shadow:0 8px 30px rgba(0,0,0,0.06);
+    cursor:pointer;
+  }
+
+  .badge { font-size:12px; color:var(--muted); padding:6px 8px; border-radius:8px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+
+  /* modal preview */
+  .modal {
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:1200; padding:30px;
+    background: rgba(0,0,0,0.6);
+  }
+  .modal.open { display:flex; }
+  .modal-card {
+    width:100%; max-width:980px; border-radius:12px; overflow:hidden; background:linear-gradient(180deg,#0b0a08,#050302); border:1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+  }
+  .modal-top { position:relative; padding-top:56.25%; } /* 16:9 */
+  .modal-top iframe { position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  .modal-body { padding:14px 18px; display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+  .modal-body h2 { margin:0; color:var(--gold); font-family: 'Cinzel', serif; }
+  .modal-body .meta { color:var(--muted); font-size:13px; margin-top:6px; }
+  .modal-closer { position:absolute; top:10px; right:10px; background:rgba(255,255,255,0.03); border-radius:8px; padding:6px 8px; cursor:pointer; border:1px solid rgba(255,255,255,0.04); }
+
+  .note { text-align:center; color:var(--muted); font-size:13px; margin-top:8px; }
+
+  /* mobile header overrides */
+  @media (max-width:600px){
+    header{ width:92%; padding:10px; border-radius:12px; top:0.8rem; }
+    header .logo{ width:44px; height:44px; }
+    .site-title{ font-size:15px; }
+    .chip{ font-size:12px; padding:7px 9px; }
+    .grid{ grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width:420px){
+    .grid{ grid-template-columns: repeat(1,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header role="banner" aria-label="Blueverse header">
+  <div class="header-left">
+    <div class="logo" title="Blueverse" onclick="scrollToTop()">
+      <!-- placeholder logo - replace src with your Blueverse logo -->
+      <img src="/assets/thumb/logo.png" alt="Blueverse logo">
+    </div>
+    <div class="title-wrap" onclick="window.location='/'">
+      <div class="site-title">BLUEVERSE • ASSASSIN'S CREED</div>
+      <div class="site-sub">Mainline Collection — </div>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:10px;">
+    <div class="hamburger" id="hambBtn" aria-label="Open menu" title="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+  <h4 style="margin-top:6px">Blueverse — Menu</h4>
+  <ul>
+    <li><a href="/index.html"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="home"/> Home</a></li>
+    <li><a href="/Game/all-games.html"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="games"/> Games</a></li>
+    <li><a href="/movies/movie.html"><img src="https://cdn-icons-png.flaticon.com/512/469/469042.png" alt="movies"/> Movies</a></li>
+    <li><a href="/about.html"><img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="about"/> About</a></li>
+    <li><a href="/contact.html"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="contact"/> Contact</a></li>
+  </ul>
+
+  <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:12px 0">
+  <h4>Platforms</h4>
+  <ul>
+    <li style="margin-bottom:8px"><img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="ps" style="width:18px;margin-right:8px"> PlayStation</li>
+    <li style="margin-bottom:8px"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc" style="width:18px;margin-right:8px"> PC (Steam/Epic)</li>
+    <li style="margin-bottom:8px"><img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="ios" style="width:18px;margin-right:8px"> Mobile</li>
+  </ul>
+
+  <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:12px 0">
+  <div style="color:var(--muted);font-size:13px">© Blueverse</div>
+</aside>
+
+<!-- overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MAIN WRAP -->
+<main class="wrap" role="main">
+  <div class="page-title">
+    <h1>Assassin's Creed — Mainline Collection</h1>
+    <div style="margin-left:auto; text-align:right">
+      <div class="page-sub">From Origins to Mirage — curated mainline series</div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls" role="region" aria-label="Collection controls">
+    <div class="search">
+      <input id="search" placeholder="Search title, tag, platform, or year..." aria-label="Search collection"/>
+    </div>
+
+    <div class="filters" role="toolbar" aria-label="Filters">
+      <button class="chip" data-filter="platform:playstation">PlayStation</button>
+      <button class="chip" data-filter="platform:pc">PC</button>
+      <button class="chip" data-filter="tag:norse">Norse</button>
+      <button class="chip" data-filter="tag:egypt">Egypt</button>
+      <button class="chip" data-filter="year:2018">2018</button>
+      <button class="chip" data-filter="tag:remastered">Remastered</button>
+    </div>
+  </div>
+
+  <!-- GRID: static cards only (mainline series) -->
+  <section class="grid" id="grid" aria-live="polite" aria-label="Game collection">
+
+    <!-- 1. Assassin's Creed (2007) -->
+    <article class="card" data-title="Assassin's Creed (2007)" data-tags='["greek?","classic"]' data-platforms='["playstation","pc"]' data-year="2007" data-desc="The original that started it all: parkour and the hidden blade." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc"/></div>
+      <img class="thumb" src="https://i.imgur.com/4YxgY7P.jpg" alt="Assassin's Creed 2007">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/4YxgY7P.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed (2007)</h3>
+        <div style="text-align:right"><div class="year">2007</div><div class="badge">Action Adventure</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/3uQ1VQeOjL8">Preview</div>
+    </article>
+
+    <!-- 2. Assassin's Creed II (2009) -->
+    <article class="card" data-title="Assassin's Creed II" data-tags='["renaissance","italy"]' data-platforms='["playstation","pc"]' data-year="2009" data-desc="Ezio's saga begins — expanded systems, compelling story." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/2W3gY3L.jpg" alt="Assassin's Creed II">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/2W3gY3L.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed II</h3>
+        <div style="text-align:right"><div class="year">2009</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/tdZyQKq5GBg">Preview</div>
+    </article>
+
+    <!-- 3. Assassin's Creed Brotherhood (2010) -->
+    <article class="card" data-title="Assassin's Creed Brotherhood" data-tags='["ezio","rome"]' data-platforms='["playstation","pc"]' data-year="2010" data-desc="Continuation of Ezio's revenge and Brotherhood mechanics." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/3G7Qjz9.jpg" alt="Brotherhood">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/3G7Qjz9.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Brotherhood</h3>
+        <div style="text-align:right"><div class="year">2010</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/8bZL8qvVvxs">Preview</div>
+    </article>
+
+    <!-- 4. Assassin's Creed Revelations (2011) -->
+    <article class="card" data-title="Assassin's Creed Revelations" data-tags='["ezio","constantinople"]' data-platforms='["playstation","pc"]' data-year="2011" data-desc="Ezio's final chapter — mature tone, layered narrative." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc"/></div>
+      <img class="thumb" src="https://i.imgur.com/x0Qz5fG.jpg" alt="Revelations">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/x0Qz5fG.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Revelations</h3>
+        <div style="text-align:right"><div class="year">2011</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/7Xg2n7y8a8s">Preview</div>
+    </article>
+
+    <!-- 5. Assassin's Creed III (2012) -->
+    <article class="card" data-title="Assassin's Creed III" data-tags='["revolution","america"]' data-platforms='["playstation","pc"]' data-year="2012" data-desc="New protagonist, frontier combat, naval elements introduced." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc"/></div>
+      <img class="thumb" src="https://i.imgur.com/8lXw8lB.jpg" alt="AC III">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/8lXw8lB.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed III</h3>
+        <div style="text-align:right"><div class="year">2012</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/n1yYf8v3B9E">Preview</div>
+    </article>
+
+    <!-- 6. Assassin's Creed IV: Black Flag (2013) -->
+    <article class="card" data-title="Assassin's Creed IV: Black Flag" data-tags='["naval","pirate"]' data-platforms='["playstation","pc"]' data-year="2013" data-desc="Pirate-era naval combat and open-world exploration." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/gzKx1Km.jpg" alt="Black Flag">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/gzKx1Km.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed IV: Black Flag</h3>
+        <div style="text-align:right"><div class="year">2013</div><div class="badge">Action Adventure</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/z7nm4oF6bVg">Preview</div>
+    </article>
+
+    <!-- 7. Assassin's Creed Unity (2014) -->
+    <article class="card" data-title="Assassin's Creed Unity" data-tags='["paris","revolution"]' data-platforms='["playstation","pc"]' data-year="2014" data-desc="Paris, co-op elements, detailed cityscape." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc"/></div>
+      <img class="thumb" src="https://i.imgur.com/4j4h5qH.jpg" alt="Unity">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/4j4h5qH.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Unity</h3>
+        <div style="text-align:right"><div class="year">2014</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/q6T4r7hQk1Q">Preview</div>
+    </article>
+
+    <!-- 8. Assassin's Creed Syndicate (2015) -->
+    <article class="card" data-title="Assassin's Creed Syndicate" data-tags='["victorian","london"]' data-platforms='["playstation","pc"]' data-year="2015" data-desc="Victorian London with twin protagonists Jacob and Evie." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/1D3xw5R.jpg" alt="Syndicate">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/1D3xw5R.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Syndicate</h3>
+        <div style="text-align:right"><div class="year">2015</div><div class="badge">Action</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/9kz4K3xv2wI">Preview</div>
+    </article>
+
+    <!-- 9. Assassin's Creed Origins (2017) -->
+    <article class="card" data-title="Assassin's Creed Origins" data-tags='["egypt","rpg"]' data-platforms='["playstation","pc"]' data-year="2017" data-desc="Reboot with RPG systems and sprawling Egypt." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc"/></div>
+      <img class="thumb" src="https://i.imgur.com/qmR2fQX.jpg" alt="Origins">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/qmR2fQX.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Origins</h3>
+        <div style="text-align:right"><div class="year">2017</div><div class="badge">RPG</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/2nJ3qC0HjvM">Preview</div>
+    </article>
+
+    <!-- 10. Assassin's Creed Odyssey (2018) -->
+    <article class="card" data-title="Assassin's Creed Odyssey" data-tags='["greece","rpg"]' data-platforms='["playstation","pc"]' data-year="2018" data-desc="Open-world Greece, RPG choices, large scale." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/FtQ0X9u.jpg" alt="Odyssey">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/FtQ0X9u.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Odyssey</h3>
+        <div style="text-align:right"><div class="year">2018</div><div class="badge">RPG</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/wqY5yqv0X1E">Preview</div>
+    </article>
+
+    <!-- 11. Assassin's Creed Valhalla (2020) -->
+    <article class="card" data-title="Assassin's Creed Valhalla" data-tags='["vikings","rpg"]' data-platforms='["playstation","pc"]' data-year="2020" data-desc="Viking raids, settlement building, RPG progression." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/512/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/2vP1UZk.jpg" alt="Valhalla">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/2vP1UZk.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Valhalla</h3>
+        <div style="text-align:right"><div class="year">2020</div><div class="badge">RPG</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/3-0xrq8b0k8">Preview</div>
+    </article>
+
+    <!-- 12. Assassin's Creed Mirage (2023) -->
+    <article class="card" data-title="Assassin's Creed Mirage" data-tags='["baghdad","stealth"]' data-platforms='["playstation","pc"]' data-year="2023" data-desc="A return to stealth and parkour — Baghdad setting (Mirage)." tabindex="0">
+      <div class="plat"><img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="ps"/></div>
+      <img class="thumb" src="https://i.imgur.com/IstU6vR.jpg" alt="Mirage">
+      <div class="thumb-fallback" style="background-image:url('https://i.imgur.com/IstU6vR.jpg')"></div>
+      <div class="meta">
+        <h3>Assassin's Creed Mirage</h3>
+        <div style="text-align:right"><div class="year">2023</div><div class="badge">Action Adventure</div></div>
+      </div>
+      <div class="play" data-trailer="https://www.youtube.com/embed/7Z6wG3kGd0o">Preview</div>
+    </article>
+
+  </section>
+
+ 
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Preview trailer">
+  <div class="modal-card" role="document">
+    <div style="position:relative;">
+      <div class="modal-top" id="modal-top"><!-- iframe injected --></div>
+      <div class="modal-closer" id="modal-close" title="Close">✕</div>
+    </div>
+    <div class="modal-body">
+      <div style="flex:1;">
+        <h2 id="m-title">Title</h2>
+        <div class="meta" id="m-meta">Year • Platforms</div>
+        <p id="m-desc" style="margin-top:10px;color:var(--muted)">Description/notes about this game.</p>
+      </div>
+      <div style="min-width:220px; text-align:right;">
+        <a id="m-openpage" class="btn" href="#" target="_blank">Open Game Page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inline JS (static behavior only: sidebar, modal, search + filters) -->
+<script>
+(function(){
+  // sidebar
+  const hambBtn = document.getElementById('hambBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  function openSidebar(){ sidebar.classList.add('active'); overlay.classList.add('active'); sidebar.setAttribute('aria-hidden','false'); overlay.setAttribute('aria-hidden','false'); }
+  function closeSidebar(){ sidebar.classList.remove('active'); overlay.classList.remove('active'); sidebar.setAttribute('aria-hidden','true'); overlay.setAttribute('aria-hidden','true'); }
+  hambBtn.addEventListener('click', openSidebar);
+  hambBtn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') openSidebar(); });
+  overlay.addEventListener('click', closeSidebar);
+
+  // modal
+  const modal = document.getElementById('modal');
+  const modalTop = document.getElementById('modal-top');
+  const modalClose = document.getElementById('modal-close');
+  const mTitle = document.getElementById('m-title'), mMeta = document.getElementById('m-meta'), mDesc = document.getElementById('m-desc'), mOpen = document.getElementById('m-openpage');
+
+  // bind card clicks
+  function bindCardEvents(){
+    const cards = Array.from(document.querySelectorAll('.card'));
+    cards.forEach(card=>{
+      card.addEventListener('click', function(e){
+        // avoid if clicking internal link (none here)
+        e.preventDefault && e.preventDefault();
+        openModalFromCard(card);
+      });
+      // play button inside card triggers modal too
+      const play = card.querySelector('.play');
+      if(play){
+        play.addEventListener('click', function(ev){
+          ev.stopPropagation();
+          openModalFromCard(card);
+        });
+      }
+      // keyboard accessible
+      card.addEventListener('keydown', function(ev){ if(ev.key==='Enter') openModalFromCard(card); });
+    });
+  }
+
+  function openModalFromCard(card){
+    const trailer = card.querySelector('.play')?.dataset?.trailer || '';
+    const title = card.querySelector('h3')?.textContent || '';
+    const year = card.dataset.year || '';
+    const plats = (card.dataset.platforms || '').replace(/["\[\]]/g,'') || '';
+    const desc = card.dataset.desc || card.getAttribute('data-desc') || '';
+
+    // inject iframe without autoplay
+    modalTop.innerHTML = trailer ? '<iframe src="'+ trailer +'" title="'+escapeHtml(title)+' trailer" allow="encrypted-media" allowfullscreen></iframe>' : '<div style="padding:40px;color:var(--muted)">No preview available</div>';
+    mTitle.textContent = title;
+    mMeta.textContent = (year ? year + ' • ' : '') + (plats ? plats : '');
+    mDesc.textContent = desc || 'Preview and game information.';
+    mOpen.href = card.querySelector('a')?.href || '#';
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+   function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalTop.innerHTML=''; document.body.style.overflow=''; }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  bindCardEvents();
+
+  // search + filters (static)
+  const searchEl = document.getElementById('search');
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const grid = document.getElementById('grid');
+
+  function applyFilters(){
+    const q = (searchEl.value||'').trim().toLowerCase();
+    const active = chips.filter(c=>c.classList.contains('active')).map(c=>c.dataset.filter);
+    Array.from(grid.children).forEach(card=>{
+      const title = (card.dataset.title||'').toLowerCase();
+      const tags = (card.dataset.tags||'').toLowerCase();
+      const plats = (card.dataset.platforms||'').toLowerCase();
+      const year = (card.dataset.year||'').toLowerCase();
+      let visible = true;
+      if (q) visible = title.includes(q) || tags.includes(q) || plats.includes(q) || year.includes(q);
+      if (visible && active.length){
+        for (let f of active){
+          const [k,v] = f.split(':');
+          if (k==='platform' && !plats.includes(v)) { visible=false; break; }
+          if (k==='tag' && !tags.includes(v)) { visible=false; break; }
+          if (k==='year' && !year.includes(v)) { visible=false; break; }
+        }
+      }
+      card.style.display = visible ? '' : 'none';
+    });
+  }
+
+  searchEl.addEventListener('input', applyFilters);
+  chips.forEach(chip=> chip.addEventListener('click', ()=>{ chip.classList.toggle('active'); applyFilters(); }));
+
+  // header logo scroll to top
+  document.querySelector('header .logo').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+})();
+</script>
+
+</body>
+</html>

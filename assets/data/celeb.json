@@ -1,30 +1,33 @@
 [
   {
-    "name": "Idris Elba",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/be1bVF7qGX91a6c5WeRPs5pKXln.jpg"
+    "name": "Arnold Schwarzenegger",
+    "image": "/assets/thumb/arnold.jpg",
+    "net_worth": "$1.49 billion"
   },
   {
-    "name": "John Cena",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/rgB2eIOt7WyQjdgJCOuESdDlrjg.jpg"
+    "name": "Dwayne 'The Rock' Johnson",
+    "image": "/assets/thumb/rock.jpg",
+    "net_worth": "$1.19 billion"
   },
   {
-    "name": "Priyanka Chopra",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/stEZxIVAWFlrifbWkeULsD4LHnf.jpg"
+    "name": "Tom Cruise",
+    "image": "/assets/thumb/Tom.jpg",
+    "net_worth": "$891 million"
   },
   {
-    "name": "Jack Quaid",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/320qW5yEbxpmyxQ3evmClJbtKag.jpg"
+    "name": "Shah Rukh Khan",
+    "image": "/assets/thumb/shah-rukh.jpg",
+    "net_worth": "$876.5 million"
   },
   {
-    "name": "Paddy Considine",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/rui7HJUi2TzqMh2GQJ1bcQzr8M0.jpg"
+    "name": "George Clooney",
+    "image": "/assets/thumb/george.jpg",
+    "net_worth": "$742.8 million"
   },
   {
-    "name": "Scarlett Johansson",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/6NsMbJXRlDZuDzatN2akFdGuTvx.jpg"
-  },
-  {
-    "name": "Robert Downey Jr.",
-    "image": "https://media.themoviedb.org/t/p/w240_and_h266_face/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+    "name": "Robert De Niro",
+    "image": "/assets/thumb/robert.jpg",
+    "net_worth": "$735.35 million"
   }
+ 
 ]

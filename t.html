@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Call of Duty — Complete Collection | Blueverse</title>
+<meta name="description" content="Call of Duty complete collection — mainline games, remasters, and spin-offs. Blueverse-styled collection page with COD theme.">
+<link rel="icon" href="/assets/thumb/logo.png" />
+
+<!-- Inline CSS for quick edits -->
+<style>
+  /* ========== THEME COLORS (COD / MILITARY) ========== */
+  :root{
+    --bg-1:#050607;
+    --bg-2:#0c0f12;
+    --panel: rgba(255,255,255,0.02);
+    --accent:#9fbf3b;    /* military olive */
+    --accent-2:#c7d2a0;
+    --muted:#a6b0b6;
+    --glass: rgba(255,255,255,0.03);
+    --card-border: rgba(255,255,255,0.04);
+    --radius:14px;
+  }
+
+  /* ===== base reset ===== */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:
+    linear-gradient(180deg,var(--bg-1), #020304 60%, #000 100%);
+    color:#eaf0f4; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* subtle fixed background logo (non-moving) */
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: url('https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/Ragnarok.webp');
+    background-position: center; background-repeat:no-repeat; background-size:50% auto;
+    opacity:0.03; mix-blend-mode: overlay;
+  }
+
+  /* ================= HEADER (Blueverse style curved center) ================= */
+  header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 78%;
+    max-width: 1220px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
+    z-index: 1200;
+    transition: all 0.45s ease;
+  }
+
+  header .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 14px rgba(159,191,59,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink:0;
+  }
+  header .logo img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  .header-left { display:flex; align-items:center; gap:12px; }
+  .site-title { font-family: "Oswald", system-ui, sans-serif; font-size:18px; color:var(--accent); letter-spacing:0.6px; }
+  .site-sub { font-size:12px; color:var(--muted); margin-top:2px; }
+
+  .hamburger {
+    width: 36px; height: 24px;
+    display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; z-index: 1300;
+  }
+  .hamburger span {
+    display:block; height:4px; border-radius:4px; background: linear-gradient(90deg,var(--accent), #6b8b3a); transition: all .2s;
+  }
+
+  /* top actions area (right) */
+  .top-actions { display:flex; gap:10px; align-items:center; }
+  .btn {
+    padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.36); color:#f4fbff; cursor:pointer; font-weight:600; font-size:13px;
+  }
+
+  /* ================= SIDEBAR ================= */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(180deg,#070808,#050607);
+    backdrop-filter: blur(10px);
+    box-shadow: 8px 0 30px rgba(0,0,0,0.6);
+    transition: left 0.36s ease;
+    z-index: 1250;
+    padding: 1.8rem 1rem;
+    overflow:auto;
+  }
+  .sidebar.active { left: 0; }
+  .sidebar h3 { color:var(--accent); margin:0 0 10px 0; font-family: "Oswald", sans-serif; letter-spacing:1px; }
+  .sidebar ul { list-style:none; padding:0; margin:12px 0 24px; }
+  .sidebar li { margin:10px 0; }
+  .sidebar a { color:var(--muted); text-decoration:none; display:flex; gap:10px; align-items:center; font-weight:600; }
+  .sidebar a img { width:20px; height:20px; opacity:0.95; }
+
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    z-index: 1240;
+  }
+  .overlay.active { display:block; }
+
+  /* ================= MAIN WRAP ================= */
+  .wrap { max-width:1200px; margin:110px auto 80px; padding: 18px; position:relative; z-index:10; }
+
+  .page-head { display:flex; align-items:flex-end; gap:12px; margin-bottom:18px; }
+  .page-head h1 { margin:0; font-family: "Oswald", sans-serif; font-size:28px; color:var(--accent); }
+  .page-sub { color:var(--muted); margin:4px 0 0; font-size:13px; }
+
+  /* controls */
+  .controls { display:flex; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap; }
+  .search { flex:1; min-width:220px; }
+  .search input { width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background: rgba(0,0,0,0.5); color:#f7fbff; outline:none; font-size:14px; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip { padding:8px 12px; border-radius:999px; background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--muted); cursor:pointer; font-weight:700; }
+  .chip.active { background: linear-gradient(90deg, rgba(155,190,59,0.08), rgba(0,0,0,0.12)); color: #fff; border-color: rgba(155,190,59,0.18); }
+
+  /* ========== BIG CINEMATIC CARDS (style A) ========== */
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:18px;
+  }
+
+  @media (min-width:1200px){ .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width:880px){ .grid { grid-template-columns: repeat(1, 1fr); } }
+
+  .card {
+    position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--card-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.28));
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    transition: transform .18s, box-shadow .18s;
+    min-height:220px;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{ transform: translateY(-6px); box-shadow: 0 30px 80px rgba(0,0,0,0.75); }
+
+  .card .thumb {
+    width:100%; height:280px; object-fit:cover; display:block;
+    background:#060607;
+  }
+  @media (max-width:880px){ .card .thumb { height:200px; } }
+
+  .card .meta {
+    padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border-top:1px solid rgba(255,255,255,0.02);
+  }
+  .card h3 { margin:0; font-size:18px; color:#fff; font-weight:800; font-family: "Oswald", sans-serif; }
+  .card p.small { margin:6px 0 0; color:var(--muted); font-size:13px; }
+
+  .card .info-left { display:flex; gap:12px; align-items:center; }
+  .card .plat { display:flex; gap:8px; align-items:center; }
+  .card .plat img { width:28px; height:28px; border-radius:6px; background:rgba(0,0,0,0.35); padding:4px; border:1px solid rgba(255,255,255,0.03); }
+
+  .tag-badge { font-size:12px; color:var(--muted); padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+
+  /* play button overlay */
+  .play-btn {
+    position:absolute; right:18px; top:calc(50% - 28px); z-index:6;
+    background: linear-gradient(90deg, #2f3b1a, #7ca038);
+    color:#021; padding:10px 12px; border-radius:10px; font-weight:800; cursor:pointer; border:0;
+    box-shadow:0 18px 40px rgba(0,0,0,0.6);
+  }
+
+  /* modal */
+  .modal {
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; padding:28px; background: rgba(0,0,0,0.7);
+  }
+  .modal.open { display:flex; }
+  .modal-card { width:100%; max-width:980px; border-radius:12px; overflow:hidden; background: linear-gradient(180deg,#0b0d0f,#050607); border:1px solid rgba(255,255,255,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.85); }
+  .modal-top { position:relative; padding-top:56.25%; } /* 16:9 */
+  .modal-top iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  .modal-body { display:flex; gap:12px; padding:14px; align-items:flex-start; }
+  .modal-body h2 { margin:0; color:var(--accent); font-family:"Oswald",sans-serif; }
+  .modal-body p { color:var(--muted); margin:8px 0 0; font-size:14px; }
+  .modal-close { position:absolute; right:12px; top:12px; background:rgba(255,255,255,0.03); border-radius:8px; padding:6px 8px; cursor:pointer; border:1px solid rgba(255,255,255,0.03); }
+
+  /* mobile header adjustments (only logo + hamburger) */
+  @media (max-width:600px){
+    header { width:92%; padding:10px; border-radius:12px; top:10px; }
+    header .site-sub, header .site-title { display:none; }
+    .top-actions { display:none; }
+  }
+
+  /* small helpers */
+  .muted { color:var(--muted); }
+  a { color:inherit; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header role="banner" aria-label="Blueverse header">
+  <div class="header-left" style="display:flex;align-items:center;gap:12px">
+    <div class="logo" onclick="scrollToTop()" title="Blueverse">
+      <!-- use blueverse logo or COD logo (replace src if you have one) -->
+      <img src="/assets/thumb/logo.png" alt="Blueverse logo">
+    </div>
+    <div>
+      <div class="site-title">BLUEVERSE • CALL OF DUTY</div>
+      <div class="site-sub">Mainline series • Remasters • Spin-offs</div>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <button class="btn" onclick="document.getElementById('search').focus()">Search</button>
+    <div class="hamburger" id="hambBtn" role="button" aria-label="Open menu" tabindex="0" title="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+  <h3>Blueverse — Menu</h3>
+  <ul>
+    <li><a href="/"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="home"> Home</a></li>
+    <li><a href="/Game/all-games.html"><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="games"> Games</a></li>
+    <li><a href="/news.html"><img src="https://cdn-icons-png.flaticon.com/512/786/786407.png" alt="news"> News</a></li>
+    <li><a href="/contact.html"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="contact"> Contact</a></li>
+  </ul>
+
+  <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:12px 0">
+
+  <h3>Platforms</h3>
+  <ul>
+    <li><img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="ps" style="width:18px;margin-right:8px"> PlayStation</li>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="pc" style="width:18px;margin-right:8px"> PC (Steam/Epic)</li>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/1/1321.png" alt="xbox" style="width:18px;margin-right:8px"> Xbox</li>
+  </ul>
+
+  <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:12px 0">
+  <div style="color:var(--muted);font-size:13px">© Blueverse</div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="wrap" role="main">
+  <div class="page-head">
+    <h1>Call of Duty — Complete Collection</h1>
+    <div style="margin-left:auto">
+      <div class="page-sub">Mainline titles, remasters & popular spin-offs — curated for Blueverse</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls" role="region" aria-label="collection controls">
+    <div class="search">
+      <input id="search" placeholder="Search title, tag, platform, or year..." aria-label="Search collection"/>
+    </div>
+
+    <div class="filters" role="toolbar" aria-label="Filters">
+      <button class="chip" data-filter="platform:pc">PC</button>
+      <button class="chip" data-filter="platform:playstation">PlayStation</button>
+      <button class="chip" data-filter="platform:xbox">Xbox</button>
+      <button class="chip" data-filter="tag:modern">Modern</button>
+      <button class="chip" data-filter="tag:ww2">WW2</button>
+      <button class="chip" data-filter="tag:mp">Multiplayer</button>
+      <button class="chip" data-filter="year:2005">2005</button>
+      <button class="chip" data-filter="year:2019">2019</button>
+    </div>
+  </div>
+
+  <!-- GRID: BIG wide cinematic cards -->
+  <section class="grid" id="grid" aria-live="polite" aria-label="COD collection">
+
+    <!-- Example Card: Call of Duty 2 -->
+    <article class="card" data-title="Call of Duty 2" data-tags='["ww2"]' data-platforms='["pc","xbox","playstation"]' data-year="2005" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/YjNfD0E.jpg" alt="Call of Duty 2 thumbnail">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/T7v1iYdQW4w" aria-label="Preview trailer">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty 2</h3>
+            <p class="small muted">Relive WWII battles with cinematic infantry sequences.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2005 • WW2</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty 4: Modern Warfare (2007) -->
+    <article class="card" data-title="Call of Duty 4: Modern Warfare" data-tags='["modern","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2007" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/3qj3z2R.jpg" alt="MW 2007">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/xuFzF3j3mHk">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty 4: Modern Warfare</h3>
+            <p class="small muted">The modern reboot that redefined multiplayer and storytelling.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2007 • Modern</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Modern Warfare 2 (2009) -->
+    <article class="card" data-title="Call of Duty: Modern Warfare 2" data-tags='["modern","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2009" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/2uQJp6k.jpg" alt="MW2 2009">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/2AV7qzJjQxw">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Modern Warfare 2</h3>
+            <p class="small muted">Massive multiplayer and cinematic single-player missions.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2009 • Modern</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Black Ops (2010) -->
+    <article class="card" data-title="Call of Duty: Black Ops" data-tags='["modern","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2010" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/8Z9a1sW.jpg" alt="Black Ops">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/6s6yZ5b3U-k">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Black Ops</h3>
+            <p class="small muted">Cold War conspiracies, iconic zombies mode introduction.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2010 • Cold War</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty: Ghosts (2013) -->
+    <article class="card" data-title="Call of Duty: Ghosts" data-tags='["modern"]' data-platforms='["pc","playstation","xbox"]' data-year="2013" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/1c7m9Qn.jpg" alt="Ghosts">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/YVb4iYf0Y0E">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Ghosts</h3>
+            <p class="small muted">Large-scale maps and new engine features.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2013</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty: WWII (2017) -->
+    <article class="card" data-title="Call of Duty: WWII" data-tags='["ww2","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2017" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/9zF6M0d.jpg" alt="WWII">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/BtF2h2kF5qQ">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: WWII</h3>
+            <p class="small muted">Return to boots-on-ground warfare in a historical setting.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2017 • WW2</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty: Modern Warfare (2019) -->
+    <article class="card" data-title="Call of Duty: Modern Warfare (2019)" data-tags='["modern","reboot"]' data-platforms='["pc","playstation","xbox"]' data-year="2019" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/vYxFfZJ.jpg" alt="MW 2019">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/7vQJ6jJcYlA">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Modern Warfare (2019)</h3>
+            <p class="small muted">Rebooted modern era with high-fidelity realism and Warzone integration.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2019 • Modern</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty: Warzone (2020) -->
+    <article class="card" data-title="Call of Duty: Warzone" data-tags='["battle-royale","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2020" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/oC6XGkT.jpg" alt="Warzone">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/2Z8YwD2QfD0">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Warzone</h3>
+            <p class="small muted">Free-to-play battle royale with large-scale combat.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2020 • BR</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Call of Duty: Vanguard (2021) -->
+    <article class="card" data-title="Call of Duty: Vanguard" data-tags='["ww2","mp"]' data-platforms='["pc","playstation","xbox"]' data-year="2021" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/0JQeF8q.jpg" alt="Vanguard">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/4m0Xv3v3uG0">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Vanguard</h3>
+            <p class="small muted">Return to global WWII conflicts with a cinematic campaign.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2021 • WW2</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Modern Warfare II (2022) -->
+    <article class="card" data-title="Call of Duty: Modern Warfare II (2022)" data-tags='["modern"]' data-platforms='["pc","playstation","xbox"]' data-year="2022" tabindex="0">
+      <img class="thumb" src="https://i.imgur.com/E7qgN9e.jpg" alt="MWII 2022">
+      <button class="play-btn" data-trailer="https://www.youtube.com/embed/2V5wQk2GkY0">▶ PREVIEW</button>
+      <div class="meta">
+        <div class="info-left">
+          <div>
+            <h3>Call of Duty: Modern Warfare II (2022)</h3>
+            <p class="small muted">Latest modern gameplay, weapons, and narrative missions.</p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="plat">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="PC">
+            <img src="https://cdn-icons-png.flaticon.com/128/12251/12251639.png" alt="PS">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1321.png" alt="Xbox">
+          </div>
+          <div class="tag-badge" style="margin-top:6px">2022 • Modern</div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Preview trailer">
+  <div class="modal-card" role="document">
+    <div class="modal-top" id="modal-top"></div>
+    <div style="position:relative;">
+      <button class="modal-close" id="modal-close" aria-label="Close preview">✕</button>
+      <div class="modal-body">
+        <div style="flex:1">
+          <h2 id="m-title">Title</h2>
+          <div class="muted" id="m-meta">Year • Platforms</div>
+          <p id="m-desc" style="margin-top:8px;color:var(--muted)">Game description goes here.</p>
+        </div>
+        <div style="min-width:160px;text-align:right">
+          <a id="m-openpage" class="btn" href="#" target="_blank">Open Game Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============= Inline JS ============= -->
+<script>
+(function(){
+  // Elements
+  const hambBtn = document.getElementById('hambBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const search = document.getElementById('search');
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const grid = document.getElementById('grid');
+  const modal = document.getElementById('modal');
+  const modalTop = document.getElementById('modal-top');
+  const modalClose = document.getElementById('modal-close');
+  const mTitle = document.getElementById('m-title');
+  const mMeta = document.getElementById('m-meta');
+  const mDesc = document.getElementById('m-desc');
+  const mOpen = document.getElementById('m-openpage');
+
+  // Sidebar open/close
+  function openSidebar(){ sidebar.classList.add('active'); overlay.classList.add('active'); sidebar.setAttribute('aria-hidden','false'); overlay.setAttribute('aria-hidden','false'); }
+  function closeSidebar(){ sidebar.classList.remove('active'); overlay.classList.remove('active'); sidebar.setAttribute('aria-hidden','true'); overlay.setAttribute('aria-hidden','true'); }
+  hambBtn.addEventListener('click', openSidebar);
+  hambBtn.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' ') openSidebar(); });
+  overlay.addEventListener('click', closeSidebar);
+
+  // Filter chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+      applyFilters();
+    });
+  });
+
+  // search input
+  search.addEventListener('input', applyFilters);
+
+  function applyFilters(){
+    const q = (search.value||'').trim().toLowerCase();
+    const active = chips.filter(c=>c.classList.contains('active')).map(c=>c.dataset.filter);
+    Array.from(grid.children).forEach(card => {
+      const title = (card.dataset.title||'').toLowerCase();
+      const tags = (card.dataset.tags||'').toLowerCase();
+      const plats = (card.dataset.platforms||'').toLowerCase();
+      const year = (card.dataset.year||'').toLowerCase();
+      let visible = true;
+      if(q){
+        visible = title.includes(q) || tags.includes(q) || plats.includes(q) || year.includes(q);
+      }
+      if(visible && active.length){
+        for(const f of active){
+          const [k,v] = f.split(':');
+          if(k==='platform' && !plats.includes(v)) { visible = false; break; }
+          if(k==='tag' && !tags.includes(v)) { visible = false; break; }
+          if(k==='year' && !year.includes(v)) { visible = false; break; }
+        }
+      }
+      card.style.display = visible ? '' : 'none';
+    });
+  }
+
+  // Card click -> open modal (also bind preview button)
+  function bindCards(){
+    const cards = Array.from(document.querySelectorAll('.card'));
+    cards.forEach(card=>{
+      // open on card click (keyboard accessible)
+      card.addEventListener('click', cardClickProxy);
+      card.addEventListener('keydown', e => { if(e.key==='Enter'){ cardClickProxy.call(card, e); }});
+      // preview button
+      const btn = card.querySelector('.play-btn');
+      if(btn){
+        btn.addEventListener('click', ev => { ev.stopPropagation(); openModalFromCard(card); });
+      }
+    });
+  }
+
+  function cardClickProxy(e){
+    e.preventDefault && e.preventDefault();
+    openModalFromCard(this);
+  }
+
+  function openModalFromCard(card){
+    const trailer = card.querySelector('.play-btn')?.dataset?.trailer || null;
+    const title = card.dataset.title || (card.querySelector('h3')?.textContent || '');
+    const year = card.dataset.year || '';
+    const plats = (card.dataset.platforms || '').replace(/["\[\]]/g,'') || '';
+    const desc = card.dataset.tags ? (card.dataset.tags.replace(/["\[\]]/g,'')) : '';
+    // inject iframe without autoplay
+    if(trailer){
+      modalTop.innerHTML = '<iframe src="'+ trailer +'" allow="encrypted-media" allowfullscreen title="'+escapeHtml(title)+' trailer"></iframe>';
+    } else {
+      modalTop.innerHTML = '<div style="padding:40px;color:var(--muted)">No preview available</div>';
+    }
+    mTitle.textContent = title;
+    mMeta.textContent = (year ? year + ' • ' : '') + plats;
+    mDesc.textContent = desc || 'Preview and game information.';
+    mOpen.href = '#'; // replace with your game page if available
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    modalTop.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeModal(); closeSidebar(); } });
+
+  function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  bindCards();
+
+  // helper: scroll to top via logo
+  window.scrollToTop = function(){ window.scrollTo({top:0, behavior:'smooth'}); };
+
+  // Add reorder / shuffle (optional) — we DO NOT add load more
+  // But a shuffle example (not requested) is left out to keep static as you said
+
+})();
+</script>
+
+</body>
+</html>
