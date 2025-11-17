@@ -186,14 +186,7 @@
   
   
   
-  {
-  "title": "The Plague",
-  "url": "/movies/horror/the-plague.html",
-  "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/iIsNagxehLpBu2vDjuRVz6jKOQN.jpg",
-  "year": "2025",
-  "badge": "Horror",
-  "genre": ["Horror", "Thriller"]
-},
+  
 {
   "title": "The Wolf Man",
   "url": "/movies/horror/wolf-man.html",
@@ -201,5 +194,22 @@
   "year": "2025",
   "badge": "Horror",
   "genre": ["Horror", "Thriller"]
+},
+{
+  "title": "In the Lost Lands",
+  "url": "/movies/adventure/in-the-lost-lands.html",
+  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/q6kImFC4wqzxYLNVciklQ9uWbBL.jpg",
+  "year": "2025",
+  "badge": "Adventure",
+  "genre": ["Adventure", "Fantasy", "Action"]
+},
+{
+  "title": "Predator: Badlands",
+  "url": "/movies/action/predator-badlands.html",
+  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/oLiF1Vnav7lz4mSkdfok4YBZSG2.jpg",
+  "year": "2025",
+  "badge": "Action",
+  "genre": ["Action", "Sci-Fi", "Adventure"]
 }
+
 ]

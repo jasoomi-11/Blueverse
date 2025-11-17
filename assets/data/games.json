@@ -212,6 +212,24 @@
   ],
   "thumb": "https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/Ragnarok.webp",
   "path": "/Game/GOW-ragnarok.html"
+},
+{
+  "title": "God of War (2005)",
+  "slug": "God-of-War-2005",
+  "badge": "Action Adventure",
+  "platforms": ["playstation", "pc"],
+  "tags": [
+    "action",
+    "hack and slash",
+    "greek mythology",
+    "adventure",
+    "story-rich",
+    "kratos",
+    "ares",
+    "ps2 classic"
+  ],
+  "thumb": "/assets/thumb/GOW-2005.webp",
+  "path": "/Game/GOW-2005.html"
 }
   
   

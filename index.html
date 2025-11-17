@@ -1548,6 +1548,159 @@ footer {
 
 
 
+    #collection-horizontal {
+      padding: 0;
+      margin: 70px 0 0 0; /* ⭐ SPACE ABOVE SECTION */
+      width: 100%;
+      --card-size: 220px;
+      --accent: #00d4ff;
+    }
+
+    /* SECTION TITLE — CYAN NEON */
+    .ch-section-title {
+      color: #00eaff;
+      font-size: 32px;
+      font-weight: 900;
+      margin: 0 0 18px 0;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+    }
+
+    .ch-section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 140px;
+      height: 4px;
+      background: linear-gradient(90deg, #00eaff, transparent);
+      border-radius: 4px;
+      box-shadow: 0 0 12px #00eaff;
+    }
+
+    .ch-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 0;
+    }
+
+    /* fade edges */
+    .fade-left,
+    .fade-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 90px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .fade-left {
+      left: 0;
+      background: linear-gradient(90deg, #000, transparent);
+    }
+    .fade-right {
+      right: 0;
+      background: linear-gradient(-90deg, #000, transparent);
+    }
+
+    /* arrows */
+    .ch-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.55);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ch-left { left: 12px; }
+    .ch-right { right: 12px; }
+
+    /* track */
+    .ch-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    .ch-track::-webkit-scrollbar {
+      height: 8px;
+    }
+    .ch-track::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+    }
+
+    /* cards */
+    .ch-link { text-decoration: none; }
+
+    .ch-card {
+      flex: 0 0 var(--card-size);
+      width: var(--card-size);
+      height: var(--card-size);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      scroll-snap-align: center;
+      cursor: pointer;
+    }
+
+    /* image */
+    .ch-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.25s ease;
+    }
+    .ch-card:hover .ch-img {
+      transform: scale(1.07);
+    }
+
+    /* overlay */
+    .ch-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.75));
+      color: #fff;
+    }
+    .ch-title {
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .ch-meta {
+      display: flex;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .ch-badge {
+      padding: 4px 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+    }
+
+
+
   </style>
 </head>
 <body>
@@ -1788,6 +1941,60 @@ footer {
     <!-- JS will inject game thumbnails here -->
   </div>
 </section>
+
+
+
+
+
+
+
+
+<!-- ✅ HORIZONTAL COLLECTION SECTION (COMBINED) -->
+<section id="collection-horizontal">
+
+  <!-- SECTION TITLE -->
+  <h2 class="ch-section-title">Collection</h2>
+
+  <div class="ch-wrapper">
+
+    <!-- fade edges -->
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+
+    <!-- arrows -->
+    <button class="ch-arrow ch-left">❮</button>
+    <button class="ch-arrow ch-right">❯</button>
+
+    <!-- scroll track -->
+    <div class="ch-track" id="chTrack">
+
+      <!-- CARD 1 -->
+      <a href="GOW-collection.html" class="ch-link">
+        <article class="ch-card">
+          <img class="ch-img" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/GOW-collection.webp" alt="GOW collection thumb">
+          <div class="ch-overlay">
+            <div class="ch-title">GOW: Collection</div>
+            <div class="ch-meta">
+              <span class="ch-badge">Playstation</span>
+              <span class="ch-badge">PS</span>
+            </div>
+          </div>
+        </article>
+      </a>
+
+     
+
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
 
     <!-- PC games -->
 <section class="thumb-section">
@@ -2273,6 +2480,49 @@ document.addEventListener("DOMContentLoaded", function() {
   observer.observe(section);
 });
 </script>
+
+
+  <!-- ====================================== -->
+  <!--            JAVASCRIPT                  -->
+  <!-- ====================================== -->
+  <script>
+    const track = document.getElementById("chTrack");
+    const left = document.querySelector(".ch-left");
+    const right = document.querySelector(".ch-right");
+
+    /* scroll by width */
+    function scrollSide(dir) {
+      const amount = track.clientWidth * 0.8;
+      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+
+    left.addEventListener("click", () => scrollSide(-1));
+    right.addEventListener("click", () => scrollSide(1));
+
+    /* drag scroll */
+    let down = false, startX, scrollLeft;
+
+    track.addEventListener("mousedown", e => {
+      down = true;
+      startX = e.pageX;
+      scrollLeft = track.scrollLeft;
+    });
+
+    document.addEventListener("mouseup", () => down = false);
+
+    track.addEventListener("mousemove", e => {
+      if (!down) return;
+      const walk = e.pageX - startX;
+      track.scrollLeft = scrollLeft - walk;
+    });
+
+    /* prevent image ghost dragging */
+    document.querySelectorAll(".ch-img").forEach(img =>
+      img.addEventListener("dragstart", e => e.preventDefault())
+    );
+  </script>
+
+
 
 </body>
 </html>
