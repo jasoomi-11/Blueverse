@@ -5,7 +5,8 @@
     "image": "https://media.themoviedb.org/t/p/original/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg",
     "year": "2025",
     "badge": "Recommend",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ilya Naishuller"
   },
   {
     "title": "Baghi 4",
@@ -13,7 +14,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ahmed Khan"
   },
   {
     "title": "Nobody 2",
@@ -21,7 +23,8 @@
     "image": "https://media.themoviedb.org/t/p/original/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ilya Naishuller"
   },
   {
     "title": "Predator: killer of killer",
@@ -29,7 +32,8 @@
     "image": "https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Dan Trachtenberg"
   },
   {
     "title": "Tron Ares",
@@ -37,7 +41,8 @@
     "image": "https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action", "Sci-Fi"]
+    "genre": ["Action", "Sci-Fi"],
+    "director": "Joachim Rønning"
   },
   {
     "title": "Ballerina 2025",
@@ -45,7 +50,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/hHAVFOoSnnOT18bG3TdLEh5zrBC.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action", "Adventure"]
+    "genre": ["Action", "Adventure"],
+    "director": "Len Wiseman"
   },
   {
     "title": "Deva",
@@ -53,7 +59,8 @@
     "image": "https://image.tmdb.org/t/p/original/2JthNUcRU89h9M6k3yQxLkACEJQ.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Rosshan Andrrews"
   },
   {
     "title": "Mission Impossible: The Final reckoning",
@@ -61,7 +68,8 @@
     "image": "https://image.tmdb.org/t/p/original/1p5aI299YBnqrEEvVGJERk2MXXb.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action", "Adventure"]
+    "genre": ["Action", "Adventure"],
+    "director": "Christopher McQuarrie"
   },
   {
     "title": "Mickey 17",
@@ -69,7 +77,8 @@
     "image": "https://image.tmdb.org/t/p/original/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action", "Sci-Fi"]
+    "genre": ["Action", "Sci-Fi"],
+    "director": "Bong Joon-ho"
   },
   {
     "title": "War 2",
@@ -77,7 +86,8 @@
     "image": "https://image.tmdb.org/t/p/original/i7qArgoTogtdW690F3QGYtfNM1J.jpg",
     "year": "2025",
     "badge": "FEATURED",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ayan Mukerji"
   },
   {
     "title": "Baghi (2016)",
@@ -85,7 +95,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/4IEqNeF3PzL06Y2YKsvi4uMGJ1q.jpg",
     "year": "2016",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Sabbir Khan"
   },
   {
     "title": "Baghi 2",
@@ -93,7 +104,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/cnz8P6KfjlxCHvR8Fmcp6lsszOI.jpg",
     "year": "2018",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ahmed Khan"
   },
   {
     "title": "Baghi 3",
@@ -101,7 +113,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/rf2dKceO47cW4ZOyADCMDbHcy0w.jpg",
     "year": "2020",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ahmed Khan"
   },
   {
     "title": "Nobody",
@@ -109,7 +122,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/oBgWY00bEFeZ9N25wWVyuQddbAo.jpg",
     "year": "2021",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ilya Naishuller"
   },
   {
     "title": "Predator (1987)",
@@ -117,7 +131,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/aN3cdjIK70KGmD84et8MMblU87Q.jpg",
     "year": "1987",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "John McTiernan"
   },
   {
     "title": "Predator 2",
@@ -125,15 +140,17 @@
     "image": "https://image.tmdb.org/t/p/original/mSta5O31rPUcZH98psx0cxLbPXd.jpg",
     "year": "1990",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Stephen Hopkins"
   },
   {
     "title": "Predators",
     "url": "/movies/action/predators-(2010).html",
-    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/sx5EuckP7SBQrlMlxg0PLt282WS.jpg",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/sx5EuckP7SBQrlmG0PLt282WS.jpg",
     "year": "2010",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Nimród Antal"
   },
   {
     "title": "Prey",
@@ -141,7 +158,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg",
     "year": "2022",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Dan Trachtenberg"
   },
   {
     "title": "Sky Force",
@@ -149,7 +167,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/ii1Uik577OnQp1i5IAwpfOEpeC7.jpg",
     "year": "2024",
     "badge": "Action",
-    "genre": ["Action", "Adventure"]
+    "genre": ["Action", "Adventure"],
+    "director": "Abhishek Kapoor"
   },
   {
     "title": "The Predator",
@@ -157,7 +176,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/68d05TMkGimUCw6baHtQH1dUjT2.jpg",
     "year": "2018",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Shane Black"
   },
   {
     "title": "Tron",
@@ -165,7 +185,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/zwSFEczP7AzqugAHHIX3zHniT0t.jpg",
     "year": "1982",
     "badge": "Sci-Fi",
-    "genre": ["Action", "Sci-Fi"]
+    "genre": ["Action", "Sci-Fi"],
+    "director": "Steven Lisberger"
   },
   {
     "title": "Tron Legacy",
@@ -173,7 +194,8 @@
     "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/8Nc6R8k7bG8frSiDJo0oLucF7dN.jpg",
     "year": "2010",
     "badge": "Sci-Fi",
-    "genre": ["Action", "Sci-Fi"]
+    "genre": ["Action", "Sci-Fi"],
+    "director": "Joseph Kosinski"
   },
   {
     "title": "Head Of state",
@@ -181,35 +203,83 @@
     "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/lVgE5oLzf7ABmzyASEVcjYyHI41.jpg",
     "year": "2025",
     "badge": "Action",
-    "genre": ["Action"]
+    "genre": ["Action"],
+    "director": "Ilya Naishuller"
+  },
+
+  {
+    "title": "The Wolf Man",
+    "url": "/movies/horror/wolf-man.html",
+    "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/kbEneEWGBwnvvvdCJUqETA1Ui4D.jpg",
+    "year": "2025",
+    "badge": "Horror",
+    "genre": ["Horror", "Thriller"],
+    "director": "Leigh Whannell"
+  },
+  {
+    "title": "In the Lost Lands",
+    "url": "/movies/adventure/in-the-lost-lands.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/q6kImFC4wqzxYLNVciklQ9uWbBL.jpg",
+    "year": "2025",
+    "badge": "Adventure",
+    "genre": ["Adventure", "Fantasy", "Action"],
+    "director": "Paul W. S. Anderson"
+  },
+  {
+    "title": "Predator: Badlands",
+    "url": "/movies/action/predator-badlands.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/oLiF1Vnav7lz4mSkdfok4YBZSG2.jpg",
+    "year": "2025",
+    "badge": "Action",
+    "genre": ["Action", "Sci-Fi", "Adventure"],
+    "director": "Dan Trachtenberg"
+  },
+  {
+    "title": "Dangerous Animal",
+    "url": "/movies/horror/dangerous-animal.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/77hqkwaVJoguhgq48RSLDNRBdVF.jpg",
+    "year": "2025",
+    "badge": "Horror",
+    "genre": ["Horror", "Thriller", "Survival"],
+    "director": "Bryan Bertino"
+  },
+  {
+    "title": "Good Boy",
+    "url": "/movies/horror/good-boy.html",
+    "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/srwp5A5XQMWCWgaXq5RdlTXhXbN.jpg",
+    "year": "2025",
+    "badge": "Horror",
+    "genre": ["Horror", "Thriller", "Psychological"],
+    "director": "Steven Shainberg"
   },
   
-  
-  
-  
-{
-  "title": "The Wolf Man",
-  "url": "/movies/horror/wolf-man.html",
-  "image": "https://media.themoviedb.org/t/p/w220_and_h330_face/kbEneEWGBwnvvvdCJUqETA1Ui4D.jpg",
-  "year": "2025",
-  "badge": "Horror",
-  "genre": ["Horror", "Thriller"]
-},
-{
-  "title": "In the Lost Lands",
-  "url": "/movies/adventure/in-the-lost-lands.html",
-  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/q6kImFC4wqzxYLNVciklQ9uWbBL.jpg",
-  "year": "2025",
-  "badge": "Adventure",
-  "genre": ["Adventure", "Fantasy", "Action"]
-},
-{
-  "title": "Predator: Badlands",
-  "url": "/movies/action/predator-badlands.html",
-  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/oLiF1Vnav7lz4mSkdfok4YBZSG2.jpg",
+  {
+  "title": "Play Dirty",
+  "url": "/movies/action/play-dirty.html",
+  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/7ozwYWiXHgPr1GdceOMiul2o3L6.jpg",
   "year": "2025",
   "badge": "Action",
-  "genre": ["Action", "Sci-Fi", "Adventure"]
-}
+  "genre": ["Action", "Crime", "Thriller"],
+  "director": "Shane Black"
+},
 
+{
+  "title": "John Wick",
+  "url": "/movies/action/john-wick-2014.html",
+  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/w48YZ9nkKp2f0NRbEvaMThbZbPh.jpg",
+  "year": "2014",
+  "badge": "Action",
+  "genre": ["Action", "Crime", "Thriller"],
+  "director": "Chad Stahelski"
+},
+{
+  "title": "Regretting You",
+  "url": "/movies/romance/regretting-you.html",
+  "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/w9EHhkO0bC3QEi5v5Xy4ZEeTNtm.jpg",
+  "year": "2025",
+  "badge": "Drama",
+  "genre": ["Drama", "Romance"],
+  "director": "Josh Boone"
+}
+  
 ]

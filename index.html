@@ -46,35 +46,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===================== 🌐 BLUEVERSE — CLEAN SEO META BLOCK ===================== -->
+<!-- ===================== 1. BASIC SEO META TAGS ===================== -->
 <title>Blueverse — Games, Movies, Blogs & Online Arcade</title>
 
 <meta name="description" content="Explore games, movies, blogs, and online arcade fun at Blueverse. Play browser games, read guides, and stay updated with fresh entertainment content.">
 <meta name="keywords" content="Blueverse, Games, Movies, Blog, Arcade, Game Guides, Tips, Entertainment, Trailers">
+<meta name="author" content="Blueverse">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://blueverse.space/">
+<meta name="language" content="English">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ✅ Favicons -->
-<link rel="icon" type="image/png" sizes="96x96" href="https://blueverse.space/favicons/favicon-96x96.png">
-<link rel="apple-touch-icon" href="https://blueverse.space/favicons/apple-touch-icon.png">
-<link rel="shortcut icon" href="https://blueverse.space/favicons/favicon.ico" type="image/x-icon">
+<!-- Optional: alternate language hreflang examples -->
+<link rel="alternate" href="https://blueverse.space/" hreflang="en" />
+<link rel="alternate" href="https://blueverse.space/es/" hreflang="es" />
+<link rel="alternate" href="https://blueverse.space/ar/" hreflang="ar" />
 
-<!-- ✅ Open Graph -->
+<!-- ===================== 2. OPEN GRAPH / FACEBOOK ===================== -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Blueverse — Explore Games, Movies & Arcade">
 <meta property="og:description" content="Your universe of games, movies, and online arcade. Play and explore with Blueverse.">
 <meta property="og:url" content="https://blueverse.space/">
-<meta property="og:image" content="https://blueverse.space/assets/thumb/logo.png">
 <meta property="og:site_name" content="Blueverse">
+<meta property="og:image" content="https://blueverse.space/assets/thumb/logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-<!-- 🐦 Twitter Card -->
+<!-- ===================== 3. TWITTER CARD ===================== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Blueverse — Games, Movies & Arcade">
 <meta name="twitter:description" content="Play, explore, and enjoy with Blueverse.">
 <meta name="twitter:image" content="https://blueverse.space/assets/thumb/logo.png">
+<meta name="twitter:site" content="@blueverse">
+<meta name="twitter:creator" content="@Blueverse">
 
-<!-- ===================== 🧠 JSON-LD SCHEMA (GOOGLE STRUCTURED DATA) ===================== -->
+<!-- ===================== 4. FAVICONS & APP ICONS ===================== -->
+<link rel="icon" type="image/png" sizes="96x96" href="https://blueverse.space/favicons/favicon-96x96.png">
+<link rel="apple-touch-icon" href="https://blueverse.space/favicons/apple-touch-icon.png">
+<link rel="shortcut icon" href="https://blueverse.space/favicons/favicon.ico" type="image/x-icon">
+<link rel="manifest" href="https://blueverse.space/manifest.json">
+
+<!-- Preload common critical assets (example) -->
+<link rel="preload" href="https://blueverse.space/assets/css/main.css" as="style">
+<link rel="preload" href="https://blueverse.space/assets/js/main.js" as="script">
+<link rel="prefetch" href="https://blueverse.space/movies/" as="document">
+
+<!-- ===================== 5. JSON-LD (Structured Data Graph) ===================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+
     {
       "@type": "Organization",
       "@id": "https://blueverse.space/#organization",
@@ -89,9 +112,17 @@
       "sameAs": [
         "https://www.youtube.com/@Blueverse",
         "https://www.instagram.com/blueverse",
-        "https://twitter.com/Blueverse"
-      ]
+        "https://twitter.com/Blueverse",
+        "https://facebook.com/BlueverseMovies"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "support@blueverse.space",
+        "availableLanguage": ["English"]
+      }
     },
+
     {
       "@type": "WebSite",
       "@id": "https://blueverse.space/#website",
@@ -101,9 +132,10 @@
       "publisher": { "@id": "https://blueverse.space/#organization" },
       "inLanguage": "en"
     },
+
     {
       "@type": "WebPage",
-      "@id": "https://blueverse.space/#webpage",
+      "@id": "https://blueverse.space/#homepage",
       "url": "https://blueverse.space/",
       "name": "Blueverse — Games, Movies, Blogs & Online Arcade",
       "isPartOf": { "@id": "https://blueverse.space/#website" },
@@ -116,12 +148,60 @@
         "height": 630
       },
       "inLanguage": "en",
-      "datePublished": "2025-11-09",
-      "dateModified": "2025-11-09"
+      "datePublished": "2025-11-09T00:00:00+00:00",
+      "dateModified": "2025-11-18T00:00:00+00:00"
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://blueverse.space/#breadcrumbs",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://blueverse.space/" },
+        { "@type": "ListItem", "position": 2, "name": "Movies", "item": "https://blueverse.space/movies/" },
+        { "@type": "ListItem", "position": 3, "name": "Action", "item": "https://blueverse.space/movies/action/" }
+      ]
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://blueverse.space/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Blueverse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blueverse is a content hub for games, movies, blogs and browser-based arcade games."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I play arcade games on Blueverse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visit the 'Games' section from the main navigation and choose any browser game to play instantly."
+          }
+        }
+      ]
     }
+
   ]
 }
 </script>
+
+<!-- ===================== 6. Optional Review / AggregateRating Example (STRUCTURE ONLY) ===================== -->
+<!--
+  Note: Do not publish fabricated ratings. If you have real review data, replace values below and include.
+-->
+
+
+
+<!-- ===================== 7. Accessibility & Performance Hints ===================== -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//media.themoviedb.org">
+
+<!-- Recommended security headers (set on server) -->
+<!-- Strict-Transport-Security, Content-Security-Policy, Referrer-Policy, X-Frame-Options -->
 
 <style>
 
@@ -1017,7 +1097,7 @@ footer {
 
 
 /* =========================
-   COOKIE CONSENT
+   COOKIE CONSENT (LCP Optimized)
 ========================= */
 :root {
   --bv-blue: #0078ff;
@@ -1026,8 +1106,13 @@ footer {
   --bv-text: #dde6ff;
 }
 
+/* --- LCP Friendly: Initially Hidden --- */
 .bv-cookie {
-  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  
+  position: sticky;
   left: 18px;
   right: 18px;
   bottom: 18px;
@@ -1036,8 +1121,12 @@ footer {
   border-radius: 12px;
   padding: 14px;
   z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  font-family: Inter, Poppins, system-ui;
+
+  /* Lighter shadow (fast render) */
+  box-shadow: 0 4px 18px rgba(0,0,0,.35);
+
+  /* Faster font rendering */
+  font-family: system-ui, sans-serif;
 }
 
 .bv-cookie-inner {
@@ -1048,8 +1137,16 @@ footer {
   flex-wrap: wrap;
 }
 
-.bv-cookie-text { flex: 1; font-size: 14px; line-height: 1.4; }
-.bv-cookie a { color: var(--bv-blue); text-decoration: underline; }
+.bv-cookie-text {
+  flex: 1; 
+  font-size: 14px; 
+  line-height: 1.4;
+}
+
+.bv-cookie a {
+  color: var(--bv-blue);
+  text-decoration: underline;
+}
 
 .bv-cookie-actions {
   display: flex;
@@ -1089,7 +1186,7 @@ footer {
   max-height: 85vh;
   overflow: auto;
   padding: 18px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  box-shadow: 0 8px 30px rgba(0,0,0,.5);
 }
 
 .bv-modal-panel header {
@@ -1098,7 +1195,10 @@ footer {
   align-items: center;
 }
 
-.bv-modal-panel h2 { margin: 0 0 8px; font-size: 18px; }
+.bv-modal-panel h2 {
+  margin: 0 0 8px; 
+  font-size: 18px;
+}
 
 .bv-close {
   background: transparent;
@@ -1135,8 +1235,14 @@ footer {
   border-bottom: 1px solid rgba(255,255,255,.05);
 }
 
+/* --- Mobile Optimization --- */
 @media (max-width: 520px) {
-  .bv-cookie { left: 10px; right: 10px; bottom: 12px; padding: 12px; }
+  .bv-cookie { 
+    left: 10px; 
+    right: 10px; 
+    bottom: 12px; 
+    padding: 12px; 
+  }
   .bv-cookie-text { font-size: 13px; }
 }
 
@@ -1307,244 +1413,11 @@ footer {
   .social-btns { justify-content: center; }
 }
 
-/* =========================
-   POPULAR CELEBRITIES
-========================= */
-.popular-celebs {
-  padding: 1rem;
-  background: linear-gradient(180deg, #0a0f2f 0%, #001a4d 100%);
-}
 
-.popular-celebs .section-header h2 {
-  color: cyan;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
 
-.celebs-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-behavior: smooth;
-  padding-bottom: 0.5rem;
-}
 
-.celebs-carousel::-webkit-scrollbar {
-  height: 8px;
-}
 
-.celebs-carousel::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
-}
 
-.celebrity-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 100px;
-  flex-shrink: 0;
-  cursor: pointer;
-  text-align: center;
-}
-
-.celebrity-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid cyan;
-  transition: transform 0.3s ease;
-}
-
-.celebrity-card img:hover { transform: scale(1.1); }
-
-.celebrity-name {
-  margin-top: 0.4rem;
-  color: cyan;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* =========================
-   BROWSER GAMES SECTION
-========================= */
-.browser-games {
-  padding: 1rem;
-  background: linear-gradient(180deg, #0a0f2f 0%, #001a4d 100%);
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.section-header h2 { color: cyan; font-size: 1.5rem; }
-
-.section-header .see-more {
-  color: cyan;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border: 1px solid cyan;
-  padding: 0.3rem 0.8rem;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.section-header .see-more:hover {
-  background-color: cyan;
-  color: #001a4d;
-}
-
-.games-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-behavior: smooth;
-  padding-bottom: 0.5rem;
-}
-
-.games-carousel::-webkit-scrollbar { height: 8px; }
-.games-carousel::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
-}
-
-.game-card {
-  position: relative;
-  min-width: 150px;
-  height: 150px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  text-decoration: none;
-}
-
-.game-card:hover { transform: scale(1.05); }
-
-.game-card img { width: 100%; height: 100%; object-fit: cover; }
-
-.game-card .badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: rgba(0, 255, 255, 0.85);
-  color: #001a4d;
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.upcoming-movies {
-  margin: 0;
-  padding: 1rem;
-  background: linear-gradient(180deg, #0a0f2f 0%, #001a4d 100%);
-  color: #00ffff; /* Cyan text */
-  overflow-x: hidden;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.section-header h2 {
-  color: #00ffff;
-  font-size: 1.5rem;
-}
-
-.section-header .see-more {
-  color: #00ffff;
-  font-size: 0.9rem;
-  text-decoration: underline;
-}
-
-.upcoming-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-behavior: smooth;
-  padding-bottom: 0.5rem;
-}
-
-.upcoming-carousel::-webkit-scrollbar {
-  height: 8px;
-}
-
-.upcoming-carousel::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
-}
-
-.upcoming-card {
-  position: relative;
-  min-width: 220px;
-  height: 330px;
-  border-radius: 12px;
-  overflow: hidden;
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.upcoming-card:hover {
-  transform: scale(1.05);
-}
-
-.upcoming-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.upcoming-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0.8rem;
-  background: linear-gradient(transparent, rgba(0,0,0,0.85));
-  color: #00ffff;
-  box-sizing: border-box;
-}
-
-.upcoming-badge-top {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: rgba(255, 204, 0, 0.9);
-  color: #000;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.8rem;
-  border-radius: 6px;
-  font-weight: bold;
-  z-index: 10;
-}
-
-.upcoming-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.2rem;
-}
-
-.upcoming-genre, .upcoming-date {
-  font-size: 0.85rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .upcoming-card {
-    min-width: 180px;
-    height: 280px;
-  }
-}
 
 
 
@@ -1699,6 +1572,121 @@ footer {
       border-radius: 8px;
     }
 
+  body {
+    background: #091226;
+    font-family: Arial, sans-serif;
+  }
+
+  .upcoming-wrapper {
+    padding: 30px 15px;
+    position: relative;
+    margin: 40px 0;
+  }
+
+  .upcoming-title {
+    color: #b8d4ff;
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+
+  /* Track – Horizontal Scroll */
+  .upcoming-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+
+  .upcoming-track::-webkit-scrollbar {
+    height: 6px;
+  }
+  .upcoming-track::-webkit-scrollbar-thumb {
+    background: #1c2f55;
+    border-radius: 10px;
+  }
+
+  /* Movie Cards */
+  .u-card {
+    min-width: 220px;
+    height: 330px;
+    background: #0f1b36;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+    transition: transform .3s ease;
+  }
+
+  .u-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .u-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Badge */
+  .u-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #1a2e5e;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #c8d6ff;
+  }
+
+  /* Overlay Text */
+  .u-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+  }
+
+  .u-title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .u-genre,
+  .u-release {
+    font-size: 12px;
+    color: #c2d3ff;
+  }
+
+  /* Scroll Buttons */
+  .upcoming-controls {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .u-btn {
+    background: #16274b;
+    color: #bcd3ff;
+    border: none;
+    padding: 7px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .u-btn:hover {
+    background: #1e3566;
+  }
+
 
 
   </style>
@@ -1707,7 +1695,6 @@ footer {
 
   <!-- HEADER -->
   <header id="mainHeader">
-   
     <div class="logo">
       <img src="assets/thumb/logo.png" alt="Blueverse Brand Official Logo-gamings,movies,blog">
     </div>
@@ -1717,812 +1704,825 @@ footer {
       <span></span>
     </div>
   </header>
-  <!-- Search Bar Container -->
-<div class="search-container">
-  <input type="text" id="universal-search" placeholder="Search movies or games..." autocomplete="off"/>
-  <div id="search-results" class="search-results"></div>
-</div>
-  
 
-  
-<!-- Sidebar -->
-<nav class="menu">
-  <div class="sidebar-content">
-    <h2 class="sidebar-title">MENU</h2>
-    <a href="index.html">🏠 Home</a>
-    <a href="movies/movie.html">🎬 Movies</a>
-    <a href="gamesection/topgameslist.html">Top Games List</a>
-    <a href="games.html">Play Games</a>
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="universal-search" placeholder="Search movies or games..." autocomplete="off">
+    <div id="search-results" class="search-results"></div>
+  </div>
 
-    <h3 class="sidebar-sub">Genres</h3>
-    <div class="sidebar-tags">
-      <a href="/movies/action.html">Action</a>
-      <a href="/movies/horror.html">Horror</a>
-      <a href="/movies/adventure.html">Adventure</a>
-    
+  <!-- Sidebar -->
+  <nav class="menu">
+    <div class="sidebar-content">
+      <h2 class="sidebar-title">MENU</h2>
+
+      <a href="index.html">🏠 Home</a>
+      <a href="movies/movie.html">🎬 Movies</a>
+      <a href="Game/all-games.html">🎮 Top games</a>
+     
+
+      <h3 class="sidebar-sub">Genres</h3>
+      <div class="sidebar-tags">
+        <a href="/movies/action.html">Action</a>
+        <a href="/movies/horror.html">Horror</a>
+        <a href="/movies/adventure.html">Adventure</a>
+      </div>
+
+      <h3 class="sidebar-sub">Contact</h3>
+      <div class="sidebar-tags">
+        <a href="attribution.html">Attribution</a>
+        <a href="copyright.html">Copyright</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="contact.html">Contact</a>
+        <a href="DMCA.html">DMCA notice</a>
+      </div>
     </div>
- <h3 class="sidebar-sub">Contact</h3>
-    <div class="sidebar-tags">
-      <a href="attribution.html">Attribution</a>
-      <a href="copyright.html">Copyright</a>
-      <a href="cookie-policy.html">Cookie Policy</a>
+  </nav>
 
- <a href="contact.html">Contact</a>
- 
-<a href="DMCA.html">DMCA notice</a>
-  
-</nav>
-
-<div id="overlay"></div>
+  <div id="overlay"></div>
 
   <!-- MAIN -->
   <main>
-    
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Blueverse – Games, Movies & Mini Browser Games Hub</h1>
+        <p>
+          Discover the latest <strong>game details</strong>, <strong>tips & updates</strong>,
+          <strong>movie posters</strong>, <strong>trailers</strong>,
+          and exciting <strong>mini browser games</strong> — all in one place!
+        </p>
+      </div>
+    </section>
+
+    <!-- FILTER SECTION -->
+    <section class="main-filter">
+      <h2 class="filter-title">Explore Categories</h2>
+      <div class="filter-buttons">
+        <button class="filter-item" onclick="location.href='Game/all-games.html'">GAMES</button>
+        <button class="filter-item" onclick="location.href='movies/movie.html'">Movies</button>
+        <button class="filter-item" onclick="location.href='movies/action.html'">Action Movies</button>
+         <button class="filter-item" onclick="location.href='movies/adventure.html'">adventure Movies</button>
+       
+      </div>
+    </section>
 
 
 
 
-<!-- 🌌 HERO SECTION -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Blueverse – Games, Movies & Mini Browser Games Hub</h1>
-    <p>Discover the latest <strong>game details</strong>, <strong>tips & updates</strong>, <strong>movie posters</strong>, <strong>trailers</strong>, and exciting <strong>mini browser games</strong> — all in one place!</p>
+
+<section class="upcoming-wrapper">
+  <h2 class="upcoming-title">Upcoming Movies</h2>
+
+  <div class="upcoming-controls">
+    <button id="u-left" class="u-btn">←</button>
+    <button id="u-right" class="u-btn">→</button>
   </div>
+
+  <div id="upcoming-track" class="upcoming-track"></div>
 </section>
 
 
 
 
-<!-- 🎮 FILTER SECTION -->
-<section class="main-filter">
-  <h2 class="filter-title">Explore Categories</h2>
-  <div class="filter-buttons">
-    <button class="filter-item" onclick="location.href='Game/all-games.html'">GAMES</button>
-    
-    
-    <button class="filter-item" onclick="location.href='movies/movie.html'">Movies</button>
-    <button class="filter-item" onclick="location.href='games.html'">Play Online Games</button>
-   
-   
-    
-    
-    
-    
+
+
+
+
+
+    <!-- TRENDING SECTION -->
+  <section class="trending-section">
+  <div class="trending-header">
+    <h2 class="trending-title">🔥 Movies</h2>
+    <a href="movies/movie.html">
+      <button class="see-more-btn">Watch More</button>
+    </a>
   </div>
+
+  <div class="trending-container" id="trending-container"></div>
 </section>
 
 
 
-
-
-
-<!-- ===== TRENDING SECTION ===== -->
-<section class="trending-section">
-  
-    <div class="trending-header">
-  <h2 class="trending-title">🔥 Movies</h2>
-  <a href="movies/movie.html">
-    <button class="see-more-btn">Watch More</button>
-  </a>
-</div>
-  
-  
-
-  <div class="trending-container">
-    <div class="trending-card" onclick="location.href='movies/action/baghi-4.html'">
-      <span class="movie-badge">NEW</span>
-      <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/u2YEFW5o2Y7RAw2K4hSA4TEXF3Q.jpg" alt="Baghi 4" loading="lazy">
-      <div class="movie-info"><h3>Baghi 4</h3><p>2025</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='movies/action/A-working-man.html'">
-      <span class="movie-badge">New</span>
-      <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg" alt="A working Man poster " loading="lazy">
-      <div class="movie-info"><h3>A Working Man</h3><p>2025</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='movies/action/nobody-2.html'">
-      <span class="movie-badge">NEW</span>
-      <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/iIT4leR37o1sOjqKEDYgjDhH6SG.jpg" alt="Nobody 2025 poster">
-      <div class="movie-info"><h3>Nobody 2</h3><p>2025</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='movies/action/predator-killerofkiller.html'">
-      <span class="movie-badge">NEW</span>
-      <img src="https://image.tmdb.org/t/p/original/iAUunojd5pSmEuc2MhhTKj2bRjc.jpg" alt="predator: killer of killer poster ">
-      <div class="movie-info"><h3>Predator: killer of killer</h3><p>2025</p></div>
-    </div>
-
-    <div class="trending-card" onclick="location.href='movies/action/trons-ares.html'">
-      <span class="movie-badge">New, Action</span>
-      <img src="https://image.tmdb.org/t/p/original/no7K2XYqxpy878iK0qxa41csTcq.jpg" alt="Trons Ares poster">
-      <div class="movie-info"><h3>Trons Ares</h3><p>2025</p></div>
-    </div>
-
-    
-  </div>
-</section>
-
-
-
-
-<div id="ezoic-pub-ad-placeholder-109"></div>
-<script>
-    ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(109);
-    });
-</script>
-
-
-
-
-
-
-
-       <!-- BIG CARDS -->
+    <!-- CARD SECTION -->
     <section class="card-container">
       <div class="card">
         <img src="assets/thumb/movie.jpg" alt="Movies Collection Thumbnail" loading="lazy">
         <div class="card-content">
           <h3>Movies</h3>
-          <p>Get Complete Details And Info, Released,and Trailer,.</p>
-          <div class="card-footer"><span>Updated 2025</span><a href="movies/movie.html">Explore</a></div>
-        </div>
-      </div>
-    
-    </section>
-
-<!-- ================= Popular Celebrity Section ================= -->
-<section class="popular-celebs">
-  <div class="section-header">
-    <h2>Popular Celebrities</h2>
-  </div>
-
-  <div class="celebs-carousel" id="celebs-carousel">
-    <!-- JS will inject celebrity cards here -->
-  </div>
-</section>
-
-
-<!-- ================= Upcoming Movies Section (Below the Fold) ================= -->
-<section class="upcoming-movies" id="upcomingMoviesSection">
-  <div class="section-header">
-    <h2>Upcoming Movies</h2>
-  
-  </div>
-
-  <div class="upcoming-carousel" id="upcoming-carousel">
-    <!-- JS will inject movie cards here -->
-  </div>
-</section>
-
-
-
-
-
-
-
-
- <!-- BIG CARDS -->
-    <section class="card-container">
-      <div class="card">
-        <img src="assets/thumb/onlinegame.jpg" alt="online browser Games Thumbnail">
-        <div class="card-content">
-          <h3> Online Browser Games</h3>
-          <p>Thrilling HTML5 and 3D games built for fun and challenge.</p>
-          <div class="card-footer"><span>Updated 2025</span><a href="games.html">Explore</a></div>
-        </div>
-      </div>
-      
-    </section>
-    
-    
-    
-    
-    
-    <div id="ezoic-pub-ad-placeholder-111"></div>
-<script>
-    ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(111);
-    });
-</script>
-    
-    
-    
-    
-<!-- ================= Browser Games Section ================= -->
-<section class="browser-games">
-  <div class="section-header">
-    <h2>Play Games</h2>
-    <a href="/games/browser/" class="see-more">See More</a>
-  </div>
-
-  <div class="games-carousel" id="games-carousel">
-    <!-- JS will inject game thumbnails here -->
-  </div>
-</section>
-
-
-
-
-
-
-
-
-<!-- ✅ HORIZONTAL COLLECTION SECTION (COMBINED) -->
-<section id="collection-horizontal">
-
-  <!-- SECTION TITLE -->
-  <h2 class="ch-section-title">Collection</h2>
-
-  <div class="ch-wrapper">
-
-    <!-- fade edges -->
-    <div class="fade-left"></div>
-    <div class="fade-right"></div>
-
-    <!-- arrows -->
-    <button class="ch-arrow ch-left">❮</button>
-    <button class="ch-arrow ch-right">❯</button>
-
-    <!-- scroll track -->
-    <div class="ch-track" id="chTrack">
-
-      <!-- CARD 1 -->
-      <a href="GOW-collection.html" class="ch-link">
-        <article class="ch-card">
-          <img class="ch-img" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/GOW-collection.webp" alt="GOW collection thumb">
-          <div class="ch-overlay">
-            <div class="ch-title">GOW: Collection</div>
-            <div class="ch-meta">
-              <span class="ch-badge">Playstation</span>
-              <span class="ch-badge">PS</span>
-            </div>
+          <p>Get Complete Details And Info, Released,and Trailer.</p>
+          <div class="card-footer">
+            <span>Updated 2025</span>
+            <a href="movies/movie.html">Explore</a>
           </div>
-        </article>
-      </a>
+        </div>
+      </div>
+    </section>
 
-     
-
-    </div>
-  </div>
-
-</section>
+   
 
 
 
 
 
+  
+  
+  
+  
+  
+  
 
 
 
-    <!-- PC games -->
+    <!-- COLLECTION -->
+    <section id="collection-horizontal">
+      <h2 class="ch-section-title">Collection</h2>
+
+      <div class="ch-wrapper">
+        <div class="fade-left"></div>
+        <div class="fade-right"></div>
+
+        <button class="ch-arrow ch-left">❮</button>
+        <button class="ch-arrow ch-right">❯</button>
+
+        <div class="ch-track" id="chTrack">
+
+          <a href="GOW-collection.html" class="ch-link">
+            <article class="ch-card">
+              <img class="ch-img" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/GOW-collection.webp" alt="GOW collection thumb">
+              <div class="ch-overlay">
+                <div class="ch-title">GOW: Collection</div>
+                <div class="ch-meta">
+                  <span class="ch-badge">Playstation</span>
+                  <span class="ch-badge">PS</span>
+                </div>
+              </div>
+            </article>
+          </a>
+
+
+        </div>
+      </div>
+    </section>
+
+
 <section class="thumb-section">
   <div class="thumb-header">
     <h2>GAMES</h2>
     <a href="Game/all-games.html">See More</a>
   </div>
 
-  <div class="thumb-container">
-    <a href="Game/monster-hunter-wilds.html" class="thumb-card">
-      <img src="assets/thumb/monster-hunter-wild.webp" alt="Grand Theft Auto:V Thumbnail">
-      <h4>Monster Hunter Wilds</h4>
-    </a>
-
-    <a href="Game/Fortnite.html" class="thumb-card">
-      <img src="assets/thumb/Fortnite.webp" alt="Red Dead Redemption 2 thumbnail">
-      <h4>Fortnite</h4>
-    </a>
-
-  <a href="Game/apex-legend.html" class="thumb-card">
-      <img src="assets/thumb/apex-legend.jpg" alt="Apex Legend Thumbnail">
-      <h4>Apex Legend</h4>
-    </a>
-
-     <a href="Game/EA-sports-WRC-24.html" class="thumb-card">
-      <img src="assets/thumb/WRC24.jpg" alt="WRC 24 Thumbnail">
-      <h4>EA Sports WRC 24</h4>
-    </a>
+  <div class="thumb-container" id="games-container">
+    <!-- JSON se 4 random games yahan inject honge -->
   </div>
 </section>
 
-  <!-- 🌐 BLUEVERSE UNIVERSAL FOOTER -->
-<footer class="blueverse-footer">
-  <div class="footer-container">
 
-    <!-- 🔹 About Blueverse -->
-    <div class="footer-about">
-      <h3>About Blueverse</h3>
-      <p>Blueverse is your digital hub for <strong>games, movies, guides, and entertainment news</strong>. Explore trailers, reviews, and updates from across the entertainment universe — all in one place.</p>
-    </div>
 
-    <!-- 🔹 Footer Navigation -->
-    <div class="footer-links">
-      <h3>Explore</h3>
-      <div class="footer-btns">
-        <a href="/about.html" class="footer-btn">About</a>
-        <a href="/contact.html" class="footer-btn">Contact</a>
-        <a href="/policies.html" class="footer-btn">Privacy Policy</a>
-        <a href="copyright.html" class="footer-btn">Copyright</a>
-         <a href="/DMCA.html" class="footer-btn">DMCA Policy</a>
-          <a href="cookie-policy.html" class="footer-btn">Cookies Policies</a>
-          
-          <a href="attribution.html" class="footer-btn">Attribution</a>
-<a href="terms.html" class="footer-btn">Terms and Conditions</a>
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="blueverse-footer">
+      <div class="footer-container">
+
+        <div class="footer-about">
+          <h3>About Blueverse</h3>
+          <p>
+            Blueverse is your digital hub for <strong>games, movies, guides, and entertainment news</strong>.
+            Explore trailers, reviews, and updates from across the entertainment universe — all in one place.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Explore</h3>
+          <div class="footer-btns">
+            <a href="/about.html" class="footer-btn">About</a>
+            <a href="/contact.html" class="footer-btn">Contact</a>
+            <a href="/policies.html" class="footer-btn">Privacy Policy</a>
+            <a href="copyright.html" class="footer-btn">Copyright</a>
+            <a href="/DMCA.html" class="footer-btn">DMCA Policy</a>
+            <a href="cookie-policy.html" class="footer-btn">Cookies Policies</a>
+            <a href="attribution.html" class="footer-btn">Attribution</a>
+            <a href="terms.html" class="footer-btn">Terms and Conditions</a>
+          </div>
+        </div>
+
+        <div class="footer-attrib">
+          <h3>Attributions</h3>
+          <ul>
+            <li>Icons: <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+            <li>Game data: <a href="https://rawg.io/apidocs" target="_blank">RAWG.io API</a></li>
+            <li>Movie data: <a href="https://www.themoviedb.org/" target="_blank">TMDB</a></li>
+          </ul>
+        </div>
+
       </div>
-    </div>
-    
 
-    <!-- 🔹 Attribution (Legal & Required) -->
-    <div class="footer-attrib">
-      <h3>Attributions</h3>
-      <ul>
-        <li>Icons provided by <a href="https://www.flaticon.com/" target="_blank" rel="noopener">Flaticon</a></li>
-        <li>Game data & images powered by <a href="https://rawg.io/apidocs" target="_blank" rel="noopener">RAWG.io API</a></li>
-        <li>Movie data provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB (The Movie Database)</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> <strong>Blueverse</strong>. All rights reserved.</p>
-  </div>
-</footer>
-
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> <strong>Blueverse</strong>. All rights reserved.</p>
+      </div>
+    </footer>
 
   </main>
 
-<!-- ✅ Font Awesome for Icons -->
-<script src="https://kit.fontawesome.com/a2e0e6c6d8.js" crossorigin="anonymous"></script>
 
 <script>
-/* ==============================
-   BLUEVERSE MASTER SCRIPT v3.5
-   - Header animation
-   - Hamburger & dropdown
-   - Scroll section animation
-   - Cookie Consent Manager
-   - Universal Search
-   ============================== */
+/* Blueverse — Cleaned & Optimized Master JS (Upcoming Movies Removed)
+   - Merged scripts
+   - Debounced heavy listeners
+   - Lazy loads non-critical data
+   - Preserves original functionality
+*/
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* -------------------------------
-     HEADER ANIMATION
-  ------------------------------- */
-  const header = document.getElementById("mainHeader");
-  if (header) {
-    setTimeout(() => header.classList.add("show"), 1200);
-    setTimeout(() => header.classList.add("expanded"), 2000);
+(() => {
+  'use strict';
+
+  /* ---------- Utilities ---------- */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const on = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
+  const nowISO = () => new Date().toISOString();
+  const noop = () => {};
+  const raf = cb => requestAnimationFrame(cb);
+
+  const supportsPassive = (() => {
+    let passive = false;
+    try {
+      const opts = Object.defineProperty({}, 'passive', { get() { passive = true; }});
+      window.addEventListener('testPassive', null, opts);
+      window.removeEventListener('testPassive', null, opts);
+    } catch(e){}
+    return passive;
+  })();
+
+  function debounce(fn, wait = 150){
+    let t;
+    return function(...a){
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, a), wait);
+    };
   }
 
-  /* -------------------------------
-     HAMBURGER MENU
-  ------------------------------- */
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".menu");
-
-  if (hamburger && menu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      menu.classList.toggle("active");
-    });
-  }
-
-  /* -------------------------------
-     SIDEBAR DROPDOWN (GENRES)
-  ------------------------------- */
-  const dropdownTitles = document.querySelectorAll(".sidebar-sub");
-  dropdownTitles.forEach(title => {
-    title.addEventListener("click", () => {
-      title.classList.toggle("active");
-      const next = title.nextElementSibling;
-      if (next && next.classList.contains("sidebar-tags")) {
-        next.classList.toggle("active");
-      }
-    });
-  });
-
-  /* -------------------------------
-     SCROLL ANIMATIONS
-  ------------------------------- */
-  const sections = document.querySelectorAll("section, .thumb-section, .games-section, .shop-section");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+  function throttle(fn, wait = 100){
+    let last = 0, t;
+    return function(...a){
+      const now = Date.now();
+      const remaining = wait - (now - last);
+      if(remaining <= 0){
+        last = now;
+        fn.apply(this,a);
       } else {
-        entry.target.classList.remove("show");
+        clearTimeout(t);
+        t = setTimeout(() => {
+          last = Date.now();
+          fn.apply(this,a);
+        }, remaining);
       }
-    });
-  }, { threshold: 0.2 });
+    };
+  }
 
-  sections.forEach(sec => {
-    sec.classList.add("section-animate");
-    observer.observe(sec);
+  /* ---------- Safe DOM refs (cached) ---------- */
+  const header = document.getElementById('mainHeader');
+  const hamburger = $('.hamburger');
+  const menu = $('.menu');
+  const overlay = $('#overlay');
+  const yearEl = $('#year');
+  const chTrack = $('#chTrack');
+  const chLeft = $('.ch-left');
+  const chRight = $('.ch-right');
+  const searchInput = $('#universal-search');
+  const searchResults = $('#search-results');
+  const celebsContainer = $('#celebs-carousel');
+  const gamesCarousel = $('#games-carousel');
+  // Upcoming Movies references removed
+
+  /* ---------- Header small intro animation ---------- */
+  if (header) {
+    raf(() => header.classList.add('show'));
+    setTimeout(() => header.classList.add('expanded'), 900);
+  }
+
+  /* ---------- Hamburger toggle ---------- */
+  if (hamburger && menu) {
+    on(hamburger, 'click', () => {
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('active');
+      if (overlay) overlay.classList.toggle('active');
+    });
+
+    on(overlay, 'click', () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  }
+
+  /* ---------- Sidebar dropdowns ---------- */
+  on(document, 'click', (e) => {
+    const title = e.target.closest('.sidebar-sub');
+    if (!title) return;
+    const next = title.nextElementSibling;
+    title.classList.toggle('active');
+    if (next && next.classList.contains('sidebar-tags')) next.classList.toggle('active');
   });
 
-  /* -------------------------------
-     FOOTER YEAR
-  ------------------------------- */
-  const yearEl = document.getElementById("year");
+  /* ---------- Intersection animations ---------- */
+  (function initSectionObserver(){
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) el.classList.add('show');
+        else el.classList.remove('show');
+      });
+    }, { threshold: 0.18 });
+
+    const sections = $$('main > section, .thumb-section, .games-section, .shop-section');
+    sections.forEach(s => {
+      s.classList.add('section-animate');
+      io.observe(s);
+    });
+  })();
+
+  /* ---------- Footer year ---------- */
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* -------------------------------
-     COOKIE CONSENT MANAGER (v3)
-  ------------------------------- */
-  const BV_KEY = "blueverse_consent_v3";
-  const ADSENSE_PUBLISHER_ID = ""; // optional
-  const GA_MEASUREMENT_ID = ""; // optional
+  /* ---------- Cookie Consent Manager ---------- */
+  const BV_KEY = 'blueverse_consent_v3';
+  const ADSENSE_PUBLISHER_ID = '';
+  const GA_MEASUREMENT_ID = '';
 
-  function readConsent(){ try { return JSON.parse(localStorage.getItem(BV_KEY)) || null; } catch { return null; } }
-  function writeConsent(c){ localStorage.setItem(BV_KEY, JSON.stringify(c)); }
-  function nowISO(){ return new Date().toISOString(); }
+  const safeGet = id => document.getElementById(id) || null;
 
-  function show(id){ const el=document.getElementById(id); if(el) el.hidden=false; }
-  function hide(id){ const el=document.getElementById(id); if(el) el.hidden=true; }
+  function readConsent(){
+    try { return JSON.parse(localStorage.getItem(BV_KEY)) || null; }
+    catch(e){ return null; }
+  }
 
-  function injectScript(src, attrs={}) {
+  function writeConsent(c){
+    try { localStorage.setItem(BV_KEY, JSON.stringify(c)); } catch(e){}
+  }
+
+  function injectScript(src, attrs = {}, opts = { async: true }){
+    if (!src) return;
     if (document.querySelector(`script[src="${src}"]`)) return;
-    const s = document.createElement("script");
+    const s = document.createElement('script');
     s.src = src;
-    s.async = true;
-    Object.entries(attrs).forEach(([k,v]) => s.setAttribute(k,v));
+    if (opts.async) s.async = true;
+    Object.entries(attrs).forEach(([k,v]) => s.setAttribute(k, v));
     document.head.appendChild(s);
   }
 
-  function applyConsent(consent){
-    // Analytics
-    if (consent.analytics && GA_MEASUREMENT_ID) {
-      if (!window.dataLayer) {
-        injectScript(`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){ dataLayer.push(arguments); };
-        gtag('js', new Date());
-        gtag('config', GA_MEASUREMENT_ID, { 'anonymize_ip': true });
-      }
+  function applyConsent(consent = {}){
+    if (consent.analytics && GA_MEASUREMENT_ID && !window.gtagInitialized) {
+      injectScript(`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, { crossorigin: 'anonymous' });
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+      window.gtagInitialized = true;
     }
 
-    // AdSense
     if (ADSENSE_PUBLISHER_ID) {
       if (!consent.marketing) window.google_disable_ad_personalization = true;
-      injectScript(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_PUBLISHER_ID)}`, { crossorigin: "anonymous" });
+      injectScript(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_PUBLISHER_ID)}`, { crossorigin: 'anonymous' });
     }
 
-    // YouTube Embeds
     if (consent.embedded) {
-      document.querySelectorAll("[data-bv-youtube]").forEach(div => {
+      $$('[data-bv-youtube]').forEach(div => {
         if (div.dataset.bvDone) return;
         const src = div.dataset.bvYoutube;
-        const iframe = document.createElement("iframe");
+        if (!src) return;
+        const iframe = document.createElement('iframe');
         iframe.src = src;
-        iframe.width = div.dataset.bvWidth || "100%";
-        iframe.height = div.dataset.bvHeight || "315";
-        iframe.frameBorder = "0";
-        iframe.loading = "lazy";
-        iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+        iframe.width = div.dataset.bvWidth || '100%';
+        iframe.height = div.dataset.bvHeight || '315';
+        iframe.loading = 'lazy';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
         div.replaceWith(iframe);
-        div.dataset.bvDone = "1";
+        iframe.dataset.bvDone = '1';
       });
     }
   }
 
-  const saved = readConsent();
-  const get = id => document.getElementById(id);
+  (function cookieHandlers(){
+    const saved = readConsent();
+    const banner = safeGet('bv-cookie-banner');
+    const modal = safeGet('bv-modal');
 
-  if (!saved) show("bv-cookie-banner");
-  else applyConsent(saved);
+    if (!saved && banner) banner.hidden = false;
+    if (saved) applyConsent(saved);
 
-  // Accept All
-  get("bv-accept-all")?.addEventListener("click", () => {
-    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO() };
-    writeConsent(c); applyConsent(c); hide("bv-cookie-banner");
-  });
+    const acceptBtn = safeGet('bv-accept-all');
+    const rejectBtn = safeGet('bv-reject-all');
+    const manageBtn = safeGet('bv-manage');
+    const saveBtn = safeGet('bv-save');
+    const cancelBtn = safeGet('bv-cancel');
 
-  // Reject Non-Essential
-  get("bv-reject-all")?.addEventListener("click", () => {
-    const c = { essential:true, analytics:false, marketing:false, embedded:false, date: nowISO() };
-    writeConsent(c); hide("bv-cookie-banner");
-    if (ADSENSE_PUBLISHER_ID) {
-      window.google_disable_ad_personalization = true;
-      injectScript(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_PUBLISHER_ID)}`, {crossorigin:"anonymous"});
-    }
-  });
+    on(acceptBtn, 'click', () => {
+      const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO() };
+      writeConsent(c);
+      applyConsent(c);
+      if (banner) banner.hidden = true;
+    });
 
-  // Manage
-  get("bv-manage")?.addEventListener("click", () => {
-    const s = saved || { analytics:false, marketing:false, embedded:false };
-    get("bv-analytics").checked = !!s.analytics;
-    get("bv-marketing").checked = !!s.marketing;
-    get("bv-embedded").checked = !!s.embedded;
-    show("bv-modal");
-  });
+    on(rejectBtn, 'click', () => {
+      const c = { essential:true, analytics:false, marketing:false, embedded:false, date: nowISO() };
+      writeConsent(c);
+      if (banner) banner.hidden = true;
+      if (ADSENSE_PUBLISHER_ID) {
+        window.google_disable_ad_personalization = true;
+        injectScript(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_PUBLISHER_ID)}`);
+      }
+    });
 
-  get("bv-save")?.addEventListener("click", () => {
-    const c = {
-      essential:true,
-      analytics: !!get("bv-analytics").checked,
-      marketing: !!get("bv-marketing").checked,
-      embedded: !!get("bv-embedded").checked,
-      date: nowISO()
-    };
-    writeConsent(c); applyConsent(c); hide("bv-modal"); hide("bv-cookie-banner");
-  });
+    on(manageBtn, 'click', () => {
+      if (!modal) return;
+      const s = saved || { analytics:false, marketing:false, embedded:false };
+      ['bv-analytics','bv-marketing','bv-embedded'].forEach(id => {
+        const el = safeGet(id);
+        if (el) el.checked = !!s[id.replace('bv-','')];
+      });
+      modal.hidden = false;
+    });
 
-  get("bv-cancel")?.addEventListener("click", () => hide("bv-modal"));
-  get("bv-close-modal")?.addEventListener("click", () => hide("bv-modal"));
-  get("bv-open-policy")?.addEventListener("click", e => { e.preventDefault(); show("bv-policy"); });
-  get("bv-close-policy")?.addEventListener("click", () => hide("bv-policy"));
-  get("bv-policy-close")?.addEventListener("click", () => hide("bv-policy"));
-  get("bv-policy-accept")?.addEventListener("click", () => {
-    const c = { essential:true, analytics:true, marketing:true, embedded:true, date: nowISO() };
-    writeConsent(c); applyConsent(c); hide("bv-policy"); hide("bv-cookie-banner");
-  });
+    on(saveBtn, 'click', () => {
+      const c = {
+        essential:true,
+        analytics: !!safeGet('bv-analytics')?.checked,
+        marketing: !!safeGet('bv-marketing')?.checked,
+        embedded: !!safeGet('bv-embedded')?.checked,
+        date: nowISO()
+      };
+      writeConsent(c);
+      applyConsent(c);
+      if (modal) modal.hidden = true;
+      if (banner) banner.hidden = true;
+    });
 
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") { hide("bv-modal"); hide("bv-policy"); }
-  });
+    on(cancelBtn, 'click', () => { if (modal) modal.hidden = true; });
 
-  window.blueverseOpenCookieSettings = function(){
-    const s = readConsent() || { analytics:false, marketing:false, embedded:false };
-    get("bv-analytics").checked = !!s.analytics;
-    get("bv-marketing").checked = !!s.marketing;
-    get("bv-embedded").checked = !!s.embedded;
-    show("bv-modal");
-  };
+    on(document, 'keydown', (e) => {
+      if (e.key === 'Escape') { 
+        if (modal) modal.hidden = true; 
+        if (safeGet('bv-policy')) safeGet('bv-policy').hidden = true; 
+      }
+    });
+  })();
 
-  /* -------------------------------
-     UNIVERSAL SEARCH SYSTEM
-  ------------------------------- */
-  (function(){
-    let movies = [];
-    let games = [];
+  /* ---------- Universal Search ---------- */
+  (function initSearch(){
+    if (!searchInput || !searchResults) return;
+
+    let movies = [], games = [];
     let currentFocus = -1;
 
-    async function loadData() {
-      try {
-        const moviesResp = await fetch('/assets/data/movies.json');
-        movies = await moviesResp.json();
-        const gamesResp = await fetch('/assets/data/games.json');
-        games = await gamesResp.json();
-      } catch (err) {
-        console.error("Error loading JSON:", err);
-      }
+    const loadData = () => {
+      const mReq = fetch('/assets/data/movies.json').then(r => r.ok ? r.json() : []);
+      const gReq = fetch('/assets/data/games.json').then(r => r.ok ? r.json() : []);
+      return Promise.all([mReq, gReq])
+        .then(([m,g]) => { movies = Array.isArray(m)?m:[]; games = Array.isArray(g)?g:[]; })
+        .catch(()=>{ movies = []; games = []; });
+    };
+
+    if ('requestIdleCallback' in window) requestIdleCallback(loadData, { timeout: 1500 });
+    else setTimeout(loadData, 700);
+
+    function searchContent(q){
+      const ql = q.toLowerCase();
+      const movieResults = movies.length ? movies.filter(item =>
+        (item.title?.toLowerCase().includes(ql)) ||
+        (item.url?.toLowerCase().includes(ql))
+      ) : [];
+
+      const gameResults = games.length ? games.filter(item =>
+        (item.title?.toLowerCase().includes(ql)) ||
+        (item.path?.toLowerCase().includes(ql))
+      ) : [];
+
+      return [...movieResults.slice(0,8), ...gameResults.slice(0,8)];
     }
 
-    function searchContent(query) {
-      query = query.toLowerCase();
-      const movieResults = movies.filter(item =>
-        (item.title && item.title.toLowerCase().includes(query)) ||
-        (item.url && item.url.toLowerCase().includes(query))
-      );
-      const gameResults = games.filter(item =>
-        (item.title && item.title.toLowerCase().includes(query)) ||
-        (item.path && item.path.toLowerCase().includes(query))
-      );
-      return [...movieResults, ...gameResults];
-    }
+    function clearResults(){ searchResults.innerHTML=''; currentFocus = -1; }
 
-    function renderResults(results) {
-      const resultsContainer = document.getElementById('search-results');
-      if (!resultsContainer) return;
-      resultsContainer.innerHTML = '';
-
-      if (results.length === 0) {
-        resultsContainer.innerHTML = '<p style="padding:10px;">No results found</p>';
+    function renderResults(results){
+      searchResults.innerHTML = '';
+      if (!results.length) {
+        searchResults.innerHTML = '<p style="padding:10px;margin:0;">No results found</p>';
         return;
       }
-
+      const frag = document.createDocumentFragment();
       results.forEach(item => {
         const isMovie = item.url !== undefined;
-        const link = isMovie ? item.url : item.path;
-        const thumb = isMovie ? item.image : item.thumb;
+        const link = isMovie ? item.url : item.path || '#';
+        const thumb = isMovie ? (item.image || 'assets/thumb/movie.jpg') : (item.thumb || 'assets/thumb/onlinegame.jpg');
+
         const desc = isMovie
-          ? (item.year ? `Year: ${item.year}` : '') + (item.badge ? ` | ${item.badge}` : '')
-          : (item.platforms ? `Platforms: ${item.platforms.join(', ')}` : '') + (item.badge ? ` | ${item.badge}` : '');
-        const div = document.createElement('div');
-        div.classList.add('search-item');
-        div.innerHTML = `
-          <img src="${thumb}" alt="${item.title}" />
-          <div>
-            <h4>${item.title}</h4>
-            <p>${desc}</p>
-          </div>
+          ? ((item.year ? `Year: ${item.year}` : '') + (item.badge ? ` | ${item.badge}` : ''))
+          : ((item.platforms ? `Platforms: ${item.platforms.join(', ')}` : '') + (item.badge ? ` | ${item.badge}` : ''));
+
+        const node = document.createElement('div');
+        node.className = 'search-item';
+        node.tabIndex = 0;
+        node.innerHTML = `
+          <img src="${thumb}" alt="${item.title}" loading="lazy">
+          <div><h4>${item.title}</h4><p>${desc}</p></div>
         `;
-        div.addEventListener('click', () => { window.location.href = link; });
-        resultsContainer.appendChild(div);
+        node.addEventListener('click', () => { window.location.href = link; });
+        frag.appendChild(node);
       });
+      searchResults.appendChild(frag);
     }
 
-    function setActive(items) {
-      items.forEach(i => i.classList.remove('active'));
-      if (currentFocus >= 0) items[currentFocus].classList.add('active');
-    }
+    const onInput = debounce(e => {
+      const q = e.target.value.trim();
+      if (!q) return clearResults();
+      renderResults(searchContent(q));
+    }, 150);
 
-    const input = document.getElementById('universal-search');
-    if (!input) return;
+    searchInput.addEventListener('input', onInput);
 
-    input.addEventListener('input', (e) => {
-      const query = e.target.value.trim();
-      currentFocus = -1;
-      if (query.length > 0) {
-        const results = searchContent(query);
-        renderResults(results);
-        addKeyboardNavigation();
-      } else {
-        document.getElementById('search-results').innerHTML = '';
+    searchInput.addEventListener('keydown', (e) => {
+      const items = $$('.search-item', searchResults);
+      if (!items.length) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        currentFocus = (currentFocus + 1) % items.length;
+        items.forEach(i => i.classList.remove('active'));
+        items[currentFocus].classList.add('active');
+        items[currentFocus].focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        currentFocus = (currentFocus - 1 + items.length) % items.length;
+        items.forEach(i => i.classList.remove('active'));
+        items[currentFocus].classList.add('active');
+        items[currentFocus].focus();
+      } else if (e.key === 'Enter' && currentFocus > -1) {
+        e.preventDefault();
+        items[currentFocus].click();
+      } else if (e.key === 'Escape') {
+        clearResults();
+        searchInput.blur();
       }
     });
 
-    function addKeyboardNavigation() {
-      const items = document.querySelectorAll('.search-item');
-      input.addEventListener('keydown', (e) => {
-        if (!items.length) return;
-        if (e.key === "ArrowDown") {
-          currentFocus = (currentFocus + 1) % items.length;
-          setActive(items);
-        } else if (e.key === "ArrowUp") {
-          currentFocus = (currentFocus - 1 + items.length) % items.length;
-          setActive(items);
-        } else if (e.key === "Enter" && currentFocus > -1) {
-          e.preventDefault();
-          items[currentFocus].click();
-        }
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-container')) {
-        const res = document.getElementById('search-results');
-        if (res) res.innerHTML = '';
-      }
+    document.addEventListener('click', (ev) => {
+      if (!ev.target.closest('.search-container')) clearResults();
     });
-
-    loadData();
   })();
-});
 
+  /* ---------- Horizontal collection controls ---------- */
+  (function initCollectionControls(){
+    if (!chTrack) return;
 
+    const safeScroll = (dir) => {
+      const amount = Math.max(chTrack.clientWidth * 0.8, 220);
+      chTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    };
 
+    on(chLeft, 'click', () => safeScroll(-1));
+    on(chRight, 'click', () => safeScroll(1));
 
+    let pointerDown = false, startX = 0, scrollLeft = 0;
 
+    const onPointerDown = (e) => {
+      pointerDown = true;
+      startX = (e.pageX || e.touches?.[0].pageX || 0);
+      scrollLeft = chTrack.scrollLeft;
+      chTrack.classList.add('dragging');
+    };
 
+    const onPointerMove = (e) => {
+      if (!pointerDown) return;
+      const x = (e.pageX || e.touches?.[0].pageX || 0);
+      const walk = x - startX;
+      chTrack.scrollLeft = scrollLeft - walk;
+    };
 
+    const onPointerUp = () => { pointerDown = false; chTrack.classList.remove('dragging'); };
 
+    if (window.PointerEvent) {
+      chTrack.addEventListener('pointerdown', onPointerDown, { passive: true });
+      document.addEventListener('pointerup', onPointerUp, { passive: true });
+      chTrack.addEventListener('pointermove', throttle(onPointerMove, 16), { passive: true });
+    } else {
+      chTrack.addEventListener('mousedown', onPointerDown);
+      document.addEventListener('mouseup', onPointerUp);
+      chTrack.addEventListener('mousemove', throttle(onPointerMove, 16));
 
-
-</script>
-
-<script>
-fetch('assets/data/celeb.json')
-  .then(res => res.json())
-  .then(celebrities => {
-    const container = document.getElementById('celebs-carousel');
-
-    celebrities.forEach(celeb => {
-      const card = document.createElement('div');
-      card.className = 'celebrity-card';
-      card.innerHTML = `
-        <img src="${celeb.image}" alt="${celeb.name}">
-        <div class="celebrity-name">${celeb.name}</div>
-      `;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => console.error('Failed to load celebrities:', err));
-</script>
-
-
-<script>
-fetch('assets/data/mini-games.json')
-  .then(response => response.json())
-  .then(games => {
-    const container = document.getElementById('games-carousel');
-
-    // Shuffle for random games each load
-    const shuffled = games.sort(() => 0.5 - Math.random());
-
-    // Limit to 6 cards (optional)
-    const selectedGames = shuffled.slice(0, 6);
-
-    selectedGames.forEach(game => {
-      const card = document.createElement('a');
-      card.href = game.url; // Open correct page
-      card.className = 'game-card';
-      card.innerHTML = `
-        <span class="badge">${game.badge}</span>
-        <img src="${game.thumb}" alt="${game.title}">
-      `;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => console.error('Failed to load mini games:', err));
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Lazy load after fold (optional: on scroll near)
-  const loadUpcoming = () => {
-    fetch('assets/data/upcoming.json')
-      .then(res => res.json())
-      .then(movies => {
-        const container = document.getElementById('upcoming-carousel');
-        movies.forEach(movie => {
-          const genres = movie.genre.join(', ');
-          const card = document.createElement('a');
-          card.href = movie.url;
-          card.className = 'upcoming-card';
-          card.innerHTML = `
-            <div class="upcoming-badge-top">${movie.badge}</div>
-            <img src="${movie.image}" alt="${movie.title}" loading="lazy">
-            <div class="upcoming-overlay">
-              <div class="upcoming-title">${movie.title}</div>
-              <div class="upcoming-genre">${genres}</div>
-              <div class="upcoming-date">Release: ${movie.release_date}</div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => console.error('Failed to load upcoming movies:', err));
-  };
-
-  // Optional: load only when scroll reaches section (further LCP optimization)
-  const section = document.getElementById('upcomingMoviesSection');
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        loadUpcoming();
-        obs.disconnect(); // load once
-      }
-    });
-  }, { rootMargin: '200px' }); // start loading slightly before section comes into view
-  observer.observe(section);
-});
-</script>
-
-
-  <!-- ====================================== -->
-  <!--            JAVASCRIPT                  -->
-  <!-- ====================================== -->
-  <script>
-    const track = document.getElementById("chTrack");
-    const left = document.querySelector(".ch-left");
-    const right = document.querySelector(".ch-right");
-
-    /* scroll by width */
-    function scrollSide(dir) {
-      const amount = track.clientWidth * 0.8;
-      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+      chTrack.addEventListener('touchstart', onPointerDown, { passive: true });
+      chTrack.addEventListener('touchend', onPointerUp, { passive: true });
+      chTrack.addEventListener('touchmove', throttle(onPointerMove, 16), { passive: true });
     }
 
-    left.addEventListener("click", () => scrollSide(-1));
-    right.addEventListener("click", () => scrollSide(1));
-
-    /* drag scroll */
-    let down = false, startX, scrollLeft;
-
-    track.addEventListener("mousedown", e => {
-      down = true;
-      startX = e.pageX;
-      scrollLeft = track.scrollLeft;
-    });
-
-    document.addEventListener("mouseup", () => down = false);
-
-    track.addEventListener("mousemove", e => {
-      if (!down) return;
-      const walk = e.pageX - startX;
-      track.scrollLeft = scrollLeft - walk;
-    });
-
-    /* prevent image ghost dragging */
-    document.querySelectorAll(".ch-img").forEach(img =>
-      img.addEventListener("dragstart", e => e.preventDefault())
+    $$('.ch-img', chTrack).forEach(img =>
+      img.addEventListener('dragstart', e => e.preventDefault())
     );
-  </script>
+  })();
+
+  /* ---------- Cookie banner delayed show ---------- */
+  (function showCookieBanner(){
+    const el = $('.bv-cookie');
+    if (!el) return;
+
+    const showNow = () => {
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+      window.removeEventListener('click', showNow);
+      window.removeEventListener('keydown', showNow);
+    };
+
+    window.addEventListener('click', showNow, { once: true, passive: true });
+    window.addEventListener('keydown', showNow, { once: true, passive: true });
+
+    setTimeout(() => {
+      if (el.style.opacity !== '1') {
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      }
+    }, 900);
+  })();
+
+  /* ---------- End ---------- */
+})();
 
 
 
+
+fetch("assets/data/upcoming.json")
+  .then(res => res.json())
+  .then(movies => {
+
+    const container = document.getElementById("upcoming-container");
+
+    movies.forEach(movie => {
+
+      const card = document.createElement("a");
+      card.className = "movie-card";
+      card.href = movie.url;
+
+      card.innerHTML = `
+        <div class="movie-img-box">
+          <img class="movie-image" src="${movie.image}" alt="${movie.title}">
+          <div class="movie-overlay">
+            <div class="movie-title">${movie.title}</div>
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <div class="movie-badge">${movie.badge}</div>
+          <div class="movie-genre">${movie.genre.join(", ")}</div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  })
+  .catch(err => console.error("Fetch Error (upcoming movies) →", err));
+
+
+
+</script>
+
+<script>
+/* Fetch JSON & Render Horizontally */
+fetch("assets/data/upcoming.json")
+  .then(res => res.json())
+  .then(movies => {
+    const track = document.getElementById("upcoming-track");
+    if (!movies || !movies.length) return;
+
+    movies.forEach(movie => {
+      const card = document.createElement("a");
+      card.className = "u-card";
+      card.href = movie.url || "#";
+
+      card.innerHTML = `
+        <div class="u-badge">${movie.badge || ""}</div>
+        <img src="${movie.image}" alt="${movie.title}">
+        <div class="u-overlay">
+          <div class="u-title">${movie.title}</div>
+          <div class="u-genre">${movie.genre?.join(", ")}</div>
+          <div class="u-release">Release: ${movie.release_date}</div>
+        </div>
+      `;
+
+      track.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Upcoming JSON Error:", err));
+
+/* Scroll Buttons */
+const leftBtn = document.getElementById("u-left");
+const rightBtn = document.getElementById("u-right");
+const track = document.getElementById("upcoming-track");
+
+leftBtn.onclick = () => track.scrollBy({ left: -300, behavior: "smooth" });
+rightBtn.onclick = () => track.scrollBy({ left: 300, behavior: "smooth" });
+
+/* Drag Scroll */
+let isDown = false, startX, scrollLeft;
+
+track.addEventListener("mousedown", e => {
+  isDown = true;
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+});
+
+track.addEventListener("mouseleave", () => isDown = false);
+track.addEventListener("mouseup", () => isDown = false);
+
+track.addEventListener("mousemove", e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  track.scrollLeft = scrollLeft - walk;
+});
+</script>
+
+
+<script>
+/* Fetch Trending Movies JSON */
+fetch("assets/data/movies.json")
+  .then(res => res.json())
+  .then(movies => {
+    const container = document.querySelector(".trending-container");
+    if (!movies || !movies.length) return;
+
+    /* Random Shuffle */
+    movies = movies.sort(() => Math.random() - 0.5);
+
+    /* Limit to 20 Cards */
+    movies = movies.slice(0, 20);
+
+    movies.forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "trending-card";
+      card.onclick = () => location.href = movie.url;
+
+      card.innerHTML = `
+        <span class="movie-badge">${movie.badge || ""}</span>
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy">
+        <div class="movie-info">
+          <h3>${movie.title}</h3>
+          <p>${movie.year}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Trending JSON Error:", err));
+</script>
+
+<script>
+fetch("assets/data/games.json")
+  .then(res => res.json())
+  .then(games => {
+    const container = document.getElementById("games-container");
+    if (!games || !games.length) return;
+
+    /* Shuffle for randomness */
+    games = games.sort(() => Math.random() - 0.5).slice(0, 4);
+
+    games.forEach(game => {
+      const card = document.createElement("a");
+      card.className = "thumb-card";
+      card.href = game.path;
+
+      /* Platforms icons (optional) */
+      const platforms = game.platforms
+        ? game.platforms.join(", ")
+        : "";
+
+      /* Tags (optional) */
+      const tags = game.tags
+        ? game.tags.slice(0, 2).join(" • ")   // 2 short tags only
+        : "";
+
+      card.innerHTML = `
+        <img src="${game.thumb}" alt="${game.title}">
+        
+        <h4>${game.title}</h4>
+
+        <p class="game-badge">${game.badge || ""}</p>
+
+        <p class="game-platforms">${platforms}</p>
+
+        <small class="game-tags">${tags}</small>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Games JSON Error:", err));
+</script>
 </body>
 </html>
