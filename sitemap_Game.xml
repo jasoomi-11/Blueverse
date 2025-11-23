@@ -87,7 +87,7 @@
 
   <url>
     <loc>https://blueverse.space/Game/apex-legend.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
@@ -163,5 +163,33 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  
+  <url>
+    <loc>https://blueverse.space/Game/marvel-spider-man-2.html </loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+    <url>
+    <loc>https://blueverse.space/Game/brawl-stars.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+<url>
+    <loc>https://blueverse.space/Game/asphalt-9.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <url>
+    <loc>https://blueverse.space/Game/asphalt-8-airborne.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+
 
 </urlset>

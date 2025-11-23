@@ -1106,104 +1106,6 @@ strong {
 
 
 
-/* ============================
-   MORE GAMES GRID
-   ============================ */
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 per row mobile */
-  gap: 15px;
-  padding: 15px;
-  justify-items: center; /* center all cards */
-}
-
-/* Tablet */
-@media (min-width: 600px) {
-  .games-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Desktop */
-@media (min-width: 900px) {
-  .games-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* ============================
-   PERFECT SQUARE CARD
-   ============================ */
-.game-card {
-  width: 160px;   /* FIXED SIZE */
-  height: 160px;  /* FIXED SIZE → PERFECT SQUARE */
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  cursor: pointer;
-  background: #111;
-  transition: transform .25s ease;
-}
-
-.game-card:hover {
-  transform: scale(1.05);
-}
-
-/* EXACT SQUARE IMAGE */
-.game-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* no stretch, no distortion */
-}
-
-/* ============================
-   OVERLAY TEXT
-   ============================ */
-.game-card .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
-  color: #fff;
-  z-index: 2;
-}
-
-.game-card .overlay h4 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.game-card .overlay span.badge {
-  font-size: 11px;
-  opacity: 0.85;
-  margin-top: 2px;
-  display: block;
-}
-
-/* ============================
-   SEE MORE BUTTON
-   ============================ */
-#seeMoreBtn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background: #ff3333;
-  color: #fff;
-  border: none;
-  font-size: 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#seeMoreBtn:hover {
-  background: #ff0000;
-}
-
-
 
 
 
@@ -1651,15 +1553,7 @@ strong {
 
 
 
-<section class="more-games">
-  <h2 class="more-games-title">MORE GAMES</h2>
 
-  <div id="games-container" class="games-grid"></div>
-
-  <button id="load-more-btn" class="load-more-btn">
-    See More
-  </button>
-</section>
 
 
 
@@ -2023,59 +1917,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<script>
-  const container = document.getElementById("games-container");
-  const loadMoreBtn = document.getElementById("load-more-btn");
 
-  let allGames = [];
-  let shownGames = new Set();
-
-  async function fetchGames() {
-    const res = await fetch("/assets/data/games.json");
-    allGames = await res.json();
-    loadRandomGames(8);
-  }
-
-  function getRandomGames(count) {
-    const available = allGames.filter(g => !shownGames.has(g.slug));
-    const selected = [];
-
-    for (let i = 0; i < count && available.length > 0; i++) {
-      const index = Math.floor(Math.random() * available.length);
-      selected.push(available[index]);
-      shownGames.add(available[index].slug);
-      available.splice(index, 1);
-    }
-
-    return selected;
-  }
-
-  function loadRandomGames(count) {
-    const games = getRandomGames(count);
-
-    games.forEach(game => {
-      const card = document.createElement("div");
-      card.className = "game-card";
-      card.onclick = () => window.location.href = game.path;
-
-      card.innerHTML = `
-        <img src="${game.thumb}" alt="${game.title}">
-        <div class="overlay">
-          <div class="title">${game.title}</div>
-          <div class="badge">${game.badge}</div>
-        </div>
-      `;
-
-      container.appendChild(card);
-    });
-  }
-
-  loadMoreBtn.addEventListener("click", () => {
-    loadRandomGames(8);
-  });
-
-  fetchGames();
-</script>
 
 
 

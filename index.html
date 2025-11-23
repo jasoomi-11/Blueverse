@@ -4,18 +4,24 @@
   
   
   
-  <!-- Ezoic Privacy Scripts (Load First) -->
-<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
 
-<!-- Ezoic Header Script -->
-<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-<script>
-    window.ezstandalone = window.ezstandalone || {};
-    ezstandalone.cmd = ezstandalone.cmd || [];
-</script>
   
-  
+  <!-- Primary Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- PNG Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Manifest (Optional but Recommended) -->
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#081738">
   
   
   
@@ -1689,6 +1695,179 @@ footer {
 
 
 
+
+/* FILTER SECTION */
+.filter-section {
+  margin: 25px 0;
+  text-align: center;
+}
+
+/* TITLE */
+.filter-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e6edff;
+  margin-bottom: 14px;
+}
+
+/* BUTTON WRAPPER */
+.filter-buttons {
+  display: inline-flex;
+  gap: 15px;
+  background: rgba(20, 30, 60, 0.45);
+  padding: 10px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+}
+
+/* BUTTONS */
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  color: cyan; /* ⬅️ cyan text */
+  font-size: 15px;
+  font-weight: 700; /* ⬅️ bold text */
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease, text-shadow 0.25s ease; /* ⬅️ glow transition */
+}
+
+/* HOVER — ONLY TEXT GLOW ADDED */
+.filter-btn:hover {
+  color: cyan; /* same color, no change */
+  text-shadow: 0 0 8px cyan, 0 0 12px cyan; /* ⬅️ glow effect */
+}
+
+/* ANIMATED UNDERLINE — UNTOUCHED */
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #3772ff;
+  transition: all 0.28s ease;
+  transform: translateX(-50%);
+}
+
+/* ACTIVE STATE — UNTOUCHED */
+.filter-btn.active {
+  color: cyan;
+}
+
+.filter-btn.active::after {
+  width: 55%;
+}
+
+
+
+
+/* SECTION BACKGROUND */
+.movie-collection {
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #020b1a, #000000);
+  position: relative;
+  overflow: hidden;
+}
+
+/* TITLE */
+.collection-title {
+  color: #4fa3ff; 
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(79,163,255,0.6);
+}
+
+/* MOVIE ROW (Horizontal Scroll) */
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 18px;
+  padding-bottom: 15px;
+}
+
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* MOVIE CARD */
+.movie-card {
+  position: relative;
+  min-width: 180px;
+  height: 270px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #0b0b0b;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+}
+
+/* POSTER IMAGE */
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT OVERLAY */
+.movie-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  color: #5eb4ff;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0,184,255,0.6);
+}
+
+/* ARROWS */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(20,40,80,0.6);
+  color: #4fa3ff;
+  font-size: 24px;
+  width: 40px;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: none;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
+}
+
+.scroll-arrow:hover {
+  background: rgba(40,90,150,0.85);
+}
+
+.scroll-arrow.left {
+  left: 10px;
+}
+
+.scroll-arrow.right {
+  right: 10px;
+}
+
+/* SHOW ARROWS ON DESKTOP */
+@media (min-width: 768px) {
+  .scroll-arrow {
+    display: block;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1747,7 +1926,7 @@ footer {
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Blueverse – Games, Movies & Mini Browser Games Hub</h1>
+        <h1>Blueverse – Games, Movies,blog & Mini Browser Games Hub</h1>
         <p>
           Discover the latest <strong>game details</strong>, <strong>tips & updates</strong>,
           <strong>movie posters</strong>, <strong>trailers</strong>,
@@ -1769,114 +1948,121 @@ footer {
     </section>
 
 
+<section class="filter-section">
+  <h2 class="filter-title">Select What You Want to Explore</h2>
 
-
-
-<section class="upcoming-wrapper">
-  <h2 class="upcoming-title">Upcoming Movies</h2>
-
-  <div class="upcoming-controls">
-    <button id="u-left" class="u-btn">←</button>
-    <button id="u-right" class="u-btn">→</button>
+  <div class="filter-buttons">
+    <button id="btnMovies" class="filter-btn active">🎬 Movies</button>
+    <button id="btnGames" class="filter-btn">🎮 Games</button>
   </div>
-
-  <div id="upcoming-track" class="upcoming-track"></div>
 </section>
 
 
+ <!-- ========== MOVIES WRAPPER ========== -->
+<div id="movies-wrapper">
+
+  <!-- UPCOMING MOVIES -->
+  <section class="upcoming-wrapper">
+    <h2 class="upcoming-title">Upcoming Movies</h2>
+
+    <div class="upcoming-controls">
+      <button id="u-left" class="u-btn">←</button>
+      <button id="u-right" class="u-btn">→</button>
+    </div>
+
+    <div id="upcoming-track" class="upcoming-track"></div>
+  </section>
 
 
 
-
-
-
-
-    <!-- TRENDING SECTION -->
+  <!-- TRENDING MOVIES SECTION -->
   <section class="trending-section">
-  <div class="trending-header">
-    <h2 class="trending-title">🔥 Movies</h2>
-    <a href="movies/movie.html">
-      <button class="see-more-btn">Watch More</button>
-    </a>
-  </div>
+    <div class="trending-header">
+      <h2 class="trending-title">🔥 Movies</h2>
+      <a href="movies/movie.html">
+        <button class="see-more-btn">Watch More</button>
+      </a>
+    </div>
 
-  <div class="trending-container" id="trending-container"></div>
+    <div class="trending-container" id="trending-container"></div>
+  </section>
+
+<!-- ================= COLLECTION SECTION ================= -->
+<section class="movie-collection">
+  <h2 class="collection-title">Movie Collection</h2>
+
+  <!-- Left Arrow -->
+  <button class="scroll-arrow left">&lt;</button>
+
+  <!-- Movies Wrapper -->
+  <div class="movie-row" id="movieCollection"></div>
+
+  <!-- Right Arrow -->
+  <button class="scroll-arrow right">&gt;</button>
 </section>
 
 
-
-    <!-- CARD SECTION -->
-    <section class="card-container">
-      <div class="card">
-        <img src="assets/thumb/movie.jpg" alt="Movies Collection Thumbnail" loading="lazy">
-        <div class="card-content">
-          <h3>Movies</h3>
-          <p>Get Complete Details And Info, Released,and Trailer.</p>
-          <div class="card-footer">
-            <span>Updated 2025</span>
-            <a href="movies/movie.html">Explore</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-   
-
-
-
-
+ <!-- end of wraper -->
+ 
+</div>
 
   
   
   
-  
-  
-  
 
 
 
-    <!-- COLLECTION -->
-    <section id="collection-horizontal">
-      <h2 class="ch-section-title">Collection</h2>
 
-      <div class="ch-wrapper">
-        <div class="fade-left"></div>
-        <div class="fade-right"></div>
 
-        <button class="ch-arrow ch-left">❮</button>
-        <button class="ch-arrow ch-right">❯</button>
 
-        <div class="ch-track" id="chTrack">
+<!-- ========== GAMES WRAPPER ========== -->
+<div id="games-wrapper">
 
-          <a href="GOW-collection.html" class="ch-link">
-            <article class="ch-card">
-              <img class="ch-img" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/GOW-collection.webp" alt="GOW collection thumb">
-              <div class="ch-overlay">
-                <div class="ch-title">GOW: Collection</div>
-                <div class="ch-meta">
-                  <span class="ch-badge">Playstation</span>
-                  <span class="ch-badge">PS</span>
-                </div>
+  <!-- GAMES COLLECTION SLIDER -->
+  <section id="collection-horizontal">
+    <h2 class="ch-section-title">Collection</h2>
+
+    <div class="ch-wrapper">
+      <div class="fade-left"></div>
+      <div class="fade-right"></div>
+
+      <button class="ch-arrow ch-left">❮</button>
+      <button class="ch-arrow ch-right">❯</button>
+
+      <div class="ch-track" id="chTrack">
+
+        <a href="/Game/collection/GOW-collection.html" class="ch-link">
+          <article class="ch-card">
+            <img class="ch-img" src="https://cdn.jsdelivr.net/gh/jasoomi-11/Asset@main/games/GOW-collection.webp" alt="GOW collection thumb">
+            <div class="ch-overlay">
+              <div class="ch-title">GOW: Collection</div>
+              <div class="ch-meta">
+                <span class="ch-badge">Playstation</span>
+                <span class="ch-badge">PS</span>
               </div>
-            </article>
-          </a>
+            </div>
+          </article>
+        </a>
 
-
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- GAMES THUMBNAIL SECTION -->
+  <section class="thumb-section">
+    <div class="thumb-header">
+      <h2>GAMES</h2>
+      <a href="Game/all-games.html">See More</a>
+    </div>
 
-<section class="thumb-section">
-  <div class="thumb-header">
-    <h2>GAMES</h2>
-    <a href="Game/all-games.html">See More</a>
-  </div>
+    <div class="thumb-container" id="games-container">
+      <!-- JSON se 4 random games inject honge -->
+    </div>
+  </section>
 
-  <div class="thumb-container" id="games-container">
-    <!-- JSON se 4 random games yahan inject honge -->
-  </div>
-</section>
+</div>
+<!-- ========== END GAMES WRAPPER ========== -->
+
 
 
 
@@ -1925,6 +2111,19 @@ footer {
         <p>© <span id="year"></span> <strong>Blueverse</strong>. All rights reserved.</p>
       </div>
     </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </main>
 
@@ -2524,5 +2723,65 @@ fetch("assets/data/games.json")
   })
   .catch(err => console.error("Games JSON Error:", err));
 </script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btnMovies = document.getElementById("btnMovies");
+  const btnGames  = document.getElementById("btnGames");
+
+  const moviesWrapper = document.getElementById("movies-wrapper");
+  const gamesWrapper  = document.getElementById("games-wrapper");
+
+  function showMovies() {
+    moviesWrapper.style.display = "block";
+    gamesWrapper.style.display = "none";
+    btnMovies.classList.add("active");
+    btnGames.classList.remove("active");
+  }
+
+  function showGames() {
+    gamesWrapper.style.display = "block";
+    moviesWrapper.style.display = "none";
+    btnGames.classList.add("active");
+    btnMovies.classList.remove("active");
+  }
+
+  btnMovies.addEventListener("click", showMovies);
+  btnGames.addEventListener("click", showGames);
+
+  // Default page: Movies shown
+  showMovies();
+
+});
+</script>
+
+
+<script>
+const movieContainer = document.getElementById("movieCollection");
+const leftArrow = document.querySelector(".scroll-arrow.left");
+const rightArrow = document.querySelector(".scroll-arrow.right");
+
+/* LOAD MOVIES FROM JSON */
+fetch("movies/collection/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    movieContainer.innerHTML = data.movies.map(movie => `
+      <a href="${movie.url}" class="movie-card">
+        <img src="${movie.image}" alt="${movie.title}">
+        <div class="movie-overlay">${movie.title}</div>
+      </a>
+    `).join("");
+  })
+  .catch(err => console.error("Movie load error:", err));
+
+/* SCROLL BUTTONS */
+leftArrow.onclick = () => movieContainer.scrollBy({ left: -300, behavior: "smooth" });
+rightArrow.onclick = () => movieContainer.scrollBy({ left: 300, behavior: "smooth" });
+</script>
+
+
 </body>
 </html>

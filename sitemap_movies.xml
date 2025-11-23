@@ -338,6 +338,36 @@
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
+   <url>
+    <loc>https://blueverse.space/movies/action/john-wick-chapter-2.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+   <url>
+    <loc>https://blueverse.space/movies/action/john-wick-chapter-3.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+   <url>
+    <loc>https://blueverse.space/movies/action/john-wick-chapter-4.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+   <url>
+    <loc>https://blueverse.space/movies/collection/john-wick.html</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  
+  
   
 
 </urlset>

@@ -1628,7 +1628,153 @@ window.addEventListener('DOMContentLoaded', loadData);
 </script>
   
   
-  
+  <!-- ===================== COUNTRY-BASED GAME AVAILABILITY CHECK ===================== -->
+<style>
+#regionBar {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  max-width: calc(100% - 32px);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  z-index: 999999;
+  display: none;
+  text-align: center;
+  line-height: 1.2;
+}
+#regionBar.red { background: linear-gradient(90deg,#d32f2f,#ff5252); }
+#regionBar.green { background: linear-gradient(90deg,#2e7d32,#43a047); }
+
+#regionPopupBg {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0,0,0,0.6);
+  z-index: 1000000;
+  justify-content: center;
+  align-items: flex-end;
+}
+#regionPopup {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  padding: 18px;
+  text-align: center;
+  animation: slideUp 360ms ease;
+}
+#regionPopup h2 { margin: 0 0 8px; color: #c62828; font-size: 18px; }
+#regionPopup p { margin: 0 0 12px; color: #222; }
+#regionPopup .btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+@keyframes slideUp {
+  from { transform: translateY(60%); opacity: 0; } 
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+
+<div id="regionBar"></div>
+
+<div id="regionPopupBg">
+  <div id="regionPopup">
+    <h2 id="regionPopupTitle"></h2>
+    <p id="regionPopupText"></p>
+    <a class="btn" id="regionPopupOk">OK</a>
+  </div>
+</div>
+
+<script>
+/* ------------------------------------------
+   SETTINGS — Edit per game
+------------------------------------------- */
+const GAME_TITLE = "GTA V";
+
+// Countries where GTA V is NOT available
+const BANNED_COUNTRIES = new Set([
+  "China", "Iran", "Libya", "Myanmar",
+  "Korea, North", "North Korea",
+  "Sudan", "Syria",
+  // ISO codes
+  "CN","IR","LY","MM","KP","SD","SY"
+]);
+
+/* ------------------------------------------
+   DO NOT EDIT BELOW THIS LINE
+------------------------------------------- */
+
+function isBanned(name, code) {
+  if (!name && !code) return false;
+
+  if (code && BANNED_COUNTRIES.has(code.toUpperCase())) return true;
+  if (name && BANNED_COUNTRIES.has(name)) return true;
+
+  const n = (name || "").toLowerCase();
+  if (n.includes("north korea")) return true;
+  if (n.includes("korea, north")) return true;
+  if (n.includes("democratic people's republic")) return true;
+  if (n.includes("burma")) return true;
+
+  return false;
+}
+
+function showBar(text, type="red") {
+  const bar = document.getElementById("regionBar");
+  bar.className = type === "green" ? "green" : "red";
+  bar.textContent = text;
+  bar.style.display = "block";
+}
+
+function showPopup(title, text) {
+  document.getElementById("regionPopupTitle").textContent = title;
+  document.getElementById("regionPopupText").textContent = text;
+  document.getElementById("regionPopupBg").style.display = "flex";
+}
+
+document.getElementById("regionPopupOk").onclick = () => {
+  document.getElementById("regionPopupBg").style.display = "none";
+};
+
+async function checkAvailability() {
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+
+    const name = data.country_name;
+    const code = data.country_code;
+
+    const blocked = isBanned(name, code);
+
+    if (blocked) {
+      showBar("This game is not available in your region currently", "red");
+      showPopup(
+        `${GAME_TITLE} — Not Available`,
+        "This game is not available in your region."
+      );
+    } else {
+      showBar("This game is available in your region", "green");
+      setTimeout(() => document.getElementById("regionBar").style.display="none", 4000);
+    }
+  } catch {
+    console.log("Region detection failed");
+  }
+}
+
+checkAvailability();
+</script>
   
 </body>
 </html>
